@@ -1,3 +1,15 @@
+/*
+The soft-dirty is a bit on a PTE which helps to track which pages a task writes to.
+In order to do this tracking one should
+1. Clear soft-dirty bits from the task’s PTEs.
+   This is done by writing “4” into the /proc/PID/clear_refs file of the task in question.
+2. Wait some time.
+3. Read soft-dirty bits from the PTEs.
+This is done by reading from the /proc/PID/pagemap.
+The bit 55 of the 64-bit qword is the soft-dirty one. If set, the respective PTE was written to since step 1.
+ */
+
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <sys/mman.h>
