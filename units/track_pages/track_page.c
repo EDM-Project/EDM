@@ -156,11 +156,9 @@ int main(void)
 	mem = mmap(NULL, PAGES_TO_TEST * PAGE_SIZE,
 			PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANON, 0, 0);
     mem[1] = 'c';
-    void * ptr = &mem[1];
+    // void * ptr = &mem[1];
     printf("go to sleep - 2  sec\n");
     sleep(2);
     read_kflags(ptr);
-
-
 	return 0;
 }
