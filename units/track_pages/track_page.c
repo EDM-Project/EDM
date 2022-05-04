@@ -6,7 +6,7 @@
 #include <fcntl.h>
 #include <sys/types.h>
 #include <stdint.h> /* uint64_t  */
-typedef unsigned long long u64;
+// typedef unsigned long long uint64_t;
 
 #define PME_PRESENT	(1ULL << 63)
 #define PME_SOFT_DIRTY	(1Ull << 55)
@@ -127,10 +127,31 @@ int get_page_flags_lru(KpageFlagsEntry *entry, uint64_t pfn)
 
 
 
-/* read and print the relevant kpageflags.
+// /* read and print the relevant kpageflags.
+//  * @param[in]  vaddr  page virtual adress of the page
+//  */
+// void read_kflags(uintptr_t vaddr)
+// {
+//     int fd;
+//     fd = open("/proc/self/pagemap", O_RDONLY);
+//     if (fd < 0) {
+//         perror("Can't open pagemap");
+//         exit(1);
+//     }
+
+//     PagemapEntry page_map_entry;
+//     KpageFlagsEntry page_flags_entry;
+//     pagemap_get_entry(&page_map_entry,fd,vaddr);
+//     uint64_t pfn = page_map_entry.pfn;
+//     get_page_flags_lru(&page_flags_entry,pfn);
+//     print_page_flags(&page_flags_entry);
+//     close(fd);
+// }
+
+/* get page frame number of a given virtual address
  * @param[in]  vaddr  page virtual adress of the page
  */
-void read_kflags(uintptr_t vaddr)
+uint8_t get_pfn_by_addr(uintptr_t vaddr)
 {
     int fd;
     fd = open("/proc/self/pagemap", O_RDONLY);
@@ -142,12 +163,74 @@ void read_kflags(uintptr_t vaddr)
     PagemapEntry page_map_entry;
     KpageFlagsEntry page_flags_entry;
     pagemap_get_entry(&page_map_entry,fd,vaddr);
-    uint64_t pfn = page_map_entry.pfn;
-    get_page_flags_lru(&page_flags_entry,pfn);
-    print_page_flags(&page_flags_entry);
     close(fd);
+    return page_map_entry.pfn;
 }
 
+
+
+/*
+ * pfn to index of idle page file bitmap
+ *
+ * The bitmap should be read in 8 bytes (64 pages) stride.
+ */
+#define PFN_TO_IPF_IDX(pfn) pfn >> 6 << 3
+#define BIT_AT(val, x)	(((val) & (1ull << x)) != 0)
+#define SET_BIT(val, x) ((val) | (1ull << x))
+
+typedef unsigned long long u8;
+
+void setidle(uint64_t nr_pfns, uint64_t pfns[])
+{
+	int fd;
+	uint64_t pfn;
+    uint64_t entry;
+	u8 i;
+
+	fd = open("/sys/kernel/mm/page_idle/bitmap", O_RDWR);
+	if (fd < 0)
+		err(2, "open bitmap");
+
+	for (i = 0; i < nr_pfns; i++) {
+		pfn = pfns[i];
+		entry = 0;
+		if (pread(fd, &entry, sizeof(entry), PFN_TO_IPF_IDX(pfn)) != sizeof(entry))
+        {
+			err(2, "%s: read bitmap", __func__);
+        }
+		entry = SET_BIT(entry, pfn % 64);
+		if (pwrite(fd, &entry, sizeof(entry), PFN_TO_IPF_IDX(pfn)) != sizeof(entry))
+        {
+			err(2, "%s: write bitmap", __func__);
+        }
+	}
+	close(fd);
+}
+
+void getidle(uint64_t nr_pfns, uint64_t pfns[])
+{
+	int fd;
+	uint64_t entry, pfn;
+	u8 i;
+
+	fd = open("/sys/kernel/mm/page_idle/bitmap", O_RDONLY);
+	if (fd < 0)
+    {
+		err(2, "open bitmap");
+    }
+	for (i = 0; i < nr_pfns; i++)
+    {
+		pfn = pfns[i];
+		entry = 0;
+		if (pread(fd, &entry, sizeof(entry), PFN_TO_IPF_IDX(pfn)) != sizeof(entry))
+        {
+			err(2, "%s: read bitmap", __func__);
+        }
+		printf("%d ", (int)BIT_AT(entry, pfn % 64));
+	}
+	printf("\n");
+	close(fd);
+}
 
 int main(void)
 {
@@ -160,19 +243,72 @@ int main(void)
         printf("Memory allocation failed!");
         exit(1);
     }
-    
-    //first touch - write
-    mem[1] = 'c';
-    printf("go to sleep - 2  sec\n");
-    sleep(2);
-    read_kflags(mem);
 
-    //second touch - read
-    char c = mem[1];
-    printf("go to sleep - 2  sec\n");
-    sleep(2);
-    read_kflags(mem);
+    //first touch - only to make the allocation work
+    mem[1] = 'c';
+    
+    //create array of pfns whose idle flag is to be cleared
+    uint64_t pages[1] = {get_pfn_by_addr(mem)};
+
+    //set idle flag 1'
+    setidle(1, pages);
+
+
+    //read idle flag from bitmap
+    printf("before first touch:\n");
+    getidle(1, pages);
+    
+    //second touch - actual change
+    mem[1] = 'd';
+    
+    // printf("go to sleep - 2  sec\n");
+    // sleep(2);
+
+    //read idle flag from bitmap
+    printf("after first touch:\n");
+    getidle(1, pages);
+
+
+    
+    
+    // //second touch
+    // char c = mem[1];
+    // printf("go to sleep - 2  sec\n");
+    // sleep(2);
+    // read_kflags(mem);
 
 
 	return 0;
 }
+
+
+
+// ******************************************old main******************************************
+
+// int main(void)
+// {
+// 	char *mem;
+
+// 	mem = mmap(NULL, PAGES_TO_TEST * PAGE_SIZE,
+// 			PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANON, 0, 0);
+//     if(mem == MAP_FAILED)
+//     {
+//         printf("Memory allocation failed!");
+//         exit(1);
+//     }
+    
+//     //first touch - write
+//     mem[1] = 'c';
+//     printf("go to sleep - 2  sec\n");
+//     sleep(2);
+//     read_kflags(mem);
+
+//     //second touch - read
+//     char c = mem[1];
+//     printf("go to sleep - 2  sec\n");
+//     sleep(2);
+//     read_kflags(mem);
+
+
+// 	return 0;
+// }
