@@ -208,8 +208,6 @@ static void mark_page_idle(uint64_t pfn)
     int page_idle_fd = open("/sys/kernel/mm/page_idle/bitmap", O_WRONLY);
 
     uint64_t bits = 1ULL << (pfn % 64);
-    uint64_t  res=0;
-    uint64_t init =0;
 
     if (pwrite(page_idle_fd, &bits, 8, 8 * (pfn / 64)) != 8){
                 printf("failed to Set page_idle bits for PFN 0x%", pfn);
@@ -306,7 +304,7 @@ int main(void)
     }
     mem[1] = 'c';
     mem[0] = 'a';
-    sleep(2);
+    usleep(3000000);
     uint64_t pfn  = get_pfn_by_addr(mem);
     printf("kflags of pfn %d\n",pfn);
     read_kflags(mem);
@@ -315,14 +313,14 @@ int main(void)
     mark_page_idle( pfn);
     getidle( pfn);
     mem[0] = 't';
-    sleep(1);
+    usleep(1);
     getidle( pfn);
 
     //set idle flag 1'`
     mark_page_idle( pfn);
     getidle( pfn);
     char t  = mem[0];
-    sleep(1);
+    usleep(1);
     getidle( pfn);
 
 
