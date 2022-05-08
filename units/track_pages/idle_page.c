@@ -5,8 +5,7 @@
  * 1. using idle page requires CONFIG_IDLE_PAGE_TRACKING=y
  * 2. open /sys/kernel/mm/page_idle/bitmap file, should run with root user.
  * 3. Since the idle memory tracking feature is based on the memory reclaimer logic,
- *    it only works with pages that are on an LRU list
- * 4. Only accesses to user memory pages are tracked.
+ *    it only works with pages that are on an LRU list (kernel and isolated pages for example - are not). 
  *
  */
 #include <stdlib.h>
