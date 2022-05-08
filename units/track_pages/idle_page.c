@@ -12,7 +12,7 @@
 #define PME_PRESENT	(1ULL << 63)
 #define PME_SOFT_DIRTY	(1Ull << 55)
 
-#define PAGES_TO_TEST	1
+#define PAGES_TO_TEST 5
 #ifndef PAGE_SIZE
 #define PAGE_SIZE	4096
 #endif
@@ -33,7 +33,6 @@ typedef struct {
     unsigned int slab   : 1;
 } KpageFlagsEntry;
 
-// inner functions
 void print_page_flags(KpageFlagsEntry *entry) {
 
     printf("page frame flags: \n");
@@ -126,8 +125,6 @@ int get_page_flags_lru(KpageFlagsEntry *entry, uint64_t pfn)
     return 0;
 }
 
-
-
 // /* read and print the relevant kpageflags.
 //  * @param[in]  vaddr  page virtual adress of the page
 //  */
@@ -145,7 +142,7 @@ int get_page_flags_lru(KpageFlagsEntry *entry, uint64_t pfn)
      pagemap_get_entry(&page_map_entry,fd,vaddr);
      uint64_t pfn = page_map_entry.pfn;
      get_page_flags_lru(&page_flags_entry,pfn);
-    print_page_flags(&page_flags_entry);
+     print_page_flags(&page_flags_entry);
      close(fd);
  }
 
@@ -162,14 +159,11 @@ uint64_t get_pfn_by_addr(uintptr_t vaddr)
     }
 
     PagemapEntry page_map_entry;
-    KpageFlagsEntry page_flags_entry;
     pagemap_get_entry(&page_map_entry,fd,vaddr);
     uint64_t pfn = page_map_entry.pfn;
     close(fd);
     return  pfn;
 }
-
-
 
 /*
  * pfn to index of idle page file bitmap
@@ -203,37 +197,7 @@ static bool is_page_idle(int page_idle_fd, uint64_t pfn)
     return !!((bits >> (pfn % 64)) & 1);
 }
 
-static void mark_page_idle(uint64_t pfn)
-{
-    int page_idle_fd = open("/sys/kernel/mm/page_idle/bitmap", O_WRONLY);
-
-    uint64_t bits = 1ULL << (pfn % 64);
-
-    if (pwrite(page_idle_fd, &bits, 8, 8 * (pfn / 64)) != 8){
-                printf("failed to Set page_idle bits for PFN 0x%", pfn);
-    }
-    close(page_idle_fd);
-
-}
-void getidle( uint64_t pfn)
-{
-    int page_idle_fd = open("/sys/kernel/mm/page_idle/bitmap", O_RDONLY);
-
-    uint64_t entry;
-
-    entry = 0;
-    if (pread(page_idle_fd, &entry, sizeof(entry), 8 * (pfn / 64)) != sizeof(entry))
-    {
-        //err(2, "%s: read bitmap", __func__);
-    }
-    printf("%d ", (int)BIT_AT(entry, pfn % 64));
-    close(page_idle_fd);
-
-
-}
-
-/*
-void setidle(uint64_t nr_pfns, uint64_t pfns[])
+void set_idle(uint64_t nr_pfns, uint64_t pfns[])
 {
     int fd;
     uint64_t pfn;
@@ -242,7 +206,7 @@ void setidle(uint64_t nr_pfns, uint64_t pfns[])
 
     fd = open("/sys/kernel/mm/page_idle/bitmap", O_RDWR);
     if (fd < 0) {
-        //err(2, "open bitmap");
+        perror("open bitmap file failed");
     }
 
     for (i = 0; i < nr_pfns; i++) {
@@ -251,20 +215,19 @@ void setidle(uint64_t nr_pfns, uint64_t pfns[])
 
         if (pread(fd, &entry, sizeof(entry), pfn / 64 * 8) != sizeof(entry))
         {
-           // err(2, "%s: read bitmap", __func__);
+            perror("read bitmap file entry failed");
         }
         entry = SET_BIT(entry, pfn % 64);
         if (pwrite(fd, &entry, sizeof(entry), pfn / 64 * 8) != sizeof(entry))
         {
-           printf("___");
+            perror("write to bitmap file entry failed");
         }
 
     }
     close(fd);
 }
 
-
-void getidle(uint64_t nr_pfns, uint64_t pfns[])
+void* get_idle_flags(uint64_t nr_pfns, uint64_t pfns[],uint8_t results[])
 {
     int fd;
     uint64_t entry, pfn;
@@ -273,7 +236,7 @@ void getidle(uint64_t nr_pfns, uint64_t pfns[])
     fd = open("/sys/kernel/mm/page_idle/bitmap", O_RDWR);
     if (fd < 0)
     {
-        //err(2, "open bitmap");
+        perror("open bitmap file failed");
     }
     for (i = 0; i < nr_pfns; i++)
     {
@@ -281,82 +244,9 @@ void getidle(uint64_t nr_pfns, uint64_t pfns[])
         entry = 0;
         if (pread(fd, &entry, sizeof(entry), pfn / 64 * 8) != sizeof(entry))
         {
-            //err(2, "%s: read bitmap", __func__);
+            perror("read bitmap file entry failed");
         }
-        printf("%d ", (int)BIT_AT(entry, pfn % 64));
+        results[i] =  (uint8_t)BIT_AT(entry, pfn % 64);
     }
-    printf("\n");
     close(fd);
 }
-*/
-
-
-int main(void)
-{
-    char *mem;
-
-    mem = mmap(NULL, PAGES_TO_TEST * PAGE_SIZE,
-               PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANON, 0, 0);
-    if(mem == MAP_FAILED)
-    {
-        printf("Memory allocation failed!");
-        exit(1);
-    }
-    mem[1] = 'c';
-    mem[0] = 'a';
-    usleep(3000000);
-    uint64_t pfn  = get_pfn_by_addr(mem);
-    printf("kflags of pfn %d\n",pfn);
-    read_kflags(mem);
-
-    //set idle flag 1'`
-    mark_page_idle( pfn);
-    getidle( pfn);
-    mem[0] = 't';
-    usleep(1);
-    getidle( pfn);
-
-    //set idle flag 1'`
-    mark_page_idle( pfn);
-    getidle( pfn);
-    char t  = mem[0];
-    usleep(1);
-    getidle( pfn);
-
-
-
-    return 0;
-}
-
-
-
-// ******************************************old main******************************************
-/*
- int main(void)
- {
- 	char *mem;
-
- 	mem = mmap(NULL, PAGES_TO_TEST * PAGE_SIZE,
- 			PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANON, 0, 0);
-     if(mem == MAP_FAILED)
-     {
-         printf("Memory allocation failed!");
-         exit(1);
-     }
-
-     //first touch - write
-     mem[1] = 'c';
-     printf("go to sleep - 2  sec\n");
-     sleep(2);
-     read_kflags(mem);
-
-     //second touch - read
-     char c = mem[1];
-     printf("go to sleep - 2  sec\n");
-     sleep(2);
-     read_kflags(mem);
-
-
- 	return 0;
- }
-*/
