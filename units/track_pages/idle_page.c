@@ -1,4 +1,14 @@
-
+/*
+ * The idle page tracking feature allows to track which memory pages are being accessed by a workload and which are idle
+ * We used the idle page tracking API to for implementing write/read functions (set/get respectively).
+ * Please note that: (from https://www.kernel.org/doc/html/latest/admin-guide/mm/idle_page_tracking.html)
+ * 1. using idle page requires CONFIG_IDLE_PAGE_TRACKING=y
+ * 2. open /sys/kernel/mm/page_idle/bitmap file, should run with root user.
+ * 3. Since the idle memory tracking feature is based on the memory reclaimer logic,
+ *    it only works with pages that are on an LRU list
+ * 4. Only accesses to user memory pages are tracked.
+ *
+ */
 #include <stdlib.h>
 #include <stdio.h>
 #include <sys/mman.h>
