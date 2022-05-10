@@ -5,7 +5,8 @@
  * 1. using idle page requires CONFIG_IDLE_PAGE_TRACKING=y
  * 2. open /sys/kernel/mm/page_idle/bitmap file, should run with root user.
  * 3. Since the idle memory tracking feature is based on the memory reclaimer logic,
- *    it only works with pages that are on an LRU list (kernel and isolated pages for example - are not). 
+ *    it only works with pages that are on an LRU list
+ * 4. Only accesses to user memory pages are tracked.
  *
  */
 #include <stdlib.h>
@@ -16,12 +17,12 @@
 #include <sys/types.h>
 #include <stdint.h> /* uint64_t  */
 #include <stdbool.h>
+#include <time.h>
 // typedef unsigned long long uint64_t;
 
 #define PME_PRESENT	(1ULL << 63)
 #define PME_SOFT_DIRTY	(1Ull << 55)
 
-#define PAGES_TO_TEST 5
 #ifndef PAGE_SIZE
 #define PAGE_SIZE	4096
 #endif
@@ -241,21 +242,24 @@ void* get_idle_flags(uint64_t nr_pfns, uint64_t pfns[],uint8_t results[])
     int fd;
     uint64_t entry, pfn;
     u8 i;
+    clock_t start = clock();
 
     fd = open("/sys/kernel/mm/page_idle/bitmap", O_RDWR);
     if (fd < 0)
     {
         perror("open bitmap file failed");
     }
-    for (i = 0; i < nr_pfns; i++)
-    {
+    for (i = 0; i < nr_pfns; i++) {
         pfn = pfns[i];
         entry = 0;
-        if (pread(fd, &entry, sizeof(entry), pfn / 64 * 8) != sizeof(entry))
-        {
+        clock_t end = clock();
+        float seconds = (float) (end - start) / CLOCKS_PER_SEC;
+        if (pread(fd, &entry, sizeof(entry), pfn / 64 * 8) != sizeof(entry)) {
             perror("read bitmap file entry failed");
         }
-        results[i] =  (uint8_t)BIT_AT(entry, pfn % 64);
+       // printf("open file in %.9f",seconds);
+        results[i] = (uint8_t) BIT_AT(entry, pfn % 64);
     }
+
     close(fd);
 }

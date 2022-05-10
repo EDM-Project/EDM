@@ -1,3 +1,14 @@
+/*
+ * In this file we implement a simple simulation of using idle page feature
+ * for tracking pages.
+ *
+ * monitor_pages() - monitoring thread, at the beginning of each time interval the thread will set all page's idle flag to 1 (meaning the page is idle),
+ * and at the end of the interval checks if some bits are 0'  (meaning page was touched in the last interval, and OS set it to 0').
+ *  The thread then will update the page's activity level accordingly. In our simulation, we use 2-bit counter, which saves 2 last idle bits of each page.
+ *
+ * touch_pages() - "touch" each page at an increasing rate.
+ *
+ * */
 #include "idle_page.c"
 #include <vector>
 #include <iostream>
@@ -5,7 +16,7 @@
 
 #define DEFAULT_INIT 1
 #define USEC_EPOCH_MONITORING 5000000
-
+#define PAGES_TO_TEST 5
 
 
 class page_state
@@ -53,7 +64,7 @@ public:
         page_status = p1.page_status;
     }
 
-    // This function marks a given virtual address as touched in the last idle flag check
+    // marks a given virtual address as touched in the last idle flag check
     void page_touch()
     {
         this->page_status.increase();
@@ -67,21 +78,12 @@ public:
         this->vaddr = vaddr;
     }
 
-// This function marks a given virtual address as not touched in the last idle flag check
+    // marks a given virtual address as not touched in the last idle flag check
     void page_detouch()
     {
         this->page_status.decrease();
     }
 
-
-
-/*
-This function returns the status of a given virtual address:
-0 - Not touched recently
-1 -
-TODO: complete
-
-*/
     int get_status()
     {
         return this->page_status.get_state();
@@ -132,7 +134,7 @@ void initialize_test()
 {
 
     start_vaddr = (char*)mmap(NULL, PAGES_TO_TEST * PAGE_SIZE,
-                      PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANON, 0, 0);
+                              PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANON, 0, 0);
     if(start_vaddr == MAP_FAILED)
     {
         printf("Memory allocation failed!");
@@ -153,7 +155,6 @@ void initialize_test()
         tmp_entry.set_vaddr(reinterpret_cast<uintptr_t>(start_vaddr +(PAGE_SIZE*i)));
         vec_lru.push_back(tmp_entry);
     }
-    //for this test- assume pages not going to swap
     for(int i = 0 ; i < PAGES_TO_TEST ; i++)
     {
         uintptr_t vaddr = vec_lru[i].get_vaddr();
