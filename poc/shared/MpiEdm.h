@@ -34,31 +34,37 @@ public:
         MPI_Comm_accept(port_name, MPI_INFO_NULL, 0, MPI_COMM_WORLD, &CommApp);
         MPI_Comm_rank(MPI_COMM_WORLD, &rank);
     }
-    RequestGetPageData ListenRequestPage () {
+    RequestGetPageData ListenRequestGetPage () {
 
-        RequestGetPageData received;
-        MPI_Datatype requestPage = GetMPIDataType(received);
-        MPI_Recv(&received, 1, requestPage, 0, PAGE_REQUEST_TAG, CommApp, MPI_STATUS_IGNORE);
-        return received;
+        RequestGetPageData request;
+        MPI_Datatype requestPage = GetMPIDataType(request);
+        MPI_Recv(&request, 1, requestPage, 0, PAGE_REQUEST_TAG, CommApp, MPI_STATUS_IGNORE);
+        return request;
 
     }
-    void HandleRequestGetPage (RequestGetPageData received) {
-        // read from disk , meanwhile simple page
-        char* mem  = (char*) mmap(NULL, PAGE_SIZE, PROT_READ | PROT_WRITE,
-                                MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
-        for (int i =0; i< PAGE_SIZE ; i++) {
-            mem[i] = 'b';
-        }
-        RequestGetPageData response;
+    void SendPageBackToApp (RequestGetPageData response) {
+        
         MPI_Datatype requestPage = GetMPIDataType(response);
-        response.vaddr = received.vaddr;
-        memcpy ( response.page, mem, PAGE_SIZE );
-        memcpy ( response.flags, received.flags, strlen(received.flags) +1 );
-        std::cout << "DMS - i got your request , now send response" << std::endl; 
         MPI_Send(&response, 1, requestPage, 0, PAGE_REQUEST_TAG, CommApp);
 
     }
-    void HandleRequestEvictPage () {
+
+    RequestEvictPageData ListenRequestEvictPage() {
+        RequestEvictPageData request;
+        MPI_Datatype MPI_RequestEvictPage = GetMPIDataType(request);
+        MPI_Recv(&request, 1, MPI_RequestEvictPage, 0, EVICT_REQUEST_TAG, CommApp, MPI_STATUS_IGNORE);
+        return request;
+    }
+
+    void SendAckForEvictPage(uintptr_t vaddr) {
+        AckPage ack_page;
+        ack_page.vaddr = vaddr;
+        memcpy(ack_page.error, "NONE", ERROR_SIZE);
+        MPI_Datatype MPI_AckPage = GetMPIDataType(ack_page);
+        MPI_Send(&ack_page, 1, MPI_AckPage, 0, ACK_TAG, CommApp);
+    }
+
+    void _HandleRequestEvictPage () {
 
         RequestEvictPageData request;
         MPI_Datatype MPI_RequestEvictPage = GetMPIDataType(request);

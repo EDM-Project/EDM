@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
    memcpy (page_to_evict, response.page, PAGE_SIZE );
    std::string error_str = mpiInstance.RequestEvictPage(response.vaddr, page_to_evict);
    std::cout << "APP - ack error is " << error_str << std::endl;
-   std::cout << "APP - I FINISHED, bayush" <<  std::endl;
+   std::cout << "APP -  FINISHED" <<  std::endl;
    sleep(100);
    MPI_Finalize();
    return 0;
