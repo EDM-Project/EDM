@@ -3,29 +3,28 @@
 
 #define PAGE_SIZE 4096
 #define FLAGS_SIZE 10
-
+#define ERROR_SIZE 10
 namespace MPI_EDM {
 typedef struct 
 {
     uintptr_t vaddr;
     char page [PAGE_SIZE];
     char flags [FLAGS_SIZE];
-} RequestPageData ;
+} RequestGetPageData ;
 
-struct requst_evict_page_t
+typedef struct 
 {
     uintptr_t vaddr;
     char page [PAGE_SIZE];
-};
+} RequestEvictPageData;
 
 
-struct ack_page_saved_t
-{
+typedef struct {
     uintptr_t vaddr;
-    char error [FLAGS_SIZE];
-};
+    char error [ERROR_SIZE];
+} AckPage;
 
-MPI_Datatype GetMPIDataType(RequestPageData request_page) {
+MPI_Datatype GetMPIDataType(RequestGetPageData request_page) {
     MPI_Datatype MPI_RequestPage;
     int lengths[3] = { 8, PAGE_SIZE, FLAGS_SIZE };
  
@@ -39,10 +38,48 @@ MPI_Datatype GetMPIDataType(RequestPageData request_page) {
     displacements[1] = MPI_Aint_diff(displacements[1], base_address);
     displacements[2] = MPI_Aint_diff(displacements[2], base_address);
  
-    MPI_Datatype types[3] = { MPI_INT, MPI_CHAR, MPI_CHAR };
+    MPI_Datatype types[3] = { MPI_UNSIGNED_LONG_LONG, MPI_CHAR, MPI_CHAR };
     MPI_Type_create_struct(3, lengths, displacements, types, &MPI_RequestPage); 
     MPI_Type_commit(&MPI_RequestPage);
     return MPI_RequestPage;
+
+}
+
+MPI_Datatype GetMPIDataType(RequestEvictPageData request) {
+    MPI_Datatype MPI_RequestEvictPage;
+    int lengths[2] = { 8, PAGE_SIZE};
+ 
+    MPI_Aint displacements[2];
+    MPI_Aint base_address;
+    MPI_Get_address(&request, &base_address);
+    MPI_Get_address(&request.vaddr, &displacements[0]);
+    MPI_Get_address(&request.page[0], &displacements[1]);
+    displacements[0] = MPI_Aint_diff(displacements[0], base_address);
+    displacements[1] = MPI_Aint_diff(displacements[1], base_address);
+ 
+    MPI_Datatype types[2] = { MPI_UNSIGNED_LONG_LONG, MPI_CHAR};
+    MPI_Type_create_struct(2, lengths, displacements, types, &MPI_RequestEvictPage); 
+    MPI_Type_commit(&MPI_RequestEvictPage);
+    return MPI_RequestEvictPage;
+
+}
+
+MPI_Datatype GetMPIDataType(AckPage ack) {
+    MPI_Datatype MPI_AckPage;
+    int lengths[2] = { 8, ERROR_SIZE};
+ 
+    MPI_Aint displacements[2];
+    MPI_Aint base_address;
+    MPI_Get_address(&ack, &base_address);
+    MPI_Get_address(&ack.vaddr, &displacements[0]);
+    MPI_Get_address(&ack.error[0], &displacements[1]);
+    displacements[0] = MPI_Aint_diff(displacements[0], base_address);
+    displacements[1] = MPI_Aint_diff(displacements[1], base_address);
+ 
+    MPI_Datatype types[2] = { MPI_UNSIGNED_LONG_LONG, MPI_CHAR};
+    MPI_Type_create_struct(2, lengths, displacements, types, &MPI_AckPage); 
+    MPI_Type_commit(&MPI_AckPage);
+    return MPI_AckPage;
 
 }
   
