@@ -32,7 +32,7 @@ class Userfaultfd {
     std::thread thr;      /* ID of thread that handles page faults */
     MPI_EDM::MpiApp* mpi_instance;
     public:
-
+    Userfaultfd() = default;
     Userfaultfd(uint64_t len, char* addr, MPI_EDM::MpiApp* mpi_instance);
     ~Userfaultfd() = default;
     void ListenPageFaults();

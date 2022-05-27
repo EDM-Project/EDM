@@ -40,7 +40,7 @@ class MpiApp : public MpiEdm {
 private:
 
 public:
-
+    MpiApp() = default;
     MpiApp(int argc, char *argv[]);
     RequestGetPageData RequestPageFromDMS (uintptr_t vaddr);
     std::string RequestEvictPage (uintptr_t vaddr, char* page);
