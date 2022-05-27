@@ -1,23 +1,31 @@
 #include "mpi.h"
 #include "shared/MpiEdm.h"
+#include "userfaultfd/userfaultfd.h"
 #include <stdio.h>
 #include <sys/mman.h>
 #include <unistd.h>
 
-using namespace MPI_EDM;
-
 
 int main(int argc, char *argv[])
 {   
-   MpiApp mpiInstance = MpiApp(argc, argv);
-    
-   RequestGetPageData response =  mpiInstance.RequestPageFromDMS(0x343434);
-   char page_to_evict [PAGE_SIZE];
-   memcpy (page_to_evict, response.page, PAGE_SIZE );
-   std::string error_str = mpiInstance.RequestEvictPage(response.vaddr, page_to_evict);
-   std::cout << "APP - ack error is " << error_str << std::endl;
-   std::cout << "APP -  FINISHED" <<  std::endl;
+   MPI_EDM::MpiApp mpi_instance (argc, argv);
+   char mem [3];
+   char* addr = (char*) mmap(NULL, 4096*10, PROT_READ | PROT_WRITE,
+                       MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
+   Userfaultfd ufd (4096*10,addr, &mpi_instance); 
+   std::thread dm_handler_thread = ufd.ActivateUserFaultfd();
+   
+   for (int i = 0; i < 10 ; i++ ) { 
+      char x = addr[PAGE_SIZE *i];
+   }
    sleep(100);
+   dm_handler_thread.join();
    MPI_Finalize();
+/* init threads - lpet(idle pages..) ufd */
+/* init mpi */ 
+
+
+/* thread app */ 
+
    return 0;
 }
