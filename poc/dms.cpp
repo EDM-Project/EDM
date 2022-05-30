@@ -48,7 +48,7 @@ void XpetThread(MpiDms* mpi_instance)
 {
    
    for (;;) { 
-      std::cout << "DMS - Waiting for page eviction request" << std::endl;
+      std::cout << "DMS - Waiting for page eviction request..." << std::endl;
       RequestEvictPageData evict_request = mpi_instance->ListenRequestEvictPage();
       HandleRequestEvictPage(&evict_request);
       std::cout << "DMS - Page evicted successfuly, sending ack" << std::endl;
@@ -63,8 +63,6 @@ int main(int argc, char *argv[])
 {  
    
    MpiDms mpiInstance = MpiDms(argc, argv);
-   printf("DMS- my rank is %d \n",mpiInstance.rank);
-
 
    std::thread dm_tread (DmHandlerThread, &mpiInstance);
    std::thread xpet_thread (XpetThread, &mpiInstance);

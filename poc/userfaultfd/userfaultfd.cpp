@@ -28,7 +28,7 @@ Userfaultfd::Userfaultfd(uint64_t len, char* addr, MPI_EDM::MpiApp* mpi_instance
 
 
 void Userfaultfd::ListenPageFaults(){
-    std::cout <<   "ListenPageFaults thread..." << std::endl;
+    std::cout <<   "Userfaultfd - Listen to events..." << std::endl;
     static struct uffd_msg msg;   /* Data read from userfaultfd */
     ssize_t nread;
 
@@ -81,15 +81,23 @@ void Userfaultfd::HandleMissPageFault(struct uffd_msg* msg){
 
     /* Display info about the page-fault event. */
 
-    std::cout << "    UFFD_EVENT_PAGEFAULT event: "<< std::endl;
+    std::cout << " Userfaultfd -    UFFD_EVENT_PAGEFAULT event: "<< std::endl;
     std::cout << "flags = " << msg->arg.pagefault.flags << std::endl;
     std::cout << "address = " << msg->arg.pagefault.address << std::endl;
+
+    /*
+        TODO: Verify there is enough memory available on the machine :
+         if (available < THRESHOLD) :
+            lpet.wakeup()
+    
+
+    */
 
 
     MPI_EDM::RequestGetPageData request_page = mpi_instance->RequestPageFromDMS(msg->arg.pagefault.address);
     memcpy(page,request_page.page, PAGE_SIZE);
 
-
+    
     /* Copy the page pointed to by 'page' into the faulting
         region. */
 
@@ -106,10 +114,10 @@ void Userfaultfd::HandleMissPageFault(struct uffd_msg* msg){
     if (ioctl(uffd, UFFDIO_COPY, &uffdio_copy) == -1)
         perror("ioctl-UFFDIO_COPY");
 
-    std::cout << "(uffdio_copy.copy returned " << uffdio_copy.copy << std::endl;
+    std::cout << "Userfaultfd - (uffdio_copy.copy returned " << uffdio_copy.copy << std::endl;
 
 }
-std::thread Userfaultfd::ActivateUserFaultfd(){
+std::thread Userfaultfd::ActivateDM_Handler(){
     std::thread t (&Userfaultfd::ListenPageFaults,this);
     return t;
 }

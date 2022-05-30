@@ -5,10 +5,12 @@
 #include "userfaultfd/userfaultfd.h"
 #include <thread>
 #define NUM_OF_PAGES 10
+#define FREE_PAGES_RATION 0.2
 class EDM_Client {
 
 private:
     char* start_addr;
+    
     Userfaultfd* ufd;
     MPI_EDM::MpiApp* mpi_instance;
     std::thread dm_handler_thread;
@@ -18,7 +20,6 @@ public:
     EDM_Client (int argc, char *argv[]);
     ~EDM_Client();
     void Init ();
-    void Dispose();
     void UserThread();
     void RunUserThread();
 

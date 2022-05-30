@@ -37,7 +37,7 @@ class Userfaultfd {
     ~Userfaultfd() = default;
     void ListenPageFaults();
     void HandleMissPageFault(struct uffd_msg* msg);
-    std::thread ActivateUserFaultfd();
+    std::thread ActivateDM_Handler();
 
 };
 #endif
