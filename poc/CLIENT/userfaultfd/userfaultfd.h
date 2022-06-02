@@ -19,9 +19,10 @@
 #include <sys/ioctl.h>
 #include <poll.h>
 #include <thread>
-#include "../shared/MpiEdm.h"
+#include "../../shared/MpiEdm.h"
 
 #define PAGE_SIZE 4096
+class EDM_Client;
 
 class Userfaultfd {
     private:
@@ -31,9 +32,11 @@ class Userfaultfd {
     uint64_t len;       /* Length of region handled by userfaultfd */
     std::thread thr;      /* ID of thread that handles page faults */
     MPI_EDM::MpiApp* mpi_instance;
+    EDM_Client* edm_client; 
+
     public:
     Userfaultfd() = default;
-    Userfaultfd(uint64_t len, char* addr, MPI_EDM::MpiApp* mpi_instance);
+    Userfaultfd(uint64_t len, char* addr, MPI_EDM::MpiApp* mpi_instance, EDM_Client* edm_client);
     ~Userfaultfd() = default;
     void ListenPageFaults();
     void HandleMissPageFault(struct uffd_msg* msg);

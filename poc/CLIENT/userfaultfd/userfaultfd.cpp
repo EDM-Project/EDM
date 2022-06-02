@@ -1,7 +1,8 @@
 #include "userfaultfd.h"
 #include <iostream>
+#include "../EDM_Client.h"
 
-Userfaultfd::Userfaultfd(uint64_t len, char* addr, MPI_EDM::MpiApp* mpi_instance) {
+Userfaultfd::Userfaultfd(uint64_t len, char* addr, MPI_EDM::MpiApp* mpi_instance, EDM_Client* edm_client) {
     this->len = len;
     this->addr = addr;
     this->mpi_instance = mpi_instance;
@@ -23,7 +24,7 @@ Userfaultfd::Userfaultfd(uint64_t len, char* addr, MPI_EDM::MpiApp* mpi_instance
         perror("ioctl-UFFDIO_REGISTER");
     
     this->uffd = uffd;
-
+    this->edm_client = edm_client;
 }
 
 
@@ -93,11 +94,16 @@ void Userfaultfd::HandleMissPageFault(struct uffd_msg* msg){
 
     */
 
-
     MPI_EDM::RequestGetPageData request_page = mpi_instance->RequestPageFromDMS(msg->arg.pagefault.address);
     memcpy(page,request_page.page, PAGE_SIZE);
 
-    
+    /*
+        TODO: ADD TO PAGE LIST
+
+    */
+    this->edm_client->AddToPageList(msg->arg.pagefault.address);
+
+
     /* Copy the page pointed to by 'page' into the faulting
         region. */
 

@@ -1,16 +1,17 @@
 #ifndef EDM_CLIENT_H
 #define EDM_CLIENT_H
 
-#include "shared/MpiEdm.h"
+#include "../shared/MpiEdm.h"
 #include "userfaultfd/userfaultfd.h"
 #include <thread>
-#define NUM_OF_PAGES 10
-#define FREE_PAGES_RATION 0.2
+#include <vector>
+
 class EDM_Client {
 
 private:
-    char* start_addr;
-    
+    uintptr_t start_addr;
+    int num_of_pages;
+    std::vector<uintptr_t> pages_list;
     Userfaultfd* ufd;
     MPI_EDM::MpiApp* mpi_instance;
     std::thread dm_handler_thread;
@@ -20,6 +21,7 @@ public:
     EDM_Client (int argc, char *argv[]);
     ~EDM_Client();
     void Init ();
+    void AddToPageList(uintptr_t addr);
     void UserThread();
     void RunUserThread();
 
