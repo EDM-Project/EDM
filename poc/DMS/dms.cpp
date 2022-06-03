@@ -20,6 +20,5 @@ int main(int argc, char *argv[])
    }
 
    EDM_DMS edm_dms(argc,argv);
-   std::cout << "dms shutdown" <<std::endl;
    return 0;
 }

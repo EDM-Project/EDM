@@ -8,6 +8,11 @@
 #include <iostream>
 int main(int argc, char *argv[])
 {   
+   /*
+      expection 2 arguments:
+      start_area = start address of the virtual mapping
+      size_of_area = num of pages 
+   */
    int size_of_area;
    uintptr_t start_area;
    if (argc > 2) {
@@ -18,7 +23,6 @@ int main(int argc, char *argv[])
    }
 
    EDM_Client edm_client(argc,argv);
-   edm_client.Init();
    edm_client.RunUserThread();
 
    return 0;

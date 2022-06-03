@@ -9,6 +9,7 @@ EDM_Client::EDM_Client (int argc, char *argv[]){
     char* addr = (char*) mmap((void*)start_addr, PAGE_SIZE*num_of_pages, PROT_READ | PROT_WRITE,
                        MAP_PRIVATE | MAP_ANONYMOUS | MAP_FIXED, -1, 0);
     this->ufd = new Userfaultfd(PAGE_SIZE*num_of_pages,addr, this->mpi_instance,this); 
+    this->dm_handler_thread = ufd->ActivateDM_Handler();
 }
 EDM_Client::~EDM_Client(){
     //release all
@@ -16,13 +17,6 @@ EDM_Client::~EDM_Client(){
     lpet_thread.join();
 
     MPI_Finalize();
-}
-void EDM_Client::Init(){
-    std::cout << "EDM_Client init" << std::endl;
-
-    //init threads
-    this->dm_handler_thread = ufd->ActivateDM_Handler();
-
 }
 
 void EDM_Client::AddToPageList(uintptr_t addr) {
@@ -38,6 +32,7 @@ void EDM_Client::AddToPageList(uintptr_t addr) {
 void EDM_Client::UserThread(){
     char* addr = (char*)this->start_addr;
     for (int i =0 ; i < num_of_pages ; i++) {
+        std::cout << "User App - touch page in addr: " << (start_addr + i*PAGE_SIZE) << std::endl;
         char x = addr[i*PAGE_SIZE];
     }
     sleep(100);

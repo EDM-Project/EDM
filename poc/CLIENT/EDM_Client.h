@@ -20,7 +20,6 @@ private:
 public:
     EDM_Client (int argc, char *argv[]);
     ~EDM_Client();
-    void Init ();
     void AddToPageList(uintptr_t addr);
     void UserThread();
     void RunUserThread();

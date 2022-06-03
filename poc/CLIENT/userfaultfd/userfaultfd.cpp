@@ -29,7 +29,6 @@ Userfaultfd::Userfaultfd(uint64_t len, char* addr, MPI_EDM::MpiApp* mpi_instance
 
 
 void Userfaultfd::ListenPageFaults(){
-    std::cout <<   "Userfaultfd - Listen to events..." << std::endl;
     static struct uffd_msg msg;   /* Data read from userfaultfd */
     ssize_t nread;
 
@@ -82,9 +81,8 @@ void Userfaultfd::HandleMissPageFault(struct uffd_msg* msg){
 
     /* Display info about the page-fault event. */
 
-    std::cout << " Userfaultfd -    UFFD_EVENT_PAGEFAULT event: "<< std::endl;
-    std::cout << "flags = " << msg->arg.pagefault.flags << std::endl;
-    std::cout << "address = " << msg->arg.pagefault.address << std::endl;
+    std::cout << "Userfaultfd - UFFD_EVENT_PAGEFAULT event: "<< std::endl;
+    std::cout << "flags = " << msg->arg.pagefault.flags << "  address = " << msg->arg.pagefault.address << std::endl;
 
     /*
         TODO: Verify there is enough memory available on the machine :

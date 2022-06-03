@@ -4,6 +4,7 @@
 #include <unordered_map>
 #include <utility>      // std::pair, std::make_pair
 #include <iostream>
+#include <string>
 enum page_location { INSTANCE_0, DISK};
 
 

@@ -27,10 +27,13 @@ void EDM_DMS::ReadPageFromDisk(uintptr_t addr, char* page){
     /*offset = TODO : GET START ADDRES AND CALCULATE OFFSET*/
     if (spt.mapping.find(addr) != spt.mapping.end())
     {
+        std::cout << "DMS - read page address: 0x" << addr << " from disk" << std::endl;  
+
         off_t offset = addr - start_addr;
         pread(fd, page,PAGE_SIZE, offset);
     }
     else{ // addr accessed first time, copy zero page
+        std::cout << "DMS - page accessed first time, copy zero page" << std::endl;  
         page = {0};
     }
     close(fd);
@@ -45,8 +48,6 @@ void EDM_DMS::WritePageTodisk(uintptr_t addr, char* page){
 
 void EDM_DMS::HandleRequestGetPage(MPI_EDM::RequestGetPageData* request)
 {
-   std::cout << "DMS - handle page in address: 0x" << request->vaddr << std::endl;  
-
    // read from disk page in address , meanwhile simple page
    char* mem  = (char*) mmap(NULL, PAGE_SIZE, PROT_READ | PROT_WRITE,
                            MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
@@ -69,7 +70,7 @@ void EDM_DMS::DmHandlerThread()
    for (;;) { 
       
       MPI_EDM::RequestGetPageData page_request = mpi_instance->ListenRequestGetPage();
-      std::cout << "DMS - get request to handle address: 0x" << page_request.vaddr << std::endl;  
+      std::cout << "DMS - get request to send content of page in addreass: 0x" << page_request.vaddr << std::endl;  
       HandleRequestGetPage(&page_request);
       mpi_instance->SendPageBackToApp(page_request);
       spt.AddToSPT(page_request.vaddr, INSTANCE_0);
@@ -84,7 +85,6 @@ void EDM_DMS::XpetThread()
 {
    
    for (;;) { 
-       std::cout << "DMS - Waiting for page eviction request..." << std::endl;
         MPI_EDM::RequestEvictPageData evict_request = mpi_instance->ListenRequestEvictPage();
         HandleRequestEvictPage(&evict_request);
         std::cout << "DMS - Page evicted successfuly, sending ack" << std::endl;
