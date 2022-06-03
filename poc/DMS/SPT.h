@@ -10,14 +10,15 @@ enum page_location { INSTANCE_0, DISK};
 
 class SPT {
 private:
+std::unordered_map<uintptr_t,page_location> mapping;
 
 
 public:
-std::unordered_map<uintptr_t,page_location> mapping;
 
 SPT() = default;
 ~SPT() = default;
-void AddToSPT(uintptr_t addr, page_location location);
+void UpdateSPT(uintptr_t addr, page_location location);
+bool IsAddrExist(uintptr_t addr);
 friend std::ostream& operator<<(std::ostream& os, const SPT& spt);
 
 };

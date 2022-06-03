@@ -1,10 +1,16 @@
 #include "SPT.h"
 #include <utility>      // std::pair, std::make_pair
 
-void SPT::AddToSPT(uintptr_t addr, page_location location){
-    std::pair<uintptr_t,page_location>  mapped_addr (addr,location);
-    mapping.insert(mapped_addr); // move insertion
+void SPT::UpdateSPT(uintptr_t addr, page_location location){
+    mapping[addr] = location;
 }
+bool SPT::IsAddrExist(uintptr_t addr){
+    if(mapping.find(addr) != mapping.end() ){
+        return true;
+    }
+    return false;
+}
+
 std::ostream& operator<<(std::ostream& os, const SPT& spt){
     os << "DMS- Pring SPT STATE" <<std::endl;
     os << "-----START SPT ----" << std::endl;

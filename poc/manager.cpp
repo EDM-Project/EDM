@@ -2,6 +2,9 @@
 
 int main(int argc, char *argv[])
 {   
+   /*
+   current run line: mpirun -n 1 manager 0x235000 10 > log.txt
+   */
    MPI_Init(&argc, &argv);
 
    MPI_Comm intercomm;

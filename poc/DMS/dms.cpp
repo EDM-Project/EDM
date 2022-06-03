@@ -6,7 +6,10 @@
 #include "EDM_DMS.h"
 #include <thread>  
 
-
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 int main(int argc, char *argv[])
 {  

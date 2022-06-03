@@ -77,36 +77,22 @@ void Userfaultfd::HandleMissPageFault(struct uffd_msg* msg){
         if (page == MAP_FAILED)
             perror("mmap");
     }
-
-
     /* Display info about the page-fault event. */
-
     std::cout << "Userfaultfd - UFFD_EVENT_PAGEFAULT event: "<< std::endl;
     std::cout << "flags = " << msg->arg.pagefault.flags << "  address = " << msg->arg.pagefault.address << std::endl;
-
     /*
         TODO: Verify there is enough memory available on the machine :
          if (available < THRESHOLD) :
             lpet.wakeup()
     
-
     */
-
     MPI_EDM::RequestGetPageData request_page = mpi_instance->RequestPageFromDMS(msg->arg.pagefault.address);
     memcpy(page,request_page.page, PAGE_SIZE);
-
-    /*
-        TODO: ADD TO PAGE LIST
-
-    */
     this->edm_client->AddToPageList(msg->arg.pagefault.address);
-
-
     /* Copy the page pointed to by 'page' into the faulting
         region. */
 
     uffdio_copy.src = (unsigned long) page;
-
     /* We need to handle page faults in units of pages(!).
         So, round faulting address down to page boundary. */
 
@@ -119,7 +105,6 @@ void Userfaultfd::HandleMissPageFault(struct uffd_msg* msg){
         perror("ioctl-UFFDIO_COPY");
 
     std::cout << "Userfaultfd - (uffdio_copy.copy returned " << uffdio_copy.copy << std::endl;
-
 }
 std::thread Userfaultfd::ActivateDM_Handler(){
     std::thread t (&Userfaultfd::ListenPageFaults,this);

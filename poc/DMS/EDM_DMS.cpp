@@ -22,10 +22,8 @@ EDM_DMS::~EDM_DMS() {
     MPI_Finalize();
 }
 void EDM_DMS::ReadPageFromDisk(uintptr_t addr, char* page){
-    int fd = open("disk", O_RDONLY | O_CREAT);
-   // char* page = (char*)malloc(PAGE_SIZE);
-    /*offset = TODO : GET START ADDRES AND CALCULATE OFFSET*/
-    if (spt.mapping.find(addr) != spt.mapping.end())
+    int fd = open("disk", O_RDWR | O_CREAT);
+    if (spt.IsAddrExist(addr))
     {
         std::cout << "DMS - read page address: 0x" << addr << " from disk" << std::endl;  
 
@@ -49,11 +47,10 @@ void EDM_DMS::WritePageTodisk(uintptr_t addr, char* page){
 void EDM_DMS::HandleRequestGetPage(MPI_EDM::RequestGetPageData* request)
 {
    // read from disk page in address , meanwhile simple page
-   char* mem  = (char*) mmap(NULL, PAGE_SIZE, PROT_READ | PROT_WRITE,
-                           MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
-   
+   char* mem  = (char*)malloc(PAGE_SIZE);
    ReadPageFromDisk(request->vaddr,mem);
    memcpy(request->page,mem,PAGE_SIZE);
+   free(mem);
 
 }
 
@@ -73,7 +70,7 @@ void EDM_DMS::DmHandlerThread()
       std::cout << "DMS - get request to send content of page in addreass: 0x" << page_request.vaddr << std::endl;  
       HandleRequestGetPage(&page_request);
       mpi_instance->SendPageBackToApp(page_request);
-      spt.AddToSPT(page_request.vaddr, INSTANCE_0);
+      spt.UpdateSPT(page_request.vaddr, INSTANCE_0);
       std::cout << spt << std::endl;
       std::cout << "DMS - page in address: 0x" << page_request.vaddr << " send to app" << std::endl;  
 
@@ -90,7 +87,7 @@ void EDM_DMS::XpetThread()
         std::cout << "DMS - Page evicted successfuly, sending ack" << std::endl;
         mpi_instance->SendAckForEvictPage(evict_request.vaddr);
       /* TODO: update spt the addres current location is in disk */
-        spt.AddToSPT(evict_request.vaddr,DISK);
+        spt.UpdateSPT(evict_request.vaddr,DISK);
         
    }
 
