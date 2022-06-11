@@ -20,15 +20,17 @@ EDM_DMS::~EDM_DMS() {
     dm_tread.join();
     xpet_thread.join();
     MPI_Finalize();
+    delete mpi_instance;
 }
 void EDM_DMS::ReadPageFromDisk(uintptr_t addr, char* page){
-    int fd = open("disk", O_RDWR | O_CREAT);
+    int fd = open("disk", O_RDWR | O_CREAT, 0777);
     if (spt.IsAddrExist(addr))
     {
         std::cout << "DMS - read page address: 0x" << addr << " from disk" << std::endl;  
 
         off_t offset = addr - start_addr;
         pread(fd, page,PAGE_SIZE, offset);
+
     }
     else{ // addr accessed first time, copy zero page
         std::cout << "DMS - page accessed first time, copy zero page" << std::endl;  
@@ -37,10 +39,12 @@ void EDM_DMS::ReadPageFromDisk(uintptr_t addr, char* page){
     close(fd);
 }
 void EDM_DMS::WritePageTodisk(uintptr_t addr, char* page){
-    int fd = open("disk", O_WRONLY | O_CREAT);
+    int fd = open("disk", O_RDWR | O_CREAT , 0777);
     /*offset = TODO : GET START ADDRES AND CALCULATE OFFSET*/
     off_t offset = addr - start_addr;
-    pwrite(fd, page,PAGE_SIZE, offset);
+    if (int res = pwrite(fd, page,PAGE_SIZE,offset) < 0) {
+         std::cout<< "DMS - Error writing to disk!" <<std::endl;
+    }
     close(fd);
 }
 
@@ -58,6 +62,7 @@ void EDM_DMS::HandleRequestEvictPage (MPI_EDM::RequestEvictPageData* request) {
    std::cout << "DMS - Handle page eviction in address 0x" << request->vaddr << std::endl;
    // send page to disk
    WritePageTodisk(request->vaddr, request->page);
+   
 
 }
 
@@ -88,7 +93,8 @@ void EDM_DMS::XpetThread()
         mpi_instance->SendAckForEvictPage(evict_request.vaddr);
       /* TODO: update spt the addres current location is in disk */
         spt.UpdateSPT(evict_request.vaddr,DISK);
-        
+        std::cout << spt << std::endl;
+
    }
 
 }

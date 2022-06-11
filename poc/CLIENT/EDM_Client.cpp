@@ -23,6 +23,8 @@ EDM_Client::~EDM_Client(){
     lpet_thread.join();
 
     MPI_Finalize();
+    delete ufd;
+    delete mpi_instance;
 }
 
 void EDM_Client::AddToPageList(uintptr_t addr) {
@@ -42,6 +44,7 @@ void EDM_Client::UserThread(){
         char x = addr[i*PAGE_SIZE];
     }
     sleep(1);
+
     return;
 }
 
