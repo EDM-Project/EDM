@@ -17,7 +17,7 @@ private:
 
 public:
     int rank;
-    MPI_Comm CommApp;
+    MPI_Comm mpi_comm;
     char port_name[MPI_MAX_PORT_NAME];
 
 };
