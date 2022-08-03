@@ -26,7 +26,7 @@ void EDM_DMS::ReadPageFromDisk(uintptr_t addr, char* page){
     int fd = open("disk", O_RDWR | O_CREAT, 0777);
     if (spt.IsAddrExist(addr))
     {
-        std::cout << "DMS - read page address: 0x" << addr << " from disk" << std::endl;  
+        std::cout << "DMS - read page address: " << addr << " from disk" << std::endl;  
 
         off_t offset = addr - start_addr;
         pread(fd, page,PAGE_SIZE, offset);
@@ -59,7 +59,7 @@ void EDM_DMS::HandleRequestGetPage(MPI_EDM::RequestGetPageData* request)
 }
 
 void EDM_DMS::HandleRequestEvictPage (MPI_EDM::RequestEvictPageData* request) {
-   std::cout << "DMS - Handle page eviction in address 0x" << request->vaddr << std::endl;
+   std::cout << "DMS - Handle page eviction in address " << request->vaddr << std::endl;
    // send page to disk
    WritePageTodisk(request->vaddr, request->page);
    
@@ -72,12 +72,12 @@ void EDM_DMS::DmHandlerThread()
    for (;;) { 
       
       MPI_EDM::RequestGetPageData page_request = mpi_instance->ListenRequestGetPage();
-      std::cout << "DMS - get request to send content of page in addreass: 0x" << page_request.vaddr << std::endl;  
+      std::cout << "DMS - get request to send content of page in addreass: " << page_request.vaddr << std::endl;  
       HandleRequestGetPage(&page_request);
       mpi_instance->SendPageBackToApp(page_request);
       spt.UpdateSPT(page_request.vaddr, INSTANCE_0);
       std::cout << spt << std::endl;
-      std::cout << "DMS - page in address: 0x" << page_request.vaddr << " send to app" << std::endl;  
+      std::cout << "DMS - page in address: " << page_request.vaddr << " send to app" << std::endl;  
 
    }
 

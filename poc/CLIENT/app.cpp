@@ -13,6 +13,7 @@ int main(int argc, char *argv[])
       start_area = start address of the virtual mapping
       size_of_area = num of pages 
    */
+   printf("LD_PRELOAD : %s\n", getenv("LD_PRELOAD"));
    int size_of_area;
    uintptr_t start_area;
    if (argc > 2) {
@@ -21,7 +22,6 @@ int main(int argc, char *argv[])
    }else{
       exit(0);
    }
-
    EDM_Client edm_client(argc,argv);
    edm_client.RunUserThread();
 

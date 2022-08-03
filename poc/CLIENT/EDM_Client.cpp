@@ -7,7 +7,7 @@ EDM_Client::EDM_Client (int argc, char *argv[]){
 
     this->mpi_instance = new MPI_EDM::MpiApp(argc,argv);
     char* addr = (char*) mmap((void*)start_addr, PAGE_SIZE*num_of_pages, PROT_READ | PROT_WRITE,
-                       MAP_PRIVATE | MAP_ANONYMOUS | MAP_FIXED, -1, 0);
+                       MAP_SHARED | MAP_ANONYMOUS | MAP_FIXED, -1, 0);
     if (addr != (char*)start_addr) {
         std::cout<< "mmap failed!" << std::endl;
         exit(1);
@@ -38,12 +38,29 @@ void EDM_Client::AddToPageList(uintptr_t addr) {
 }
 
 void EDM_Client::UserThread(){
+    
+    /*
+    char* addr = (char*) mmap((void*)start_addr, PAGE_SIZE*2, PROT_READ | PROT_WRITE,
+                       MAP_SHARED | MAP_ANONYMOUS | MAP_FIXED, -1, 0);
+    if (addr != (char*)start_addr) {
+        std::cout<< "mmap failed!" << std::endl;
+        exit(1);
+    }
+    addr[0] = 'x';
+    sleep(4);
+    std::cout << "endddddd" << std::endl;
+    */
+    
     char* addr = (char*)this->start_addr;
     for (int i =0 ; i < num_of_pages ; i++) {
         std::cout << "User App - touch page in addr: " << (start_addr + i*PAGE_SIZE) << std::endl;
         char x = addr[i*PAGE_SIZE];
     }
     sleep(1);
+    char* new_one = (char*) mmap( (void*)0x1D4C000, PAGE_SIZE, PROT_READ | PROT_WRITE,
+                       MAP_SHARED | MAP_ANONYMOUS | MAP_FIXED, -1, 0);
+    
+    new_one[0] = 'x';
 
     return;
 }
