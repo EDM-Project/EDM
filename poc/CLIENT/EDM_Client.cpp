@@ -3,22 +3,18 @@
 EDM_Client::EDM_Client (int argc, char *argv[]){
 
     start_addr = std::stoi (argv[1],nullptr,16);
-    num_of_pages = std::atoi(argv[2]);
+    end_addr  = std::stoi (argv[1],nullptr,16);
+    low_threshold = std::atoi(argv[3]);
+    high_threshold = std::atoi(argv[4]);
 
     this->mpi_instance = new MPI_EDM::MpiApp(argc,argv);
-    char* addr = (char*) mmap((void*)start_addr, PAGE_SIZE*num_of_pages, PROT_READ | PROT_WRITE,
-                       MAP_PRIVATE | MAP_ANONYMOUS | MAP_FIXED, -1, 0);
-    if (addr != (char*)start_addr) {
-        std::cout<< "mmap failed!" << std::endl;
-        exit(1);
-    }
-    this->ufd = new Userfaultfd(PAGE_SIZE*num_of_pages,addr, this->mpi_instance,this); 
+    
+    this->ufd = new Userfaultfd(this->mpi_instance,this); 
     this->dm_handler_thread = ufd->ActivateDM_Handler();
 }
 EDM_Client::~EDM_Client(){
     //release all
     std::cout<< "EDM CLIENT SHUTDOWN!" <<std::endl;
-    munmap((char*)start_addr, num_of_pages*PAGE_SIZE);
     dm_handler_thread.join();
     lpet_thread.join();
 
@@ -37,13 +33,25 @@ void EDM_Client::AddToPageList(uintptr_t addr) {
     */
 }
 
+
 void EDM_Client::UserThread(){
-    char* addr = (char*)this->start_addr;
-    for (int i =0 ; i < num_of_pages ; i++) {
-        std::cout << "User App - touch page in addr: " << (start_addr + i*PAGE_SIZE) << std::endl;
-        char x = addr[i*PAGE_SIZE];
-    }
-    sleep(1);
+    
+    
+    char* area_1 = (char*) mmap( (void*)0x1D4C000, PAGE_SIZE, PROT_READ | PROT_WRITE,
+                       MAP_SHARED | MAP_ANONYMOUS | MAP_FIXED, -1, 0);
+    
+    char* area_2 = (char*) mmap( (void*)0x1E14000, PAGE_SIZE, PROT_READ | PROT_WRITE,
+                       MAP_SHARED | MAP_ANONYMOUS | MAP_FIXED, -1, 0);
+    char* area_3 = (char*) mmap( (void*)0x1E78000, PAGE_SIZE, PROT_READ | PROT_WRITE,
+                       MAP_SHARED | MAP_ANONYMOUS | MAP_FIXED, -1, 0);                       
+
+    area_1[0] = 'x';
+    std::cout<< "usercode : area_1[0] " << area_1[0] << std::endl;
+    area_2[0] = 'y';
+    std::cout<< "usercode : area_2[0] " << area_2[0] << std::endl;
+    area_3[0] = 'z';
+    std::cout<< "usercode : area_3[0] " << area_3[0] << std::endl;
+ 
 
     return;
 }

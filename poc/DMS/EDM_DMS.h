@@ -1,6 +1,7 @@
 #ifndef EDM_DMS_H
 #define EDM_DMS_H
 
+
 #include "SPT.h"
 #include <thread>
 #include "../shared/MpiEdm.h"
@@ -9,7 +10,6 @@ class EDM_DMS {
 
 private:
 uintptr_t start_addr;
-int num_of_pages;
 std::string disk_path;
 SPT spt;
 std::thread dm_tread;

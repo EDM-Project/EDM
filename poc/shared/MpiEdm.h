@@ -10,6 +10,8 @@
 #define PAGE_REQUEST_TAG 0
 #define EVICT_REQUEST_TAG 1
 #define ACK_TAG 2
+#define PRINT_AS_HEX(ADDR) std::hex << "0x" << ADDR << std::dec
+
 
 namespace MPI_EDM {
 class MpiEdm {
