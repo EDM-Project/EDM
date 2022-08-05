@@ -2,7 +2,7 @@
 #include <iostream>
 #include "../EDM_Client.h"
 
-Userfaultfd::Userfaultfd(uint64_t len, char* addr, MPI_EDM::MpiApp* mpi_instance, EDM_Client* edm_client) {
+Userfaultfd::Userfaultfd(MPI_EDM::MpiApp* mpi_instance, EDM_Client* edm_client) {
     this->len = len;
     this->addr = addr;
     this->mpi_instance = mpi_instance;
@@ -17,11 +17,6 @@ Userfaultfd::Userfaultfd(uint64_t len, char* addr, MPI_EDM::MpiApp* mpi_instance
     if (ioctl(uffd, UFFDIO_API, &uffdio_api) == -1)
         perror("ioctl-UFFDIO_API");
 
-    uffdio_register.range.start = (unsigned long) addr;
-    uffdio_register.range.len = len;
-    uffdio_register.mode = UFFDIO_REGISTER_MODE_MISSING;
-    if (ioctl(uffd, UFFDIO_REGISTER, &uffdio_register) == -1)
-        perror("ioctl-UFFDIO_REGISTER");
     
     this->uffd = uffd;
     this->edm_client = edm_client;
@@ -79,7 +74,7 @@ void Userfaultfd::HandleMissPageFault(struct uffd_msg* msg){
     }
     /* Display info about the page-fault event. */
     std::cout << "Userfaultfd - UFFD_EVENT_PAGEFAULT event: "<< std::endl;
-    std::cout << "flags = " << msg->arg.pagefault.flags << "  address = " << msg->arg.pagefault.address << std::endl;
+    std::cout << "flags = " << msg->arg.pagefault.flags << "  address = " << PRINT_AS_HEX(msg->arg.pagefault.address) << std::endl;
     /*
         TODO: Verify there is enough memory available on the machine :
          if (available < THRESHOLD) :

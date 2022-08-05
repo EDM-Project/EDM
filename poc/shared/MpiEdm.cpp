@@ -60,9 +60,9 @@ RequestGetPageData MpiApp::RequestPageFromDMS (uintptr_t vaddr) {
     request_page.vaddr = vaddr;
     MPI_Datatype MPI_RequestPage = GetMPIDataType(request_page);
     MPI_Send(&request_page, 1, MPI_RequestPage, 0, PAGE_REQUEST_TAG, mpi_comm);
-    std::cout << "DM Handler- request the page in address " << vaddr << std::endl;
+    std::cout << "DM Handler- request the page in address " << PRINT_AS_HEX(vaddr) << std::endl;
     MPI_Recv(&request_page, 1, MPI_RequestPage, 0, PAGE_REQUEST_TAG, mpi_comm, MPI_STATUS_IGNORE);
-    std::cout << "DM Handler- get response of the page in address " << vaddr << std::endl;
+    std::cout << "DM Handler- get response of the page in address " << PRINT_AS_HEX(vaddr) << std::endl;
     // TODO: Error handling 
 
     return request_page;
@@ -79,9 +79,9 @@ std::string MpiApp::RequestEvictPage (uintptr_t vaddr, char* page) {
 
 
     MPI_Send(&request, 1, MPI_RequestEvictPage, 0, EVICT_REQUEST_TAG, mpi_comm);
-    std::cout << "DM Handler - send requet to evict page in address " << request.vaddr << std::endl;
+    std::cout << "DM Handler - send requet to evict page in address " << PRINT_AS_HEX(request.vaddr) << std::endl;
     MPI_Recv(&ack_page, 1, MPI_AckPage, 0, ACK_TAG, mpi_comm, MPI_STATUS_IGNORE);
-    std::cout << "DM Handler - got ack for evict page in " << ack_page.vaddr << std::endl;
+    std::cout << "DM Handler - got ack for evict page in " << PRINT_AS_HEX(ack_page.vaddr) << std::endl;
 
     //TODO: ERROR HANDLING AND RETURN ERROR
     std::string error_str (ack_page.error, ack_page.error + ERROR_SIZE);

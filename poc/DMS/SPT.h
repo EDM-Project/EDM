@@ -1,6 +1,9 @@
 #ifndef SPT_H
 #define SPT_H
 
+#define PRINT_AS_HEX(ADDR) std::hex << "0x" << ADDR << std::dec
+
+
 #include <unordered_map>
 #include <utility>      // std::pair, std::make_pair
 #include <iostream>

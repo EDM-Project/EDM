@@ -3,7 +3,7 @@
 int main(int argc, char *argv[])
 {   
    /*
-   current run line: mpirun -n 1 manager 0x235000 10 > log.txt
+   current run line: mpirun -n 1 manager <start address> <end address> <low_threshold> <high_threshold> 
    */
    MPI_Init(&argc, &argv);
    MPI_Info info;

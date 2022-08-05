@@ -21,6 +21,8 @@
 #include <thread>
 #include "../../shared/MpiEdm.h"
 
+#define PRINT_AS_HEX(ADDR) std::hex << "0x" << ADDR << std::dec
+
 #define PAGE_SIZE 4096
 class EDM_Client;
 
@@ -36,7 +38,7 @@ class Userfaultfd {
 
     public:
     Userfaultfd() = default;
-    Userfaultfd(uint64_t len, char* addr, MPI_EDM::MpiApp* mpi_instance, EDM_Client* edm_client);
+    Userfaultfd(MPI_EDM::MpiApp* mpi_instance, EDM_Client* edm_client);
     ~Userfaultfd() = default;
     void ListenPageFaults();
     void HandleMissPageFault(struct uffd_msg* msg);

@@ -36,8 +36,15 @@ void *mmap(void *addr, size_t length, int prot, int flags, int fd, off_t offset)
 	printf("error- ld_preload couldn't find mmap symbol\n");
 	}
     void* res = orig_mmap (addr,  length,  prot,  flags,  fd,  offset);
-    if (addr == (void*)0x1D4C000){
-        printf("getenv returned %s\n",getenv("uffd"));
+    if (res == MAP_FAILED) {
+        printf("mmap - failed to allocate memory\n");
+        return MAP_FAILED;
+    }
+
+    if (addr > (void*)0x1B58000  && addr < (void*)0x1F40000){
+        if (res !=  addr) {
+            printf("mmap - failed to allocate user request area");
+        }
         long uffd = atol(getenv("uffd"));
         struct uffdio_register uffdio_register;
         uffdio_register.range.start = (unsigned long) addr;

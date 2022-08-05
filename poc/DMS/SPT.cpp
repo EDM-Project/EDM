@@ -15,8 +15,8 @@ std::ostream& operator<<(std::ostream& os, const SPT& spt){
     os << "DMS- Pring SPT STATE" <<std::endl;
     os << "-----START SPT ----" << std::endl;
     for (auto& it: spt.mapping) {
-        // Do stuff
-        os <<  "address : " << it.first; 
+        
+        os << "address : " << PRINT_AS_HEX(it.first) << std::dec; 
         os << "  ";
         switch (it.second)
         {
