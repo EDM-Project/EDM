@@ -6,7 +6,6 @@
 EDM_DMS::EDM_DMS(int argc, char *argv[]){
     
     start_addr = std::stoi (argv[1],nullptr,16);
-    num_of_pages = std::atoi(argv[2]);
 
     disk_path = "disk";
     mpi_instance = new MPI_EDM::MpiDms(argc,argv);
@@ -26,7 +25,7 @@ void EDM_DMS::ReadPageFromDisk(uintptr_t addr, char* page){
     int fd = open("disk", O_RDWR | O_CREAT, 0777);
     if (spt.IsAddrExist(addr))
     {
-        std::cout << "DMS - read page address: 0x" << addr << " from disk" << std::endl;  
+        std::cout << "DMS - read page address: " << PRINT_AS_HEX(addr) << " from disk" << std::endl;  
 
         off_t offset = addr - start_addr;
         pread(fd, page,PAGE_SIZE, offset);
@@ -59,7 +58,7 @@ void EDM_DMS::HandleRequestGetPage(MPI_EDM::RequestGetPageData* request)
 }
 
 void EDM_DMS::HandleRequestEvictPage (MPI_EDM::RequestEvictPageData* request) {
-   std::cout << "DMS - Handle page eviction in address 0x" << request->vaddr << std::endl;
+   std::cout << "DMS - Handle page eviction in address " << request->vaddr << std::endl;
    // send page to disk
    WritePageTodisk(request->vaddr, request->page);
    
@@ -72,12 +71,12 @@ void EDM_DMS::DmHandlerThread()
    for (;;) { 
       
       MPI_EDM::RequestGetPageData page_request = mpi_instance->ListenRequestGetPage();
-      std::cout << "DMS - get request to send content of page in addreass: 0x" << page_request.vaddr << std::endl;  
+      std::cout << "DMS - get request to send content of page in addreass: " << PRINT_AS_HEX(page_request.vaddr) << std::endl;  
       HandleRequestGetPage(&page_request);
       mpi_instance->SendPageBackToApp(page_request);
       spt.UpdateSPT(page_request.vaddr, INSTANCE_0);
       std::cout << spt << std::endl;
-      std::cout << "DMS - page in address: 0x" << page_request.vaddr << " send to app" << std::endl;  
+      std::cout << "DMS - page in address: " << PRINT_AS_HEX(page_request.vaddr) << " send to app" << std::endl;  
 
    }
 
