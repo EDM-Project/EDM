@@ -2,17 +2,33 @@
 #include<stdio.h> 
 #include<fcntl.h> 
 #include <unistd.h>
+#include <fstream>
 
 EDM_DMS::EDM_DMS(int argc, char *argv[]){
     
-    start_addr = std::stoi (argv[1],nullptr,16);
-
     disk_path = "disk";
+    ParseConfigFile();
     mpi_instance = new MPI_EDM::MpiDms(argc,argv);
     dm_tread = std::thread(&EDM_DMS::DmHandlerThread,this);
     xpet_thread = std::thread(&EDM_DMS::XpetThread,this);
     
 }
+void EDM_DMS::ParseConfigFile () {
+    std::ifstream ReadFile("DMS/dms_config.txt");
+	if(!ReadFile.is_open()) {
+		std::cerr << "Error: Could not open file.\n";
+	}
+	std::string word;
+	while(ReadFile >> word) {
+		if(word == "start_addr") {
+			ReadFile.ignore(3);
+			ReadFile >> word;
+            this->start_addr  = std::stoi (word.c_str(),nullptr,16);
+		}
+	}
+	ReadFile.close();
+}
+
 
 EDM_DMS::~EDM_DMS() {
     
@@ -76,7 +92,7 @@ void EDM_DMS::DmHandlerThread()
       mpi_instance->SendPageBackToApp(page_request);
       spt.UpdateSPT(page_request.vaddr, INSTANCE_0);
       std::cout << spt << std::endl;
-      std::cout << "DMS - page in address: " << PRINT_AS_HEX(page_request.vaddr) << " send to app" << std::endl;  
+      std::cout << "DMS - page in address: " << PRINT_AS_HEX(page_request.vaddr) << " send to app" << std::endl; 
 
    }
 

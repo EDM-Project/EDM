@@ -10,6 +10,8 @@ int main(int argc, char *argv[])
    MPI_Info_create(&info);
    MPI_Info_set(info, "env","LD_PRELOAD=./mymmap.so");
 
+
+
    MPI_Comm intercomm;
    // Spawn two applications with a single process for each application.
    // Server must be spawned before client otherwise the client will complain at MPI_Lookup_name().

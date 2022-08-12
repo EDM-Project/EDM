@@ -15,6 +15,7 @@ SPT spt;
 std::thread dm_tread;
 std::thread xpet_thread;
 MPI_EDM::MpiDms* mpi_instance;
+void ParseConfigFile ();
 public:
 
 EDM_DMS(int argc, char *argv[]);

@@ -1,0 +1,61 @@
+--------------------------------------------------------------------------
+[[36612,1],0]: A high-performance Open MPI point-to-point messaging module
+was unable to find any relevant network interfaces:
+
+Module: OpenFabrics (openib)
+  Host: pc
+
+Another transport will be used instead, although this may result in
+lower performance.
+
+NOTE: You can disable this warning by setting the MCA parameter
+btl_base_warn_component_unused to 0.
+--------------------------------------------------------------------------
+EDM CLIENT INIT
+User code main function start running
+Userfaultfd - UFFD_EVENT_PAGEFAULT event: 
+flags = 1  address = 0x1d4c000
+DM Handler- request the page in address 0x1d4c000
+DMS - get request to send content of page in addreass: 0x1d4c000
+DMS - page accessed first time, copy zero page
+DMS- Pring SPT STATE
+-----START SPT ----
+address : 0x1d4c000  location : INSTANCE_0
+------END SPT-----
+
+DMS - page in address: 0x1d4c000 send to app
+DM Handler- get response of the page in address 0x1d4c000
+Userfaultfd - (uffdio_copy.copy returned 4096
+usercode : area_1[0] x
+Userfaultfd - UFFD_EVENT_PAGEFAULT event: 
+flags = 1  address = 0x1e14000
+DM Handler- request the page in address 0x1e14000
+DMS - get request to send content of page in addreass: 0x1e14000
+DMS - page accessed first time, copy zero page
+DMS- Pring SPT STATE
+-----START SPT ----
+address : 0x1e14000  location : INSTANCE_0
+address : 0x1d4c000  location : INSTANCE_0
+------END SPT-----
+
+DMS - page in address: 0x1e14000 send to app
+DM Handler- get response of the page in address 0x1e14000
+Userfaultfd - (uffdio_copy.copy returned 4096
+usercode : area_2[0] y
+Userfaultfd - UFFD_EVENT_PAGEFAULT event: 
+flags = 1  address = 0x1e78000
+DMS - get request to send content of page in addreass: 0x1e78000
+DM Handler- request the page in address 0x1e78000
+DMS - page accessed first time, copy zero page
+DMS- Pring SPT STATE
+-----START SPT ----
+address : 0x1e78000  location : INSTANCE_0
+address : 0x1d4c000  location : INSTANCE_0
+address : 0x1e14000  location : INSTANCE_0
+------END SPT-----
+
+DMS - page in address: 0x1e78000 send to app
+DM Handler- get response of the page in address 0x1e78000
+Userfaultfd - (uffdio_copy.copy returned 4096
+usercode : area_3[0] z
+EDM CLIENT SHUTDOWN!
