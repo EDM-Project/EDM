@@ -2,6 +2,7 @@
 #define EDM_CLIENT_H
 
 #include "../shared/MpiEdm.h"
+#include "../shared/CPPLogger.h"
 #include "userfaultfd/userfaultfd.h"
 #include <thread>
 #include <vector>

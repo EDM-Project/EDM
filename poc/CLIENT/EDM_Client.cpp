@@ -3,7 +3,7 @@
 #include <iostream>
 EDM_Client::EDM_Client (){
 
-    std::cout << "EDM CLIENT INIT" << std::endl;
+    LOG(DEBUG) << "[EDM CLIENT] -  INIT";
     ParseConfigFile();
     setenv("start_addr",std::to_string(start_addr).c_str(),1);
     setenv("end_addr",std::to_string(end_addr).c_str(),1);
@@ -48,7 +48,7 @@ void EDM_Client::ParseConfigFile () {
 
 EDM_Client::~EDM_Client(){
     //release all
-    std::cout<< "EDM CLIENT SHUTDOWN!" <<std::endl;
+    LOG(DEBUG)<< "[EDM CLIENT] - SHUTDOWN!";
     dm_handler_thread.join();
     lpet_thread.join();
 
@@ -60,9 +60,9 @@ EDM_Client::~EDM_Client(){
 void EDM_Client::AddToPageList(uintptr_t addr) {
     pages_list.push_back(addr);
     /*
-    std::cout << "CURRENT PAGE LIST:" <<std::endl;
+    LOG(DEBUG) << "CURRENT PAGE LIST:" <<;
     for (auto i :pages_list){
-        std::cout << i << ", ";
+        LOG(DEBUG) << i << ", ";
     }
     */
 }
@@ -80,11 +80,11 @@ void EDM_Client::UserThread(){
                        MAP_SHARED | MAP_ANONYMOUS | MAP_FIXED, -1, 0);                       
 
     area_1[0] = 'x';
-    std::cout<< "usercode : area_1[0] " << area_1[0] << std::endl;
+    LOG(DEBUG)<< "usercode : area_1[0] " << area_1[0];
     area_2[0] = 'y';
-    std::cout<< "usercode : area_2[0] " << area_2[0] << std::endl;
+    LOG(DEBUG)<< "usercode : area_2[0] " << area_2[0];
     area_3[0] = 'z';
-    std::cout<< "usercode : area_3[0] " << area_3[0] << std::endl;
+    LOG(DEBUG)<< "usercode : area_3[0] " << area_3[0];
  
 
     return;
@@ -96,3 +96,4 @@ void EDM_Client::RunUserThread(){
     user_thread.join();
 
 }
+EDM_Client edm_client;

@@ -4,6 +4,7 @@
 
 #include "SPT.h"
 #include <thread>
+#include "../shared/CPPLogger.h"
 #include "../shared/MpiEdm.h"
 #include <string>
 class EDM_DMS {

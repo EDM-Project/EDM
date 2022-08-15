@@ -41,14 +41,14 @@ void EDM_DMS::ReadPageFromDisk(uintptr_t addr, char* page){
     int fd = open("disk", O_RDWR | O_CREAT, 0777);
     if (spt.IsAddrExist(addr))
     {
-        std::cout << "DMS - read page address: " << PRINT_AS_HEX(addr) << " from disk" << std::endl;  
+        LOG(DEBUG) << "[DMS] - read page address: " << PRINT_AS_HEX(addr) << " from disk";  
 
         off_t offset = addr - start_addr;
         pread(fd, page,PAGE_SIZE, offset);
 
     }
     else{ // addr accessed first time, copy zero page
-        std::cout << "DMS - page accessed first time, copy zero page" << std::endl;  
+        LOG(DEBUG) << "[DMS] - page accessed first time, copy zero page" ;  
         page = {0};
     }
     close(fd);
@@ -58,7 +58,7 @@ void EDM_DMS::WritePageTodisk(uintptr_t addr, char* page){
     /*offset = TODO : GET START ADDRES AND CALCULATE OFFSET*/
     off_t offset = addr - start_addr;
     if (int res = pwrite(fd, page,PAGE_SIZE,offset) < 0) {
-         std::cout<< "DMS - Error writing to disk!" <<std::endl;
+         LOG(DEBUG)<< "[DMS] - Error writing to disk!" ;
     }
     close(fd);
 }
@@ -74,7 +74,7 @@ void EDM_DMS::HandleRequestGetPage(MPI_EDM::RequestGetPageData* request)
 }
 
 void EDM_DMS::HandleRequestEvictPage (MPI_EDM::RequestEvictPageData* request) {
-   std::cout << "DMS - Handle page eviction in address " << request->vaddr << std::endl;
+   LOG(DEBUG) << "[DMS] - Handle page eviction in address " << request->vaddr ;
    // send page to disk
    WritePageTodisk(request->vaddr, request->page);
    
@@ -87,12 +87,12 @@ void EDM_DMS::DmHandlerThread()
    for (;;) { 
       
       MPI_EDM::RequestGetPageData page_request = mpi_instance->ListenRequestGetPage();
-      std::cout << "DMS - get request to send content of page in addreass: " << PRINT_AS_HEX(page_request.vaddr) << std::endl;  
+      LOG(DEBUG) << "[DMS] - get request to send content of page in addreass: " << PRINT_AS_HEX(page_request.vaddr) ;  
       HandleRequestGetPage(&page_request);
       mpi_instance->SendPageBackToApp(page_request);
       spt.UpdateSPT(page_request.vaddr, INSTANCE_0);
-      std::cout << spt << std::endl;
-      std::cout << "DMS - page in address: " << PRINT_AS_HEX(page_request.vaddr) << " send to app" << std::endl; 
+      LOG(DEBUG) << spt ;
+      LOG(DEBUG) << "[DMS] - page in address: " << PRINT_AS_HEX(page_request.vaddr) << " send to app" ; 
 
    }
 
@@ -104,11 +104,11 @@ void EDM_DMS::XpetThread()
    for (;;) { 
         MPI_EDM::RequestEvictPageData evict_request = mpi_instance->ListenRequestEvictPage();
         HandleRequestEvictPage(&evict_request);
-        std::cout << "DMS - Page evicted successfuly, sending ack" << std::endl;
+        LOG(DEBUG) << "[DMS] - Page evicted successfuly, sending ack" ;
         mpi_instance->SendAckForEvictPage(evict_request.vaddr);
       /* TODO: update spt the addres current location is in disk */
         spt.UpdateSPT(evict_request.vaddr,DISK);
-        std::cout << spt << std::endl;
+        LOG(DEBUG) << spt;
 
    }
 

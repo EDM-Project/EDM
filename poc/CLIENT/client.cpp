@@ -7,5 +7,5 @@
 #include "EDM_Client.h"
 #include <iostream>
 
-EDM_Client edm_client;
+//EDM_Client edm_client;
 
