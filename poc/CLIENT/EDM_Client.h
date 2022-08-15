@@ -2,6 +2,7 @@
 #define EDM_CLIENT_H
 
 #include "../shared/MpiEdm.h"
+#include "../shared/CPPLogger.h"
 #include "userfaultfd/userfaultfd.h"
 #include <thread>
 #include <vector>
@@ -19,8 +20,10 @@ private:
     std::thread dm_handler_thread;
     std::thread lpet_thread;
     
+    void ParseConfigFile ();
+
 public:
-    EDM_Client (int argc, char *argv[]);
+    EDM_Client ();
     ~EDM_Client();
     void AddToPageList(uintptr_t addr);
     void UserThread();

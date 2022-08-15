@@ -20,6 +20,7 @@
 #include <poll.h>
 #include <thread>
 #include "../../shared/MpiEdm.h"
+#include "../../shared/CPPLogger.h"
 
 #define PRINT_AS_HEX(ADDR) std::hex << "0x" << ADDR << std::dec
 

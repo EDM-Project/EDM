@@ -39,7 +39,7 @@ void Userfaultfd::ListenPageFaults(){
         /* Read an event from the userfaultfd. */
         nread = read(uffd, &msg, sizeof(msg));
         if (nread == 0) {
-            std::cout << "EOF on userfaultfd! "<< std::endl;
+            LOG(DEBUG) << "EOF on userfaultfd! ";
             exit(EXIT_FAILURE);
         }
         if (nread == -1) {
@@ -73,8 +73,8 @@ void Userfaultfd::HandleMissPageFault(struct uffd_msg* msg){
             perror("mmap");
     }
     /* Display info about the page-fault event. */
-    std::cout << "Userfaultfd - UFFD_EVENT_PAGEFAULT event: "<< std::endl;
-    std::cout << "flags = " << msg->arg.pagefault.flags << "  address = " << PRINT_AS_HEX(msg->arg.pagefault.address) << std::endl;
+    LOG(DEBUG) << "[Userfaultfd] - UFFD_EVENT_PAGEFAULT event: \n" <<
+     "flags = " << msg->arg.pagefault.flags << "  address = " << PRINT_AS_HEX(msg->arg.pagefault.address) ;
     /*
         TODO: Verify there is enough memory available on the machine :
          if (available < THRESHOLD) :
@@ -99,7 +99,7 @@ void Userfaultfd::HandleMissPageFault(struct uffd_msg* msg){
     if (ioctl(uffd, UFFDIO_COPY, &uffdio_copy) == -1)
         perror("ioctl-UFFDIO_COPY");
 
-    std::cout << "Userfaultfd - (uffdio_copy.copy returned " << uffdio_copy.copy << std::endl;
+    LOG(DEBUG) << "[Userfaultfd] - (uffdio_copy.copy returned " << uffdio_copy.copy ;
 }
 std::thread Userfaultfd::ActivateDM_Handler(){
     std::thread t (&Userfaultfd::ListenPageFaults,this);
