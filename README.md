@@ -2,7 +2,7 @@
 
 POC project in DMS(Distributed Shared Memory).
 
-EDM is external distributed memory mechanism for splitting the application state among multiple storage units and instances in cloud environment.
+EDM is external distributed memory mechanism for splitting the application state in cloud environment.
 
 /poc directory implements the following design:
 
