@@ -16,7 +16,7 @@ EDM_Client::EDM_Client (){
 void EDM_Client::ParseConfigFile () {
     std::ifstream ReadFile("CLIENT/client_config.txt");
 	if(!ReadFile.is_open()) {
-		std::cerr << "Error: Could not open file.\n";
+		LOG(ERROR) << "Error: Could not open file.\n";
 	}
 	std::string word;
 	while(ReadFile >> word) {

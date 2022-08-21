@@ -10,12 +10,12 @@ Userfaultfd::Userfaultfd(MPI_EDM::MpiApp* mpi_instance, EDM_Client* edm_client) 
     struct uffdio_register uffdio_register;
     long uffd = syscall(__NR_userfaultfd, O_CLOEXEC | O_NONBLOCK);
     if (uffd == -1)
-        perror("userfaultfd");
+        LOG(ERROR) << "[Userfaultfd] : syscall userfaultfd failed";
     setenv("uffd",std::to_string(uffd).c_str(),1);
     uffdio_api.api = UFFD_API;
     uffdio_api.features = 0;
     if (ioctl(uffd, UFFDIO_API, &uffdio_api) == -1)
-        perror("ioctl-UFFDIO_API");
+        LOG(ERROR) << "[Userfaultfd] : ioctl- UFFDIO_API failed";
 
     
     this->uffd = uffd;
@@ -39,7 +39,7 @@ void Userfaultfd::ListenPageFaults(){
         /* Read an event from the userfaultfd. */
         nread = read(uffd, &msg, sizeof(msg));
         if (nread == 0) {
-            LOG(DEBUG) << "EOF on userfaultfd! ";
+            LOG(ERROR) << " [Userfaultfd] - EOF on userfaultfd! ";
             exit(EXIT_FAILURE);
         }
         if (nread == -1) {
@@ -70,7 +70,7 @@ void Userfaultfd::HandleMissPageFault(struct uffd_msg* msg){
         page = (char*)mmap(NULL, PAGE_SIZE, PROT_READ | PROT_WRITE,
                     MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
         if (page == MAP_FAILED)
-            perror("mmap");
+            LOG(ERROR) << "[Userfaultfd] - mmap temp page for copying failed ";
     }
     /* Display info about the page-fault event. */
     LOG(DEBUG) << "[Userfaultfd] - UFFD_EVENT_PAGEFAULT event: \n" <<
@@ -97,7 +97,7 @@ void Userfaultfd::HandleMissPageFault(struct uffd_msg* msg){
     uffdio_copy.mode = 0;
     uffdio_copy.copy = 0;
     if (ioctl(uffd, UFFDIO_COPY, &uffdio_copy) == -1)
-        perror("ioctl-UFFDIO_COPY");
+        LOG(ERROR) << "[Userfaultfd] - ioctl UFFDIO_COPY failed";
 
     LOG(DEBUG) << "[Userfaultfd] - (uffdio_copy.copy returned " << uffdio_copy.copy ;
 }

@@ -16,6 +16,7 @@
 
 
 #define PAGE_SIZE 4096 
+#define MREMAP_DONTUNMAP	4
 
 void test_simple_flow_eviction() {
 
@@ -79,8 +80,31 @@ void test_simple_flow_eviction() {
 
 }
 
+void test_mremap() {
+
+   LOG(DEBUG) << "[Usercode] : User code test_mremap function start running" ;
+
+   char* addr_1 = (char*) mmap( (void*)0x1D4C000, PAGE_SIZE, PROT_READ | PROT_WRITE,
+                       MAP_PRIVATE | MAP_ANONYMOUS | MAP_FIXED, -1, 0);
+   char* addr_2 = (char*) mmap( (void*)0x1E14000, PAGE_SIZE, PROT_READ | PROT_WRITE,
+                     MAP_PRIVATE | MAP_ANONYMOUS | MAP_FIXED, -1, 0);            
+   addr_1[0] = 'x';
+   addr_2[0] = 'y';
+   mremap(addr_1,PAGE_SIZE,PAGE_SIZE,MREMAP_MAYMOVE | MREMAP_DONTUNMAP | MREMAP_FIXED, addr_1 - 40960 );
+   mremap(addr_2,PAGE_SIZE,PAGE_SIZE,MREMAP_MAYMOVE | MREMAP_DONTUNMAP | MREMAP_FIXED, addr_1 - 40960 );
+   addr_1[0] = 'z';
+   addr_2[0] = 'w';
+
+}
+
+
+
 int main(int argc, char *argv[])
-{   
+{ 
+     test_mremap();
+
+/*
+
    LOG(DEBUG) << "[Usercode] : User code main function start running" ;
 
 
@@ -98,6 +122,6 @@ int main(int argc, char *argv[])
    LOG(DEBUG)<< "[Usercode] : area_2[0] " << area_2[0] ;
    area_3[0] = 'z';
    LOG(DEBUG)<< "[Usercode] : area_3[0] " << area_3[0] ;
-
+*/
    return 0;
 }

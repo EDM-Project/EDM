@@ -1,5 +1,5 @@
 --------------------------------------------------------------------------
-[[41987,1],0]: A high-performance Open MPI point-to-point messaging module
+[[16675,1],0]: A high-performance Open MPI point-to-point messaging module
 was unable to find any relevant network interfaces:
 
 Module: OpenFabrics (openib)
@@ -11,51 +11,61 @@ lower performance.
 NOTE: You can disable this warning by setting the MCA parameter
 btl_base_warn_component_unused to 0.
 --------------------------------------------------------------------------
-[Mon Aug 15 2022 18:28:51.770]:[Debug]-[EDM CLIENT] -  INIT
-[Mon Aug 15 2022 18:28:51.924]:[Debug]-[Usercode] : User code main function start running
-[Mon Aug 15 2022 18:28:51.924]:[Debug]-[Userfaultfd] - UFFD_EVENT_PAGEFAULT event: 
+[Thu Aug 18 2022 20:16:24.984]:[Debug]-[EDM CLIENT] -  INIT
+[Thu Aug 18 2022 20:16:25.164]:[Debug]-[Usercode] : User code test_mremap function start running
+[Thu Aug 18 2022 20:16:25.165]:[Debug]-[Userfaultfd] - UFFD_EVENT_PAGEFAULT event: 
 flags = 1  address = 0x1d4c000
-[Mon Aug 15 2022 18:28:51.939]:[Debug]-[DM HANDLER] - request the page in address 0x1d4c000
-[Mon Aug 15 2022 18:28:51.952]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1d4c000
-[Mon Aug 15 2022 18:28:51.952]:[Debug]-[DMS] - page accessed first time, copy zero page
-[Mon Aug 15 2022 18:28:51.952]:[Debug]-DMS- Pring SPT STATE
+[Thu Aug 18 2022 20:16:25.169]:[Debug]-[DM HANDLER] - request the page in address 0x1d4c000
+[Thu Aug 18 2022 20:16:25.169]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1d4c000
+[Thu Aug 18 2022 20:16:25.169]:[Debug]-[DMS] - page accessed first time, copy zero page
+[Thu Aug 18 2022 20:16:25.170]:[Debug]-DMS- Pring SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 ------END SPT-----
 
-[Mon Aug 15 2022 18:28:51.953]:[Debug]-[DM HANDLER] - get response of the page in address 0x1d4c000
-[Mon Aug 15 2022 18:28:51.953]:[Debug]-[DMS] - page in address: 0x1d4c000 send to app
-[Mon Aug 15 2022 18:28:51.953]:[Debug]-[Userfaultfd] - (uffdio_copy.copy returned 4096
-[Mon Aug 15 2022 18:28:51.953]:[Debug]-[Usercode] : area_1[0] x
-[Mon Aug 15 2022 18:28:51.953]:[Debug]-[Userfaultfd] - UFFD_EVENT_PAGEFAULT event: 
+[Thu Aug 18 2022 20:16:25.170]:[Debug]-[DMS] - page in address: 0x1d4c000 send to app
+[Thu Aug 18 2022 20:16:25.170]:[Debug]-[DM HANDLER] - get response of the page in address 0x1d4c000
+[Thu Aug 18 2022 20:16:25.170]:[Debug]-[Userfaultfd] - (uffdio_copy.copy returned 4096
+[Thu Aug 18 2022 20:16:25.170]:[Debug]-[Userfaultfd] - UFFD_EVENT_PAGEFAULT event: 
 flags = 1  address = 0x1e14000
-[Mon Aug 15 2022 18:28:51.953]:[Debug]-[DM HANDLER] - request the page in address 0x1e14000
-[Mon Aug 15 2022 18:28:51.953]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1e14000
-[Mon Aug 15 2022 18:28:51.953]:[Debug]-[DMS] - page accessed first time, copy zero page
-[Mon Aug 15 2022 18:28:51.953]:[Debug]-[DM HANDLER] - get response of the page in address 0x1e14000
-[Mon Aug 15 2022 18:28:51.953]:[Debug]-DMS- Pring SPT STATE
+[Thu Aug 18 2022 20:16:25.170]:[Debug]-[DM HANDLER] - request the page in address 0x1e14000
+[Thu Aug 18 2022 20:16:25.170]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1e14000
+[Thu Aug 18 2022 20:16:25.171]:[Debug]-[DMS] - page accessed first time, copy zero page
+[Thu Aug 18 2022 20:16:25.171]:[Debug]-DMS- Pring SPT STATE
 -----START SPT ----
 address : 0x1e14000  location : INSTANCE_0
 address : 0x1d4c000  location : INSTANCE_0
 ------END SPT-----
 
-[Mon Aug 15 2022 18:28:51.953]:[Debug]-[DMS] - page in address: 0x1e14000 send to app
-[Mon Aug 15 2022 18:28:51.953]:[Debug]-[Userfaultfd] - (uffdio_copy.copy returned 4096
-[Mon Aug 15 2022 18:28:51.953]:[Debug]-[Usercode] : area_2[0] y
-[Mon Aug 15 2022 18:28:51.953]:[Debug]-[Userfaultfd] - UFFD_EVENT_PAGEFAULT event: 
-flags = 1  address = 0x1e78000
-[Mon Aug 15 2022 18:28:51.954]:[Debug]-[DM HANDLER] - request the page in address 0x1e78000
-[Mon Aug 15 2022 18:28:51.954]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1e78000
-[Mon Aug 15 2022 18:28:51.954]:[Debug]-[DMS] - page accessed first time, copy zero page
-[Mon Aug 15 2022 18:28:51.954]:[Debug]-[DM HANDLER] - get response of the page in address 0x1e78000
-[Mon Aug 15 2022 18:28:51.954]:[Debug]-DMS- Pring SPT STATE
+[Thu Aug 18 2022 20:16:25.171]:[Debug]-[DMS] - page in address: 0x1e14000 send to app
+[Thu Aug 18 2022 20:16:25.171]:[Debug]-[DM HANDLER] - get response of the page in address 0x1e14000
+[Thu Aug 18 2022 20:16:25.171]:[Debug]-[Userfaultfd] - (uffdio_copy.copy returned 4096
+[Thu Aug 18 2022 20:16:25.171]:[Debug]-[Userfaultfd] - UFFD_EVENT_PAGEFAULT event: 
+flags = 1  address = 0x1d4c000
+[Thu Aug 18 2022 20:16:25.171]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1d4c000
+[Thu Aug 18 2022 20:16:25.171]:[Debug]-[DM HANDLER] - request the page in address 0x1d4c000
+[Thu Aug 18 2022 20:16:25.171]:[Debug]-[DMS] - read page address: 0x1d4c000 from disk
+[Thu Aug 18 2022 20:16:25.171]:[Debug]-DMS- Pring SPT STATE
 -----START SPT ----
-address : 0x1e78000  location : INSTANCE_0
-address : 0x1d4c000  location : INSTANCE_0
 address : 0x1e14000  location : INSTANCE_0
+address : 0x1d4c000  location : INSTANCE_0
 ------END SPT-----
 
-[Mon Aug 15 2022 18:28:51.954]:[Debug]-[DMS] - page in address: 0x1e78000 send to app
-[Mon Aug 15 2022 18:28:51.954]:[Debug]-[Userfaultfd] - (uffdio_copy.copy returned 4096
-[Mon Aug 15 2022 18:28:51.954]:[Debug]-[Usercode] : area_3[0] z
-[Mon Aug 15 2022 18:28:51.954]:[Debug]-[EDM CLIENT] - SHUTDOWN!
+[Thu Aug 18 2022 20:16:25.171]:[Debug]-[DMS] - page in address: 0x1d4c000 send to app
+[Thu Aug 18 2022 20:16:25.171]:[Debug]-[DM HANDLER] - get response of the page in address 0x1d4c000
+[Thu Aug 18 2022 20:16:25.171]:[Debug]-[Userfaultfd] - (uffdio_copy.copy returned 4096
+[Thu Aug 18 2022 20:16:25.171]:[Debug]-[Userfaultfd] - UFFD_EVENT_PAGEFAULT event: 
+flags = 1  address = 0x1e14000
+[Thu Aug 18 2022 20:16:25.171]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1e14000
+[Thu Aug 18 2022 20:16:25.171]:[Debug]-[DM HANDLER] - request the page in address 0x1e14000
+[Thu Aug 18 2022 20:16:25.172]:[Debug]-[DMS] - read page address: 0x1e14000 from disk
+[Thu Aug 18 2022 20:16:25.172]:[Debug]-DMS- Pring SPT STATE
+-----START SPT ----
+address : 0x1e14000  location : INSTANCE_0
+address : 0x1d4c000  location : INSTANCE_0
+------END SPT-----
+
+[Thu Aug 18 2022 20:16:25.172]:[Debug]-[DMS] - page in address: 0x1e14000 send to app
+[Thu Aug 18 2022 20:16:25.172]:[Debug]-[DM HANDLER] - get response of the page in address 0x1e14000
+[Thu Aug 18 2022 20:16:25.172]:[Debug]-[EDM CLIENT] - SHUTDOWN!
+[Thu Aug 18 2022 20:16:25.172]:[Debug]-[Userfaultfd] - (uffdio_copy.copy returned 4096
