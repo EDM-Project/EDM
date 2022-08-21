@@ -16,7 +16,7 @@ EDM_DMS::EDM_DMS(int argc, char *argv[]){
 void EDM_DMS::ParseConfigFile () {
     std::ifstream ReadFile("DMS/dms_config.txt");
 	if(!ReadFile.is_open()) {
-		std::cerr << "Error: Could not open file.\n";
+		LOG(ERROR) << "Error: Could not open file.\n";
 	}
 	std::string word;
 	while(ReadFile >> word) {
@@ -58,14 +58,13 @@ void EDM_DMS::WritePageTodisk(uintptr_t addr, char* page){
     /*offset = TODO : GET START ADDRES AND CALCULATE OFFSET*/
     off_t offset = addr - start_addr;
     if (int res = pwrite(fd, page,PAGE_SIZE,offset) < 0) {
-         LOG(DEBUG)<< "[DMS] - Error writing to disk!" ;
+         LOG(ERROR)<< "[DMS] - Error writing page in address : " << PRINT_AS_HEX(addr) << "to disk" ;
     }
     close(fd);
 }
 
 void EDM_DMS::HandleRequestGetPage(MPI_EDM::RequestGetPageData* request)
 {
-   // read from disk page in address , meanwhile simple page
    char* mem  = (char*)malloc(PAGE_SIZE);
    ReadPageFromDisk(request->vaddr,mem);
    memcpy(request->page,mem,PAGE_SIZE);
@@ -74,7 +73,7 @@ void EDM_DMS::HandleRequestGetPage(MPI_EDM::RequestGetPageData* request)
 }
 
 void EDM_DMS::HandleRequestEvictPage (MPI_EDM::RequestEvictPageData* request) {
-   LOG(DEBUG) << "[DMS] - Handle page eviction in address " << request->vaddr ;
+   LOG(DEBUG) << "[DMS] - Handle page eviction in address " << PRINT_AS_HEX(request->vaddr) ;
    // send page to disk
    WritePageTodisk(request->vaddr, request->page);
    
@@ -106,7 +105,6 @@ void EDM_DMS::XpetThread()
         HandleRequestEvictPage(&evict_request);
         LOG(DEBUG) << "[DMS] - Page evicted successfuly, sending ack" ;
         mpi_instance->SendAckForEvictPage(evict_request.vaddr);
-      /* TODO: update spt the addres current location is in disk */
         spt.UpdateSPT(evict_request.vaddr,DISK);
         LOG(DEBUG) << spt;
 

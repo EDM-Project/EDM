@@ -1,7 +1,6 @@
 #ifndef USERFAULTFD_H
 #define USERFAULTFD_H
 
-#define _GNU_SOURCE
 #include <inttypes.h>
 #include <sys/types.h>
 #include <stdio.h>
