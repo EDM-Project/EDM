@@ -40,8 +40,15 @@ void *mmap(void *addr, size_t length, int prot, int flags, int fd, off_t offset)
         printf("mmap - failed to allocate memory\n");
         return MAP_FAILED;
     }
-
-    if (addr > (void*)0x1B58000  && addr < (void*)0x1F40000){
+    
+    char* start_addr_str =getenv("start_addr");
+    char* end_addr_str =getenv("end_addr");
+    if(start_addr_str == NULL || end_addr_str == NULL){
+        return res;
+    }
+    long long start_addr = atoll(start_addr_str);
+    long long end_addr = atoll(end_addr_str);
+    if (addr > (void*)start_addr  && addr < (void*)end_addr){
         if (res !=  addr) {
             printf("mmap - failed to allocate user request area");
         }

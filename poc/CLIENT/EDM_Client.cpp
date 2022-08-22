@@ -1,20 +1,54 @@
 #include "EDM_Client.h"
+#include <fstream>
 #include <iostream>
-EDM_Client::EDM_Client (int argc, char *argv[]){
+EDM_Client::EDM_Client (){
 
-    start_addr = std::stoi (argv[1],nullptr,16);
-    end_addr  = std::stoi (argv[1],nullptr,16);
-    low_threshold = std::atoi(argv[3]);
-    high_threshold = std::atoi(argv[4]);
-
-    this->mpi_instance = new MPI_EDM::MpiApp(argc,argv);
+    LOG(DEBUG) << "[EDM CLIENT] -  INIT";
+    ParseConfigFile();
+    setenv("start_addr",std::to_string(start_addr).c_str(),1);
+    setenv("end_addr",std::to_string(end_addr).c_str(),1);
+    this->mpi_instance = new MPI_EDM::MpiApp(0,NULL);
     
     this->ufd = new Userfaultfd(this->mpi_instance,this); 
     this->dm_handler_thread = ufd->ActivateDM_Handler();
 }
+
+void EDM_Client::ParseConfigFile () {
+    std::ifstream ReadFile("CLIENT/client_config.txt");
+	if(!ReadFile.is_open()) {
+		LOG(ERROR) << "Error: Could not open file.\n";
+	}
+	std::string word;
+	while(ReadFile >> word) {
+		if(word == "start_addr") {
+			ReadFile.ignore(3);
+			ReadFile >> word;
+            this->start_addr  = std::stoi (word.c_str(),nullptr,16);
+		}
+		else if(word == "end_addr") {
+			ReadFile.ignore(3);
+			ReadFile >> word;
+            this->end_addr  = std::stoi (word.c_str(),nullptr,16);
+		}
+		else if(word == "low_threshold") {
+			ReadFile.ignore(3);
+			ReadFile >> word;
+            this->low_threshold =  std::atoi(word.c_str());
+		}
+		else if(word == "high_threshold") {
+			ReadFile.ignore(3);
+			ReadFile >> word;
+            this->high_threshold =  std::atoi(word.c_str());
+		}
+	}
+	ReadFile.close();
+
+}
+
+
 EDM_Client::~EDM_Client(){
     //release all
-    std::cout<< "EDM CLIENT SHUTDOWN!" <<std::endl;
+    LOG(DEBUG)<< "[EDM CLIENT] - SHUTDOWN!";
     dm_handler_thread.join();
     lpet_thread.join();
 
@@ -26,9 +60,9 @@ EDM_Client::~EDM_Client(){
 void EDM_Client::AddToPageList(uintptr_t addr) {
     pages_list.push_back(addr);
     /*
-    std::cout << "CURRENT PAGE LIST:" <<std::endl;
+    LOG(DEBUG) << "CURRENT PAGE LIST:" <<;
     for (auto i :pages_list){
-        std::cout << i << ", ";
+        LOG(DEBUG) << i << ", ";
     }
     */
 }
@@ -46,11 +80,11 @@ void EDM_Client::UserThread(){
                        MAP_SHARED | MAP_ANONYMOUS | MAP_FIXED, -1, 0);                       
 
     area_1[0] = 'x';
-    std::cout<< "usercode : area_1[0] " << area_1[0] << std::endl;
+    LOG(DEBUG)<< "usercode : area_1[0] " << area_1[0];
     area_2[0] = 'y';
-    std::cout<< "usercode : area_2[0] " << area_2[0] << std::endl;
+    LOG(DEBUG)<< "usercode : area_2[0] " << area_2[0];
     area_3[0] = 'z';
-    std::cout<< "usercode : area_3[0] " << area_3[0] << std::endl;
+    LOG(DEBUG)<< "usercode : area_3[0] " << area_3[0];
  
 
     return;
@@ -62,3 +96,4 @@ void EDM_Client::RunUserThread(){
     user_thread.join();
 
 }
+EDM_Client edm_client;

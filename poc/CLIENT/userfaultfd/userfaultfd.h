@@ -1,7 +1,6 @@
 #ifndef USERFAULTFD_H
 #define USERFAULTFD_H
 
-#define _GNU_SOURCE
 #include <inttypes.h>
 #include <sys/types.h>
 #include <stdio.h>
@@ -20,6 +19,7 @@
 #include <poll.h>
 #include <thread>
 #include "../../shared/MpiEdm.h"
+#include "../../shared/CPPLogger.h"
 
 #define PRINT_AS_HEX(ADDR) std::hex << "0x" << ADDR << std::dec
 
