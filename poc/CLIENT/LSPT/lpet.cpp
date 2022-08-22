@@ -2,7 +2,7 @@
 #include <iostream>
 #include <vector>
 #include <thread>
-#include "idle_page.h"
+#include "idlePage.h"
 
 using std::vector;
 using std::thread;
@@ -11,7 +11,7 @@ using std::string;
 #define DEBUG_STATUS true
 #define MREMAP_DONTUNMAP	4
 
-#include "Lpet.h"
+#include "lpet.h"
 
 /*
 Lpet::Lpet(vector<Page>& page_list_ref, int high, int low) :

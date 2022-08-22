@@ -4,7 +4,7 @@
 #include "mpi.h"
 #include <stdio.h>
 #include <sys/mman.h>
-#include "MpiStructs.h"
+#include "mpiStructs.h"
 #include <unistd.h>
 
 #define PAGE_REQUEST_TAG 0

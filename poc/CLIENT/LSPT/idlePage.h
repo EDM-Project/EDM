@@ -9,8 +9,8 @@
  * 4. Only accesses to user memory pages are tracked.
  *
  */
-#ifndef IDLE_PAGE_H
-#define IDLE_PAGE_H
+#ifndef IDLEPAGE_H
+#define IDLEPAGE_H
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -22,7 +22,7 @@
 #include <stdint.h> /* uint64_t  */
 #include <stdbool.h>
 #include <time.h>
-#include "../../shared/CPPLogger.h"
+#include "../../shared/logger.h"
 
 
 // typedef unsigned long long uint64_t;

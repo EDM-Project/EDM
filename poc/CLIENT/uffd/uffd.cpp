@@ -1,8 +1,8 @@
-#include "userfaultfd.h"
 #include <iostream>
-#include "../EDM_Client.h"
+#include "uffd.h"
+#include "../client.h"
 
-Userfaultfd::Userfaultfd(MPI_EDM::MpiApp* mpi_instance, EDM_Client* edm_client) {
+Uffd::Uffd(MPI_EDM::MpiApp* mpi_instance, Client* client) {
     this->len = len;
     this->addr = addr;
     this->mpi_instance = mpi_instance;
@@ -10,20 +10,20 @@ Userfaultfd::Userfaultfd(MPI_EDM::MpiApp* mpi_instance, EDM_Client* edm_client) 
     struct uffdio_register uffdio_register;
     long uffd = syscall(__NR_userfaultfd, O_CLOEXEC | O_NONBLOCK);
     if (uffd == -1)
-        LOG(ERROR) << "[Userfaultfd] : syscall userfaultfd failed";
+        LOG(ERROR) << "[Uffd] : syscall userfaultfd failed";
     setenv("uffd",std::to_string(uffd).c_str(),1);
     uffdio_api.api = UFFD_API;
     uffdio_api.features = 0;
     if (ioctl(uffd, UFFDIO_API, &uffdio_api) == -1)
-        LOG(ERROR) << "[Userfaultfd] : ioctl- UFFDIO_API failed";
+        LOG(ERROR) << "[Uffd] : ioctl- UFFDIO_API failed";
 
     
     this->uffd = uffd;
-    this->edm_client = edm_client;
+    this->client = client;
 }
 
 
-void Userfaultfd::ListenPageFaults(){
+void Uffd::ListenPageFaults(){
     static struct uffd_msg msg;   /* Data read from userfaultfd */
     ssize_t nread;
 
@@ -39,7 +39,7 @@ void Userfaultfd::ListenPageFaults(){
         /* Read an event from the userfaultfd. */
         nread = read(uffd, &msg, sizeof(msg));
         if (nread == 0) {
-            LOG(ERROR) << " [Userfaultfd] - EOF on userfaultfd! ";
+            LOG(ERROR) << " [Uffd] - EOF on userfaultfd! ";
             exit(EXIT_FAILURE);
         }
         if (nread == -1) {
@@ -60,7 +60,7 @@ void Userfaultfd::ListenPageFaults(){
         }
     }
 }
-void Userfaultfd::HandleMissPageFault(struct uffd_msg* msg){
+void Uffd::HandleMissPageFault(struct uffd_msg* msg){
     static char *page = NULL;
     struct uffdio_copy uffdio_copy;
 
@@ -70,27 +70,23 @@ void Userfaultfd::HandleMissPageFault(struct uffd_msg* msg){
         page = (char*)mmap(NULL, PAGE_SIZE, PROT_READ | PROT_WRITE,
                     MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
         if (page == MAP_FAILED)
-            LOG(ERROR) << "[Userfaultfd] - mmap temp page for copying failed ";
+            LOG(ERROR) << "[Uffd] - mmap temp page for copying failed ";
     }
     /* Display info about the page-fault event. */
-    LOG(DEBUG) << "[Userfaultfd] - UFFD_EVENT_PAGEFAULT event: \n" <<
+    LOG(DEBUG) << "[Uffd] - UFFD_EVENT_PAGEFAULT event: \n" <<
      "flags = " << msg->arg.pagefault.flags << "  address = " << PRINT_AS_HEX(msg->arg.pagefault.address) ;
     
     
-    //this->edm_client->PrintPageList();
-    int evicted_counter = this->edm_client->RunLpet();
+    int evicted_counter = this->client->RunLpet();
     if (evicted_counter != 0) {
-        LOG(DEBUG) << "[Userfaultfd] - num of evicted pages : " <<evicted_counter; 
-        this->edm_client->PrintPageList();
+        LOG(DEBUG) << "[Uffd] - num of evicted pages : " <<evicted_counter; 
+        this->client->PrintPageList();
     }
 
     MPI_EDM::RequestGetPageData request_page = mpi_instance->RequestPageFromDMS(msg->arg.pagefault.address);
-    //LOG(DEBUG) << "[Userfaultfd] - RequestPageFromDMS finished " ;
     memcpy(page,request_page.page, PAGE_SIZE);
-    //LOG(DEBUG) << "[Userfaultfd] - page copied to buffer" ;
 
 
-    //this->edm_client->PrintPageList();
 
     /* Copy the page pointed to by 'page' into the faulting
         region. */
@@ -105,16 +101,14 @@ void Userfaultfd::HandleMissPageFault(struct uffd_msg* msg){
     uffdio_copy.mode = 0;
     uffdio_copy.copy = 0;
     if (ioctl(uffd, UFFDIO_COPY, &uffdio_copy) == -1)
-        LOG(ERROR) << "[Userfaultfd] - ioctl UFFDIO_COPY failed";
+        LOG(ERROR) << "[Uffd] - ioctl UFFDIO_COPY failed";
 
     
-    //LOG(DEBUG) << "[Userfaultfd] - page copy completed - line109" ;
-    this->edm_client->AddToPageList(msg->arg.pagefault.address);
-    //LOG(DEBUG) << "[Userfaultfd] - page added to page list" ;
+    this->client->AddToPageList(msg->arg.pagefault.address);
 
-    LOG(DEBUG) << "[Userfaultfd] - uffdio_copy.copy returned " << uffdio_copy.copy ;
+    LOG(DEBUG) << "[Uffd] - uffdio_copy.copy returned " << uffdio_copy.copy ;
 }
-std::thread Userfaultfd::ActivateDM_Handler(){
-    std::thread t (&Userfaultfd::ListenPageFaults,this);
+std::thread Uffd::ActivateDM_Handler(){
+    std::thread t (&Uffd::ListenPageFaults,this);
     return t;
 }

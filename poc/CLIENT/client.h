@@ -1,16 +1,16 @@
-#ifndef EDM_CLIENT_H
-#define EDM_CLIENT_H
+#ifndef CLIENT_H
+#define CLIENT_H
 
 #include <thread>
 #include <vector>
-#include "../shared/MpiEdm.h"
-#include "../shared/CPPLogger.h"
-#include "LSPT/Lpet.h"
-#include "LSPT/Page.h"
-#include "userfaultfd/userfaultfd.h"
+#include "../shared/mpiEdm.h"
+#include "../shared/logger.h"
+#include "LSPT/lpet.h"
+#include "LSPT/page.h"
+#include "uffd/uffd.h"
 
 
-class EDM_Client {
+class Client {
 
 private:
     uintptr_t start_addr;
@@ -20,7 +20,7 @@ private:
     std::vector<Page> page_list;
     Lpet* lpet;
     
-    Userfaultfd* ufd;
+    Uffd* ufd;
     MPI_EDM::MpiApp* mpi_instance;
     std::thread dm_handler_thread;
     std::thread lpet_thread;
@@ -28,8 +28,8 @@ private:
     void ParseConfigFile ();
 
 public:
-    EDM_Client ();
-    ~EDM_Client();
+    Client ();
+    ~Client();
     void AddToPageList(uintptr_t vaddr);
     void PrintPageList();
     int RunLpet();

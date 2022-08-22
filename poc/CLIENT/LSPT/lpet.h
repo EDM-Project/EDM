@@ -1,10 +1,10 @@
 #ifndef LPET_H
 #define LPET_H
 #include <vector>
-#include "Page.h"
-#include "../../shared/CPPLogger.h"
+#include "page.h"
+#include "../../shared/logger.h"
 
-#include "../../shared/MpiEdm.h"
+#include "../../shared/mpiEdm.h"
 #define PRINT_AS_HEX(ADDR) std::hex << "0x" << ADDR << std::dec
 
 

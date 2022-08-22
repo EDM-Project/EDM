@@ -6,25 +6,14 @@
 #include <stdio.h>
 #include <linux/userfaultfd.h>
 #include <sys/ioctl.h>
-
 #include <unistd.h>
-#include <stdlib.h>
 #include <fcntl.h>
-#include <signal.h>
-#include <poll.h>
 #include <inttypes.h>
 #include <sys/types.h>
 #include <stdio.h>
-#include <linux/userfaultfd.h>
-#include <pthread.h>
 #include <errno.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <fcntl.h>
 #include <sys/mman.h>
 #include <sys/syscall.h>
-#include <sys/ioctl.h>
-#include <poll.h>
 
 void* (*orig_mmap)(void *addr, size_t length, int prot, int flags, int fd, off_t offset);
 

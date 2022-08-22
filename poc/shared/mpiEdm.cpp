@@ -1,6 +1,6 @@
 
-#include "MpiEdm.h"
-#include "CPPLogger.h"
+#include "mpiEdm.h"
+#include "logger.h"
 namespace MPI_EDM {
 
 MpiDms::MpiDms (int argc, char *argv[])  {

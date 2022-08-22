@@ -1,13 +1,5 @@
-/*
-#include "mpi.h"
-#include "../shared/MpiEdm.h"
-#include "userfaultfd/userfaultfd.h"
-#include <stdio.h>
-#include <sys/mman.h>
-#include <unistd.h>
-#include "EDM_Client.h"
-*/
-#include "../shared/CPPLogger.h"
+
+#include "../shared/logger.h"
 #include <unistd.h>
 #include <stdio.h>
 #include <iostream>

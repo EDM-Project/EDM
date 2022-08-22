@@ -1,5 +1,5 @@
-#ifndef USERFAULTFD_H
-#define USERFAULTFD_H
+#ifndef UFFD_H
+#define UFFD_H
 
 #include <inttypes.h>
 #include <sys/types.h>
@@ -18,15 +18,15 @@
 #include <sys/ioctl.h>
 #include <poll.h>
 #include <thread>
-#include "../../shared/MpiEdm.h"
-#include "../../shared/CPPLogger.h"
+#include "../../shared/mpiEdm.h"
+#include "../../shared/logger.h"
 
 #define PRINT_AS_HEX(ADDR) std::hex << "0x" << ADDR << std::dec
 
 #define PAGE_SIZE 4096
-class EDM_Client;
+class Client;
 
-class Userfaultfd {
+class Uffd {
     private:
 
     long uffd;          /* userfaultfd file descriptor */
@@ -34,12 +34,12 @@ class Userfaultfd {
     uint64_t len;       /* Length of region handled by userfaultfd */
     std::thread thr;      /* ID of thread that handles page faults */
     MPI_EDM::MpiApp* mpi_instance;
-    EDM_Client* edm_client; 
+    Client* client; 
 
     public:
-    Userfaultfd() = default;
-    Userfaultfd(MPI_EDM::MpiApp* mpi_instance, EDM_Client* edm_client);
-    ~Userfaultfd() = default;
+    Uffd() = default;
+    Uffd(MPI_EDM::MpiApp* mpi_instance, Client* client);
+    ~Uffd() = default;
     void ListenPageFaults();
     void HandleMissPageFault(struct uffd_msg* msg);
     std::thread ActivateDM_Handler();
