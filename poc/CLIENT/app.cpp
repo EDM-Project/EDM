@@ -21,31 +21,33 @@
 void test_simple_flow_eviction() {
 
    //area_1 - start in 0x1D4C000 
-   char* area_1 = (char*) mmap( (void*)0x1D4C000, PAGE_SIZE *100 , PROT_READ | PROT_WRITE,
+   char* area_1 = (char*) mmap( (void*)0x1D4C000, PAGE_SIZE *10 , PROT_READ | PROT_WRITE,
                        MAP_PRIVATE | MAP_ANONYMOUS | MAP_FIXED, -1, 0);
-   for (int i =0; i < PAGE_SIZE *100 ; i++ ) {
+   
+   for (int i =0; i < PAGE_SIZE *10 ; i+= PAGE_SIZE ) {
       area_1[i] = 'x';
    }
-   char* area_2 = (char*) mmap( (void*)0x1E14000, PAGE_SIZE *100 , PROT_READ | PROT_WRITE,
+   
+   char* area_2 = (char*) mmap( (void*)0x1E14000, PAGE_SIZE *10 , PROT_READ | PROT_WRITE,
                      MAP_PRIVATE | MAP_ANONYMOUS | MAP_FIXED, -1, 0);
-   for (int i =0; i < PAGE_SIZE *100 ; i++ ) {
+   for (int i =0; i < PAGE_SIZE *10 ; i+= PAGE_SIZE ) {
       area_2[i] = 'y';
    }
    /*
-   NOW, the memory layout should looks like this.
-   200 pages allocated which means we is the maximum allowed. 
+   NOW, the memory layout should look like this.
+   20 pages allocated which means we is the maximum allowed. 
    .__________.
    . 0x1D4C000
    .          .
    .          .
-   . 0x1DB0000
+   . 0x1D56000.
    .__________.
    .
    .__________.
    .0x1E14000 .
    .          .
    .          .
-   .0X1E78000 .
+   .0X1E1E000 .
    .__________.
 
    */
@@ -59,14 +61,14 @@ void test_simple_flow_eviction() {
    .0x1D4C000 .
    .   EMPTY  .
    .   DATA   .
-   .0x1DB0000 .
+   .0x1D56000 .
    .__________.
    .
    .__________.
    .0x1E14000 .
    .          .
    .          .
-   .0X1E78000 .
+   .0X1E1E000 .
    .__________.
    .          .
    .__________.
@@ -76,8 +78,10 @@ void test_simple_flow_eviction() {
    */
 
    char temp = area_1[0];
-   // this line should trigged page fault, which will be solved by getting the page from dms
 
+   // this line should trigged page fault, which will be solved by getting the page from dms
+   LOG(DEBUG) << "first char of area_1 is :" << (char)temp;
+   printf("first char of area_1 is %c\n", temp);
 }
 
 void test_mremap() {
@@ -101,7 +105,7 @@ void test_mremap() {
 
 int main(int argc, char *argv[])
 { 
-     test_mremap();
+     test_simple_flow_eviction();
 
 /*
 

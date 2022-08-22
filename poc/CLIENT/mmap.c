@@ -55,7 +55,7 @@ void *mmap(void *addr, size_t length, int prot, int flags, int fd, off_t offset)
         long uffd = atol(getenv("uffd"));
         struct uffdio_register uffdio_register;
         uffdio_register.range.start = (unsigned long) addr;
-        uffdio_register.range.len = 4096;
+        uffdio_register.range.len = length;
         uffdio_register.mode = UFFDIO_REGISTER_MODE_MISSING;
         if (ioctl(uffd, UFFDIO_REGISTER, &uffdio_register) == -1)
         perror("ioctl-UFFDIO_REGISTER");

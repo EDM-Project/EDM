@@ -97,29 +97,30 @@ int get_page_flags_lru(KpageFlagsEntry *entry, uint64_t pfn)
 // /* read and print the relevant kpageflags.
 //  * @param[in]  vaddr  page virtual adress of the page
 //  */
- void read_kflags(uintptr_t vaddr)
- {
-     int fd;
+void read_kflags(uintptr_t vaddr)
+{
+    int fd;
     fd = open("/proc/self/pagemap", O_RDONLY);
-     if (fd < 0) {
+    if (fd < 0) {
         perror("Can't open pagemap");
-         exit(1);
-     }
+        exit(1);
+    }
 
-     PagemapEntry page_map_entry;
-     KpageFlagsEntry page_flags_entry;
-     pagemap_get_entry(&page_map_entry,fd,vaddr);
-     uint64_t pfn = page_map_entry.pfn;
-     get_page_flags_lru(&page_flags_entry,pfn);
-     print_page_flags(&page_flags_entry);
-     close(fd);
- }
+    PagemapEntry page_map_entry;
+    KpageFlagsEntry page_flags_entry;
+    pagemap_get_entry(&page_map_entry,fd,vaddr);
+    uint64_t pfn = page_map_entry.pfn;
+    get_page_flags_lru(&page_flags_entry,pfn);
+    print_page_flags(&page_flags_entry);
+    close(fd);
+}
 
 /* get page frame number of a given virtual address
  * @param[in]  vaddr  page virtual adress of the page
  */
 uint64_t get_pfn_by_addr(uintptr_t vaddr)
 {
+    LOG(DEBUG) << "[idle_page line 123] - get pfn of vaddr :" << PRINT_AS_HEX(vaddr);
     int fd;
     fd = open("/proc/self/pagemap", O_RDONLY);
     if (fd < 0) {
@@ -130,6 +131,7 @@ uint64_t get_pfn_by_addr(uintptr_t vaddr)
     PagemapEntry page_map_entry;
     pagemap_get_entry(&page_map_entry,fd,vaddr);
     uint64_t pfn = page_map_entry.pfn;
+    LOG(DEBUG) << "[idle_page line 134] - got pfn  :" << pfn;
     close(fd);
     return  pfn;
 }
@@ -141,8 +143,8 @@ static uint64_t pread_uint64(int fd, uint64_t index)
     off_t offset = index * sizeof(value);
 
     if (pread(fd, &value, sizeof(value), offset) != sizeof(value)) {
-    printf("pread offset 0x%lu failed!",
-                     offset);
+        printf("pread offset 0x%lu failed!",
+               offset);
     }
 
     return value;
@@ -178,7 +180,7 @@ void set_idle_pages(uint64_t nr_pfns, uint64_t pfns[])
             std::cout << "read bitmap file entry failed" << std::endl;
         }
         entry = SET_BIT(entry, pfn % 64);
-        
+
         if (pwrite(fd, &entry, sizeof(entry), pfn / 64 * 8) != sizeof(entry))
         {
             std::cout << "write to bitmap file entry failed" << std::endl;
@@ -190,7 +192,7 @@ void set_idle_pages(uint64_t nr_pfns, uint64_t pfns[])
     // std::cout << "idle flag of pfn " << pfn << " is: " << int(results[0]) << std::endl;
 }
 
-void* get_idle_flags(uint64_t nr_pfns, uint64_t pfns[],uint8_t results[])
+void* get_idle_flags(uint64_t nr_pfns, const uint64_t pfns[],uint8_t results[])
 {
     int fd;
     uint64_t entry, pfn;
@@ -210,7 +212,7 @@ void* get_idle_flags(uint64_t nr_pfns, uint64_t pfns[],uint8_t results[])
         if (pread(fd, &entry, sizeof(entry), pfn / 64 * 8) != sizeof(entry)) {
             perror("read bitmap file entry failed");
         }
-       // printf("open file in %.9f",seconds);
+        // printf("open file in %.9f",seconds);
         results[i] = (uint8_t) BIT_AT(entry, pfn % 64);
     }
 

@@ -22,10 +22,14 @@
 #include <stdint.h> /* uint64_t  */
 #include <stdbool.h>
 #include <time.h>
+#include "../../shared/CPPLogger.h"
+
+
 // typedef unsigned long long uint64_t;
 
 #define PME_PRESENT	(1ULL << 63)
 #define PME_SOFT_DIRTY	(1Ull << 55)
+#define PRINT_AS_HEX(ADDR) std::hex << "0x" << ADDR << std::dec
 
 #ifndef PAGE_SIZE
 #define PAGE_SIZE	4096
@@ -69,7 +73,7 @@ void print_entry_flags(PagemapEntry *entry);
  * @return 0 for success, 1 for failure
  */
 int pagemap_get_entry(PagemapEntry *entry, int pagemap_fd, uintptr_t vaddr);
- 
+
 
 /* Parse the relevant bits from kpageflags entry for the given pfn.
  * @param[out] entry      the parsed entry
@@ -81,12 +85,12 @@ int get_page_flags_lru(KpageFlagsEntry *entry, uint64_t pfn);
 // /* read and print the relevant kpageflags.
 //  * @param[in]  vaddr  page virtual adress of the page
 //  */
- void read_kflags(uintptr_t vaddr);
+void read_kflags(uintptr_t vaddr);
 
 
- /* get page frame number of a given virtual address
- * @param[in]  vaddr  page virtual adress of the page
- */
+/* get page frame number of a given virtual address
+* @param[in]  vaddr  page virtual adress of the page
+*/
 uint64_t get_pfn_by_addr(uintptr_t vaddr);
 
 
@@ -96,6 +100,6 @@ static bool is_page_idle(int page_idle_fd, uint64_t pfn);
 
 void set_idle_pages(uint64_t nr_pfns, uint64_t pfns[]);
 
-void* get_idle_flags(uint64_t nr_pfns, uint64_t pfns[],uint8_t results[]);
- 
- #endif
+void* get_idle_flags(uint64_t nr_pfns, const uint64_t pfns[],uint8_t results[]);
+
+#endif

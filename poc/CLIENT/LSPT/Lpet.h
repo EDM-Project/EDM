@@ -2,23 +2,31 @@
 #define LPET_H
 #include <vector>
 #include "Page.h"
-// #include "../../shared/MpiEdm.h"
+#include "../../shared/CPPLogger.h"
+
+#include "../../shared/MpiEdm.h"
+#define PRINT_AS_HEX(ADDR) std::hex << "0x" << ADDR << std::dec
+
 
 using std::vector;
 
 class Lpet{
 
     bool first_run;
-    vector<Page>::iterator start_point;
+    //vector<Page>::iterator start_point;
+    int start_point;
     uint32_t low_thresh;
     uint32_t high_thresh;
-    // MPI_EDM::MpiApp* mpi_instance;
+    MPI_EDM::MpiApp* mpi_instance;
+    char* buffer;
 
-    
-    public:
-    
-    // Lpet(MPI_EDM::MpiApp* mpi_instance, vector<Page>& page_list_ref, int high, int low);
-    Lpet(vector<Page>& page_list_ref, int high, int low);
+
+
+public:
+
+    Lpet(MPI_EDM::MpiApp* mpi_instance, vector<Page>& page_list_ref, int high, int low);
+    Lpet() = default;
+    //Lpet(vector<Page>& page_list_ref, int high, int low);
     ~Lpet() = default;
     Lpet& operator=(const Lpet& a);
     vector<Page>& page_list;
@@ -34,9 +42,9 @@ class Lpet{
 //     uint32_t high_thresh;
 //     MPI_EDM::MpiApp* mpi_instance;
 
-    
+
 //     public:
-    
+
 //     Lpet(MPI_EDM::MpiApp* mpi_instance, vector<Page>& page_list_ref, int high, int low);
 //     ~Lpet() = default;
 //     Lpet& operator=(const Lpet& a);

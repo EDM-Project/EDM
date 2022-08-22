@@ -9,24 +9,28 @@ using std::thread;
 using std::string;
 
 #define DEBUG_STATUS true
-#define NUM_OF_PAGES 10
+#define MREMAP_DONTUNMAP	4
+
 #include "Lpet.h"
 
-
-Lpet::Lpet(vector<Page>& page_list_ref, int high, int low) : 
+/*
+Lpet::Lpet(vector<Page>& page_list_ref, int high, int low) :
         page_list(page_list_ref), high_thresh(high), low_thresh(low), first_run(true)
-    {
-        start_point = page_list.begin();
-        
-    }
+{
+    start_point = page_list.begin();
 
-// Lpet::Lpet(MPI_EDM::MpiApp* mpi_instance, vector<Page>& page_list_ref, int high, int low) : 
-//         page_list(page_list_ref), high_thresh(high), low_thresh(low), first_run(true)
-//     {
-//         start_point = page_list.begin();
-//         this->mpi_instance = mpi_instance;
-//     }
-    
+}
+*/
+
+Lpet::Lpet(MPI_EDM::MpiApp* mpi_instance, vector<Page>& page_list_ref, int high, int low) :
+    page_list(page_list_ref), high_thresh(high), low_thresh(low), first_run(true)
+{
+        
+         this->start_point = 0;
+         this->mpi_instance = mpi_instance;
+         buffer =  (char*) mmap(NULL,PAGE_SIZE,PROT_READ | PROT_WRITE , MAP_ANONYMOUS | MAP_PRIVATE ,-1,0);
+}
+
 Lpet& Lpet::operator=(const Lpet& a)
 {
     this->page_list = a.page_list;
@@ -35,67 +39,92 @@ Lpet& Lpet::operator=(const Lpet& a)
     this->start_point = a.start_point;
     return *this;
 }
-    
-    
+
+
 uint32_t Lpet::run()
 {
-    if(this->first_run)
-    {
+    //if(this->first_run)
+    //{
         if(page_list.size() == 0)
         {
-            if(DEBUG_STATUS) {std::cout << "PAGE LIST EMPTY " << std::endl;}
+            if(DEBUG_STATUS) {LOG(DEBUG) << "PAGE LIST EMPTY " ;}
             return 0;
         }
-        start_point = page_list.begin();
-        this->first_run = false;
-    }
+        //this->start_point = page_list.begin();
+        LOG(DEBUG) << "[LPET run - 53 ] start point is : "<< PRINT_AS_HEX(page_list[start_point].vaddr); 
+
+        //this->first_run = false;
+   // }
     uint32_t ctr = 0;
     uint32_t evicted_ctr = 0;
+    //LOG(DEBUG) << "[LPET] page list size: " << page_list.size() << " high tresh: " << high_thresh;
     if(page_list.size() >= high_thresh) //need to evict pages
     {
+        LOG(DEBUG) << "[LPET run - 60 ] start point is : "<< PRINT_AS_HEX(page_list[start_point].vaddr); 
         int init_size = page_list.size();
         bool first_cycle = true;
-        vector<Page>::iterator it = start_point;
+        bool is_evicted = false;
+        int index = start_point;
+        //vector<Page>::iterator it = this->start_point;
         while(page_list.size() > low_thresh)
         {
+            is_evicted = false;
             if(first_cycle && ctr >= init_size)
             {
                 first_cycle = false;
             }
-            if(it == page_list.end())
+            if(index  == page_list.size())
             {
-                it = page_list.begin();
+                index = 0;
             }
-            if(DEBUG_STATUS) {std::cout << "checking page in addr " << (*it).vaddr << std::endl;}
-            if((*it).is_idle() || !first_cycle) // need to evict the current page
+            if(DEBUG_STATUS) {LOG(DEBUG) << "checking page in addr " << PRINT_AS_HEX(page_list[index].vaddr);}
+            if(page_list[index].is_idle() || !first_cycle) // need to evict the current page
             {
-                if(DEBUG_STATUS) {std::cout << "removing page in addr " << (*it).vaddr << std::endl;}
-                Page evicted = *it;
-                
-                // evicted.capture();
-                // string request_page = mpi_instance->RequestEvictPage(evicted.vaddr, evicted.content);
-                // mremap
+                is_evicted = true;
+                if(DEBUG_STATUS) {LOG(DEBUG) << "removing page in addr " << PRINT_AS_HEX(page_list[index].vaddr);}
+                Page evicted = page_list[index];
 
-                it++ = page_list.erase(it);                                
+                char content [PAGE_SIZE];
+                char* mem  = (char*)malloc(PAGE_SIZE);
+                memcpy(mem,(char*)evicted.vaddr,PAGE_SIZE);
+
+                // for(int i = 0 ; i < PAGE_SIZE ; i++)
+                // {
+                //     mem[i] = char((evicted.vaddr) + i);
+                // }
+                //evicted.capture();
+                string request_page = mpi_instance->RequestEvictPage(evicted.vaddr, mem);
+                free(mem);
+                mremap((void*)evicted.vaddr,PAGE_SIZE,PAGE_SIZE,MREMAP_MAYMOVE | MREMAP_DONTUNMAP | MREMAP_FIXED, buffer);
+
+                page_list.erase(page_list.begin() + index);
+                //index++;
                 evicted_ctr++;
             }
             else // no need to evict the current page - raise idle flag to 1'
             {
-                it->set_idle();
+                page_list[index].set_idle();
+            }
+            if (!is_evicted){
+                index++;
             }
             ctr++;
-            it++;
         }
-        this->start_point = it;
+        
+       // LOG(DEBUG) << "[LPET run - 109 ] start point is : "<< PRINT_AS_HEX((*(this->start_point)).vaddr); 
+
+        this->start_point = index;
+        //LOG(DEBUG) << "[LPET run - 112 ] start point is : "<< PRINT_AS_HEX((*(this->start_point)).vaddr); 
+
     }
     return evicted_ctr;
 }
-
+/*
 
 void fill_vector(vector<Page>& page_list, int start_addr, int end_addr)
 {
     char* area_1 = (char*) mmap( (void*)0x1D4C000, PAGE_SIZE*NUM_OF_PAGES, PROT_READ | PROT_WRITE,
-                       MAP_SHARED | MAP_ANONYMOUS | MAP_FIXED, -1, 0);
+                                 MAP_SHARED | MAP_ANONYMOUS | MAP_FIXED, -1, 0);
 
     uintptr_t addr;
     for(int i = 0 ; i < NUM_OF_PAGES ; i++)
@@ -116,8 +145,8 @@ void print_table(vector<Page> table)
     std::cout << "-=-=-=-=-=-=-=-=-=--= Page State - End -=-=-=-=-=-=-=-=-=--=" << std::endl;
 }
 
-
-
+*/
+/*
 // //-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-= main -=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=
 
 int main()
@@ -126,7 +155,7 @@ int main()
     vector<Page> vec = vector<Page>();
     Lpet lpet = Lpet(vec, 10, 5);
     fill_vector(lpet.page_list, 0, 10);
-    
+
     bool debug = DEBUG_STATUS;
 
     if(debug) {std::cout << "num of objects in list: " << lpet.page_list.size() << std::endl;}
@@ -151,3 +180,4 @@ int main()
 
     return 0;
 }
+*/              

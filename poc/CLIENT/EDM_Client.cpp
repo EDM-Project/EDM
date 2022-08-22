@@ -1,16 +1,19 @@
 #include "EDM_Client.h"
 #include <fstream>
 #include <iostream>
-EDM_Client::EDM_Client (){
+EDM_Client::EDM_Client () 
+ {
 
     LOG(DEBUG) << "[EDM CLIENT] -  INIT";
     ParseConfigFile();
     setenv("start_addr",std::to_string(start_addr).c_str(),1);
     setenv("end_addr",std::to_string(end_addr).c_str(),1);
     this->mpi_instance = new MPI_EDM::MpiApp(0,NULL);
-    
     this->ufd = new Userfaultfd(this->mpi_instance,this); 
     this->dm_handler_thread = ufd->ActivateDM_Handler();
+    this->page_list =  std::vector<Page>();
+    this->lpet = new Lpet(this->mpi_instance, page_list, this->high_threshold, this->low_threshold);
+    
 }
 
 void EDM_Client::ParseConfigFile () {
@@ -57,16 +60,28 @@ EDM_Client::~EDM_Client(){
     delete mpi_instance;
 }
 
-void EDM_Client::AddToPageList(uintptr_t addr) {
-    pages_list.push_back(addr);
-    /*
-    LOG(DEBUG) << "CURRENT PAGE LIST:" <<;
-    for (auto i :pages_list){
-        LOG(DEBUG) << i << ", ";
-    }
-    */
+
+void EDM_Client::AddToPageList(uintptr_t vaddr) {
+    Page page = Page(vaddr);
+    //LOG(DEBUG) << "[EDM_Client: AddToPageList : 66 ] page created";
+    page_list.push_back(page);
+    //LOG(DEBUG) << "[EDM_Client: AddToPageList : 68 ] page added";
 }
 
+int EDM_Client::RunLpet() {
+    return lpet->run();
+}
+
+void EDM_Client::PrintPageList() {
+    LOG(DEBUG) << "===========PAGE LIST START============";
+    if (page_list.size()  == 20) {
+        for (auto& it : page_list){
+        LOG(DEBUG) << it ;
+    }
+    }
+    LOG(DEBUG) << "===========PAGE LIST END============";
+
+}
 
 void EDM_Client::UserThread(){
     
