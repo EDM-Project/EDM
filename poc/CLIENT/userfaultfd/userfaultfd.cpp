@@ -75,15 +75,23 @@ void Userfaultfd::HandleMissPageFault(struct uffd_msg* msg){
     /* Display info about the page-fault event. */
     LOG(DEBUG) << "[Userfaultfd] - UFFD_EVENT_PAGEFAULT event: \n" <<
      "flags = " << msg->arg.pagefault.flags << "  address = " << PRINT_AS_HEX(msg->arg.pagefault.address) ;
-    /*
-        TODO: Verify there is enough memory available on the machine :
-         if (available < THRESHOLD) :
-            lpet.wakeup()
     
-    */
+    
+    //this->edm_client->PrintPageList();
+    int evicted_counter = this->edm_client->RunLpet();
+    if (evicted_counter != 0) {
+        LOG(DEBUG) << "[Userfaultfd] - num of evicted pages : " <<evicted_counter; 
+        this->edm_client->PrintPageList();
+    }
+
     MPI_EDM::RequestGetPageData request_page = mpi_instance->RequestPageFromDMS(msg->arg.pagefault.address);
+    //LOG(DEBUG) << "[Userfaultfd] - RequestPageFromDMS finished " ;
     memcpy(page,request_page.page, PAGE_SIZE);
-    this->edm_client->AddToPageList(msg->arg.pagefault.address);
+    //LOG(DEBUG) << "[Userfaultfd] - page copied to buffer" ;
+
+
+    //this->edm_client->PrintPageList();
+
     /* Copy the page pointed to by 'page' into the faulting
         region. */
 
@@ -99,7 +107,12 @@ void Userfaultfd::HandleMissPageFault(struct uffd_msg* msg){
     if (ioctl(uffd, UFFDIO_COPY, &uffdio_copy) == -1)
         LOG(ERROR) << "[Userfaultfd] - ioctl UFFDIO_COPY failed";
 
-    LOG(DEBUG) << "[Userfaultfd] - (uffdio_copy.copy returned " << uffdio_copy.copy ;
+    
+    //LOG(DEBUG) << "[Userfaultfd] - page copy completed - line109" ;
+    this->edm_client->AddToPageList(msg->arg.pagefault.address);
+    //LOG(DEBUG) << "[Userfaultfd] - page added to page list" ;
+
+    LOG(DEBUG) << "[Userfaultfd] - uffdio_copy.copy returned " << uffdio_copy.copy ;
 }
 std::thread Userfaultfd::ActivateDM_Handler(){
     std::thread t (&Userfaultfd::ListenPageFaults,this);
