@@ -1,13 +1,13 @@
-#ifndef EDM_DMS_H
-#define EDM_DMS_H
-
-
-#include "SPT.h"
+#ifndef DMS_H
+#define DMS_H
 #include <thread>
-#include "../shared/CPPLogger.h"
-#include "../shared/MpiEdm.h"
 #include <string>
-class EDM_DMS {
+
+#include "spt.h"
+#include "../shared/logger.h"
+#include "../shared/mpiEdm.h"
+
+class DMS {
 
 private:
 uintptr_t start_addr;
@@ -19,8 +19,8 @@ MPI_EDM::MpiDms* mpi_instance;
 void ParseConfigFile ();
 public:
 
-EDM_DMS(int argc, char *argv[]);
-~EDM_DMS();
+DMS(int argc, char *argv[]);
+~DMS();
 void ReadPageFromDisk(uintptr_t addr,char* page);
 void WritePageTodisk(uintptr_t addr, char* page);
 void DmHandlerThread();

@@ -1,4 +1,4 @@
-#include "SPT.h"
+#include "spt.h"
 #include <utility>      // std::pair, std::make_pair
 
 void SPT::UpdateSPT(uintptr_t addr, page_location location){

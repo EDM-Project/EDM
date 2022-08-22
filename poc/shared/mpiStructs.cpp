@@ -1,4 +1,4 @@
-#include "MpiStructs.h"
+#include "mpiStructs.h"
 
 namespace MPI_EDM {
 

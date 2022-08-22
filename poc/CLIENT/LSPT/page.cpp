@@ -1,11 +1,6 @@
-#include "Page.h"
-// #include "idle_page.c"
+#include "page.h"
 
-Page::Page(uintptr_t vaddr) : vaddr(vaddr) ,pfn(get_pfn_by_addr(vaddr))
-{
-    
-
-};
+Page::Page(uintptr_t vaddr) : vaddr(vaddr) ,pfn(get_pfn_by_addr(vaddr)) {};
 
 
 bool Page::is_idle() const

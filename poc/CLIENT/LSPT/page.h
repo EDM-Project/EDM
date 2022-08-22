@@ -2,7 +2,7 @@
 #define PAGE_H
 #include <iostream>
 #include <stdint.h>
-#include "idle_page.h"
+#include "idlePage.h"
 
 
 

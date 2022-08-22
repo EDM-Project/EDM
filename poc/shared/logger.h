@@ -18,8 +18,8 @@
 
 */
 
-#ifndef CPPLOGGER_H
-#define CPPLOGGER_H
+#ifndef LOGGER_H
+#define LOGGER_H
 
 #include <string>
 #include <ctime>
@@ -40,7 +40,7 @@
 #define LOGMODE_CUSTOM 0x04
 
 //Abstract class used as an interface to define custom logging classes.
-//These custom logging classes take a string built in CPPLogger::writeLog()
+//These custom logging classes take a string built in logger::writeLog()
 // and print them through whatever logging mechanism they want. 
 class CustomLogger
 {
@@ -48,11 +48,11 @@ class CustomLogger
   virtual void writeLogString(std::string message) = 0;
 };
 
-class CPPLogger 
+class logger 
 {
  public:
-  static CPPLogger& getLog() {
-    static CPPLogger instance;
+  static logger& getLog() {
+    static logger instance;
     return instance;
   }
 
@@ -160,9 +160,9 @@ class CPPLogger
   CustomLogger *mCustomLogger;
  
   //Block Constructors to ensure singleton
-  CPPLogger() {}
-  CPPLogger(CPPLogger const&);
-  void operator=(CPPLogger const&);
+  logger() {}
+  logger(logger const&);
+  void operator=(logger const&);
 
   //Mutex for synchronization
   std::mutex mutex;
@@ -217,7 +217,7 @@ class LOG
   LOG() { debugLevel = ERROR; }
   LOG(int severity) { debugLevel = severity; }
   ~LOG() {
-    CPPLogger::getLog().writeLog(debugLevel, stream.str());
+    logger::getLog().writeLog(debugLevel, stream.str());
   }
 
   template <typename T>
