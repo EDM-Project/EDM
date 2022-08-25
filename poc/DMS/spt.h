@@ -5,9 +5,14 @@
 
 
 #include <unordered_map>
+#include <map>
+#include <vector>
+#include <algorithm>
 #include <utility>      // std::pair, std::make_pair
 #include <iostream>
 #include <string>
+
+#include "../shared/logger.h"
 enum page_location { INSTANCE_0, DISK};
 
 
