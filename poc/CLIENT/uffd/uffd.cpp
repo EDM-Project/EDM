@@ -61,10 +61,7 @@ void Uffd::ListenPageFaults(){
     }
 }
 void Uffd::HandleMissPageFault(struct uffd_msg* msg){
-    static char *page = NULL;
-    struct uffdio_copy uffdio_copy;
-    struct uffdio_zeropage uffdio_zero;
-    
+
     /* Display info about the page-fault event. */
     LOG(DEBUG) << "[Uffd] - UFFD_EVENT_PAGEFAULT event: \n" <<
      "flags = " << msg->arg.pagefault.flags << "  address = " << PRINT_AS_HEX(msg->arg.pagefault.address) ;
@@ -73,7 +70,7 @@ void Uffd::HandleMissPageFault(struct uffd_msg* msg){
     int evicted_counter = this->client->RunLpet();
     if (evicted_counter != 0) {
         LOG(DEBUG) << "[Uffd] - num of evicted pages : " <<evicted_counter; 
-        this->client->PrintPageList();
+        //this->client->PrintPageList();
     }
     MPI_EDM::RequestGetPageData request_page = mpi_instance->RequestPageFromDMS(vaddr);
     switch (request_page.info){

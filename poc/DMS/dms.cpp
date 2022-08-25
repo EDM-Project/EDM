@@ -69,7 +69,7 @@ void DMS::WritePageTodisk(uintptr_t addr, char* page, int* info){
     }
     else{
          *info = (int)MPI_EDM::success;
-         LOG(ERROR)<< "[DMS] - page in address : " << PRINT_AS_HEX(addr) << " stored in disk" ;
+         LOG(DEBUG)<< "[DMS] - page in address : " << PRINT_AS_HEX(addr) << " stored in disk" ;
     }
     close(fd);
 }

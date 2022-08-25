@@ -33,24 +33,24 @@ Lpet& Lpet::operator=(const Lpet& a)
 
 uint32_t Lpet::run()
 {
-    //if(this->first_run)
-    //{
-        if(page_list.size() == 0)
-        {
-            if(DEBUG_STATUS) {LOG(DEBUG) << "[Lpet] PAGE LIST EMPTY " ;}
-            return 0;
-        }
-        //this->start_point = page_list.begin();
-        LOG(DEBUG) << "[LPET run - 53 ] start point is : "<< PRINT_AS_HEX(page_list[start_point].vaddr); 
+    
+    if(page_list.size() == 0)
+    {
+        if(DEBUG_STATUS) {LOG(DEBUG) << "[Lpet] PAGE LIST EMPTY " ;}
+        return 0;
+    }
 
-        //this->first_run = false;
-   // }
     uint32_t ctr = 0;
     uint32_t evicted_ctr = 0;
     //LOG(DEBUG) << "[LPET] page list size: " << page_list.size() << " high tresh: " << high_thresh;
     if(page_list.size() >= high_thresh) //need to evict pages
     {
         LOG(DEBUG) << "[LPET run - 60 ] start point is : "<< PRINT_AS_HEX(page_list[start_point].vaddr); 
+        LOG(DEBUG) << "===========PAGE LIST START============";
+        for (auto& it : page_list){
+            LOG(DEBUG) << it ;
+        }
+        LOG(DEBUG) << "===========PAGE LIST END============";
         int init_size = page_list.size();
         bool first_cycle = true;
         bool is_evicted = false;
@@ -100,3 +100,6 @@ uint32_t Lpet::run()
     }
     return evicted_ctr;
 }
+
+
+

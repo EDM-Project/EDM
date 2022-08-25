@@ -72,10 +72,8 @@ int Client::RunLpet() {
 
 void Client::PrintPageList() {
     LOG(DEBUG) << "===========PAGE LIST START============";
-    if (page_list.size()  == 20) {
-        for (auto& it : page_list){
+    for (auto& it : page_list){
         LOG(DEBUG) << it ;
-    }
     }
     LOG(DEBUG) << "===========PAGE LIST END============";
 
