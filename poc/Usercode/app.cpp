@@ -118,6 +118,7 @@ void end_to_end_test() {
    for (int i =0; i < PAGE_SIZE *10 ; i++ ) {
       area_2[i] = 'y';
    }
+   
    /*
    NOW, the memory layout should look like this.
    20 pages allocated which means we is the maximum allowed. 

@@ -21,7 +21,7 @@ private:
     Lpet* lpet;
     
     Uffd* ufd;
-    MPI_EDM::MpiApp* mpi_instance;
+    MPI_EDM::MpiClient* mpi_instance;
     std::thread dm_handler_thread;
     std::thread lpet_thread;
     

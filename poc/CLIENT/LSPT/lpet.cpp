@@ -12,7 +12,7 @@ using std::string;
 
 #include "lpet.h"
 
-Lpet::Lpet(MPI_EDM::MpiApp* mpi_instance, vector<Page>& page_list_ref, int high, int low) :
+Lpet::Lpet(MPI_EDM::MpiClient* mpi_instance, vector<Page>& page_list_ref, int high, int low) :
     page_list(page_list_ref), high_thresh(high), low_thresh(low), first_run(true)
 {
         

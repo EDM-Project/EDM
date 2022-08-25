@@ -24,29 +24,5 @@ public:
 
 };
 
-class MpiDms : public MpiEdm {
-private:
-    
-public:
-    
-    MpiDms (int argc, char *argv[]);
-    RequestGetPageData ListenRequestGetPage ();
-    void SendPageBackToApp (RequestGetPageData response);
-    RequestEvictPageData ListenRequestEvictPage();
-    void SendAckForEvictPage(uintptr_t vaddr,  MPI_EDM::request_evict_page_status status);
-
-};
-
-class MpiApp : public MpiEdm {
-
-private:
-
-public:
-    MpiApp() = default;
-    MpiApp(int argc, char *argv[]);
-    RequestGetPageData RequestPageFromDMS (uintptr_t vaddr);
-    void RequestEvictPage (uintptr_t vaddr, char* page);
-    
-};
 }
 #endif

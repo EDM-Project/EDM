@@ -18,7 +18,7 @@
 #include <sys/ioctl.h>
 #include <poll.h>
 #include <thread>
-#include "../../shared/mpiEdm.h"
+#include "../mpiClient/mpiClient.h"
 #include "../../shared/logger.h"
 
 #define PRINT_AS_HEX(ADDR) std::hex << "0x" << ADDR << std::dec
@@ -33,12 +33,12 @@ class Uffd {
     char *addr;         /* Start of region handled by userfaultfd */
     uint64_t len;       /* Length of region handled by userfaultfd */
     std::thread thr;      /* ID of thread that handles page faults */
-    MPI_EDM::MpiApp* mpi_instance;
+    MPI_EDM::MpiClient* mpi_instance;
     Client* client; 
 
     public:
     Uffd() = default;
-    Uffd(MPI_EDM::MpiApp* mpi_instance, Client* client);
+    Uffd(MPI_EDM::MpiClient* mpi_instance, Client* client);
     ~Uffd() = default;
     void ListenPageFaults();
     void HandleMissPageFault(struct uffd_msg* msg);

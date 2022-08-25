@@ -2,7 +2,7 @@
 #include "uffd.h"
 #include "../client.h"
 
-Uffd::Uffd(MPI_EDM::MpiApp* mpi_instance, Client* client) {
+Uffd::Uffd(MPI_EDM::MpiClient* mpi_instance, Client* client) {
     this->len = len;
     this->addr = addr;
     this->mpi_instance = mpi_instance;

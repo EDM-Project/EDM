@@ -5,7 +5,7 @@
 
 #include "spt.h"
 #include "../shared/logger.h"
-#include "../shared/mpiEdm.h"
+#include "mpiDms/mpiDms.h"
 
 class DMS {
 
