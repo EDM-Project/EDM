@@ -5,14 +5,17 @@
 #include "mpi.h"
 
 #define PAGE_SIZE 4096
-#define FLAGS_SIZE 10
+#define INFO_SIZE 4
 #define ERROR_SIZE 10
 namespace MPI_EDM {
+
+enum request_page_status { new_page, error, existing_page};
+
 typedef struct 
 {
     uintptr_t vaddr;
     char page [PAGE_SIZE];
-    char flags [FLAGS_SIZE];
+    int info;
 } RequestGetPageData ;
 
 typedef struct 

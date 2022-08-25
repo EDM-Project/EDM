@@ -42,6 +42,8 @@ class Uffd {
     ~Uffd() = default;
     void ListenPageFaults();
     void HandleMissPageFault(struct uffd_msg* msg);
+    void CopyZeroPage(uintptr_t vaddr);
+    void CopyExistingPage(uintptr_t vaddr,char* source_page_content);
     std::thread ActivateDM_Handler();
 
 };

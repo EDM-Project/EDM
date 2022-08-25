@@ -21,7 +21,7 @@ public:
 
 DMS(int argc, char *argv[]);
 ~DMS();
-void ReadPageFromDisk(uintptr_t addr,char* page);
+void ReadPageFromDisk(uintptr_t addr,char* page, int* info);
 void WritePageTodisk(uintptr_t addr, char* page);
 void DmHandlerThread();
 void XpetThread();

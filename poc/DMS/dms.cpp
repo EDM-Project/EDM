@@ -37,19 +37,25 @@ DMS::~DMS() {
     MPI_Finalize();
     delete mpi_instance;
 }
-void DMS::ReadPageFromDisk(uintptr_t addr, char* page){
+void DMS::ReadPageFromDisk(uintptr_t addr, char* page, int* info){
     int fd = open("disk", O_RDWR | O_CREAT, 0777);
     if (spt.IsAddrExist(addr))
     {
         LOG(DEBUG) << "[DMS] - read page address: " << PRINT_AS_HEX(addr) << " from disk";  
 
         off_t offset = addr - start_addr;
-        pread(fd, page,PAGE_SIZE, offset);
+        if (pread(fd, page,PAGE_SIZE, offset) != PAGE_SIZE) {
+            *info = (int)MPI_EDM::error;
+            LOG(ERROR) << "[DMS] - failed to fetch page content in address " << PRINT_AS_HEX(addr);
+        }
+        else{
+            *info = (int)MPI_EDM::existing_page;
+        }
 
     }
     else{ // addr accessed first time, copy zero page
-        LOG(DEBUG) << "[DMS] - page accessed first time, copy zero page" ;  
-        page = {0};
+        LOG(DEBUG) << "[DMS] - page accessed first time, set info - new_page" ; 
+        *info = (int)MPI_EDM::new_page;
     }
     close(fd);
 }
@@ -66,10 +72,11 @@ void DMS::WritePageTodisk(uintptr_t addr, char* page){
 void DMS::HandleRequestGetPage(MPI_EDM::RequestGetPageData* request)
 {
    char* mem  = (char*)malloc(PAGE_SIZE);
-   ReadPageFromDisk(request->vaddr,mem);
-   memcpy(request->page,mem,PAGE_SIZE);
+   ReadPageFromDisk(request->vaddr,mem, &(request->info));
+   if (request->info == MPI_EDM::existing_page){
+        memcpy(request->page,mem,PAGE_SIZE);
+   } //else - page is new or failed to fetch from disc 
    free(mem);
-
 }
 
 void DMS::HandleRequestEvictPage (MPI_EDM::RequestEvictPageData* request) {
