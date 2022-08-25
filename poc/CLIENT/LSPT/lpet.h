@@ -4,7 +4,7 @@
 #include "page.h"
 #include "../../shared/logger.h"
 
-#include "../../shared/mpiEdm.h"
+#include "../mpiClient/mpiClient.h"
 #define PRINT_AS_HEX(ADDR) std::hex << "0x" << ADDR << std::dec
 
 
@@ -17,40 +17,21 @@ class Lpet{
     int start_point;
     uint32_t low_thresh;
     uint32_t high_thresh;
-    MPI_EDM::MpiApp* mpi_instance;
+    MPI_EDM::MpiClient* mpi_instance;
     char* buffer;
 
 
 
 public:
 
-    Lpet(MPI_EDM::MpiApp* mpi_instance, vector<Page>& page_list_ref, int high, int low);
+    Lpet(MPI_EDM::MpiClient* mpi_instance, vector<Page>& page_list_ref, int high, int low);
     Lpet() = default;
-    //Lpet(vector<Page>& page_list_ref, int high, int low);
     ~Lpet() = default;
     Lpet& operator=(const Lpet& a);
     vector<Page>& page_list;
     uint32_t run();
+    std::string PrintLpetState(); 
 };
-
-
-// class Lpet{
-
-//     bool first_run;
-//     vector<Page>::iterator start_point;
-//     uint32_t low_thresh;
-//     uint32_t high_thresh;
-//     MPI_EDM::MpiApp* mpi_instance;
-
-
-//     public:
-
-//     Lpet(MPI_EDM::MpiApp* mpi_instance, vector<Page>& page_list_ref, int high, int low);
-//     ~Lpet() = default;
-//     Lpet& operator=(const Lpet& a);
-//     vector<Page>& page_list;
-//     uint32_t run();
-// };
 
 
 #endif

@@ -5,7 +5,7 @@
 
 #include "spt.h"
 #include "../shared/logger.h"
-#include "../shared/mpiEdm.h"
+#include "mpiDms/mpiDms.h"
 
 class DMS {
 
@@ -21,8 +21,8 @@ public:
 
 DMS(int argc, char *argv[]);
 ~DMS();
-void ReadPageFromDisk(uintptr_t addr,char* page);
-void WritePageTodisk(uintptr_t addr, char* page);
+void ReadPageFromDisk(uintptr_t addr,char* page, int* info);
+void WritePageTodisk(uintptr_t addr, char* page, int* info);
 void DmHandlerThread();
 void XpetThread();
 void HandleRequestEvictPage (MPI_EDM::RequestEvictPageData* request);

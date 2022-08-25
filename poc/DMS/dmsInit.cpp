@@ -1,6 +1,6 @@
 #include "mpi.h"
 #include "../shared/mpiEdm.h"
-
+#include "../shared/logger.h"
 #include <stdio.h>
 #include <sys/mman.h>
 #include "dms.h"
@@ -13,7 +13,7 @@
 
 int main(int argc, char *argv[])
 {  
-   
+   LOG(DEBUG) << "[DMS] dms init start running";
    DMS dms(argc,argv);
    return 0;
 }

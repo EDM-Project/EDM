@@ -8,7 +8,7 @@ Client::Client ()
     ParseConfigFile();
     setenv("start_addr",std::to_string(start_addr).c_str(),1);
     setenv("end_addr",std::to_string(end_addr).c_str(),1);
-    this->mpi_instance = new MPI_EDM::MpiApp(0,NULL);
+    this->mpi_instance = new MPI_EDM::MpiClient(0,NULL);
     this->ufd = new Uffd(this->mpi_instance,this); 
     this->dm_handler_thread = ufd->ActivateDM_Handler();
     this->page_list =  std::vector<Page>();
@@ -72,10 +72,8 @@ int Client::RunLpet() {
 
 void Client::PrintPageList() {
     LOG(DEBUG) << "===========PAGE LIST START============";
-    if (page_list.size()  == 20) {
-        for (auto& it : page_list){
+    for (auto& it : page_list){
         LOG(DEBUG) << it ;
-    }
     }
     LOG(DEBUG) << "===========PAGE LIST END============";
 

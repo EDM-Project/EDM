@@ -12,9 +12,13 @@ bool SPT::IsAddrExist(uintptr_t addr){
 }
 
 std::ostream& operator<<(std::ostream& os, const SPT& spt){
-    os << "DMS- Pring SPT STATE" <<std::endl;
+
+    // for debug - convert unordered map to ordered map 
+    std::map<uintptr_t, page_location> ordered_mapping (spt.mapping.begin(), spt.mapping.end());
+
+    os << "DMS- Print SPT STATE" <<std::endl;
     os << "-----START SPT ----" << std::endl;
-    for (auto& it: spt.mapping) {
+    for (auto& it: ordered_mapping) {
         
         os << "address : " << PRINT_AS_HEX(it.first) << std::dec; 
         os << "  ";

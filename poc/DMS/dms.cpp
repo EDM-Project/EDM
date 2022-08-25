@@ -37,28 +37,39 @@ DMS::~DMS() {
     MPI_Finalize();
     delete mpi_instance;
 }
-void DMS::ReadPageFromDisk(uintptr_t addr, char* page){
+void DMS::ReadPageFromDisk(uintptr_t addr, char* page, int* info){
     int fd = open("disk", O_RDWR | O_CREAT, 0777);
     if (spt.IsAddrExist(addr))
     {
         LOG(DEBUG) << "[DMS] - read page address: " << PRINT_AS_HEX(addr) << " from disk";  
 
         off_t offset = addr - start_addr;
-        pread(fd, page,PAGE_SIZE, offset);
+        if (pread(fd, page,PAGE_SIZE, offset) != PAGE_SIZE) {
+            *info = (int)MPI_EDM::error;
+            LOG(ERROR) << "[DMS] - failed to fetch page content in address " << PRINT_AS_HEX(addr);
+        }
+        else{
+            *info = (int)MPI_EDM::existing_page;
+        }
 
     }
     else{ // addr accessed first time, copy zero page
-        LOG(DEBUG) << "[DMS] - page accessed first time, copy zero page" ;  
-        page = {0};
+        LOG(DEBUG) << "[DMS] - page accessed first time, set info - new_page" ; 
+        *info = (int)MPI_EDM::new_page;
     }
     close(fd);
 }
-void DMS::WritePageTodisk(uintptr_t addr, char* page){
+void DMS::WritePageTodisk(uintptr_t addr, char* page, int* info){
     int fd = open("disk", O_RDWR | O_CREAT , 0777);
     /*offset = TODO : GET START ADDRES AND CALCULATE OFFSET*/
     off_t offset = addr - start_addr;
     if (int res = pwrite(fd, page,PAGE_SIZE,offset) < 0) {
+         *info = (int)MPI_EDM::fail;
          LOG(ERROR)<< "[DMS] - Error writing page in address : " << PRINT_AS_HEX(addr) << "to disk" ;
+    }
+    else{
+         *info = (int)MPI_EDM::success;
+         LOG(DEBUG)<< "[DMS] - page in address : " << PRINT_AS_HEX(addr) << " stored in disk" ;
     }
     close(fd);
 }
@@ -66,17 +77,17 @@ void DMS::WritePageTodisk(uintptr_t addr, char* page){
 void DMS::HandleRequestGetPage(MPI_EDM::RequestGetPageData* request)
 {
    char* mem  = (char*)malloc(PAGE_SIZE);
-   ReadPageFromDisk(request->vaddr,mem);
-   memcpy(request->page,mem,PAGE_SIZE);
+   ReadPageFromDisk(request->vaddr,mem, &(request->info));
+   if (request->info == MPI_EDM::existing_page){
+        memcpy(request->page,mem,PAGE_SIZE);
+   } //else - page is new or failed to fetch from disc 
    free(mem);
-
 }
 
 void DMS::HandleRequestEvictPage (MPI_EDM::RequestEvictPageData* request) {
    LOG(DEBUG) << "[DMS] - Handle page eviction in address " << PRINT_AS_HEX(request->vaddr) ;
-   // send page to disk
-   WritePageTodisk(request->vaddr, request->page);
-   
+   // store page in disk
+   WritePageTodisk(request->vaddr, request->page, &request->info);
 
 }
 
@@ -104,7 +115,7 @@ void DMS::XpetThread()
         MPI_EDM::RequestEvictPageData evict_request = mpi_instance->ListenRequestEvictPage();
         HandleRequestEvictPage(&evict_request);
         LOG(DEBUG) << "[DMS] - Page evicted successfuly, sending ack" ;
-        mpi_instance->SendAckForEvictPage(evict_request.vaddr);
+        mpi_instance->SendAckForEvictPage(evict_request.vaddr, MPI_EDM::request_evict_page_status(evict_request.info));
         spt.UpdateSPT(evict_request.vaddr,DISK);
         LOG(DEBUG) << spt;
 
