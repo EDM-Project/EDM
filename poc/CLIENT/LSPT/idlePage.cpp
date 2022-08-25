@@ -120,7 +120,7 @@ void read_kflags(uintptr_t vaddr)
  */
 uint64_t get_pfn_by_addr(uintptr_t vaddr)
 {
-    LOG(DEBUG) << "[idle_page line 123] - get pfn of vaddr :" << PRINT_AS_HEX(vaddr);
+    //LOG(DEBUG) << "[idle_page line 123] - get pfn of vaddr :" << PRINT_AS_HEX(vaddr);
     int fd;
     fd = open("/proc/self/pagemap", O_RDONLY);
     if (fd < 0) {
@@ -131,7 +131,7 @@ uint64_t get_pfn_by_addr(uintptr_t vaddr)
     PagemapEntry page_map_entry;
     pagemap_get_entry(&page_map_entry,fd,vaddr);
     uint64_t pfn = page_map_entry.pfn;
-    LOG(DEBUG) << "[idle_page line 134] - got pfn  :" << pfn;
+    //LOG(DEBUG) << "[idle_page line 134] - got pfn  :" << pfn;
     close(fd);
     return  pfn;
 }

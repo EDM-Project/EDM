@@ -33,7 +33,7 @@ public:
     RequestGetPageData ListenRequestGetPage ();
     void SendPageBackToApp (RequestGetPageData response);
     RequestEvictPageData ListenRequestEvictPage();
-    void SendAckForEvictPage(uintptr_t vaddr);
+    void SendAckForEvictPage(uintptr_t vaddr,  MPI_EDM::request_evict_page_status status);
 
 };
 
@@ -45,7 +45,7 @@ public:
     MpiApp() = default;
     MpiApp(int argc, char *argv[]);
     RequestGetPageData RequestPageFromDMS (uintptr_t vaddr);
-    std::string RequestEvictPage (uintptr_t vaddr, char* page);
+    void RequestEvictPage (uintptr_t vaddr, char* page);
     
 };
 }

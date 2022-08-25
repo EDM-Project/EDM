@@ -2,8 +2,6 @@
 #include "uffd.h"
 #include "../client.h"
 
-#define NUM_OF_RETRIES 3
-
 Uffd::Uffd(MPI_EDM::MpiApp* mpi_instance, Client* client) {
     this->len = len;
     this->addr = addr;
@@ -77,53 +75,18 @@ void Uffd::HandleMissPageFault(struct uffd_msg* msg){
         LOG(DEBUG) << "[Uffd] - num of evicted pages : " <<evicted_counter; 
         this->client->PrintPageList();
     }
-    MPI_EDM::RequestGetPageData request_page;
-    for (int i=0; i< NUM_OF_RETRIES; i++) {
-        request_page = mpi_instance->RequestPageFromDMS(vaddr);
-        if (request_page.info == MPI_EDM::error){
-            LOG(ERROR) << "[Uffd] - RequestPageFromDMS failed. Retry " ;
-        }
-        else{
-            LOG(ERROR) << "[Uffd] - RequestPageFromDMS succeeded. " ;
-            break;
-        }
-
-    }
+    MPI_EDM::RequestGetPageData request_page = mpi_instance->RequestPageFromDMS(vaddr);
     switch (request_page.info){
         case(MPI_EDM::error):
             LOG(ERROR) << "[Uffd] - failed to resolve page fault for address " <<  PRINT_AS_HEX(vaddr) ;
         break;
         case (MPI_EDM::new_page):
-            LOG(ERROR) << "[Uffd] - page accessed first time, copy zero page of address " << PRINT_AS_HEX(vaddr) ; 
+            LOG(DEBUG) << "[Uffd] - page accessed first time, copy zero page of address " << PRINT_AS_HEX(vaddr) ; 
             CopyZeroPage(vaddr);
-            /*
-            uffdio_zero.range.start =  (unsigned long) vaddr &
-                                ~(PAGE_SIZE - 1);
-            uffdio_zero.range.len = PAGE_SIZE;
-            uffdio_zero.mode = 0;
-
-            if (ioctl(uffd, UFFDIO_ZEROPAGE, &uffdio_zero) == -1)
-                LOG(ERROR) << "[Uffd] - ioctl UFFDIO_ZEROPAGE failed";
-            */
         break;
         case (MPI_EDM::existing_page):
-            LOG(ERROR) << "[Uffd] - page evicted before, copy page content from dms"; 
+            LOG(DEBUG) << "[Uffd] - page evicted before, copy page content from dms"; 
             CopyExistingPage(vaddr,request_page.page);
-            // memcpy(page,request_page.page, PAGE_SIZE);
-            // /* Copy the page pointed to by 'page' into the faulting
-            // region. */
-            // uffdio_copy.src = (unsigned long) page;
-            // /* We need to handle page faults in units of pages(!).
-            //     So, round faulting address down to page boundary. */
-
-            // uffdio_copy.dst = (unsigned long) vaddr &
-            //                     ~(PAGE_SIZE - 1);
-            // uffdio_copy.len = PAGE_SIZE;
-            // uffdio_copy.mode = 0;
-            // uffdio_copy.copy = 0;
-            // if (ioctl(uffd, UFFDIO_COPY, &uffdio_copy) == -1)
-            //     LOG(ERROR) << "[Uffd] - ioctl UFFDIO_COPY failed";
-
         break;
 
     }

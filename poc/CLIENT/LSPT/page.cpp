@@ -14,15 +14,7 @@ void Page::set_idle()
 {
     set_idle_pages(1, &this->pfn);
 }
-/*
-void Page::capture()
-{
-    for(int i = 0 ; i < PAGE_SIZE ; i++)
-    {
-        content[i] = char((this->vaddr) + i);
-    }
-}
-*/
+
 std::ostream& operator<<(std::ostream& os, const Page& page){
   
     os << "address : " << PRINT_AS_HEX(page.vaddr) << std::dec; 
