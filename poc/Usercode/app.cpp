@@ -118,7 +118,7 @@ void end_to_end_test() {
    for (int i =0; i < PAGE_SIZE *10 ; i++ ) {
       area_2[i] = 'y';
    }
-   
+   usleep(50000);
    /*
    NOW, the memory layout should look like this.
    20 pages allocated which means we is the maximum allowed. 
@@ -211,6 +211,11 @@ void end_to_end_test() {
    .__________.
 
    */
+   // touch pages in the middle of area 2 
+
+   // char temp = area_3[0*PAGE_SIZE];
+   // temp = area_2[1*PAGE_SIZE];
+   // temp = area_2[2*PAGE_SIZE];
 
    //create forth mapping which cause another eviction cycle
    char* area_4 = (char*) mmap( (void*)0x1E89000, PAGE_SIZE *1 , PROT_READ | PROT_WRITE,

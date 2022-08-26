@@ -42,15 +42,15 @@ uint32_t Lpet::run()
 
     uint32_t ctr = 0;
     uint32_t evicted_ctr = 0;
-    //LOG(DEBUG) << "[LPET] page list size: " << page_list.size() << " high tresh: " << high_thresh;
     if(page_list.size() >= high_thresh) //need to evict pages
     {
-        LOG(DEBUG) << "[LPET run - 60 ] start point is : "<< PRINT_AS_HEX(page_list[start_point].vaddr); 
-        LOG(DEBUG) << "===========PAGE LIST START============";
-        for (auto& it : page_list){
-            LOG(DEBUG) << it ;
-        }
-        LOG(DEBUG) << "===========PAGE LIST END============";
+        // LOG(DEBUG) << "[LPET run - 60 ] start point is : "<< PRINT_AS_HEX(page_list[start_point].vaddr); 
+        // LOG(DEBUG) << "===========PAGE LIST START============";
+        // for (auto& it : page_list){
+        //     LOG(DEBUG) << it ;
+        // }
+        // LOG(DEBUG) << "===========PAGE LIST END============";
+        LOG(DEBUG) << *this;
         int init_size = page_list.size();
         bool first_cycle = true;
         bool is_evicted = false;
@@ -103,3 +103,16 @@ uint32_t Lpet::run()
 
 
 
+std::ostream& operator<<(std::ostream& os, const Lpet& lpet){
+  
+    os << "[Lpet] - Print Lpet State" <<std::endl;
+    os << "Lpet start point: "  << PRINT_AS_HEX(lpet.page_list[lpet.start_point].vaddr) << std::endl;
+    os << "page list state: " <<std::endl;
+    os << "-----START LSPT ----" << std::endl;
+    for (auto& it: lpet.page_list) {
+        os << it;
+    }
+    os << "-----END LSPT ----" << std::endl;
+
+    os << std::endl;
+}

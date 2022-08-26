@@ -133,6 +133,9 @@ uint64_t get_pfn_by_addr(uintptr_t vaddr)
     uint64_t pfn = page_map_entry.pfn;
     //LOG(DEBUG) << "[idle_page line 134] - got pfn  :" << pfn;
     close(fd);
+    // LOG(DEBUG) << "_____________ Kflags____________";
+    // read_kflags(vaddr);
+    // LOG(DEBUG) << "_____________ Kflags____________";
     return  pfn;
 }
 
@@ -187,9 +190,11 @@ void set_idle_pages(uint64_t nr_pfns, uint64_t pfns[])
         }
     }
     close(fd);
-    // uint8_t results[1];
-    // get_idle_flags(1, &pfn, results);
-    // std::cout << "idle flag of pfn " << pfn << " is: " << int(results[0]) << std::endl;
+    //test : 
+
+    // KpageFlagsEntry page_flags_entry;
+    // get_page_flags_lru(&page_flags_entry,pfns[0]);
+    // print_page_flags(&page_flags_entry);
 }
 
 void* get_idle_flags(uint64_t nr_pfns, const uint64_t pfns[],uint8_t results[])

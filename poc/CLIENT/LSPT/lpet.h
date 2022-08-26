@@ -31,7 +31,9 @@ public:
     vector<Page>& page_list;
     uint32_t run();
     std::string PrintLpetState(); 
+    friend std::ostream& operator<<(std::ostream& os, const Lpet& lpet);
 };
+std::ostream& operator<<(std::ostream& os, const Lpet& lpet);
 
 
 #endif
