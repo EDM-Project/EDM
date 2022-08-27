@@ -11,8 +11,7 @@ Client::Client ()
     this->mpi_instance = new MPI_EDM::MpiClient(0,NULL);
     this->ufd = new DmHandler(this->mpi_instance,this,high_threshold,low_threshold); 
     this->dm_handler_thread = ufd->ActivateDM_Handler();
-    this->page_list =  std::vector<Page>();
-    this->lpet = new Lpet(this->mpi_instance, page_list, this->high_threshold, this->low_threshold,page_list_mutex);
+    this->lpet = new Lpet(this->mpi_instance, lspt, this->high_threshold, this->low_threshold);
     this->lpet_thread = std::thread(&Client::RunLpetThread, this);
 }
 
@@ -61,47 +60,9 @@ Client::~Client(){
 }
 
 
-void Client::AddToPageList(uintptr_t vaddr) {
-    std::lock_guard<std::mutex> lockGuard(page_list_mutex);
-    Page page = Page(vaddr);
-    page_list.push_back(page);
-}
-
-int Client::GetPageListSize() { 
-    return page_list.size();
-}
-
-bool Client::IsPageExist(uintptr_t vaddr) {
-    for (auto& page : page_list){
-        if (page.vaddr == vaddr){
-            return true;
-        }
-    }
-    return false;
-}
-/*
-void Client::RunLpetThread() {
-    while (true) {
-        is_lpet_running = false;
-        std::unique_lock<std::mutex> lck(run_lpet_mutex);
-        while(page_list.size() < high_threshold) cv.wait(lck);
-        LOG(DEBUG) << "[CLIENT] - reached high threshold. run lpet cycle";
-        is_lpet_running = true;
-        std::thread lpet_thread = lpet->ActivateLpet();
-        LOG(DEBUG) << "[CLIENT] - lpet trigged";
-        //lpet->run();
-        cv.notify_all();
-        lpet_thread.join();
-        LOG(DEBUG) << "[CLIENT] - lpet end running cycle.";
-        is_lpet_running = false;
-        cv.notify_all();
-    }
-    //return lpet->run();
-}
-*/
 void Client::WaitForRunLpet() {
     std::unique_lock<std::mutex> lck(run_lpet_mutex);
-    while(page_list.size() < high_threshold) cv.wait(lck);
+    while(lspt.GetSize() < high_threshold) cv.wait(lck);
 
 }
 void Client::RunLpetThread() {
@@ -122,14 +83,6 @@ void Client::RunLpetThread() {
     //return lpet->run();
 }
 
-void Client::PrintPageList() {
-    LOG(DEBUG) << "===========PAGE LIST START============";
-    for (auto& it : page_list){
-        LOG(DEBUG) << it ;
-    }
-    LOG(DEBUG) << "===========PAGE LIST END============";
-
-}
 
 void Client::UserThread(){
     

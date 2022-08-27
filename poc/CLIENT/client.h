@@ -9,6 +9,7 @@
 #include "../shared/logger.h"
 #include "LSPT/lpet.h"
 #include "LSPT/page.h"
+#include "LSPT/lspt.h"
 #include "DmHandler/dmHandler.h"
 
 
@@ -19,9 +20,8 @@ private:
     uintptr_t end_addr;
     int high_threshold;
     int low_threshold;
-    std::vector<Page> page_list;
     Lpet* lpet;
-    std::mutex page_list_mutex;
+    
     
 
     
@@ -35,15 +35,17 @@ private:
 public:
     std::mutex run_lpet_mutex;
     std::condition_variable cv;
+    LSPT lspt;    
+
     //for debug
     bool is_lpet_running;
 
     Client ();
     ~Client();
-    void AddToPageList(uintptr_t vaddr);
-    void PrintPageList();
-    int GetPageListSize();
-    bool IsPageExist(uintptr_t vaddr);
+    //void AddToPageList(uintptr_t vaddr);
+    //void PrintPageList();
+    //int GetPageListSize();
+    //bool IsPageExist(uintptr_t vaddr);
     void RunLpetThread();
     void WaitForRunLpet();
     void UserThread();

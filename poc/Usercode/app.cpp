@@ -19,7 +19,7 @@ bool comparePages(char* source, char* dest){
 }
 /**
  * @brief simple end-to-end test to verify flow correctness. with one lpet cycle
- * 
+ *        config: high_treshold=20 , low_threshold=10
  */
 void test_simple_flow_eviction() {
 
@@ -98,6 +98,7 @@ void test_simple_flow_eviction() {
 
 /**
  * @brief much complicated e2e test with 2 eviction cycles and memory correctness
+ *       config: high_treshold=20 , low_threshold=10
  * 
  */
 void end_to_end_test() {
@@ -211,19 +212,12 @@ void end_to_end_test() {
    .__________.
 
    */
-   // touch pages in the middle of area 2 
-
-   // char temp = area_3[0*PAGE_SIZE];
-   // temp = area_2[1*PAGE_SIZE];
-   // temp = area_2[2*PAGE_SIZE];
-
+   
    //create forth mapping which cause another eviction cycle
-   char* area_4 = (char*) mmap( (void*)0x1E89000, PAGE_SIZE *5 , PROT_READ | PROT_WRITE,
+   char* area_4 = (char*) mmap( (void*)0x1E89000, PAGE_SIZE , PROT_READ | PROT_WRITE,
                      MAP_PRIVATE | MAP_ANONYMOUS | MAP_FIXED, -1, 0); 
 
-   for (int i =0; i < PAGE_SIZE *5 ; i++ ) {
-      area_4[i] = 'z';
-   }   
+   area_4[0] = 'w';
    //now memory layout should look like this:
 
    /*
@@ -231,13 +225,13 @@ void end_to_end_test() {
    .0x1D4C000 .
    .          .
    .          .
+   .0x1D5000 .
    .0x1D51000 .
-   .0x1D52000 .
    .  MAPPED  .
    .    BUT   .
    .   EMPTY  .
    .   DATA   .
-   .0x1D56000 .
+   .0x1D55000 .
    .__________.
    .
    .__________.
@@ -246,15 +240,15 @@ void end_to_end_test() {
    .    BUT   .
    .   EMPTY  .
    .   DATA   .  
-   .0X1E1E000 .
+   .0X1E1D000 .
    .__________.
    .          .
    .__________.
    .0x1E82000 . 
    .          .
-   .0x1E87000 . 
+   .0x1E86000 . 
    .__________.
-   .0X1E87000
+   .0X1E89000
    .__________.
 
    */
@@ -397,7 +391,7 @@ void test_eviction_policy() {
    .__________.
    .0x1E20000 .
    .  AREA_5  .   
-   .0x1E60000 .   
+   .0x1E40000 .   
    .__________.
    */
    usleep(70000); 
@@ -454,7 +448,7 @@ void test_eviction_policy() {
 
 int main(int argc, char *argv[])
 { 
-   test_eviction_policy();
+   end_to_end_test();
 
 
    return 0;

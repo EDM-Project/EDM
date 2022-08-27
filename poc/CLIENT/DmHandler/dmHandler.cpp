@@ -71,7 +71,7 @@ void DmHandler::HandleMissPageFault(struct uffd_msg* msg){
     unsigned long long vaddr = msg->arg.pagefault.address;
     
     //handle race condition with lpet
-    while(this->client->IsPageExist(vaddr)) {
+    while(this->client->lspt.IsPageExist(vaddr)) {
         //busy wait. should be very short period of time
     }
 
@@ -97,17 +97,17 @@ void DmHandler::HandleMissPageFault(struct uffd_msg* msg){
 
     }
     
-    this->client->AddToPageList(vaddr);
+    this->client->lspt.Add(vaddr);
 }
 
 void DmHandler::InvokeLpetIfNeeded(){ 
     std::unique_lock<std::mutex> lck(this->client->run_lpet_mutex);
-    if (this->client->GetPageListSize() >= high_threshold ) {
+    if (this->client->lspt.GetSize() >= high_threshold ) {
         LOG(DEBUG) << "[DmHandler] - reached high threshold, notify lpet" ;
         this->client->cv.notify_all();
     }
     //avoid memory flood
-    while (this->client->GetPageListSize() >= high_threshold){
+    while (this->client->lspt.GetSize() >= high_threshold){
         LOG(DEBUG) << "[DmHandler] - avoid memory flood- dmhanler go to sleep....";
         this->client->cv.wait(lck);
     }
