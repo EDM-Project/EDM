@@ -338,9 +338,31 @@ void test_eviction_policy() {
    for (int i =0; i < PAGE_SIZE *5 ; i++ ) {
       area_4[i] = 'x';
    }
+   // after 4 allocations, the memory layout:
+   /*
+   .__________.
+   .0x1D4C000 . 
+   .  AREA_1  .
+   .0x1D50000 .
+   .__________.
+   .0x1D51000 .         
+   .  AREA_2  .
+   .0x1D56000.
+   .__________.
+   .   ...    .
+   .__________.
+   .0x1E14000 .
+   .  AREA_3  .
+   .0x1E18000 .
+   .__________.
+   .0x1E19000 .
+   .  AREA_4  .
+   .0X1E1D000 .
+   .__________.
+
+   */
 
    usleep(200000); 
-   LOG(DEBUG) << "USERCODE - 4 areas where allocated";
 
    char* area_5 = (char*) mmap( (void*)0x1E20000, PAGE_SIZE *5 , PROT_READ | PROT_WRITE,
                      MAP_PRIVATE | MAP_ANONYMOUS | MAP_FIXED, -1, 0);
@@ -348,14 +370,43 @@ void test_eviction_policy() {
    for (int i =0; i < PAGE_SIZE *5 ; i++ ) {
       area_5[i] = 'x';
    }
+   // area 5 first page should trig lpet
+   // expected memory layout:
+   /*
+   .__________.
+   .0x1D4C000 . 
+   .  AREA_1  .
+   .  EVICTED .
+   .0x1D50000 .
+   .__________.
+   .0x1D51000 .         
+   .  AREA_2  .
+   .0x1D56000.
+   .__________.
+   .   ...    .
+   .__________.
+   .0x1E14000 .
+   .  AREA_3  .
+   .0x1E18000 .
+   .__________.
+   .0x1E19000 .
+   .  AREA_4  .
+   .0X1E1D000 .
+   .__________.
+   .   ...    .
+   .__________.
+   .0x1E20000 .
+   .  AREA_5  .   
+   .0x1E60000 .   
+   .__________.
+   */
    usleep(70000); 
 
 
-   //touch pages in area 2
+   //touch pages in area 2 & area 3 
    for (int i =0; i < PAGE_SIZE *5 ; i++ ) {
       area_2[i] = 'z';
    }
-
 
    //touch pages in area 3
    for (int i =0; i < PAGE_SIZE *5 ; i++ ) {
@@ -363,8 +414,40 @@ void test_eviction_policy() {
    }
    usleep(10000); 
 
+   // bring back from disc, will trig lpet
    area_1[0] = 'y';
+   // expected memory layout:
 
+/*
+   .__________.
+   .0x1D4C000 .
+   .0x1D4D000 .    
+   .  ...     .
+   .  EVICTED .
+   .0x1D50000 .
+   .__________.
+   .0x1D51000 .         
+   .  AREA_2  . // area_2 hot pages 
+   .0x1D56000.
+   .__________.
+   .   ...    .
+   .__________.
+   .0x1E14000 .
+   .  AREA_3  . // area_3 hot pages
+   .0x1E18000 .
+   .__________.
+   .0x1E19000 .
+   .  AREA_4  .
+   .  EVICTED .
+   .0X1E1D000 .
+   .__________.
+   .   ...    .
+   .__________.
+   .0x1E20000 .
+   .  AREA_5  .   
+   .0x1E60000 .   
+   .__________.
+   */
 
 }
 

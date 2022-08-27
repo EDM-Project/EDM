@@ -69,33 +69,18 @@ void DmHandler::HandleMissPageFault(struct uffd_msg* msg){
      "flags = " << msg->arg.pagefault.flags << "  address = " << PRINT_AS_HEX(msg->arg.pagefault.address) ;
     
     unsigned long long vaddr = msg->arg.pagefault.address;
-    // int evicted_counter = this->client->RunLpet();
-    // if (evicted_counter != 0) {
-    //     LOG(DEBUG) << "[DmHandler] - num of evicted pages : " <<evicted_counter; 
-    //     //this->client->PrintPageList();
-    // }
-    //try
-
+    
     //handle race condition with lpet
     while(this->client->IsPageExist(vaddr)) {
         //busy wait. should be very short period of time
     }
 
-    // std::unique_lock<std::mutex> lck(this->client->run_lpet_mutex);
-    // if (this->client->GetPageListSize() >= high_threshold ) {
-    //     LOG(DEBUG) << "[DmHandler] - reached high threshold, notify lpet" ;
-    //     this->client->cv.notify_all();
-    // }
-    // //avoid memory flood
-    // while (this->client->GetPageListSize() >= high_threshold){
-    //     this->client->cv.wait(lck);
-    // }
+    
     InvokeLpetIfNeeded();
 
     //for debug, wait until lpet done 
     while(this->client->is_lpet_running) {}
     
-    //end try
     MPI_EDM::RequestGetPageData request_page = mpi_instance->RequestPageFromDMS(vaddr);
     switch (request_page.info){
         case(MPI_EDM::error):
@@ -125,7 +110,6 @@ void DmHandler::InvokeLpetIfNeeded(){
     while (this->client->GetPageListSize() >= high_threshold){
         LOG(DEBUG) << "[DmHandler] - avoid memory flood- dmhanler go to sleep....";
         this->client->cv.wait(lck);
-        LOG(DEBUG) << "[DmHandler] - lpet woke me up, page size is: " << this->client->GetPageListSize();
     }
 }
 
