@@ -23,7 +23,7 @@ DMS(int argc, char *argv[]);
 ~DMS();
 void ReadPageFromDisk(uintptr_t addr,char* page, int* info);
 void WritePageTodisk(uintptr_t addr, char* page, int* info);
-void DmHandlerThread();
+void ServeDmHandlerRequests();
 void XpetThread();
 void HandleRequestEvictPage (MPI_EDM::RequestEvictPageData* request);
 void HandleRequestGetPage(MPI_EDM::RequestGetPageData* request);

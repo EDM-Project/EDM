@@ -50,9 +50,11 @@ uint32_t Lpet::run()
         bool first_cycle = true;
         bool is_evicted = false;
         int index = start_point;
-        while(page_list.size() > low_thresh)
+        while( GetPageListSize() > low_thresh)
         {
-            std::lock_guard<std::mutex> lockGuard(this->page_list_mutex);
+            //std::lock_guard<std::mutex> lockGuard(this->page_list_mutex);
+            std::this_thread::yield();
+
             is_evicted = false;
             if(first_cycle && ctr >= init_size)
             {
@@ -77,7 +79,7 @@ uint32_t Lpet::run()
                 free(mem);
                 mremap((void*)evicted.vaddr,PAGE_SIZE,PAGE_SIZE,MREMAP_MAYMOVE | MREMAP_DONTUNMAP | MREMAP_FIXED, buffer);
 
-                page_list.erase(page_list.begin() + index);
+                EraseFromPageList(index);
                 evicted_ctr++;
             }
             else // no need to evict the current page - raise idle flag to 1'
@@ -96,7 +98,15 @@ uint32_t Lpet::run()
     return evicted_ctr;
 }
 
+void Lpet::EraseFromPageList(int index) {
+    std::lock_guard<std::mutex> lockGuard(this->page_list_mutex);
+    page_list.erase(page_list.begin() + index);
+}
 
+int Lpet::GetPageListSize() {
+    std::lock_guard<std::mutex> lockGuard(this->page_list_mutex);
+    return page_list.size();
+}
 
 std::ostream& operator<<(std::ostream& os, const Lpet& lpet){
   
@@ -112,3 +122,8 @@ std::ostream& operator<<(std::ostream& os, const Lpet& lpet){
     os << std::endl;
 }
 
+std::thread Lpet::ActivateLpet() { 
+    std::thread t (&Lpet::run,this);
+    return t;
+
+}

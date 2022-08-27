@@ -79,15 +79,42 @@ bool Client::IsPageExist(uintptr_t vaddr) {
     }
     return false;
 }
-
+/*
 void Client::RunLpetThread() {
     while (true) {
         is_lpet_running = false;
         std::unique_lock<std::mutex> lck(run_lpet_mutex);
         while(page_list.size() < high_threshold) cv.wait(lck);
-        LOG(DEBUG) << "[CLIENT] - reached high threshold. invoke lpet thread";
+        LOG(DEBUG) << "[CLIENT] - reached high threshold. run lpet cycle";
         is_lpet_running = true;
-        lpet->run();
+        std::thread lpet_thread = lpet->ActivateLpet();
+        LOG(DEBUG) << "[CLIENT] - lpet trigged";
+        //lpet->run();
+        cv.notify_all();
+        lpet_thread.join();
+        LOG(DEBUG) << "[CLIENT] - lpet end running cycle.";
+        is_lpet_running = false;
+        cv.notify_all();
+    }
+    //return lpet->run();
+}
+*/
+void Client::WaitForRunLpet() {
+    std::unique_lock<std::mutex> lck(run_lpet_mutex);
+    while(page_list.size() < high_threshold) cv.wait(lck);
+
+}
+void Client::RunLpetThread() {
+    while (true) {
+        is_lpet_running = false;
+        WaitForRunLpet();
+        //now we know that page list has max 
+        LOG(DEBUG) << "[CLIENT] - reached high threshold. run lpet cycle";
+        is_lpet_running = true;
+        std::thread lpet_thread = lpet->ActivateLpet();
+        LOG(DEBUG) << "[CLIENT] - lpet trigged";
+        cv.notify_all();
+        lpet_thread.join();
         LOG(DEBUG) << "[CLIENT] - lpet end running cycle.";
         is_lpet_running = false;
         cv.notify_all();

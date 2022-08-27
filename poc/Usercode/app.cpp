@@ -118,7 +118,7 @@ void end_to_end_test() {
    for (int i =0; i < PAGE_SIZE *10 ; i++ ) {
       area_2[i] = 'y';
    }
-   usleep(90000);
+   usleep(150000);
    /*
    NOW, the memory layout should look like this.
    20 pages allocated which means we is the maximum allowed. 
@@ -218,11 +218,12 @@ void end_to_end_test() {
    // temp = area_2[2*PAGE_SIZE];
 
    //create forth mapping which cause another eviction cycle
-   char* area_4 = (char*) mmap( (void*)0x1E89000, PAGE_SIZE *1 , PROT_READ | PROT_WRITE,
+   char* area_4 = (char*) mmap( (void*)0x1E89000, PAGE_SIZE *5 , PROT_READ | PROT_WRITE,
                      MAP_PRIVATE | MAP_ANONYMOUS | MAP_FIXED, -1, 0); 
 
-   area_4[0] = 'w';
-   
+   for (int i =0; i < PAGE_SIZE *5 ; i++ ) {
+      area_4[i] = 'z';
+   }   
    //now memory layout should look like this:
 
    /*
@@ -303,11 +304,74 @@ void test_mremap() {
 
 }
 
+/**
+ * @brief simple test for validate that lpet evicts cold pages
+ * in this case, high_threshold= 20 , low_threshold= 15 
+ * 
+ */
+void test_eviction_policy() { 
+
+   char* area_1 = (char*) mmap( (void*)0x1D4C000, PAGE_SIZE *5 , PROT_READ | PROT_WRITE,
+                     MAP_PRIVATE | MAP_ANONYMOUS | MAP_FIXED, -1, 0);
+   
+   for (int i =0; i < PAGE_SIZE *5 ; i++ ) {
+      area_1[i] = 'x';
+   }
+
+   char* area_2 = (char*) mmap( (void*)0x1D51000, PAGE_SIZE *5 , PROT_READ | PROT_WRITE,
+                     MAP_PRIVATE | MAP_ANONYMOUS | MAP_FIXED, -1, 0);
+   
+   for (int i =0; i < PAGE_SIZE *5 ; i++ ) {
+      area_2[i] = 'x';
+   }
+
+   char* area_3 = (char*) mmap( (void*)0x1E14000, PAGE_SIZE *5 , PROT_READ | PROT_WRITE,
+                     MAP_PRIVATE | MAP_ANONYMOUS | MAP_FIXED, -1, 0);
+   
+   for (int i =0; i < PAGE_SIZE *5 ; i++ ) {
+      area_3[i] = 'x';
+   }
+
+   char* area_4 = (char*) mmap( (void*)0x1E19000, PAGE_SIZE *5 , PROT_READ | PROT_WRITE,
+                     MAP_PRIVATE | MAP_ANONYMOUS | MAP_FIXED, -1, 0);
+   
+   for (int i =0; i < PAGE_SIZE *5 ; i++ ) {
+      area_4[i] = 'x';
+   }
+
+   usleep(200000); 
+   LOG(DEBUG) << "USERCODE - 4 areas where allocated";
+
+   char* area_5 = (char*) mmap( (void*)0x1E20000, PAGE_SIZE *5 , PROT_READ | PROT_WRITE,
+                     MAP_PRIVATE | MAP_ANONYMOUS | MAP_FIXED, -1, 0);
+   
+   for (int i =0; i < PAGE_SIZE *5 ; i++ ) {
+      area_5[i] = 'x';
+   }
+   usleep(70000); 
+
+
+   //touch pages in area 2
+   for (int i =0; i < PAGE_SIZE *5 ; i++ ) {
+      area_2[i] = 'z';
+   }
+
+
+   //touch pages in area 3
+   for (int i =0; i < PAGE_SIZE *5 ; i++ ) {
+      area_3[i] = 'z';
+   }
+   usleep(10000); 
+
+   area_1[0] = 'y';
+
+
+}
 
 
 int main(int argc, char *argv[])
 { 
-   test_dm_handler();
+   test_eviction_policy();
 
 
    return 0;

@@ -123,7 +123,9 @@ void DmHandler::InvokeLpetIfNeeded(){
     }
     //avoid memory flood
     while (this->client->GetPageListSize() >= high_threshold){
+        LOG(DEBUG) << "[DmHandler] - avoid memory flood- dmhanler go to sleep....";
         this->client->cv.wait(lck);
+        LOG(DEBUG) << "[DmHandler] - lpet woke me up, page size is: " << this->client->GetPageListSize();
     }
 }
 

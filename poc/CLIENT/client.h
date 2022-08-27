@@ -35,6 +35,7 @@ private:
 public:
     std::mutex run_lpet_mutex;
     std::condition_variable cv;
+    //for debug
     bool is_lpet_running;
 
     Client ();
@@ -44,6 +45,7 @@ public:
     int GetPageListSize();
     bool IsPageExist(uintptr_t vaddr);
     void RunLpetThread();
+    void WaitForRunLpet();
     void UserThread();
     void RunUserThread();
 

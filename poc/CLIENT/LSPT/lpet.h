@@ -33,6 +33,10 @@ public:
     uint32_t run();
     std::string PrintLpetState(); 
     //void RunLpetThread();
+    void EraseFromPageList(int index);
+    int GetPageListSize();
+    std::thread ActivateLpet();
+
     friend std::ostream& operator<<(std::ostream& os, const Lpet& lpet);
 };
 std::ostream& operator<<(std::ostream& os, const Lpet& lpet);
