@@ -18,7 +18,7 @@ bool comparePages(char* source, char* dest){
    return false;
 }
 /**
- * @brief simple end-to-end test to verify flow correctness. 
+ * @brief simple end-to-end test to verify flow correctness. with one lpet cycle
  * 
  */
 void test_simple_flow_eviction() {
@@ -118,7 +118,7 @@ void end_to_end_test() {
    for (int i =0; i < PAGE_SIZE *10 ; i++ ) {
       area_2[i] = 'y';
    }
-   usleep(50000);
+   usleep(90000);
    /*
    NOW, the memory layout should look like this.
    20 pages allocated which means we is the maximum allowed. 
@@ -261,7 +261,30 @@ void end_to_end_test() {
 
 }
 
+/**
+ * @brief test 
+ * 
+ */
+void test_dm_handler() {
 
+   LOG(DEBUG) << "[Usercode] : User code main function start running" ;
+
+   char* area_1 = (char*) mmap( (void*)0x1D4C000, PAGE_SIZE, PROT_READ | PROT_WRITE,
+                       MAP_PRIVATE | MAP_ANONYMOUS | MAP_FIXED, -1, 0);
+    
+   char* area_2 = (char*) mmap( (void*)0x1E14000, PAGE_SIZE, PROT_READ | PROT_WRITE,
+                     MAP_PRIVATE | MAP_ANONYMOUS | MAP_FIXED, -1, 0);
+   char* area_3 = (char*) mmap( (void*)0x1E78000, PAGE_SIZE, PROT_READ | PROT_WRITE,
+                     MAP_PRIVATE | MAP_ANONYMOUS | MAP_FIXED, -1, 0);                       
+
+   area_1[0] = 'x';
+   LOG(DEBUG)<< "[Usercode] : area_1[0] " << area_1[0] ;
+   area_2[0] = 'y';
+   LOG(DEBUG)<< "[Usercode] : area_2[0] " << area_2[0] ;
+   area_3[0] = 'z';
+   LOG(DEBUG)<< "[Usercode] : area_3[0] " << area_3[0] ;
+
+}
 
 void test_mremap() {
 
@@ -284,27 +307,8 @@ void test_mremap() {
 
 int main(int argc, char *argv[])
 { 
-   end_to_end_test();
-
-/*
-
-   LOG(DEBUG) << "[Usercode] : User code main function start running" ;
+   test_dm_handler();
 
 
-   char* area_1 = (char*) mmap( (void*)0x1D4C000, PAGE_SIZE, PROT_READ | PROT_WRITE,
-                       MAP_SHARED | MAP_ANONYMOUS | MAP_FIXED, -1, 0);
-    
-   char* area_2 = (char*) mmap( (void*)0x1E14000, PAGE_SIZE, PROT_READ | PROT_WRITE,
-                     MAP_SHARED | MAP_ANONYMOUS | MAP_FIXED, -1, 0);
-   char* area_3 = (char*) mmap( (void*)0x1E78000, PAGE_SIZE, PROT_READ | PROT_WRITE,
-                     MAP_SHARED | MAP_ANONYMOUS | MAP_FIXED, -1, 0);                       
-
-   area_1[0] = 'x';
-   LOG(DEBUG)<< "[Usercode] : area_1[0] " << area_1[0] ;
-   area_2[0] = 'y';
-   LOG(DEBUG)<< "[Usercode] : area_2[0] " << area_2[0] ;
-   area_3[0] = 'z';
-   LOG(DEBUG)<< "[Usercode] : area_3[0] " << area_3[0] ;
-*/
    return 0;
 }

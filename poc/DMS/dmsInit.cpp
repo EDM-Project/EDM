@@ -13,7 +13,6 @@
 
 int main(int argc, char *argv[])
 {  
-   LOG(DEBUG) << "[DMS] dms init start running";
    DMS dms(argc,argv);
    return 0;
 }

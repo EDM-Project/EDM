@@ -1,5 +1,5 @@
 --------------------------------------------------------------------------
-[[47835,1],0]: A high-performance Open MPI point-to-point messaging module
+[[25148,1],0]: A high-performance Open MPI point-to-point messaging module
 was unable to find any relevant network interfaces:
 
 Module: OpenFabrics (openib)
@@ -11,60 +11,60 @@ lower performance.
 NOTE: You can disable this warning by setting the MCA parameter
 btl_base_warn_component_unused to 0.
 --------------------------------------------------------------------------
-[Fri Aug 26 2022 13:09:18.125]:[Debug]-[DMS] dms init start running
-[Fri Aug 26 2022 13:09:18.346]:[Debug]-[EDM CLIENT] -  INIT
-[Fri Aug 26 2022 13:09:18.522]:[Debug]-[Uffd] - UFFD_EVENT_PAGEFAULT event: 
+[Sat Aug 27 2022 09:44:26.892]:[Debug]-[DMS] dms init start running
+[Sat Aug 27 2022 09:44:27.109]:[Debug]-[EDM CLIENT] -  INIT
+[Sat Aug 27 2022 09:44:27.294]:[Debug]-[DmHandler] - UFFD_EVENT_PAGEFAULT event: 
 flags = 1  address = 0x1d4c000
-[Fri Aug 26 2022 13:09:18.522]:[Debug]-[Lpet] PAGE LIST EMPTY 
-[Fri Aug 26 2022 13:09:18.530]:[Debug]-[DM HANDLER] - request the page in address 0x1d4c000
-[Fri Aug 26 2022 13:09:18.538]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1d4c000
-[Fri Aug 26 2022 13:09:18.538]:[Debug]-[DMS] - page accessed first time, set info - new_page
-[Fri Aug 26 2022 13:09:18.539]:[Debug]-DMS- Print SPT STATE
+[Sat Aug 27 2022 09:44:27.301]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1d4c000
+[Sat Aug 27 2022 09:44:27.301]:[Debug]-[DM HANDLER] - request the page in address 0x1d4c000
+[Sat Aug 27 2022 09:44:27.305]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Sat Aug 27 2022 09:44:27.306]:[Debug]-[DM HANDLER] - get response of the page in address 0x1d4c000
+[Sat Aug 27 2022 09:44:27.306]:[Debug]-[DmHandler] - RequestPageFromDMS succeeded. 
+[Sat Aug 27 2022 09:44:27.306]:[Debug]-[DmHandler] - page accessed first time, copy zero page of address 0x1d4c000
+[Sat Aug 27 2022 09:44:27.306]:[Debug]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 ------END SPT-----
 
-[Fri Aug 26 2022 13:09:18.539]:[Debug]-[DMS] - page in address: 0x1d4c000 send to app
-[Fri Aug 26 2022 13:09:18.539]:[Debug]-[DM HANDLER] - get response of the page in address 0x1d4c000
-[Fri Aug 26 2022 13:09:18.539]:[Debug]-[Uffd] - RequestPageFromDMS succeeded. 
-[Fri Aug 26 2022 13:09:18.539]:[Debug]-[Uffd] - page accessed first time, copy zero page of address 0x1d4c000
-[Fri Aug 26 2022 13:09:18.539]:[Debug]-[Uffd] - UFFD_EVENT_PAGEFAULT event: 
+[Sat Aug 27 2022 09:44:27.306]:[Debug]-[DmHandler] - UFFD_EVENT_PAGEFAULT event: 
 flags = 1  address = 0x1d4d000
-[Fri Aug 26 2022 13:09:18.540]:[Debug]-[DM HANDLER] - request the page in address 0x1d4d000
-[Fri Aug 26 2022 13:09:18.540]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1d4d000
-[Fri Aug 26 2022 13:09:18.540]:[Debug]-[DMS] - page accessed first time, set info - new_page
-[Fri Aug 26 2022 13:09:18.540]:[Debug]-DMS- Print SPT STATE
+[Sat Aug 27 2022 09:44:27.306]:[Debug]-[DM HANDLER] - request the page in address 0x1d4d000
+[Sat Aug 27 2022 09:44:27.306]:[Debug]-[DMS] - page in address: 0x1d4c000 send to app
+[Sat Aug 27 2022 09:44:27.306]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1d4d000
+[Sat Aug 27 2022 09:44:27.309]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Sat Aug 27 2022 09:44:27.310]:[Debug]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
 ------END SPT-----
 
-[Fri Aug 26 2022 13:09:18.540]:[Debug]-[DMS] - page in address: 0x1d4d000 send to app
-[Fri Aug 26 2022 13:09:18.540]:[Debug]-[DM HANDLER] - get response of the page in address 0x1d4d000
-[Fri Aug 26 2022 13:09:18.540]:[Debug]-[Uffd] - RequestPageFromDMS succeeded. 
-[Fri Aug 26 2022 13:09:18.540]:[Debug]-[Uffd] - page accessed first time, copy zero page of address 0x1d4d000
-[Fri Aug 26 2022 13:09:18.540]:[Debug]-[Uffd] - UFFD_EVENT_PAGEFAULT event: 
+[Sat Aug 27 2022 09:44:27.310]:[Debug]-[DMS] - page in address: 0x1d4d000 send to app
+[Sat Aug 27 2022 09:44:27.310]:[Debug]-[DM HANDLER] - get response of the page in address 0x1d4d000
+[Sat Aug 27 2022 09:44:27.310]:[Debug]-[DmHandler] - RequestPageFromDMS succeeded. 
+[Sat Aug 27 2022 09:44:27.310]:[Debug]-[DmHandler] - page accessed first time, copy zero page of address 0x1d4d000
+[Sat Aug 27 2022 09:44:27.310]:[Debug]-[DmHandler] - UFFD_EVENT_PAGEFAULT event: 
 flags = 1  address = 0x1d4e000
-[Fri Aug 26 2022 13:09:18.540]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1d4e000
-[Fri Aug 26 2022 13:09:18.540]:[Debug]-[DM HANDLER] - request the page in address 0x1d4e000
-[Fri Aug 26 2022 13:09:18.540]:[Debug]-[DMS] - page accessed first time, set info - new_page
-[Fri Aug 26 2022 13:09:18.540]:[Debug]-DMS- Print SPT STATE
+[Sat Aug 27 2022 09:44:27.310]:[Debug]-[DM HANDLER] - request the page in address 0x1d4e000
+[Sat Aug 27 2022 09:44:27.312]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1d4e000
+[Sat Aug 27 2022 09:44:27.313]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Sat Aug 27 2022 09:44:27.313]:[Debug]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
 address : 0x1d4e000  location : INSTANCE_0
 ------END SPT-----
 
-[Fri Aug 26 2022 13:09:18.540]:[Debug]-[DMS] - page in address: 0x1d4e000 send to app
-[Fri Aug 26 2022 13:09:18.540]:[Debug]-[DM HANDLER] - get response of the page in address 0x1d4e000
-[Fri Aug 26 2022 13:09:18.541]:[Debug]-[Uffd] - RequestPageFromDMS succeeded. 
-[Fri Aug 26 2022 13:09:18.541]:[Debug]-[Uffd] - page accessed first time, copy zero page of address 0x1d4e000
-[Fri Aug 26 2022 13:09:18.541]:[Debug]-[Uffd] - UFFD_EVENT_PAGEFAULT event: 
+[Sat Aug 27 2022 09:44:27.313]:[Debug]-[DMS] - page in address: 0x1d4e000 send to app
+[Sat Aug 27 2022 09:44:27.313]:[Debug]-[DM HANDLER] - get response of the page in address 0x1d4e000
+[Sat Aug 27 2022 09:44:27.313]:[Debug]-[DmHandler] - RequestPageFromDMS succeeded. 
+[Sat Aug 27 2022 09:44:27.313]:[Debug]-[DmHandler] - page accessed first time, copy zero page of address 0x1d4e000
+[Sat Aug 27 2022 09:44:27.314]:[Debug]-[DmHandler] - UFFD_EVENT_PAGEFAULT event: 
 flags = 1  address = 0x1d4f000
-[Fri Aug 26 2022 13:09:18.541]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1d4f000
-[Fri Aug 26 2022 13:09:18.541]:[Debug]-[DM HANDLER] - request the page in address 0x1d4f000
-[Fri Aug 26 2022 13:09:18.541]:[Debug]-[DMS] - page accessed first time, set info - new_page
-[Fri Aug 26 2022 13:09:18.541]:[Debug]-DMS- Print SPT STATE
+[Sat Aug 27 2022 09:44:27.314]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1d4f000
+[Sat Aug 27 2022 09:44:27.314]:[Debug]-[DM HANDLER] - request the page in address 0x1d4f000
+[Sat Aug 27 2022 09:44:27.314]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Sat Aug 27 2022 09:44:27.314]:[Debug]-[DM HANDLER] - get response of the page in address 0x1d4f000
+[Sat Aug 27 2022 09:44:27.314]:[Debug]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -72,16 +72,16 @@ address : 0x1d4e000  location : INSTANCE_0
 address : 0x1d4f000  location : INSTANCE_0
 ------END SPT-----
 
-[Fri Aug 26 2022 13:09:18.541]:[Debug]-[DMS] - page in address: 0x1d4f000 send to app
-[Fri Aug 26 2022 13:09:18.541]:[Debug]-[DM HANDLER] - get response of the page in address 0x1d4f000
-[Fri Aug 26 2022 13:09:18.541]:[Debug]-[Uffd] - RequestPageFromDMS succeeded. 
-[Fri Aug 26 2022 13:09:18.541]:[Debug]-[Uffd] - page accessed first time, copy zero page of address 0x1d4f000
-[Fri Aug 26 2022 13:09:18.541]:[Debug]-[Uffd] - UFFD_EVENT_PAGEFAULT event: 
+[Sat Aug 27 2022 09:44:27.314]:[Debug]-[DmHandler] - RequestPageFromDMS succeeded. 
+[Sat Aug 27 2022 09:44:27.314]:[Debug]-[DmHandler] - page accessed first time, copy zero page of address 0x1d4f000
+[Sat Aug 27 2022 09:44:27.314]:[Debug]-[DMS] - page in address: 0x1d4f000 send to app
+[Sat Aug 27 2022 09:44:27.314]:[Debug]-[DmHandler] - UFFD_EVENT_PAGEFAULT event: 
 flags = 1  address = 0x1d50000
-[Fri Aug 26 2022 13:09:18.541]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1d50000
-[Fri Aug 26 2022 13:09:18.541]:[Debug]-[DM HANDLER] - request the page in address 0x1d50000
-[Fri Aug 26 2022 13:09:18.541]:[Debug]-[DMS] - page accessed first time, set info - new_page
-[Fri Aug 26 2022 13:09:18.541]:[Debug]-DMS- Print SPT STATE
+[Sat Aug 27 2022 09:44:27.314]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1d50000
+[Sat Aug 27 2022 09:44:27.314]:[Debug]-[DM HANDLER] - request the page in address 0x1d50000
+[Sat Aug 27 2022 09:44:27.314]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Sat Aug 27 2022 09:44:27.314]:[Debug]-[DM HANDLER] - get response of the page in address 0x1d50000
+[Sat Aug 27 2022 09:44:27.314]:[Debug]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -90,16 +90,16 @@ address : 0x1d4f000  location : INSTANCE_0
 address : 0x1d50000  location : INSTANCE_0
 ------END SPT-----
 
-[Fri Aug 26 2022 13:09:18.541]:[Debug]-[DMS] - page in address: 0x1d50000 send to app
-[Fri Aug 26 2022 13:09:18.542]:[Debug]-[DM HANDLER] - get response of the page in address 0x1d50000
-[Fri Aug 26 2022 13:09:18.542]:[Debug]-[Uffd] - RequestPageFromDMS succeeded. 
-[Fri Aug 26 2022 13:09:18.542]:[Debug]-[Uffd] - page accessed first time, copy zero page of address 0x1d50000
-[Fri Aug 26 2022 13:09:18.542]:[Debug]-[Uffd] - UFFD_EVENT_PAGEFAULT event: 
+[Sat Aug 27 2022 09:44:27.315]:[Debug]-[DmHandler] - RequestPageFromDMS succeeded. 
+[Sat Aug 27 2022 09:44:27.315]:[Debug]-[DmHandler] - page accessed first time, copy zero page of address 0x1d50000
+[Sat Aug 27 2022 09:44:27.315]:[Debug]-[DMS] - page in address: 0x1d50000 send to app
+[Sat Aug 27 2022 09:44:27.315]:[Debug]-[DmHandler] - UFFD_EVENT_PAGEFAULT event: 
 flags = 1  address = 0x1d51000
-[Fri Aug 26 2022 13:09:18.542]:[Debug]-[DM HANDLER] - request the page in address 0x1d51000
-[Fri Aug 26 2022 13:09:18.542]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1d51000
-[Fri Aug 26 2022 13:09:18.542]:[Debug]-[DMS] - page accessed first time, set info - new_page
-[Fri Aug 26 2022 13:09:18.542]:[Debug]-DMS- Print SPT STATE
+[Sat Aug 27 2022 09:44:27.315]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1d51000
+[Sat Aug 27 2022 09:44:27.315]:[Debug]-[DM HANDLER] - request the page in address 0x1d51000
+[Sat Aug 27 2022 09:44:27.315]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Sat Aug 27 2022 09:44:27.315]:[Debug]-[DM HANDLER] - get response of the page in address 0x1d51000
+[Sat Aug 27 2022 09:44:27.315]:[Debug]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -109,16 +109,20 @@ address : 0x1d50000  location : INSTANCE_0
 address : 0x1d51000  location : INSTANCE_0
 ------END SPT-----
 
-[Fri Aug 26 2022 13:09:18.542]:[Debug]-[DMS] - page in address: 0x1d51000 send to app
-[Fri Aug 26 2022 13:09:18.542]:[Debug]-[DM HANDLER] - get response of the page in address 0x1d51000
-[Fri Aug 26 2022 13:09:18.542]:[Debug]-[Uffd] - RequestPageFromDMS succeeded. 
-[Fri Aug 26 2022 13:09:18.542]:[Debug]-[Uffd] - page accessed first time, copy zero page of address 0x1d51000
-[Fri Aug 26 2022 13:09:18.543]:[Debug]-[Uffd] - UFFD_EVENT_PAGEFAULT event: 
+[Sat Aug 27 2022 09:44:27.315]:[Debug]-[DMS] - page in address: 0x1d51000 send to app
+[Sat Aug 27 2022 09:44:27.315]:[Debug]-[DmHandler] - RequestPageFromDMS succeeded. 
+[Sat Aug 27 2022 09:44:27.315]:[Debug]-[DmHandler] - page accessed first time, copy zero page of address 0x1d51000
+[Sat Aug 27 2022 09:44:27.315]:[Debug]-[DmHandler] - UFFD_EVENT_PAGEFAULT event: 
 flags = 1  address = 0x1d52000
-[Fri Aug 26 2022 13:09:18.543]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1d52000
-[Fri Aug 26 2022 13:09:18.543]:[Debug]-[DM HANDLER] - request the page in address 0x1d52000
-[Fri Aug 26 2022 13:09:18.543]:[Debug]-[DMS] - page accessed first time, set info - new_page
-[Fri Aug 26 2022 13:09:18.543]:[Debug]-DMS- Print SPT STATE
+[Sat Aug 27 2022 09:44:27.315]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1d52000
+[Sat Aug 27 2022 09:44:27.315]:[Debug]-[DM HANDLER] - request the page in address 0x1d52000
+[Sat Aug 27 2022 09:44:27.315]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Sat Aug 27 2022 09:44:27.328]:[Debug]-[DM HANDLER] - get response of the page in address 0x1d52000
+[Sat Aug 27 2022 09:44:27.328]:[Debug]-[DmHandler] - RequestPageFromDMS succeeded. 
+[Sat Aug 27 2022 09:44:27.328]:[Debug]-[DmHandler] - page accessed first time, copy zero page of address 0x1d52000
+[Sat Aug 27 2022 09:44:27.328]:[Debug]-[DmHandler] - UFFD_EVENT_PAGEFAULT event: 
+flags = 1  address = 0x1d53000
+[Sat Aug 27 2022 09:44:27.327]:[Debug]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -129,17 +133,10 @@ address : 0x1d51000  location : INSTANCE_0
 address : 0x1d52000  location : INSTANCE_0
 ------END SPT-----
 
-[Fri Aug 26 2022 13:09:18.543]:[Debug]-[DMS] - page in address: 0x1d52000 send to app
-[Fri Aug 26 2022 13:09:18.543]:[Debug]-[DM HANDLER] - get response of the page in address 0x1d52000
-[Fri Aug 26 2022 13:09:18.543]:[Debug]-[Uffd] - RequestPageFromDMS succeeded. 
-[Fri Aug 26 2022 13:09:18.543]:[Debug]-[Uffd] - page accessed first time, copy zero page of address 0x1d52000
-[Fri Aug 26 2022 13:09:18.543]:[Debug]-[Uffd] - UFFD_EVENT_PAGEFAULT event: 
-flags = 1  address = 0x1d53000
-[Fri Aug 26 2022 13:09:18.543]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1d53000
-[Fri Aug 26 2022 13:09:18.543]:[Debug]-[DM HANDLER] - request the page in address 0x1d53000
-[Fri Aug 26 2022 13:09:18.543]:[Debug]-[DMS] - page accessed first time, set info - new_page
-[Fri Aug 26 2022 13:09:18.551]:[Debug]-[DM HANDLER] - get response of the page in address 0x1d53000
-[Fri Aug 26 2022 13:09:18.551]:[Debug]-DMS- Print SPT STATE
+[Sat Aug 27 2022 09:44:27.328]:[Debug]-[DMS] - page in address: 0x1d52000 send to app
+[Sat Aug 27 2022 09:44:27.328]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1d53000
+[Sat Aug 27 2022 09:44:27.329]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Sat Aug 27 2022 09:44:27.329]:[Debug]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -151,15 +148,17 @@ address : 0x1d52000  location : INSTANCE_0
 address : 0x1d53000  location : INSTANCE_0
 ------END SPT-----
 
-[Fri Aug 26 2022 13:09:18.551]:[Debug]-[DMS] - page in address: 0x1d53000 send to app
-[Fri Aug 26 2022 13:09:18.551]:[Debug]-[Uffd] - RequestPageFromDMS succeeded. 
-[Fri Aug 26 2022 13:09:18.551]:[Debug]-[Uffd] - page accessed first time, copy zero page of address 0x1d53000
-[Fri Aug 26 2022 13:09:18.552]:[Debug]-[Uffd] - UFFD_EVENT_PAGEFAULT event: 
+[Sat Aug 27 2022 09:44:27.329]:[Debug]-[DMS] - page in address: 0x1d53000 send to app
+[Sat Aug 27 2022 09:44:27.328]:[Debug]-[DM HANDLER] - request the page in address 0x1d53000
+[Sat Aug 27 2022 09:44:27.330]:[Debug]-[DM HANDLER] - get response of the page in address 0x1d53000
+[Sat Aug 27 2022 09:44:27.330]:[Debug]-[DmHandler] - RequestPageFromDMS succeeded. 
+[Sat Aug 27 2022 09:44:27.330]:[Debug]-[DmHandler] - page accessed first time, copy zero page of address 0x1d53000
+[Sat Aug 27 2022 09:44:27.330]:[Debug]-[DmHandler] - UFFD_EVENT_PAGEFAULT event: 
 flags = 1  address = 0x1d54000
-[Fri Aug 26 2022 13:09:18.552]:[Debug]-[DM HANDLER] - request the page in address 0x1d54000
-[Fri Aug 26 2022 13:09:18.569]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1d54000
-[Fri Aug 26 2022 13:09:18.570]:[Debug]-[DMS] - page accessed first time, set info - new_page
-[Fri Aug 26 2022 13:09:18.570]:[Debug]-DMS- Print SPT STATE
+[Sat Aug 27 2022 09:44:27.332]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1d54000
+[Sat Aug 27 2022 09:44:27.334]:[Debug]-[DM HANDLER] - request the page in address 0x1d54000
+[Sat Aug 27 2022 09:44:27.334]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Sat Aug 27 2022 09:44:27.334]:[Debug]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -172,16 +171,17 @@ address : 0x1d53000  location : INSTANCE_0
 address : 0x1d54000  location : INSTANCE_0
 ------END SPT-----
 
-[Fri Aug 26 2022 13:09:18.570]:[Debug]-[DMS] - page in address: 0x1d54000 send to app
-[Fri Aug 26 2022 13:09:18.570]:[Debug]-[DM HANDLER] - get response of the page in address 0x1d54000
-[Fri Aug 26 2022 13:09:18.570]:[Debug]-[Uffd] - RequestPageFromDMS succeeded. 
-[Fri Aug 26 2022 13:09:18.570]:[Debug]-[Uffd] - page accessed first time, copy zero page of address 0x1d54000
-[Fri Aug 26 2022 13:09:18.570]:[Debug]-[Uffd] - UFFD_EVENT_PAGEFAULT event: 
+[Sat Aug 27 2022 09:44:27.334]:[Debug]-[DMS] - page in address: 0x1d54000 send to app
+[Sat Aug 27 2022 09:44:27.334]:[Debug]-[DM HANDLER] - get response of the page in address 0x1d54000
+[Sat Aug 27 2022 09:44:27.334]:[Debug]-[DmHandler] - RequestPageFromDMS succeeded. 
+[Sat Aug 27 2022 09:44:27.335]:[Debug]-[DmHandler] - page accessed first time, copy zero page of address 0x1d54000
+[Sat Aug 27 2022 09:44:27.335]:[Debug]-[DmHandler] - UFFD_EVENT_PAGEFAULT event: 
 flags = 1  address = 0x1d55000
-[Fri Aug 26 2022 13:09:18.570]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1d55000
-[Fri Aug 26 2022 13:09:18.570]:[Debug]-[DM HANDLER] - request the page in address 0x1d55000
-[Fri Aug 26 2022 13:09:18.570]:[Debug]-[DMS] - page accessed first time, set info - new_page
-[Fri Aug 26 2022 13:09:18.570]:[Debug]-DMS- Print SPT STATE
+[Sat Aug 27 2022 09:44:27.335]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1d55000
+[Sat Aug 27 2022 09:44:27.335]:[Debug]-[DM HANDLER] - request the page in address 0x1d55000
+[Sat Aug 27 2022 09:44:27.335]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Sat Aug 27 2022 09:44:27.335]:[Debug]-[DM HANDLER] - get response of the page in address 0x1d55000
+[Sat Aug 27 2022 09:44:27.335]:[Debug]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -195,16 +195,17 @@ address : 0x1d54000  location : INSTANCE_0
 address : 0x1d55000  location : INSTANCE_0
 ------END SPT-----
 
-[Fri Aug 26 2022 13:09:18.570]:[Debug]-[DMS] - page in address: 0x1d55000 send to app
-[Fri Aug 26 2022 13:09:18.570]:[Debug]-[DM HANDLER] - get response of the page in address 0x1d55000
-[Fri Aug 26 2022 13:09:18.570]:[Debug]-[Uffd] - RequestPageFromDMS succeeded. 
-[Fri Aug 26 2022 13:09:18.570]:[Debug]-[Uffd] - page accessed first time, copy zero page of address 0x1d55000
-[Fri Aug 26 2022 13:09:18.571]:[Debug]-[Uffd] - UFFD_EVENT_PAGEFAULT event: 
+[Sat Aug 27 2022 09:44:27.335]:[Debug]-[DMS] - page in address: 0x1d55000 send to app
+[Sat Aug 27 2022 09:44:27.335]:[Debug]-[DmHandler] - RequestPageFromDMS succeeded. 
+[Sat Aug 27 2022 09:44:27.336]:[Debug]-[DmHandler] - page accessed first time, copy zero page of address 0x1d55000
+[Sat Aug 27 2022 09:44:27.336]:[Debug]-[DmHandler] - UFFD_EVENT_PAGEFAULT event: 
 flags = 1  address = 0x1e14000
-[Fri Aug 26 2022 13:09:18.571]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1e14000
-[Fri Aug 26 2022 13:09:18.571]:[Debug]-[DM HANDLER] - request the page in address 0x1e14000
-[Fri Aug 26 2022 13:09:18.571]:[Debug]-[DMS] - page accessed first time, set info - new_page
-[Fri Aug 26 2022 13:09:18.571]:[Debug]-DMS- Print SPT STATE
+[Sat Aug 27 2022 09:44:27.336]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1e14000
+[Sat Aug 27 2022 09:44:27.336]:[Debug]-[DM HANDLER] - request the page in address 0x1e14000
+[Sat Aug 27 2022 09:44:27.336]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Sat Aug 27 2022 09:44:27.343]:[Debug]-[DM HANDLER] - get response of the page in address 0x1e14000
+[Sat Aug 27 2022 09:44:27.343]:[Debug]-[DmHandler] - RequestPageFromDMS succeeded. 
+[Sat Aug 27 2022 09:44:27.343]:[Debug]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -219,16 +220,15 @@ address : 0x1d55000  location : INSTANCE_0
 address : 0x1e14000  location : INSTANCE_0
 ------END SPT-----
 
-[Fri Aug 26 2022 13:09:18.571]:[Debug]-[DMS] - page in address: 0x1e14000 send to app
-[Fri Aug 26 2022 13:09:18.571]:[Debug]-[DM HANDLER] - get response of the page in address 0x1e14000
-[Fri Aug 26 2022 13:09:18.571]:[Debug]-[Uffd] - RequestPageFromDMS succeeded. 
-[Fri Aug 26 2022 13:09:18.571]:[Debug]-[Uffd] - page accessed first time, copy zero page of address 0x1e14000
-[Fri Aug 26 2022 13:09:18.571]:[Debug]-[Uffd] - UFFD_EVENT_PAGEFAULT event: 
+[Sat Aug 27 2022 09:44:27.343]:[Debug]-[DmHandler] - page accessed first time, copy zero page of address 0x1e14000
+[Sat Aug 27 2022 09:44:27.343]:[Debug]-[DMS] - page in address: 0x1e14000 send to app
+[Sat Aug 27 2022 09:44:27.343]:[Debug]-[DmHandler] - UFFD_EVENT_PAGEFAULT event: 
 flags = 1  address = 0x1e15000
-[Fri Aug 26 2022 13:09:18.571]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1e15000
-[Fri Aug 26 2022 13:09:18.571]:[Debug]-[DM HANDLER] - request the page in address 0x1e15000
-[Fri Aug 26 2022 13:09:18.575]:[Debug]-[DMS] - page accessed first time, set info - new_page
-[Fri Aug 26 2022 13:09:18.575]:[Debug]-DMS- Print SPT STATE
+[Sat Aug 27 2022 09:44:27.343]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1e15000
+[Sat Aug 27 2022 09:44:27.343]:[Debug]-[DM HANDLER] - request the page in address 0x1e15000
+[Sat Aug 27 2022 09:44:27.344]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Sat Aug 27 2022 09:44:27.344]:[Debug]-[DM HANDLER] - get response of the page in address 0x1e15000
+[Sat Aug 27 2022 09:44:27.344]:[Debug]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -244,21 +244,15 @@ address : 0x1e14000  location : INSTANCE_0
 address : 0x1e15000  location : INSTANCE_0
 ------END SPT-----
 
-[Fri Aug 26 2022 13:09:18.575]:[Debug]-[DMS] - page in address: 0x1e15000 send to app
-[Fri Aug 26 2022 13:09:18.575]:[Debug]-[DM HANDLER] - get response of the page in address 0x1e15000
-[Fri Aug 26 2022 13:09:18.575]:[Debug]-[Uffd] - RequestPageFromDMS succeeded. 
-[Fri Aug 26 2022 13:09:18.576]:[Debug]-[Uffd] - page accessed first time, copy zero page of address 0x1e15000
-[Fri Aug 26 2022 13:09:18.576]:[Debug]-[Uffd] - UFFD_EVENT_PAGEFAULT event: 
+[Sat Aug 27 2022 09:44:27.344]:[Debug]-[DmHandler] - RequestPageFromDMS succeeded. 
+[Sat Aug 27 2022 09:44:27.344]:[Debug]-[DmHandler] - page accessed first time, copy zero page of address 0x1e15000
+[Sat Aug 27 2022 09:44:27.344]:[Debug]-[DMS] - page in address: 0x1e15000 send to app
+[Sat Aug 27 2022 09:44:27.344]:[Debug]-[DmHandler] - UFFD_EVENT_PAGEFAULT event: 
 flags = 1  address = 0x1e16000
-[Fri Aug 26 2022 13:09:18.576]:[Debug]-[DM HANDLER] - request the page in address 0x1e16000
-[Fri Aug 26 2022 13:09:18.576]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1e16000
-[Fri Aug 26 2022 13:09:18.576]:[Debug]-[DMS] - page accessed first time, set info - new_page
-[Fri Aug 26 2022 13:09:18.576]:[Debug]-[DM HANDLER] - get response of the page in address 0x1e16000
-[Fri Aug 26 2022 13:09:18.576]:[Debug]-[Uffd] - RequestPageFromDMS succeeded. 
-[Fri Aug 26 2022 13:09:18.576]:[Debug]-[Uffd] - page accessed first time, copy zero page of address 0x1e16000
-[Fri Aug 26 2022 13:09:18.576]:[Debug]-[Uffd] - UFFD_EVENT_PAGEFAULT event: 
-flags = 1  address = 0x1e17000
-[Fri Aug 26 2022 13:09:18.576]:[Debug]-DMS- Print SPT STATE
+[Sat Aug 27 2022 09:44:27.344]:[Debug]-[DM HANDLER] - request the page in address 0x1e16000
+[Sat Aug 27 2022 09:44:27.345]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1e16000
+[Sat Aug 27 2022 09:44:27.345]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Sat Aug 27 2022 09:44:27.345]:[Debug]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -275,11 +269,17 @@ address : 0x1e15000  location : INSTANCE_0
 address : 0x1e16000  location : INSTANCE_0
 ------END SPT-----
 
-[Fri Aug 26 2022 13:09:18.576]:[Debug]-[DMS] - page in address: 0x1e16000 send to app
-[Fri Aug 26 2022 13:09:18.576]:[Debug]-[DM HANDLER] - request the page in address 0x1e17000
-[Fri Aug 26 2022 13:09:18.576]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1e17000
-[Fri Aug 26 2022 13:09:18.576]:[Debug]-[DMS] - page accessed first time, set info - new_page
-[Fri Aug 26 2022 13:09:18.576]:[Debug]-DMS- Print SPT STATE
+[Sat Aug 27 2022 09:44:27.345]:[Debug]-[DMS] - page in address: 0x1e16000 send to app
+[Sat Aug 27 2022 09:44:27.350]:[Debug]-[DM HANDLER] - get response of the page in address 0x1e16000
+[Sat Aug 27 2022 09:44:27.350]:[Debug]-[DmHandler] - RequestPageFromDMS succeeded. 
+[Sat Aug 27 2022 09:44:27.350]:[Debug]-[DmHandler] - page accessed first time, copy zero page of address 0x1e16000
+[Sat Aug 27 2022 09:44:27.351]:[Debug]-[DmHandler] - UFFD_EVENT_PAGEFAULT event: 
+flags = 1  address = 0x1e17000
+[Sat Aug 27 2022 09:44:27.351]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1e17000
+[Sat Aug 27 2022 09:44:27.351]:[Debug]-[DM HANDLER] - request the page in address 0x1e17000
+[Sat Aug 27 2022 09:44:27.351]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Sat Aug 27 2022 09:44:27.351]:[Debug]-[DM HANDLER] - get response of the page in address 0x1e17000
+[Sat Aug 27 2022 09:44:27.351]:[Debug]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -297,16 +297,16 @@ address : 0x1e16000  location : INSTANCE_0
 address : 0x1e17000  location : INSTANCE_0
 ------END SPT-----
 
-[Fri Aug 26 2022 13:09:18.577]:[Debug]-[DMS] - page in address: 0x1e17000 send to app
-[Fri Aug 26 2022 13:09:18.577]:[Debug]-[DM HANDLER] - get response of the page in address 0x1e17000
-[Fri Aug 26 2022 13:09:18.577]:[Debug]-[Uffd] - RequestPageFromDMS succeeded. 
-[Fri Aug 26 2022 13:09:18.577]:[Debug]-[Uffd] - page accessed first time, copy zero page of address 0x1e17000
-[Fri Aug 26 2022 13:09:18.577]:[Debug]-[Uffd] - UFFD_EVENT_PAGEFAULT event: 
+[Sat Aug 27 2022 09:44:27.351]:[Debug]-[DMS] - page in address: 0x1e17000 send to app
+[Sat Aug 27 2022 09:44:27.351]:[Debug]-[DmHandler] - RequestPageFromDMS succeeded. 
+[Sat Aug 27 2022 09:44:27.351]:[Debug]-[DmHandler] - page accessed first time, copy zero page of address 0x1e17000
+[Sat Aug 27 2022 09:44:27.351]:[Debug]-[DmHandler] - UFFD_EVENT_PAGEFAULT event: 
 flags = 1  address = 0x1e18000
-[Fri Aug 26 2022 13:09:18.577]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1e18000
-[Fri Aug 26 2022 13:09:18.577]:[Debug]-[DM HANDLER] - request the page in address 0x1e18000
-[Fri Aug 26 2022 13:09:18.577]:[Debug]-[DMS] - page accessed first time, set info - new_page
-[Fri Aug 26 2022 13:09:18.577]:[Debug]-DMS- Print SPT STATE
+[Sat Aug 27 2022 09:44:27.351]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1e18000
+[Sat Aug 27 2022 09:44:27.351]:[Debug]-[DM HANDLER] - request the page in address 0x1e18000
+[Sat Aug 27 2022 09:44:27.351]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Sat Aug 27 2022 09:44:27.352]:[Debug]-[DM HANDLER] - get response of the page in address 0x1e18000
+[Sat Aug 27 2022 09:44:27.352]:[Debug]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -325,16 +325,15 @@ address : 0x1e17000  location : INSTANCE_0
 address : 0x1e18000  location : INSTANCE_0
 ------END SPT-----
 
-[Fri Aug 26 2022 13:09:18.577]:[Debug]-[DMS] - page in address: 0x1e18000 send to app
-[Fri Aug 26 2022 13:09:18.577]:[Debug]-[DM HANDLER] - get response of the page in address 0x1e18000
-[Fri Aug 26 2022 13:09:18.577]:[Debug]-[Uffd] - RequestPageFromDMS succeeded. 
-[Fri Aug 26 2022 13:09:18.577]:[Debug]-[Uffd] - page accessed first time, copy zero page of address 0x1e18000
-[Fri Aug 26 2022 13:09:18.577]:[Debug]-[Uffd] - UFFD_EVENT_PAGEFAULT event: 
+[Sat Aug 27 2022 09:44:27.352]:[Debug]-[DMS] - page in address: 0x1e18000 send to app
+[Sat Aug 27 2022 09:44:27.352]:[Debug]-[DmHandler] - RequestPageFromDMS succeeded. 
+[Sat Aug 27 2022 09:44:27.352]:[Debug]-[DmHandler] - page accessed first time, copy zero page of address 0x1e18000
+[Sat Aug 27 2022 09:44:27.352]:[Debug]-[DmHandler] - UFFD_EVENT_PAGEFAULT event: 
 flags = 1  address = 0x1e19000
-[Fri Aug 26 2022 13:09:18.578]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1e19000
-[Fri Aug 26 2022 13:09:18.578]:[Debug]-[DM HANDLER] - request the page in address 0x1e19000
-[Fri Aug 26 2022 13:09:18.578]:[Debug]-[DMS] - page accessed first time, set info - new_page
-[Fri Aug 26 2022 13:09:18.578]:[Debug]-DMS- Print SPT STATE
+[Sat Aug 27 2022 09:44:27.352]:[Debug]-[DM HANDLER] - request the page in address 0x1e19000
+[Sat Aug 27 2022 09:44:27.352]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1e19000
+[Sat Aug 27 2022 09:44:27.352]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Sat Aug 27 2022 09:44:27.355]:[Debug]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -354,16 +353,16 @@ address : 0x1e18000  location : INSTANCE_0
 address : 0x1e19000  location : INSTANCE_0
 ------END SPT-----
 
-[Fri Aug 26 2022 13:09:18.578]:[Debug]-[DMS] - page in address: 0x1e19000 send to app
-[Fri Aug 26 2022 13:09:18.578]:[Debug]-[DM HANDLER] - get response of the page in address 0x1e19000
-[Fri Aug 26 2022 13:09:18.578]:[Debug]-[Uffd] - RequestPageFromDMS succeeded. 
-[Fri Aug 26 2022 13:09:18.578]:[Debug]-[Uffd] - page accessed first time, copy zero page of address 0x1e19000
-[Fri Aug 26 2022 13:09:18.578]:[Debug]-[Uffd] - UFFD_EVENT_PAGEFAULT event: 
+[Sat Aug 27 2022 09:44:27.356]:[Debug]-[DMS] - page in address: 0x1e19000 send to app
+[Sat Aug 27 2022 09:44:27.356]:[Debug]-[DM HANDLER] - get response of the page in address 0x1e19000
+[Sat Aug 27 2022 09:44:27.356]:[Debug]-[DmHandler] - RequestPageFromDMS succeeded. 
+[Sat Aug 27 2022 09:44:27.356]:[Debug]-[DmHandler] - page accessed first time, copy zero page of address 0x1e19000
+[Sat Aug 27 2022 09:44:27.356]:[Debug]-[DmHandler] - UFFD_EVENT_PAGEFAULT event: 
 flags = 1  address = 0x1e1a000
-[Fri Aug 26 2022 13:09:18.578]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1e1a000
-[Fri Aug 26 2022 13:09:18.578]:[Debug]-[DM HANDLER] - request the page in address 0x1e1a000
-[Fri Aug 26 2022 13:09:18.578]:[Debug]-[DMS] - page accessed first time, set info - new_page
-[Fri Aug 26 2022 13:09:18.578]:[Debug]-DMS- Print SPT STATE
+[Sat Aug 27 2022 09:44:27.356]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1e1a000
+[Sat Aug 27 2022 09:44:27.356]:[Debug]-[DM HANDLER] - request the page in address 0x1e1a000
+[Sat Aug 27 2022 09:44:27.356]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Sat Aug 27 2022 09:44:27.368]:[Debug]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -384,16 +383,16 @@ address : 0x1e19000  location : INSTANCE_0
 address : 0x1e1a000  location : INSTANCE_0
 ------END SPT-----
 
-[Fri Aug 26 2022 13:09:18.578]:[Debug]-[DMS] - page in address: 0x1e1a000 send to app
-[Fri Aug 26 2022 13:09:18.578]:[Debug]-[DM HANDLER] - get response of the page in address 0x1e1a000
-[Fri Aug 26 2022 13:09:18.578]:[Debug]-[Uffd] - RequestPageFromDMS succeeded. 
-[Fri Aug 26 2022 13:09:18.578]:[Debug]-[Uffd] - page accessed first time, copy zero page of address 0x1e1a000
-[Fri Aug 26 2022 13:09:18.579]:[Debug]-[Uffd] - UFFD_EVENT_PAGEFAULT event: 
+[Sat Aug 27 2022 09:44:27.368]:[Debug]-[DMS] - page in address: 0x1e1a000 send to app
+[Sat Aug 27 2022 09:44:27.368]:[Debug]-[DM HANDLER] - get response of the page in address 0x1e1a000
+[Sat Aug 27 2022 09:44:27.368]:[Debug]-[DmHandler] - RequestPageFromDMS succeeded. 
+[Sat Aug 27 2022 09:44:27.368]:[Debug]-[DmHandler] - page accessed first time, copy zero page of address 0x1e1a000
+[Sat Aug 27 2022 09:44:27.369]:[Debug]-[DmHandler] - UFFD_EVENT_PAGEFAULT event: 
 flags = 1  address = 0x1e1b000
-[Fri Aug 26 2022 13:09:18.579]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1e1b000
-[Fri Aug 26 2022 13:09:18.579]:[Debug]-[DM HANDLER] - request the page in address 0x1e1b000
-[Fri Aug 26 2022 13:09:18.579]:[Debug]-[DMS] - page accessed first time, set info - new_page
-[Fri Aug 26 2022 13:09:18.579]:[Debug]-DMS- Print SPT STATE
+[Sat Aug 27 2022 09:44:27.369]:[Debug]-[DM HANDLER] - request the page in address 0x1e1b000
+[Sat Aug 27 2022 09:44:27.409]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1e1b000
+[Sat Aug 27 2022 09:44:27.410]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Sat Aug 27 2022 09:44:27.410]:[Debug]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -415,16 +414,16 @@ address : 0x1e1a000  location : INSTANCE_0
 address : 0x1e1b000  location : INSTANCE_0
 ------END SPT-----
 
-[Fri Aug 26 2022 13:09:18.579]:[Debug]-[DMS] - page in address: 0x1e1b000 send to app
-[Fri Aug 26 2022 13:09:18.579]:[Debug]-[DM HANDLER] - get response of the page in address 0x1e1b000
-[Fri Aug 26 2022 13:09:18.579]:[Debug]-[Uffd] - RequestPageFromDMS succeeded. 
-[Fri Aug 26 2022 13:09:18.579]:[Debug]-[Uffd] - page accessed first time, copy zero page of address 0x1e1b000
-[Fri Aug 26 2022 13:09:18.579]:[Debug]-[Uffd] - UFFD_EVENT_PAGEFAULT event: 
+[Sat Aug 27 2022 09:44:27.410]:[Debug]-[DMS] - page in address: 0x1e1b000 send to app
+[Sat Aug 27 2022 09:44:27.414]:[Debug]-[DM HANDLER] - get response of the page in address 0x1e1b000
+[Sat Aug 27 2022 09:44:27.415]:[Debug]-[DmHandler] - RequestPageFromDMS succeeded. 
+[Sat Aug 27 2022 09:44:27.416]:[Debug]-[DmHandler] - page accessed first time, copy zero page of address 0x1e1b000
+[Sat Aug 27 2022 09:44:27.421]:[Debug]-[DmHandler] - UFFD_EVENT_PAGEFAULT event: 
 flags = 1  address = 0x1e1c000
-[Fri Aug 26 2022 13:09:18.579]:[Debug]-[DM HANDLER] - request the page in address 0x1e1c000
-[Fri Aug 26 2022 13:09:18.579]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1e1c000
-[Fri Aug 26 2022 13:09:18.593]:[Debug]-[DMS] - page accessed first time, set info - new_page
-[Fri Aug 26 2022 13:09:18.594]:[Debug]-DMS- Print SPT STATE
+[Sat Aug 27 2022 09:44:27.421]:[Debug]-[DM HANDLER] - request the page in address 0x1e1c000
+[Sat Aug 27 2022 09:44:27.444]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1e1c000
+[Sat Aug 27 2022 09:44:27.445]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Sat Aug 27 2022 09:44:27.445]:[Debug]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -447,16 +446,17 @@ address : 0x1e1b000  location : INSTANCE_0
 address : 0x1e1c000  location : INSTANCE_0
 ------END SPT-----
 
-[Fri Aug 26 2022 13:09:18.594]:[Debug]-[DMS] - page in address: 0x1e1c000 send to app
-[Fri Aug 26 2022 13:09:18.595]:[Debug]-[DM HANDLER] - get response of the page in address 0x1e1c000
-[Fri Aug 26 2022 13:09:18.595]:[Debug]-[Uffd] - RequestPageFromDMS succeeded. 
-[Fri Aug 26 2022 13:09:18.595]:[Debug]-[Uffd] - page accessed first time, copy zero page of address 0x1e1c000
-[Fri Aug 26 2022 13:09:18.596]:[Debug]-[Uffd] - UFFD_EVENT_PAGEFAULT event: 
+[Sat Aug 27 2022 09:44:27.445]:[Debug]-[DMS] - page in address: 0x1e1c000 send to app
+[Sat Aug 27 2022 09:44:27.447]:[Debug]-[DM HANDLER] - get response of the page in address 0x1e1c000
+[Sat Aug 27 2022 09:44:27.447]:[Debug]-[DmHandler] - RequestPageFromDMS succeeded. 
+[Sat Aug 27 2022 09:44:27.448]:[Debug]-[DmHandler] - page accessed first time, copy zero page of address 0x1e1c000
+[Sat Aug 27 2022 09:44:27.448]:[Debug]-[DmHandler] - UFFD_EVENT_PAGEFAULT event: 
 flags = 1  address = 0x1e1d000
-[Fri Aug 26 2022 13:09:18.596]:[Debug]-[DM HANDLER] - request the page in address 0x1e1d000
-[Fri Aug 26 2022 13:09:18.596]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1e1d000
-[Fri Aug 26 2022 13:09:18.604]:[Debug]-[DMS] - page accessed first time, set info - new_page
-[Fri Aug 26 2022 13:09:18.604]:[Debug]-DMS- Print SPT STATE
+[Sat Aug 27 2022 09:44:27.448]:[Debug]-[DM HANDLER] - request the page in address 0x1e1d000
+[Sat Aug 27 2022 09:44:27.459]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1e1d000
+[Sat Aug 27 2022 09:44:27.459]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Sat Aug 27 2022 09:44:27.460]:[Debug]-[DM HANDLER] - get response of the page in address 0x1e1d000
+[Sat Aug 27 2022 09:44:27.460]:[Debug]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -480,67 +480,69 @@ address : 0x1e1c000  location : INSTANCE_0
 address : 0x1e1d000  location : INSTANCE_0
 ------END SPT-----
 
-[Fri Aug 26 2022 13:09:18.604]:[Debug]-[DMS] - page in address: 0x1e1d000 send to app
-[Fri Aug 26 2022 13:09:18.604]:[Debug]-[DM HANDLER] - get response of the page in address 0x1e1d000
-[Fri Aug 26 2022 13:09:18.604]:[Debug]-[Uffd] - RequestPageFromDMS succeeded. 
-[Fri Aug 26 2022 13:09:18.604]:[Debug]-[Uffd] - page accessed first time, copy zero page of address 0x1e1d000
-[Fri Aug 26 2022 13:09:18.656]:[Debug]-[Uffd] - UFFD_EVENT_PAGEFAULT event: 
+[Sat Aug 27 2022 09:44:27.460]:[Debug]-[DmHandler] - RequestPageFromDMS succeeded. 
+[Sat Aug 27 2022 09:44:27.460]:[Debug]-[DMS] - page in address: 0x1e1d000 send to app
+[Sat Aug 27 2022 09:44:27.460]:[Debug]-[DmHandler] - page accessed first time, copy zero page of address 0x1e1d000
+[Sat Aug 27 2022 09:44:27.550]:[Debug]-[DmHandler] - UFFD_EVENT_PAGEFAULT event: 
 flags = 1  address = 0x1e82000
-[Fri Aug 26 2022 13:09:18.657]:[Debug]-[Lpet] - Print Lpet State
+[Sat Aug 27 2022 09:44:27.550]:[Debug]-[DmHandler] - reached high threshold, notify lpet
+[Sat Aug 27 2022 09:44:27.550]:[Debug]-[CLIENT] - reached high threshold. invoke lpet thread
+[Sat Aug 27 2022 09:44:27.551]:[Debug]-[Lpet] - Print Lpet State
 Lpet start point: 0x1d4c000
 page list state: 
 -----START LSPT ----
-address : 0x1d4c000  pfn : 199046  is_idle: 0
-address : 0x1d4d000  pfn : 215344  is_idle: 0
-address : 0x1d4e000  pfn : 546289  is_idle: 0
-address : 0x1d4f000  pfn : 739384  is_idle: 0
-address : 0x1d50000  pfn : 208000  is_idle: 0
-address : 0x1d51000  pfn : 681945  is_idle: 0
-address : 0x1d52000  pfn : 126063  is_idle: 0
-address : 0x1d53000  pfn : 93369  is_idle: 0
-address : 0x1d54000  pfn : 758502  is_idle: 0
-address : 0x1d55000  pfn : 498380  is_idle: 0
-address : 0x1e14000  pfn : 336962  is_idle: 0
-address : 0x1e15000  pfn : 142836  is_idle: 0
-address : 0x1e16000  pfn : 267140  is_idle: 0
-address : 0x1e17000  pfn : 666411  is_idle: 0
-address : 0x1e18000  pfn : 162649  is_idle: 0
-address : 0x1e19000  pfn : 636489  is_idle: 0
-address : 0x1e1a000  pfn : 513729  is_idle: 0
-address : 0x1e1b000  pfn : 358279  is_idle: 0
-address : 0x1e1c000  pfn : 270244  is_idle: 0
-address : 0x1e1d000  pfn : 661795  is_idle: 0
+address : 0x1d4c000  pfn : 259067  is_idle: 0
+address : 0x1d4d000  pfn : 282454  is_idle: 0
+address : 0x1d4e000  pfn : 259260  is_idle: 0
+address : 0x1d4f000  pfn : 301915  is_idle: 0
+address : 0x1d50000  pfn : 235495  is_idle: 0
+address : 0x1d51000  pfn : 264951  is_idle: 0
+address : 0x1d52000  pfn : 237536  is_idle: 0
+address : 0x1d53000  pfn : 291151  is_idle: 0
+address : 0x1d54000  pfn : 334766  is_idle: 0
+address : 0x1d55000  pfn : 334767  is_idle: 0
+address : 0x1e14000  pfn : 565253  is_idle: 0
+address : 0x1e15000  pfn : 592485  is_idle: 0
+address : 0x1e16000  pfn : 90685  is_idle: 0
+address : 0x1e17000  pfn : 252675  is_idle: 0
+address : 0x1e18000  pfn : 232288  is_idle: 0
+address : 0x1e19000  pfn : 272070  is_idle: 0
+address : 0x1e1a000  pfn : 272071  is_idle: 0
+address : 0x1e1b000  pfn : 764913  is_idle: 0
+address : 0x1e1c000  pfn : 327104  is_idle: 0
+address : 0x1e1d000  pfn : 237537  is_idle: 0
 -----END LSPT ----
 
 
-[Fri Aug 26 2022 13:09:18.657]:[Debug]-[LPET] checking page in addr 0x1d4c000
-[Fri Aug 26 2022 13:09:18.657]:[Debug]-[LPET] checking page in addr 0x1d4d000
-[Fri Aug 26 2022 13:09:18.657]:[Debug]-[LPET] checking page in addr 0x1d4e000
-[Fri Aug 26 2022 13:09:18.657]:[Debug]-[LPET] checking page in addr 0x1d4f000
-[Fri Aug 26 2022 13:09:18.657]:[Debug]-[LPET] checking page in addr 0x1d50000
-[Fri Aug 26 2022 13:09:18.659]:[Debug]-[LPET] checking page in addr 0x1d51000
-[Fri Aug 26 2022 13:09:18.659]:[Debug]-[LPET] checking page in addr 0x1d52000
-[Fri Aug 26 2022 13:09:18.659]:[Debug]-[LPET] checking page in addr 0x1d53000
-[Fri Aug 26 2022 13:09:18.659]:[Debug]-[LPET] checking page in addr 0x1d54000
-[Fri Aug 26 2022 13:09:18.660]:[Debug]-[LPET] checking page in addr 0x1d55000
-[Fri Aug 26 2022 13:09:18.660]:[Debug]-[LPET] checking page in addr 0x1e14000
-[Fri Aug 26 2022 13:09:18.660]:[Debug]-[LPET] checking page in addr 0x1e15000
-[Fri Aug 26 2022 13:09:18.660]:[Debug]-[LPET] checking page in addr 0x1e16000
-[Fri Aug 26 2022 13:09:18.661]:[Debug]-[LPET] checking page in addr 0x1e17000
-[Fri Aug 26 2022 13:09:18.661]:[Debug]-[LPET] checking page in addr 0x1e18000
-[Fri Aug 26 2022 13:09:18.661]:[Debug]-[LPET] checking page in addr 0x1e19000
-[Fri Aug 26 2022 13:09:18.663]:[Debug]-[LPET] checking page in addr 0x1e1a000
-[Fri Aug 26 2022 13:09:18.663]:[Debug]-[LPET] checking page in addr 0x1e1b000
-[Fri Aug 26 2022 13:09:18.663]:[Debug]-[LPET] checking page in addr 0x1e1c000
-[Fri Aug 26 2022 13:09:18.663]:[Debug]-[LPET] checking page in addr 0x1e1d000
-[Fri Aug 26 2022 13:09:18.663]:[Debug]-[LPET] checking page in addr 0x1d4c000
-[Fri Aug 26 2022 13:09:18.664]:[Debug]-[LPET] removing page in addr 0x1d4c000
-[Fri Aug 26 2022 13:09:18.664]:[Debug]-[DM HANDLER] - send requet to evict page in address 0x1d4c000
-[Fri Aug 26 2022 13:09:18.667]:[Debug]-[DMS] - Handle page eviction in address 0x1d4c000
-[Fri Aug 26 2022 13:09:18.668]:[Debug]-[DMS] - page in address : 0x1d4c000 stored in disk
-[Fri Aug 26 2022 13:09:18.668]:[Debug]-[DMS] - Page evicted successfuly, sending ack
-[Fri Aug 26 2022 13:09:18.668]:[Debug]-[DMS] request_evict_page_status is 0
-[Fri Aug 26 2022 13:09:18.668]:[Debug]-DMS- Print SPT STATE
+[Sat Aug 27 2022 09:44:27.551]:[Debug]-[LPET] checking page in addr 0x1d4c000
+[Sat Aug 27 2022 09:44:27.551]:[Debug]-[LPET] checking page in addr 0x1d4d000
+[Sat Aug 27 2022 09:44:27.551]:[Debug]-[LPET] checking page in addr 0x1d4e000
+[Sat Aug 27 2022 09:44:27.551]:[Debug]-[LPET] checking page in addr 0x1d4f000
+[Sat Aug 27 2022 09:44:27.551]:[Debug]-[LPET] checking page in addr 0x1d50000
+[Sat Aug 27 2022 09:44:27.552]:[Debug]-[LPET] checking page in addr 0x1d51000
+[Sat Aug 27 2022 09:44:27.552]:[Debug]-[LPET] checking page in addr 0x1d52000
+[Sat Aug 27 2022 09:44:27.552]:[Debug]-[LPET] checking page in addr 0x1d53000
+[Sat Aug 27 2022 09:44:27.552]:[Debug]-[LPET] checking page in addr 0x1d54000
+[Sat Aug 27 2022 09:44:27.552]:[Debug]-[LPET] checking page in addr 0x1d55000
+[Sat Aug 27 2022 09:44:27.552]:[Debug]-[LPET] checking page in addr 0x1e14000
+[Sat Aug 27 2022 09:44:27.552]:[Debug]-[LPET] checking page in addr 0x1e15000
+[Sat Aug 27 2022 09:44:27.552]:[Debug]-[LPET] checking page in addr 0x1e16000
+[Sat Aug 27 2022 09:44:27.552]:[Debug]-[LPET] checking page in addr 0x1e17000
+[Sat Aug 27 2022 09:44:27.553]:[Debug]-[LPET] checking page in addr 0x1e18000
+[Sat Aug 27 2022 09:44:27.553]:[Debug]-[LPET] checking page in addr 0x1e19000
+[Sat Aug 27 2022 09:44:27.553]:[Debug]-[LPET] checking page in addr 0x1e1a000
+[Sat Aug 27 2022 09:44:27.553]:[Debug]-[LPET] checking page in addr 0x1e1b000
+[Sat Aug 27 2022 09:44:27.553]:[Debug]-[LPET] checking page in addr 0x1e1c000
+[Sat Aug 27 2022 09:44:27.553]:[Debug]-[LPET] checking page in addr 0x1e1d000
+[Sat Aug 27 2022 09:44:27.553]:[Debug]-[LPET] checking page in addr 0x1d4c000
+[Sat Aug 27 2022 09:44:27.553]:[Debug]-[LPET] removing page in addr 0x1d4c000
+[Sat Aug 27 2022 09:44:27.553]:[Debug]-[DM HANDLER] - send requet to evict page in address 0x1d4c000
+[Sat Aug 27 2022 09:44:27.554]:[Debug]-[DMS] - Handle page eviction in address 0x1d4c000
+[Sat Aug 27 2022 09:44:27.557]:[Debug]-[DMS] - page in address : 0x1d4c000 stored in disk
+[Sat Aug 27 2022 09:44:27.557]:[Debug]-[DMS] - Page evicted successfuly, sending ack
+[Sat Aug 27 2022 09:44:27.557]:[Debug]-[DMS] request_evict_page_status is 0
+[Sat Aug 27 2022 09:44:27.557]:[Debug]-[DM HANDLER] - got ack for evict page in 0x1d4c000Ack message : 
+[Sat Aug 27 2022 09:44:27.557]:[Debug]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : DISK
 address : 0x1d4d000  location : INSTANCE_0
@@ -564,15 +566,14 @@ address : 0x1e1c000  location : INSTANCE_0
 address : 0x1e1d000  location : INSTANCE_0
 ------END SPT-----
 
-[Fri Aug 26 2022 13:09:18.675]:[Debug]-[DM HANDLER] - got ack for evict page in 0x1d4c000Ack message : 
-[Fri Aug 26 2022 13:09:18.677]:[Debug]-[LPET] checking page in addr 0x1d4d000
-[Fri Aug 26 2022 13:09:18.677]:[Debug]-[LPET] removing page in addr 0x1d4d000
-[Fri Aug 26 2022 13:09:18.677]:[Debug]-[DM HANDLER] - send requet to evict page in address 0x1d4d000
-[Fri Aug 26 2022 13:09:18.697]:[Debug]-[DMS] - Handle page eviction in address 0x1d4d000
-[Fri Aug 26 2022 13:09:18.697]:[Debug]-[DMS] - page in address : 0x1d4d000 stored in disk
-[Fri Aug 26 2022 13:09:18.697]:[Debug]-[DMS] - Page evicted successfuly, sending ack
-[Fri Aug 26 2022 13:09:18.697]:[Debug]-[DMS] request_evict_page_status is 0
-[Fri Aug 26 2022 13:09:18.697]:[Debug]-DMS- Print SPT STATE
+[Sat Aug 27 2022 09:44:27.558]:[Debug]-[LPET] checking page in addr 0x1d4d000
+[Sat Aug 27 2022 09:44:27.558]:[Debug]-[LPET] removing page in addr 0x1d4d000
+[Sat Aug 27 2022 09:44:27.558]:[Debug]-[DM HANDLER] - send requet to evict page in address 0x1d4d000
+[Sat Aug 27 2022 09:44:27.581]:[Debug]-[DMS] - Handle page eviction in address 0x1d4d000
+[Sat Aug 27 2022 09:44:27.581]:[Debug]-[DMS] - page in address : 0x1d4d000 stored in disk
+[Sat Aug 27 2022 09:44:27.581]:[Debug]-[DMS] - Page evicted successfuly, sending ack
+[Sat Aug 27 2022 09:44:27.581]:[Debug]-[DMS] request_evict_page_status is 0
+[Sat Aug 27 2022 09:44:27.582]:[Debug]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : DISK
 address : 0x1d4d000  location : DISK
@@ -596,15 +597,15 @@ address : 0x1e1c000  location : INSTANCE_0
 address : 0x1e1d000  location : INSTANCE_0
 ------END SPT-----
 
-[Fri Aug 26 2022 13:09:18.697]:[Debug]-[DM HANDLER] - got ack for evict page in 0x1d4d000Ack message : 
-[Fri Aug 26 2022 13:09:18.697]:[Debug]-[LPET] checking page in addr 0x1d4e000
-[Fri Aug 26 2022 13:09:18.698]:[Debug]-[LPET] removing page in addr 0x1d4e000
-[Fri Aug 26 2022 13:09:18.698]:[Debug]-[DM HANDLER] - send requet to evict page in address 0x1d4e000
-[Fri Aug 26 2022 13:09:18.708]:[Debug]-[DMS] - Handle page eviction in address 0x1d4e000
-[Fri Aug 26 2022 13:09:18.709]:[Debug]-[DMS] - page in address : 0x1d4e000 stored in disk
-[Fri Aug 26 2022 13:09:18.709]:[Debug]-[DMS] - Page evicted successfuly, sending ack
-[Fri Aug 26 2022 13:09:18.709]:[Debug]-[DMS] request_evict_page_status is 0
-[Fri Aug 26 2022 13:09:18.709]:[Debug]-DMS- Print SPT STATE
+[Sat Aug 27 2022 09:44:27.611]:[Debug]-[DM HANDLER] - got ack for evict page in 0x1d4d000Ack message : 
+[Sat Aug 27 2022 09:44:27.611]:[Debug]-[LPET] checking page in addr 0x1d4e000
+[Sat Aug 27 2022 09:44:27.611]:[Debug]-[LPET] removing page in addr 0x1d4e000
+[Sat Aug 27 2022 09:44:27.612]:[Debug]-[DM HANDLER] - send requet to evict page in address 0x1d4e000
+[Sat Aug 27 2022 09:44:27.622]:[Debug]-[DMS] - Handle page eviction in address 0x1d4e000
+[Sat Aug 27 2022 09:44:27.622]:[Debug]-[DMS] - page in address : 0x1d4e000 stored in disk
+[Sat Aug 27 2022 09:44:27.622]:[Debug]-[DMS] - Page evicted successfuly, sending ack
+[Sat Aug 27 2022 09:44:27.622]:[Debug]-[DMS] request_evict_page_status is 0
+[Sat Aug 27 2022 09:44:27.622]:[Debug]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : DISK
 address : 0x1d4d000  location : DISK
@@ -628,15 +629,17 @@ address : 0x1e1c000  location : INSTANCE_0
 address : 0x1e1d000  location : INSTANCE_0
 ------END SPT-----
 
-[Fri Aug 26 2022 13:09:18.723]:[Debug]-[DM HANDLER] - got ack for evict page in 0x1d4e000Ack message : 
-[Fri Aug 26 2022 13:09:18.724]:[Debug]-[LPET] checking page in addr 0x1d4f000
-[Fri Aug 26 2022 13:09:18.724]:[Debug]-[LPET] removing page in addr 0x1d4f000
-[Fri Aug 26 2022 13:09:18.724]:[Debug]-[DM HANDLER] - send requet to evict page in address 0x1d4f000
-[Fri Aug 26 2022 13:09:18.725]:[Debug]-[DMS] - Handle page eviction in address 0x1d4f000
-[Fri Aug 26 2022 13:09:18.725]:[Debug]-[DMS] - page in address : 0x1d4f000 stored in disk
-[Fri Aug 26 2022 13:09:18.725]:[Debug]-[DMS] - Page evicted successfuly, sending ack
-[Fri Aug 26 2022 13:09:18.725]:[Debug]-[DMS] request_evict_page_status is 0
-[Fri Aug 26 2022 13:09:18.725]:[Debug]-DMS- Print SPT STATE
+[Sat Aug 27 2022 09:44:27.627]:[Debug]-[DM HANDLER] - got ack for evict page in 0x1d4e000Ack message : 
+[Sat Aug 27 2022 09:44:27.627]:[Debug]-[LPET] checking page in addr 0x1d4f000
+[Sat Aug 27 2022 09:44:27.627]:[Debug]-[LPET] removing page in addr 0x1d4f000
+[Sat Aug 27 2022 09:44:27.627]:[Debug]-[DM HANDLER] - send requet to evict page in address 0x1d4f000
+[Sat Aug 27 2022 09:44:27.627]:[Debug]-[DMS] - Handle page eviction in address 0x1d4f000
+[Sat Aug 27 2022 09:44:27.628]:[Debug]-[DMS] - page in address : 0x1d4f000 stored in disk
+[Sat Aug 27 2022 09:44:27.628]:[Debug]-[DMS] - Page evicted successfuly, sending ack
+[Sat Aug 27 2022 09:44:27.628]:[Debug]-[DMS] request_evict_page_status is 0
+[Sat Aug 27 2022 09:44:27.628]:[Debug]-[DM HANDLER] - got ack for evict page in 0x1d4f000Ack message : 
+[Sat Aug 27 2022 09:44:27.628]:[Debug]-[LPET] checking page in addr 0x1d50000
+[Sat Aug 27 2022 09:44:27.628]:[Debug]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : DISK
 address : 0x1d4d000  location : DISK
@@ -660,15 +663,14 @@ address : 0x1e1c000  location : INSTANCE_0
 address : 0x1e1d000  location : INSTANCE_0
 ------END SPT-----
 
-[Fri Aug 26 2022 13:09:18.726]:[Debug]-[DM HANDLER] - got ack for evict page in 0x1d4f000Ack message : 
-[Fri Aug 26 2022 13:09:18.726]:[Debug]-[LPET] checking page in addr 0x1d50000
-[Fri Aug 26 2022 13:09:18.726]:[Debug]-[LPET] removing page in addr 0x1d50000
-[Fri Aug 26 2022 13:09:18.726]:[Debug]-[DMS] - Handle page eviction in address 0x1d50000
-[Fri Aug 26 2022 13:09:18.726]:[Debug]-[DM HANDLER] - send requet to evict page in address 0x1d50000
-[Fri Aug 26 2022 13:09:18.726]:[Debug]-[DMS] - page in address : 0x1d50000 stored in disk
-[Fri Aug 26 2022 13:09:18.726]:[Debug]-[DMS] - Page evicted successfuly, sending ack
-[Fri Aug 26 2022 13:09:18.726]:[Debug]-[DMS] request_evict_page_status is 0
-[Fri Aug 26 2022 13:09:18.726]:[Debug]-DMS- Print SPT STATE
+[Sat Aug 27 2022 09:44:27.628]:[Debug]-[LPET] removing page in addr 0x1d50000
+[Sat Aug 27 2022 09:44:27.629]:[Debug]-[DMS] - Handle page eviction in address 0x1d50000
+[Sat Aug 27 2022 09:44:27.629]:[Debug]-[DM HANDLER] - send requet to evict page in address 0x1d50000
+[Sat Aug 27 2022 09:44:27.629]:[Debug]-[DMS] - page in address : 0x1d50000 stored in disk
+[Sat Aug 27 2022 09:44:27.629]:[Debug]-[DMS] - Page evicted successfuly, sending ack
+[Sat Aug 27 2022 09:44:27.629]:[Debug]-[DMS] request_evict_page_status is 0
+[Sat Aug 27 2022 09:44:27.629]:[Debug]-[DM HANDLER] - got ack for evict page in 0x1d50000Ack message : 
+[Sat Aug 27 2022 09:44:27.629]:[Debug]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : DISK
 address : 0x1d4d000  location : DISK
@@ -692,15 +694,16 @@ address : 0x1e1c000  location : INSTANCE_0
 address : 0x1e1d000  location : INSTANCE_0
 ------END SPT-----
 
-[Fri Aug 26 2022 13:09:18.726]:[Debug]-[DM HANDLER] - got ack for evict page in 0x1d50000Ack message : 
-[Fri Aug 26 2022 13:09:18.726]:[Debug]-[LPET] checking page in addr 0x1d51000
-[Fri Aug 26 2022 13:09:18.727]:[Debug]-[LPET] removing page in addr 0x1d51000
-[Fri Aug 26 2022 13:09:18.727]:[Debug]-[DMS] - Handle page eviction in address 0x1d51000
-[Fri Aug 26 2022 13:09:18.727]:[Debug]-[DM HANDLER] - send requet to evict page in address 0x1d51000
-[Fri Aug 26 2022 13:09:18.727]:[Debug]-[DMS] - page in address : 0x1d51000 stored in disk
-[Fri Aug 26 2022 13:09:18.727]:[Debug]-[DMS] - Page evicted successfuly, sending ack
-[Fri Aug 26 2022 13:09:18.727]:[Debug]-[DMS] request_evict_page_status is 0
-[Fri Aug 26 2022 13:09:18.727]:[Debug]-DMS- Print SPT STATE
+[Sat Aug 27 2022 09:44:27.629]:[Debug]-[LPET] checking page in addr 0x1d51000
+[Sat Aug 27 2022 09:44:27.629]:[Debug]-[LPET] removing page in addr 0x1d51000
+[Sat Aug 27 2022 09:44:27.629]:[Debug]-[DMS] - Handle page eviction in address 0x1d51000
+[Sat Aug 27 2022 09:44:27.629]:[Debug]-[DM HANDLER] - send requet to evict page in address 0x1d51000
+[Sat Aug 27 2022 09:44:27.629]:[Debug]-[DMS] - page in address : 0x1d51000 stored in disk
+[Sat Aug 27 2022 09:44:27.629]:[Debug]-[DMS] - Page evicted successfuly, sending ack
+[Sat Aug 27 2022 09:44:27.630]:[Debug]-[DMS] request_evict_page_status is 0
+[Sat Aug 27 2022 09:44:27.630]:[Debug]-[DM HANDLER] - got ack for evict page in 0x1d51000Ack message : 
+[Sat Aug 27 2022 09:44:27.630]:[Debug]-[LPET] checking page in addr 0x1d52000
+[Sat Aug 27 2022 09:44:27.630]:[Debug]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : DISK
 address : 0x1d4d000  location : DISK
@@ -724,15 +727,13 @@ address : 0x1e1c000  location : INSTANCE_0
 address : 0x1e1d000  location : INSTANCE_0
 ------END SPT-----
 
-[Fri Aug 26 2022 13:09:18.727]:[Debug]-[DM HANDLER] - got ack for evict page in 0x1d51000Ack message : 
-[Fri Aug 26 2022 13:09:18.727]:[Debug]-[LPET] checking page in addr 0x1d52000
-[Fri Aug 26 2022 13:09:18.727]:[Debug]-[LPET] removing page in addr 0x1d52000
-[Fri Aug 26 2022 13:09:18.727]:[Debug]-[DMS] - Handle page eviction in address 0x1d52000
-[Fri Aug 26 2022 13:09:18.727]:[Debug]-[DM HANDLER] - send requet to evict page in address 0x1d52000
-[Fri Aug 26 2022 13:09:18.738]:[Debug]-[DMS] - page in address : 0x1d52000 stored in disk
-[Fri Aug 26 2022 13:09:18.738]:[Debug]-[DMS] - Page evicted successfuly, sending ack
-[Fri Aug 26 2022 13:09:18.738]:[Debug]-[DMS] request_evict_page_status is 0
-[Fri Aug 26 2022 13:09:18.738]:[Debug]-DMS- Print SPT STATE
+[Sat Aug 27 2022 09:44:27.630]:[Debug]-[LPET] removing page in addr 0x1d52000
+[Sat Aug 27 2022 09:44:27.632]:[Debug]-[DM HANDLER] - send requet to evict page in address 0x1d52000
+[Sat Aug 27 2022 09:44:27.634]:[Debug]-[DMS] - Handle page eviction in address 0x1d52000
+[Sat Aug 27 2022 09:44:27.635]:[Debug]-[DMS] - page in address : 0x1d52000 stored in disk
+[Sat Aug 27 2022 09:44:27.636]:[Debug]-[DMS] - Page evicted successfuly, sending ack
+[Sat Aug 27 2022 09:44:27.636]:[Debug]-[DMS] request_evict_page_status is 0
+[Sat Aug 27 2022 09:44:27.642]:[Debug]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : DISK
 address : 0x1d4d000  location : DISK
@@ -756,15 +757,16 @@ address : 0x1e1c000  location : INSTANCE_0
 address : 0x1e1d000  location : INSTANCE_0
 ------END SPT-----
 
-[Fri Aug 26 2022 13:09:18.739]:[Debug]-[DM HANDLER] - got ack for evict page in 0x1d52000Ack message : 
-[Fri Aug 26 2022 13:09:18.739]:[Debug]-[LPET] checking page in addr 0x1d53000
-[Fri Aug 26 2022 13:09:18.739]:[Debug]-[LPET] removing page in addr 0x1d53000
-[Fri Aug 26 2022 13:09:18.739]:[Debug]-[DM HANDLER] - send requet to evict page in address 0x1d53000
-[Fri Aug 26 2022 13:09:18.739]:[Debug]-[DMS] - Handle page eviction in address 0x1d53000
-[Fri Aug 26 2022 13:09:18.750]:[Debug]-[DMS] - page in address : 0x1d53000 stored in disk
-[Fri Aug 26 2022 13:09:18.750]:[Debug]-[DMS] - Page evicted successfuly, sending ack
-[Fri Aug 26 2022 13:09:18.750]:[Debug]-[DMS] request_evict_page_status is 0
-[Fri Aug 26 2022 13:09:18.750]:[Debug]-DMS- Print SPT STATE
+[Sat Aug 27 2022 09:44:27.644]:[Debug]-[DM HANDLER] - got ack for evict page in 0x1d52000Ack message : 
+[Sat Aug 27 2022 09:44:27.644]:[Debug]-[LPET] checking page in addr 0x1d53000
+[Sat Aug 27 2022 09:44:27.644]:[Debug]-[LPET] removing page in addr 0x1d53000
+[Sat Aug 27 2022 09:44:27.644]:[Debug]-[DM HANDLER] - send requet to evict page in address 0x1d53000
+[Sat Aug 27 2022 09:44:27.644]:[Debug]-[DMS] - Handle page eviction in address 0x1d53000
+[Sat Aug 27 2022 09:44:27.644]:[Debug]-[DMS] - page in address : 0x1d53000 stored in disk
+[Sat Aug 27 2022 09:44:27.644]:[Debug]-[DMS] - Page evicted successfuly, sending ack
+[Sat Aug 27 2022 09:44:27.645]:[Debug]-[DMS] request_evict_page_status is 0
+[Sat Aug 27 2022 09:44:27.645]:[Debug]-[DM HANDLER] - got ack for evict page in 0x1d53000Ack message : 
+[Sat Aug 27 2022 09:44:27.645]:[Debug]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : DISK
 address : 0x1d4d000  location : DISK
@@ -788,15 +790,15 @@ address : 0x1e1c000  location : INSTANCE_0
 address : 0x1e1d000  location : INSTANCE_0
 ------END SPT-----
 
-[Fri Aug 26 2022 13:09:18.751]:[Debug]-[DM HANDLER] - got ack for evict page in 0x1d53000Ack message : 
-[Fri Aug 26 2022 13:09:18.751]:[Debug]-[LPET] checking page in addr 0x1d54000
-[Fri Aug 26 2022 13:09:18.751]:[Debug]-[LPET] removing page in addr 0x1d54000
-[Fri Aug 26 2022 13:09:18.751]:[Debug]-[DM HANDLER] - send requet to evict page in address 0x1d54000
-[Fri Aug 26 2022 13:09:18.772]:[Debug]-[DMS] - Handle page eviction in address 0x1d54000
-[Fri Aug 26 2022 13:09:18.772]:[Debug]-[DMS] - page in address : 0x1d54000 stored in disk
-[Fri Aug 26 2022 13:09:18.772]:[Debug]-[DMS] - Page evicted successfuly, sending ack
-[Fri Aug 26 2022 13:09:18.772]:[Debug]-[DMS] request_evict_page_status is 0
-[Fri Aug 26 2022 13:09:18.772]:[Debug]-DMS- Print SPT STATE
+[Sat Aug 27 2022 09:44:27.645]:[Debug]-[LPET] checking page in addr 0x1d54000
+[Sat Aug 27 2022 09:44:27.645]:[Debug]-[LPET] removing page in addr 0x1d54000
+[Sat Aug 27 2022 09:44:27.646]:[Debug]-[DMS] - Handle page eviction in address 0x1d54000
+[Sat Aug 27 2022 09:44:27.646]:[Debug]-[DM HANDLER] - send requet to evict page in address 0x1d54000
+[Sat Aug 27 2022 09:44:27.646]:[Debug]-[DMS] - page in address : 0x1d54000 stored in disk
+[Sat Aug 27 2022 09:44:27.646]:[Debug]-[DMS] - Page evicted successfuly, sending ack
+[Sat Aug 27 2022 09:44:27.648]:[Debug]-[DMS] request_evict_page_status is 0
+[Sat Aug 27 2022 09:44:27.650]:[Debug]-[DM HANDLER] - got ack for evict page in 0x1d54000Ack message : 
+[Sat Aug 27 2022 09:44:27.650]:[Debug]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : DISK
 address : 0x1d4d000  location : DISK
@@ -820,15 +822,14 @@ address : 0x1e1c000  location : INSTANCE_0
 address : 0x1e1d000  location : INSTANCE_0
 ------END SPT-----
 
-[Fri Aug 26 2022 13:09:18.772]:[Debug]-[DM HANDLER] - got ack for evict page in 0x1d54000Ack message : 
-[Fri Aug 26 2022 13:09:18.773]:[Debug]-[LPET] checking page in addr 0x1d55000
-[Fri Aug 26 2022 13:09:18.773]:[Debug]-[LPET] removing page in addr 0x1d55000
-[Fri Aug 26 2022 13:09:18.773]:[Debug]-[DMS] - Handle page eviction in address 0x1d55000
-[Fri Aug 26 2022 13:09:18.773]:[Debug]-[DM HANDLER] - send requet to evict page in address 0x1d55000
-[Fri Aug 26 2022 13:09:18.773]:[Debug]-[DMS] - page in address : 0x1d55000 stored in disk
-[Fri Aug 26 2022 13:09:18.773]:[Debug]-[DMS] - Page evicted successfuly, sending ack
-[Fri Aug 26 2022 13:09:18.773]:[Debug]-[DMS] request_evict_page_status is 0
-[Fri Aug 26 2022 13:09:18.773]:[Debug]-DMS- Print SPT STATE
+[Sat Aug 27 2022 09:44:27.650]:[Debug]-[LPET] checking page in addr 0x1d55000
+[Sat Aug 27 2022 09:44:27.650]:[Debug]-[LPET] removing page in addr 0x1d55000
+[Sat Aug 27 2022 09:44:27.651]:[Debug]-[DM HANDLER] - send requet to evict page in address 0x1d55000
+[Sat Aug 27 2022 09:44:27.651]:[Debug]-[DMS] - Handle page eviction in address 0x1d55000
+[Sat Aug 27 2022 09:44:27.653]:[Debug]-[DMS] - page in address : 0x1d55000 stored in disk
+[Sat Aug 27 2022 09:44:27.653]:[Debug]-[DMS] - Page evicted successfuly, sending ack
+[Sat Aug 27 2022 09:44:27.653]:[Debug]-[DMS] request_evict_page_status is 0
+[Sat Aug 27 2022 09:44:27.653]:[Debug]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : DISK
 address : 0x1d4d000  location : DISK
@@ -852,13 +853,15 @@ address : 0x1e1c000  location : INSTANCE_0
 address : 0x1e1d000  location : INSTANCE_0
 ------END SPT-----
 
-[Fri Aug 26 2022 13:09:18.773]:[Debug]-[DM HANDLER] - got ack for evict page in 0x1d55000Ack message : 
-[Fri Aug 26 2022 13:09:18.773]:[Debug]-[Uffd] - num of evicted pages : 10
-[Fri Aug 26 2022 13:09:18.773]:[Debug]-[DM HANDLER] - request the page in address 0x1e82000
-[Fri Aug 26 2022 13:09:18.775]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1e82000
-[Fri Aug 26 2022 13:09:18.776]:[Debug]-[DMS] - page accessed first time, set info - new_page
-[Fri Aug 26 2022 13:09:18.777]:[Debug]-[DM HANDLER] - get response of the page in address 0x1e82000
-[Fri Aug 26 2022 13:09:18.777]:[Debug]-DMS- Print SPT STATE
+[Sat Aug 27 2022 09:44:27.655]:[Debug]-[DM HANDLER] - got ack for evict page in 0x1d55000Ack message : 
+[Sat Aug 27 2022 09:44:27.655]:[Debug]-[CLIENT] - lpet end running cycle.
+[Sat Aug 27 2022 09:44:27.655]:[Debug]-[DM HANDLER] - request the page in address 0x1e82000
+[Sat Aug 27 2022 09:44:27.655]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1e82000
+[Sat Aug 27 2022 09:44:27.658]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Sat Aug 27 2022 09:44:27.658]:[Debug]-[DM HANDLER] - get response of the page in address 0x1e82000
+[Sat Aug 27 2022 09:44:27.658]:[Debug]-[DmHandler] - RequestPageFromDMS succeeded. 
+[Sat Aug 27 2022 09:44:27.658]:[Debug]-[DmHandler] - page accessed first time, copy zero page of address 0x1e82000
+[Sat Aug 27 2022 09:44:27.658]:[Debug]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : DISK
 address : 0x1d4d000  location : DISK
@@ -883,15 +886,14 @@ address : 0x1e1d000  location : INSTANCE_0
 address : 0x1e82000  location : INSTANCE_0
 ------END SPT-----
 
-[Fri Aug 26 2022 13:09:18.778]:[Debug]-[DMS] - page in address: 0x1e82000 send to app
-[Fri Aug 26 2022 13:09:18.779]:[Debug]-[Uffd] - RequestPageFromDMS succeeded. 
-[Fri Aug 26 2022 13:09:18.779]:[Debug]-[Uffd] - page accessed first time, copy zero page of address 0x1e82000
-[Fri Aug 26 2022 13:09:18.779]:[Debug]-[Uffd] - UFFD_EVENT_PAGEFAULT event: 
+[Sat Aug 27 2022 09:44:27.658]:[Debug]-[DMS] - page in address: 0x1e82000 send to app
+[Sat Aug 27 2022 09:44:27.658]:[Debug]-[DmHandler] - UFFD_EVENT_PAGEFAULT event: 
 flags = 1  address = 0x1e83000
-[Fri Aug 26 2022 13:09:18.780]:[Debug]-[DM HANDLER] - request the page in address 0x1e83000
-[Fri Aug 26 2022 13:09:18.780]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1e83000
-[Fri Aug 26 2022 13:09:18.797]:[Debug]-[DMS] - page accessed first time, set info - new_page
-[Fri Aug 26 2022 13:09:18.797]:[Debug]-DMS- Print SPT STATE
+[Sat Aug 27 2022 09:44:27.658]:[Debug]-[DM HANDLER] - request the page in address 0x1e83000
+[Sat Aug 27 2022 09:44:27.674]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1e83000
+[Sat Aug 27 2022 09:44:27.674]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Sat Aug 27 2022 09:44:27.674]:[Debug]-[DM HANDLER] - get response of the page in address 0x1e83000
+[Sat Aug 27 2022 09:44:27.674]:[Debug]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : DISK
 address : 0x1d4d000  location : DISK
@@ -917,16 +919,16 @@ address : 0x1e82000  location : INSTANCE_0
 address : 0x1e83000  location : INSTANCE_0
 ------END SPT-----
 
-[Fri Aug 26 2022 13:09:18.797]:[Debug]-[DMS] - page in address: 0x1e83000 send to app
-[Fri Aug 26 2022 13:09:18.797]:[Debug]-[DM HANDLER] - get response of the page in address 0x1e83000
-[Fri Aug 26 2022 13:09:18.797]:[Debug]-[Uffd] - RequestPageFromDMS succeeded. 
-[Fri Aug 26 2022 13:09:18.798]:[Debug]-[Uffd] - page accessed first time, copy zero page of address 0x1e83000
-[Fri Aug 26 2022 13:09:18.798]:[Debug]-[Uffd] - UFFD_EVENT_PAGEFAULT event: 
+[Sat Aug 27 2022 09:44:27.674]:[Debug]-[DMS] - page in address: 0x1e83000 send to app
+[Sat Aug 27 2022 09:44:27.674]:[Debug]-[DmHandler] - RequestPageFromDMS succeeded. 
+[Sat Aug 27 2022 09:44:27.674]:[Debug]-[DmHandler] - page accessed first time, copy zero page of address 0x1e83000
+[Sat Aug 27 2022 09:44:27.675]:[Debug]-[DmHandler] - UFFD_EVENT_PAGEFAULT event: 
 flags = 1  address = 0x1e84000
-[Fri Aug 26 2022 13:09:18.798]:[Debug]-[DM HANDLER] - request the page in address 0x1e84000
-[Fri Aug 26 2022 13:09:18.800]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1e84000
-[Fri Aug 26 2022 13:09:18.800]:[Debug]-[DMS] - page accessed first time, set info - new_page
-[Fri Aug 26 2022 13:09:18.800]:[Debug]-DMS- Print SPT STATE
+[Sat Aug 27 2022 09:44:27.675]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1e84000
+[Sat Aug 27 2022 09:44:27.675]:[Debug]-[DM HANDLER] - request the page in address 0x1e84000
+[Sat Aug 27 2022 09:44:27.675]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Sat Aug 27 2022 09:44:27.675]:[Debug]-[DM HANDLER] - get response of the page in address 0x1e84000
+[Sat Aug 27 2022 09:44:27.675]:[Debug]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : DISK
 address : 0x1d4d000  location : DISK
@@ -953,16 +955,16 @@ address : 0x1e83000  location : INSTANCE_0
 address : 0x1e84000  location : INSTANCE_0
 ------END SPT-----
 
-[Fri Aug 26 2022 13:09:18.800]:[Debug]-[DMS] - page in address: 0x1e84000 send to app
-[Fri Aug 26 2022 13:09:18.800]:[Debug]-[DM HANDLER] - get response of the page in address 0x1e84000
-[Fri Aug 26 2022 13:09:18.800]:[Debug]-[Uffd] - RequestPageFromDMS succeeded. 
-[Fri Aug 26 2022 13:09:18.800]:[Debug]-[Uffd] - page accessed first time, copy zero page of address 0x1e84000
-[Fri Aug 26 2022 13:09:18.800]:[Debug]-[Uffd] - UFFD_EVENT_PAGEFAULT event: 
+[Sat Aug 27 2022 09:44:27.675]:[Debug]-[DmHandler] - RequestPageFromDMS succeeded. 
+[Sat Aug 27 2022 09:44:27.675]:[Debug]-[DMS] - page in address: 0x1e84000 send to app
+[Sat Aug 27 2022 09:44:27.675]:[Debug]-[DmHandler] - page accessed first time, copy zero page of address 0x1e84000
+[Sat Aug 27 2022 09:44:27.675]:[Debug]-[DmHandler] - UFFD_EVENT_PAGEFAULT event: 
 flags = 1  address = 0x1e85000
-[Fri Aug 26 2022 13:09:18.800]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1e85000
-[Fri Aug 26 2022 13:09:18.800]:[Debug]-[DM HANDLER] - request the page in address 0x1e85000
-[Fri Aug 26 2022 13:09:18.801]:[Debug]-[DMS] - page accessed first time, set info - new_page
-[Fri Aug 26 2022 13:09:18.801]:[Debug]-DMS- Print SPT STATE
+[Sat Aug 27 2022 09:44:27.675]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1e85000
+[Sat Aug 27 2022 09:44:27.675]:[Debug]-[DM HANDLER] - request the page in address 0x1e85000
+[Sat Aug 27 2022 09:44:27.676]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Sat Aug 27 2022 09:44:27.676]:[Debug]-[DM HANDLER] - get response of the page in address 0x1e85000
+[Sat Aug 27 2022 09:44:27.676]:[Debug]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : DISK
 address : 0x1d4d000  location : DISK
@@ -990,16 +992,17 @@ address : 0x1e84000  location : INSTANCE_0
 address : 0x1e85000  location : INSTANCE_0
 ------END SPT-----
 
-[Fri Aug 26 2022 13:09:18.801]:[Debug]-[DMS] - page in address: 0x1e85000 send to app
-[Fri Aug 26 2022 13:09:18.801]:[Debug]-[DM HANDLER] - get response of the page in address 0x1e85000
-[Fri Aug 26 2022 13:09:18.801]:[Debug]-[Uffd] - RequestPageFromDMS succeeded. 
-[Fri Aug 26 2022 13:09:18.801]:[Debug]-[Uffd] - page accessed first time, copy zero page of address 0x1e85000
-[Fri Aug 26 2022 13:09:18.801]:[Debug]-[Uffd] - UFFD_EVENT_PAGEFAULT event: 
+[Sat Aug 27 2022 09:44:27.676]:[Debug]-[DmHandler] - RequestPageFromDMS succeeded. 
+[Sat Aug 27 2022 09:44:27.676]:[Debug]-[DMS] - page in address: 0x1e85000 send to app
+[Sat Aug 27 2022 09:44:27.676]:[Debug]-[DmHandler] - page accessed first time, copy zero page of address 0x1e85000
+[Sat Aug 27 2022 09:44:27.676]:[Debug]-[DmHandler] - UFFD_EVENT_PAGEFAULT event: 
 flags = 1  address = 0x1e86000
-[Fri Aug 26 2022 13:09:18.801]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1e86000
-[Fri Aug 26 2022 13:09:18.801]:[Debug]-[DM HANDLER] - request the page in address 0x1e86000
-[Fri Aug 26 2022 13:09:18.801]:[Debug]-[DMS] - page accessed first time, set info - new_page
-[Fri Aug 26 2022 13:09:18.801]:[Debug]-DMS- Print SPT STATE
+[Sat Aug 27 2022 09:44:27.676]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1e86000
+[Sat Aug 27 2022 09:44:27.676]:[Debug]-[DM HANDLER] - request the page in address 0x1e86000
+[Sat Aug 27 2022 09:44:27.676]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Sat Aug 27 2022 09:44:27.676]:[Debug]-[DM HANDLER] - get response of the page in address 0x1e86000
+[Sat Aug 27 2022 09:44:27.676]:[Debug]-[DmHandler] - RequestPageFromDMS succeeded. 
+[Sat Aug 27 2022 09:44:27.676]:[Debug]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : DISK
 address : 0x1d4d000  location : DISK
@@ -1028,16 +1031,15 @@ address : 0x1e85000  location : INSTANCE_0
 address : 0x1e86000  location : INSTANCE_0
 ------END SPT-----
 
-[Fri Aug 26 2022 13:09:18.801]:[Debug]-[DMS] - page in address: 0x1e86000 send to app
-[Fri Aug 26 2022 13:09:18.801]:[Debug]-[DM HANDLER] - get response of the page in address 0x1e86000
-[Fri Aug 26 2022 13:09:18.801]:[Debug]-[Uffd] - RequestPageFromDMS succeeded. 
-[Fri Aug 26 2022 13:09:18.801]:[Debug]-[Uffd] - page accessed first time, copy zero page of address 0x1e86000
-[Fri Aug 26 2022 13:09:18.802]:[Debug]-[Uffd] - UFFD_EVENT_PAGEFAULT event: 
+[Sat Aug 27 2022 09:44:27.676]:[Debug]-[DMS] - page in address: 0x1e86000 send to app
+[Sat Aug 27 2022 09:44:27.676]:[Debug]-[DmHandler] - page accessed first time, copy zero page of address 0x1e86000
+[Sat Aug 27 2022 09:44:27.677]:[Debug]-[DmHandler] - UFFD_EVENT_PAGEFAULT event: 
 flags = 0  address = 0x1d4c000
-[Fri Aug 26 2022 13:09:18.802]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1d4c000
-[Fri Aug 26 2022 13:09:18.802]:[Debug]-[DM HANDLER] - request the page in address 0x1d4c000
-[Fri Aug 26 2022 13:09:18.802]:[Debug]-[DMS] - read page address: 0x1d4c000 from disk
-[Fri Aug 26 2022 13:09:18.802]:[Debug]-DMS- Print SPT STATE
+[Sat Aug 27 2022 09:44:27.677]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1d4c000
+[Sat Aug 27 2022 09:44:27.677]:[Debug]-[DM HANDLER] - request the page in address 0x1d4c000
+[Sat Aug 27 2022 09:44:27.677]:[Debug]-[DMS] - read page address: 0x1d4c000 from disk
+[Sat Aug 27 2022 09:44:27.682]:[Debug]-[DM HANDLER] - get response of the page in address 0x1d4c000
+[Sat Aug 27 2022 09:44:27.682]:[Debug]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : DISK
@@ -1066,17 +1068,19 @@ address : 0x1e85000  location : INSTANCE_0
 address : 0x1e86000  location : INSTANCE_0
 ------END SPT-----
 
-[Fri Aug 26 2022 13:09:18.802]:[Debug]-[DMS] - page in address: 0x1d4c000 send to app
-[Fri Aug 26 2022 13:09:18.802]:[Debug]-[DM HANDLER] - get response of the page in address 0x1d4c000
-[Fri Aug 26 2022 13:09:18.802]:[Debug]-[Uffd] - RequestPageFromDMS succeeded. 
-[Fri Aug 26 2022 13:09:18.802]:[Debug]-[Uffd] - page evicted before, copy page content from dms
-[Fri Aug 26 2022 13:09:18.802]:[Debug]-page index: 0 test compare page SUCCESS
-[Fri Aug 26 2022 13:09:18.802]:[Debug]-[Uffd] - UFFD_EVENT_PAGEFAULT event: 
+[Sat Aug 27 2022 09:44:27.683]:[Debug]-[DMS] - page in address: 0x1d4c000 send to app
+[Sat Aug 27 2022 09:44:27.683]:[Debug]-[DmHandler] - RequestPageFromDMS succeeded. 
+[Sat Aug 27 2022 09:44:27.683]:[Debug]-[DmHandler] - page evicted before, copy page content from dms
+[Sat Aug 27 2022 09:44:27.683]:[Debug]-page index: 0 test compare page SUCCESS
+[Sat Aug 27 2022 09:44:27.683]:[Debug]-[DmHandler] - UFFD_EVENT_PAGEFAULT event: 
 flags = 0  address = 0x1d4d000
-[Fri Aug 26 2022 13:09:18.802]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1d4d000
-[Fri Aug 26 2022 13:09:18.802]:[Debug]-[DM HANDLER] - request the page in address 0x1d4d000
-[Fri Aug 26 2022 13:09:18.802]:[Debug]-[DMS] - read page address: 0x1d4d000 from disk
-[Fri Aug 26 2022 13:09:18.802]:[Debug]-DMS- Print SPT STATE
+[Sat Aug 27 2022 09:44:27.683]:[Debug]-[DM HANDLER] - request the page in address 0x1d4d000
+[Sat Aug 27 2022 09:44:27.684]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1d4d000
+[Sat Aug 27 2022 09:44:27.684]:[Debug]-[DMS] - read page address: 0x1d4d000 from disk
+[Sat Aug 27 2022 09:44:27.684]:[Debug]-[DM HANDLER] - get response of the page in address 0x1d4d000
+[Sat Aug 27 2022 09:44:27.684]:[Debug]-[DmHandler] - RequestPageFromDMS succeeded. 
+[Sat Aug 27 2022 09:44:27.684]:[Debug]-[DmHandler] - page evicted before, copy page content from dms
+[Sat Aug 27 2022 09:44:27.684]:[Debug]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -1102,20 +1106,20 @@ address : 0x1e82000  location : INSTANCE_0
 address : 0x1e83000  location : INSTANCE_0
 address : 0x1e84000  location : INSTANCE_0
 address : 0x1e85000  location : INSTANCE_0
+[Sat Aug 27 2022 09:44:27.685]:[Debug]-page index: 1 test compare page SUCCESS
 address : 0x1e86000  location : INSTANCE_0
 ------END SPT-----
 
-[Fri Aug 26 2022 13:09:18.802]:[Debug]-[DMS] - page in address: 0x1d4d000 send to app
-[Fri Aug 26 2022 13:09:18.803]:[Debug]-[DM HANDLER] - get response of the page in address 0x1d4d000
-[Fri Aug 26 2022 13:09:18.803]:[Debug]-[Uffd] - RequestPageFromDMS succeeded. 
-[Fri Aug 26 2022 13:09:18.803]:[Debug]-[Uffd] - page evicted before, copy page content from dms
-[Fri Aug 26 2022 13:09:18.803]:[Debug]-page index: 1 test compare page SUCCESS
-[Fri Aug 26 2022 13:09:18.803]:[Debug]-[Uffd] - UFFD_EVENT_PAGEFAULT event: 
+[Sat Aug 27 2022 09:44:27.685]:[Debug]-[DMS] - page in address: 0x1d4d000 send to app
+[Sat Aug 27 2022 09:44:27.685]:[Debug]-[DmHandler] - UFFD_EVENT_PAGEFAULT event: 
 flags = 0  address = 0x1d4e000
-[Fri Aug 26 2022 13:09:18.803]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1d4e000
-[Fri Aug 26 2022 13:09:18.803]:[Debug]-[DM HANDLER] - request the page in address 0x1d4e000
-[Fri Aug 26 2022 13:09:18.803]:[Debug]-[DMS] - read page address: 0x1d4e000 from disk
-[Fri Aug 26 2022 13:09:18.803]:[Debug]-DMS- Print SPT STATE
+[Sat Aug 27 2022 09:44:27.685]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1d4e000
+[Sat Aug 27 2022 09:44:27.685]:[Debug]-[DM HANDLER] - request the page in address 0x1d4e000
+[Sat Aug 27 2022 09:44:27.685]:[Debug]-[DMS] - read page address: 0x1d4e000 from disk
+[Sat Aug 27 2022 09:44:27.686]:[Debug]-[DM HANDLER] - get response of the page in address 0x1d4e000
+[Sat Aug 27 2022 09:44:27.686]:[Debug]-[DmHandler] - RequestPageFromDMS succeeded. 
+[Sat Aug 27 2022 09:44:27.686]:[Debug]-[DmHandler] - page evicted before, copy page content from dms
+[Sat Aug 27 2022 09:44:27.686]:[Debug]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -1144,18 +1148,17 @@ address : 0x1e85000  location : INSTANCE_0
 address : 0x1e86000  location : INSTANCE_0
 ------END SPT-----
 
-[Fri Aug 26 2022 13:09:18.803]:[Debug]-[DMS] - page in address: 0x1d4e000 send to app
-[Fri Aug 26 2022 13:09:18.803]:[Debug]-[DM HANDLER] - get response of the page in address 0x1d4e000
-[Fri Aug 26 2022 13:09:18.803]:[Debug]-[Uffd] - RequestPageFromDMS succeeded. 
-[Fri Aug 26 2022 13:09:18.803]:[Debug]-[Uffd] - page evicted before, copy page content from dms
-[Fri Aug 26 2022 13:09:18.803]:[Debug]-page index: 2 test compare page SUCCESS
-[Fri Aug 26 2022 13:09:18.803]:[Debug]-[Uffd] - UFFD_EVENT_PAGEFAULT event: 
+[Sat Aug 27 2022 09:44:27.686]:[Debug]-page index: 2 test compare page SUCCESS
+[Sat Aug 27 2022 09:44:27.686]:[Debug]-[DMS] - page in address: 0x1d4e000 send to app
+[Sat Aug 27 2022 09:44:27.686]:[Debug]-[DmHandler] - UFFD_EVENT_PAGEFAULT event: 
 flags = 0  address = 0x1d4f000
-[Fri Aug 26 2022 13:09:18.804]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1d4f000
-[Fri Aug 26 2022 13:09:18.803]:[Debug]-[DM HANDLER] - request the page in address 0x1d4f000
-[Fri Aug 26 2022 13:09:18.804]:[Debug]-[DMS] - read page address: 0x1d4f000 from disk
-[Fri Aug 26 2022 13:09:18.812]:[Debug]-[DM HANDLER] - get response of the page in address 0x1d4f000
-[Fri Aug 26 2022 13:09:18.812]:[Debug]-DMS- Print SPT STATE
+[Sat Aug 27 2022 09:44:27.686]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1d4f000
+[Sat Aug 27 2022 09:44:27.686]:[Debug]-[DM HANDLER] - request the page in address 0x1d4f000
+[Sat Aug 27 2022 09:44:27.687]:[Debug]-[DMS] - read page address: 0x1d4f000 from disk
+[Sat Aug 27 2022 09:44:27.687]:[Debug]-[DM HANDLER] - get response of the page in address 0x1d4f000
+[Sat Aug 27 2022 09:44:27.687]:[Debug]-[DmHandler] - RequestPageFromDMS succeeded. 
+[Sat Aug 27 2022 09:44:27.687]:[Debug]-[DmHandler] - page evicted before, copy page content from dms
+[Sat Aug 27 2022 09:44:27.687]:[Debug]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -1179,21 +1182,19 @@ address : 0x1e1c000  location : INSTANCE_0
 address : 0x1e1d000  location : INSTANCE_0
 address : 0x1e82000  location : INSTANCE_0
 address : 0x1e83000  location : INSTANCE_0
-address : 0x1e84000  location : INSTANCE_0
+address : 0x1e84000  location : IN[Sat Aug 27 2022 09:44:27.687]:[Debug]-page index: 3 test compare page SUCCESS
+STANCE_0
 address : 0x1e85000  location : INSTANCE_0
 address : 0x1e86000  location : INSTANCE_0
 ------END SPT-----
 
-[Fri Aug 26 2022 13:09:18.812]:[Debug]-[DMS] - page in address: 0x1d4f000 send to app
-[Fri Aug 26 2022 13:09:18.813]:[Debug]-[Uffd] - RequestPageFromDMS succeeded. 
-[Fri Aug 26 2022 13:09:18.813]:[Debug]-[Uffd] - page evicted before, copy page content from dms
-[Fri Aug 26 2022 13:09:18.813]:[Debug]-page index: 3 test compare page SUCCESS
-[Fri Aug 26 2022 13:09:18.813]:[Debug]-[Uffd] - UFFD_EVENT_PAGEFAULT event: 
+[Sat Aug 27 2022 09:44:27.687]:[Debug]-[DMS] - page in address: 0x1d4f000 send to app
+[Sat Aug 27 2022 09:44:27.687]:[Debug]-[DmHandler] - UFFD_EVENT_PAGEFAULT event: 
 flags = 0  address = 0x1d50000
-[Fri Aug 26 2022 13:09:18.813]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1d50000
-[Fri Aug 26 2022 13:09:18.813]:[Debug]-[DM HANDLER] - request the page in address 0x1d50000
-[Fri Aug 26 2022 13:09:18.813]:[Debug]-[DMS] - read page address: 0x1d50000 from disk
-[Fri Aug 26 2022 13:09:18.813]:[Debug]-DMS- Print SPT STATE
+[Sat Aug 27 2022 09:44:27.687]:[Debug]-[DM HANDLER] - request the page in address 0x1d50000
+[Sat Aug 27 2022 09:44:27.688]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1d50000
+[Sat Aug 27 2022 09:44:27.690]:[Debug]-[DMS] - read page address: 0x1d50000 from disk
+[Sat Aug 27 2022 09:44:27.690]:[Debug]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -1222,48 +1223,54 @@ address : 0x1e85000  location : INSTANCE_0
 address : 0x1e86000  location : INSTANCE_0
 ------END SPT-----
 
-[Fri Aug 26 2022 13:09:18.813]:[Debug]-[DMS] - page in address: 0x1d50000 send to app
-[Fri Aug 26 2022 13:09:18.813]:[Debug]-[DM HANDLER] - get response of the page in address 0x1d50000
-[Fri Aug 26 2022 13:09:18.813]:[Debug]-[Uffd] - RequestPageFromDMS succeeded. 
-[Fri Aug 26 2022 13:09:18.813]:[Debug]-[Uffd] - page evicted before, copy page content from dms
-[Fri Aug 26 2022 13:09:18.813]:[Debug]-page index: 4 test compare page SUCCESS
-[Fri Aug 26 2022 13:09:18.813]:[Debug]-[Uffd] - UFFD_EVENT_PAGEFAULT event: 
+[Sat Aug 27 2022 09:44:27.690]:[Debug]-[DMS] - page in address: 0x1d50000 send to app
+[Sat Aug 27 2022 09:44:27.691]:[Debug]-[DM HANDLER] - get response of the page in address 0x1d50000
+[Sat Aug 27 2022 09:44:27.691]:[Debug]-[DmHandler] - RequestPageFromDMS succeeded. 
+[Sat Aug 27 2022 09:44:27.691]:[Debug]-[DmHandler] - page evicted before, copy page content from dms
+[Sat Aug 27 2022 09:44:27.691]:[Debug]-page index: 4 test compare page SUCCESS
+[Sat Aug 27 2022 09:44:27.691]:[Debug]-[DmHandler] - UFFD_EVENT_PAGEFAULT event: 
 flags = 1  address = 0x1e89000
-[Fri Aug 26 2022 13:09:18.814]:[Debug]-[Lpet] - Print Lpet State
+[Sat Aug 27 2022 09:44:27.691]:[Debug]-[DmHandler] - reached high threshold, notify lpet
+[Sat Aug 27 2022 09:44:27.691]:[Debug]-[CLIENT] - reached high threshold. invoke lpet thread
+[Sat Aug 27 2022 09:44:27.691]:[Debug]-[Lpet] - Print Lpet State
 Lpet start point: 0x1e14000
 page list state: 
 -----START LSPT ----
-address : 0x1e14000  pfn : 336962  is_idle: 1
-address : 0x1e15000  pfn : 142836  is_idle: 1
-address : 0x1e16000  pfn : 267140  is_idle: 1
-address : 0x1e17000  pfn : 666411  is_idle: 1
-address : 0x1e18000  pfn : 162649  is_idle: 1
-address : 0x1e19000  pfn : 636489  is_idle: 1
-address : 0x1e1a000  pfn : 513729  is_idle: 1
-address : 0x1e1b000  pfn : 358279  is_idle: 1
-address : 0x1e1c000  pfn : 270244  is_idle: 1
-address : 0x1e1d000  pfn : 661795  is_idle: 1
-address : 0x1e82000  pfn : 1161135  is_idle: 0
-address : 0x1e83000  pfn : 1061579  is_idle: 0
-address : 0x1e84000  pfn : 1154165  is_idle: 0
-address : 0x1e85000  pfn : 1058033  is_idle: 0
-address : 0x1e86000  pfn : 1096708  is_idle: 0
-address : 0x1d4c000  pfn : 1164049  is_idle: 0
-address : 0x1d4d000  pfn : 1146483  is_idle: 0
-address : 0x1d4e000  pfn : 1093525  is_idle: 0
-address : 0x1d4f000  pfn : 1113829  is_idle: 0
-address : 0x1d50000  pfn : 1090643  is_idle: 0
+address : 0x1e14000  pfn : 565253  is_idle: 1
+address : 0x1e15000  pfn : 592485  is_idle: 1
+address : 0x1e16000  pfn : 90685  is_idle: 1
+address : 0x1e17000  pfn : 252675  is_idle: 1
+address : 0x1e18000  pfn : 232288  is_idle: 1
+address : 0x1e19000  pfn : 272070  is_idle: 1
+address : 0x1e1a000  pfn : 272071  is_idle: 1
+address : 0x1e1b000  pfn : 764913  is_idle: 1
+address : 0x1e1c000  pfn : 327104  is_idle: 1
+address : 0x1e1d000  pfn : 237537  is_idle: 1
+address : 0x1e82000  pfn : 334766  is_idle: 0
+address : 0x1e83000  pfn : 113032  is_idle: 0
+address : 0x1e84000  pfn : 298755  is_idle: 0
+address : 0x1e85000  pfn : 701255  is_idle: 0
+address : 0x1e86000  pfn : 325199  is_idle: 0
+address : 0x1d4c000  pfn : 718043  is_idle: 0
+address : 0x1d4d000  pfn : 455660  is_idle: 0
+address : 0x1d4e000  pfn : 242852  is_idle: 0
+address : 0x1d4f000  pfn : 393404  is_idle: 0
+address : 0x1d50000  pfn : 18772  is_idle: 0
 -----END LSPT ----
 
 
-[Fri Aug 26 2022 13:09:18.814]:[Debug]-[LPET] checking page in addr 0x1e14000
-[Fri Aug 26 2022 13:09:18.814]:[Debug]-[LPET] removing page in addr 0x1e14000
-[Fri Aug 26 2022 13:09:18.814]:[Debug]-[DM HANDLER] - send requet to evict page in address 0x1e14000
-[Fri Aug 26 2022 13:09:18.815]:[Debug]-[DMS] - Handle page eviction in address 0x1e14000
-[Fri Aug 26 2022 13:09:18.816]:[Debug]-[DMS] - page in address : 0x1e14000 stored in disk
-[Fri Aug 26 2022 13:09:18.816]:[Debug]-[DMS] - Page evicted successfuly, sending ack
-[Fri Aug 26 2022 13:09:18.816]:[Debug]-[DMS] request_evict_page_status is 0
-[Fri Aug 26 2022 13:09:18.816]:[Debug]-DMS- Print SPT STATE
+[Sat Aug 27 2022 09:44:27.691]:[Debug]-[LPET] checking page in addr 0x1e14000
+[Sat Aug 27 2022 09:44:27.692]:[Debug]-[LPET] removing page in addr 0x1e14000
+[Sat Aug 27 2022 09:44:27.692]:[Debug]-[DM HANDLER] - send requet to evict page in address 0x1e14000
+[Sat Aug 27 2022 09:44:27.692]:[Debug]-[DMS] - Handle page eviction in address 0x1e14000
+[Sat Aug 27 2022 09:44:27.694]:[Debug]-[DMS] - page in address : 0x1e14000 stored in disk
+[Sat Aug 27 2022 09:44:27.694]:[Debug]-[DMS] - Page evicted successfuly, sending ack
+[Sat Aug 27 2022 09:44:27.694]:[Debug]-[DMS] request_evict_page_status is 0
+[Sat Aug 27 2022 09:44:27.694]:[Debug]-[DM HANDLER] - got ack for evict page in 0x1e14000Ack message : 
+[Sat Aug 27 2022 09:44:27.694]:[Debug]-[LPET] checking page in addr 0x1e15000
+[Sat Aug 27 2022 09:44:27.694]:[Debug]-[LPET] removing page in addr 0x1e15000
+[Sat Aug 27 2022 09:44:27.694]:[Debug]-[DM HANDLER] - send requet to evict page in address 0x1e15000
+[Sat Aug 27 2022 09:44:27.694]:[Debug]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -1292,15 +1299,12 @@ address : 0x1e85000  location : INSTANCE_0
 address : 0x1e86000  location : INSTANCE_0
 ------END SPT-----
 
-[Fri Aug 26 2022 13:09:18.816]:[Debug]-[DM HANDLER] - got ack for evict page in 0x1e14000Ack message : 
-[Fri Aug 26 2022 13:09:18.816]:[Debug]-[LPET] checking page in addr 0x1e15000
-[Fri Aug 26 2022 13:09:18.816]:[Debug]-[LPET] removing page in addr 0x1e15000
-[Fri Aug 26 2022 13:09:18.816]:[Debug]-[DMS] - Handle page eviction in address 0x1e15000
-[Fri Aug 26 2022 13:09:18.816]:[Debug]-[DM HANDLER] - send requet to evict page in address 0x1e15000
-[Fri Aug 26 2022 13:09:18.816]:[Debug]-[DMS] - page in address : 0x1e15000 stored in disk
-[Fri Aug 26 2022 13:09:18.816]:[Debug]-[DMS] - Page evicted successfuly, sending ack
-[Fri Aug 26 2022 13:09:18.816]:[Debug]-[DMS] request_evict_page_status is 0
-[Fri Aug 26 2022 13:09:18.816]:[Debug]-DMS- Print SPT STATE
+[Sat Aug 27 2022 09:44:27.695]:[Debug]-[DMS] - Handle page eviction in address 0x1e15000
+[Sat Aug 27 2022 09:44:27.695]:[Debug]-[DMS] - page in address : 0x1e15000 stored in disk
+[Sat Aug 27 2022 09:44:27.695]:[Debug]-[DMS] - Page evicted successfuly, sending ack
+[Sat Aug 27 2022 09:44:27.695]:[Debug]-[DMS] request_evict_page_status is 0
+[Sat Aug 27 2022 09:44:27.696]:[Debug]-[DM HANDLER] - got ack for evict page in 0x1e15000Ack message : 
+[Sat Aug 27 2022 09:44:27.696]:[Debug]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -1329,15 +1333,18 @@ address : 0x1e85000  location : INSTANCE_0
 address : 0x1e86000  location : INSTANCE_0
 ------END SPT-----
 
-[Fri Aug 26 2022 13:09:18.816]:[Debug]-[DM HANDLER] - got ack for evict page in 0x1e15000Ack message : 
-[Fri Aug 26 2022 13:09:18.816]:[Debug]-[LPET] checking page in addr 0x1e16000
-[Fri Aug 26 2022 13:09:18.816]:[Debug]-[LPET] removing page in addr 0x1e16000
-[Fri Aug 26 2022 13:09:18.817]:[Debug]-[DMS] - Handle page eviction in address 0x1e16000
-[Fri Aug 26 2022 13:09:18.817]:[Debug]-[DM HANDLER] - send requet to evict page in address 0x1e16000
-[Fri Aug 26 2022 13:09:18.817]:[Debug]-[DMS] - page in address : 0x1e16000 stored in disk
-[Fri Aug 26 2022 13:09:18.817]:[Debug]-[DMS] - Page evicted successfuly, sending ack
-[Fri Aug 26 2022 13:09:18.817]:[Debug]-[DMS] request_evict_page_status is 0
-[Fri Aug 26 2022 13:09:18.817]:[Debug]-DMS- Print SPT STATE
+[Sat Aug 27 2022 09:44:27.696]:[Debug]-[LPET] checking page in addr 0x1e16000
+[Sat Aug 27 2022 09:44:27.696]:[Debug]-[LPET] removing page in addr 0x1e16000
+[Sat Aug 27 2022 09:44:27.696]:[Debug]-[DM HANDLER] - send requet to evict page in address 0x1e16000
+[Sat Aug 27 2022 09:44:27.696]:[Debug]-[DMS] - Handle page eviction in address 0x1e16000
+[Sat Aug 27 2022 09:44:27.696]:[Debug]-[DMS] - page in address : 0x1e16000 stored in disk
+[Sat Aug 27 2022 09:44:27.696]:[Debug]-[DMS] - Page evicted successfuly, sending ack
+[Sat Aug 27 2022 09:44:27.696]:[Debug]-[DMS] request_evict_page_status is 0
+[Sat Aug 27 2022 09:44:27.696]:[Debug]-[DM HANDLER] - got ack for evict page in 0x1e16000Ack message : 
+[Sat Aug 27 2022 09:44:27.697]:[Debug]-[LPET] checking page in addr 0x1e17000
+[Sat Aug 27 2022 09:44:27.697]:[Debug]-[LPET] removing page in addr 0x1e17000
+[Sat Aug 27 2022 09:44:27.697]:[Debug]-[DM HANDLER] - send requet to evict page in address 0x1e17000
+[Sat Aug 27 2022 09:44:27.696]:[Debug]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -1366,15 +1373,15 @@ address : 0x1e85000  location : INSTANCE_0
 address : 0x1e86000  location : INSTANCE_0
 ------END SPT-----
 
-[Fri Aug 26 2022 13:09:18.817]:[Debug]-[DM HANDLER] - got ack for evict page in 0x1e16000Ack message : 
-[Fri Aug 26 2022 13:09:18.817]:[Debug]-[LPET] checking page in addr 0x1e17000
-[Fri Aug 26 2022 13:09:18.817]:[Debug]-[LPET] removing page in addr 0x1e17000
-[Fri Aug 26 2022 13:09:18.817]:[Debug]-[DMS] - Handle page eviction in address 0x1e17000
-[Fri Aug 26 2022 13:09:18.817]:[Debug]-[DM HANDLER] - send requet to evict page in address 0x1e17000
-[Fri Aug 26 2022 13:09:18.817]:[Debug]-[DMS] - page in address : 0x1e17000 stored in disk
-[Fri Aug 26 2022 13:09:18.817]:[Debug]-[DMS] - Page evicted successfuly, sending ack
-[Fri Aug 26 2022 13:09:18.817]:[Debug]-[DMS] request_evict_page_status is 0
-[Fri Aug 26 2022 13:09:18.817]:[Debug]-DMS- Print SPT STATE
+[Sat Aug 27 2022 09:44:27.697]:[Debug]-[DMS] - Handle page eviction in address 0x1e17000
+[Sat Aug 27 2022 09:44:27.697]:[Debug]-[DMS] - page in address : 0x1e17000 stored in disk
+[Sat Aug 27 2022 09:44:27.697]:[Debug]-[DMS] - Page evicted successfuly, sending ack
+[Sat Aug 27 2022 09:44:27.697]:[Debug]-[DMS] request_evict_page_status is 0
+[Sat Aug 27 2022 09:44:27.697]:[Debug]-[DM HANDLER] - got ack for evict page in 0x1e17000Ack message : 
+[Sat Aug 27 2022 09:44:27.697]:[Debug]-[LPET] checking page in addr 0x1e18000
+[Sat Aug 27 2022 09:44:27.697]:[Debug]-[LPET] removing page in addr 0x1e18000
+[Sat Aug 27 2022 09:44:27.697]:[Debug]-[DM HANDLER] - send requet to evict page in address 0x1e18000
+[Sat Aug 27 2022 09:44:27.697]:[Debug]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -1403,15 +1410,14 @@ address : 0x1e85000  location : INSTANCE_0
 address : 0x1e86000  location : INSTANCE_0
 ------END SPT-----
 
-[Fri Aug 26 2022 13:09:18.817]:[Debug]-[DM HANDLER] - got ack for evict page in 0x1e17000Ack message : 
-[Fri Aug 26 2022 13:09:18.817]:[Debug]-[LPET] checking page in addr 0x1e18000
-[Fri Aug 26 2022 13:09:18.818]:[Debug]-[LPET] removing page in addr 0x1e18000
-[Fri Aug 26 2022 13:09:18.818]:[Debug]-[DMS] - Handle page eviction in address 0x1e18000
-[Fri Aug 26 2022 13:09:18.818]:[Debug]-[DM HANDLER] - send requet to evict page in address 0x1e18000
-[Fri Aug 26 2022 13:09:18.818]:[Debug]-[DMS] - page in address : 0x1e18000 stored in disk
-[Fri Aug 26 2022 13:09:18.818]:[Debug]-[DMS] - Page evicted successfuly, sending ack
-[Fri Aug 26 2022 13:09:18.818]:[Debug]-[DMS] request_evict_page_status is 0
-[Fri Aug 26 2022 13:09:18.818]:[Debug]-DMS- Print SPT STATE
+[Sat Aug 27 2022 09:44:27.698]:[Debug]-[DMS] - Handle page eviction in address 0x1e18000
+[Sat Aug 27 2022 09:44:27.706]:[Debug]-[DMS] - page in address : 0x1e18000 stored in disk
+[Sat Aug 27 2022 09:44:27.706]:[Debug]-[DMS] - Page evicted successfuly, sending ack
+[Sat Aug 27 2022 09:44:27.706]:[Debug]-[DMS] request_evict_page_status is 0
+[Sat Aug 27 2022 09:44:27.706]:[Debug]-[DM HANDLER] - got ack for evict page in 0x1e18000Ack message : 
+[Sat Aug 27 2022 09:44:27.706]:[Debug]-[LPET] checking page in addr 0x1e19000
+[Sat Aug 27 2022 09:44:27.706]:[Debug]-[LPET] removing page in addr 0x1e19000
+[Sat Aug 27 2022 09:44:27.706]:[Debug]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -1440,15 +1446,16 @@ address : 0x1e85000  location : INSTANCE_0
 address : 0x1e86000  location : INSTANCE_0
 ------END SPT-----
 
-[Fri Aug 26 2022 13:09:18.818]:[Debug]-[DM HANDLER] - got ack for evict page in 0x1e18000Ack message : 
-[Fri Aug 26 2022 13:09:18.818]:[Debug]-[LPET] checking page in addr 0x1e19000
-[Fri Aug 26 2022 13:09:18.818]:[Debug]-[LPET] removing page in addr 0x1e19000
-[Fri Aug 26 2022 13:09:18.818]:[Debug]-[DMS] - Handle page eviction in address 0x1e19000
-[Fri Aug 26 2022 13:09:18.818]:[Debug]-[DM HANDLER] - send requet to evict page in address 0x1e19000
-[Fri Aug 26 2022 13:09:18.818]:[Debug]-[DMS] - page in address : 0x1e19000 stored in disk
-[Fri Aug 26 2022 13:09:18.818]:[Debug]-[DMS] - Page evicted successfuly, sending ack
-[Fri Aug 26 2022 13:09:18.818]:[Debug]-[DMS] request_evict_page_status is 0
-[Fri Aug 26 2022 13:09:18.818]:[Debug]-DMS- Print SPT STATE
+[Sat Aug 27 2022 09:44:27.706]:[Debug]-[DM HANDLER] - send requet to evict page in address 0x1e19000
+[Sat Aug 27 2022 09:44:27.706]:[Debug]-[DMS] - Handle page eviction in address 0x1e19000
+[Sat Aug 27 2022 09:44:27.707]:[Debug]-[DMS] - page in address : 0x1e19000 stored in disk
+[Sat Aug 27 2022 09:44:27.707]:[Debug]-[DMS] - Page evicted successfuly, sending ack
+[Sat Aug 27 2022 09:44:27.707]:[Debug]-[DMS] request_evict_page_status is 0
+[Sat Aug 27 2022 09:44:27.707]:[Debug]-[DM HANDLER] - got ack for evict page in 0x1e19000Ack message : 
+[Sat Aug 27 2022 09:44:27.707]:[Debug]-[LPET] checking page in addr 0x1e1a000
+[Sat Aug 27 2022 09:44:27.707]:[Debug]-[LPET] removing page in addr 0x1e1a000
+[Sat Aug 27 2022 09:44:27.707]:[Debug]-[DM HANDLER] - send requet to evict page in address 0x1e1a000
+[Sat Aug 27 2022 09:44:27.707]:[Debug]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -1477,15 +1484,14 @@ address : 0x1e85000  location : INSTANCE_0
 address : 0x1e86000  location : INSTANCE_0
 ------END SPT-----
 
-[Fri Aug 26 2022 13:09:18.818]:[Debug]-[DM HANDLER] - got ack for evict page in 0x1e19000Ack message : 
-[Fri Aug 26 2022 13:09:18.819]:[Debug]-[LPET] checking page in addr 0x1e1a000
-[Fri Aug 26 2022 13:09:18.819]:[Debug]-[LPET] removing page in addr 0x1e1a000
-[Fri Aug 26 2022 13:09:18.819]:[Debug]-[DM HANDLER] - send requet to evict page in address 0x1e1a000
-[Fri Aug 26 2022 13:09:18.819]:[Debug]-[DMS] - Handle page eviction in address 0x1e1a000
-[Fri Aug 26 2022 13:09:18.819]:[Debug]-[DMS] - page in address : 0x1e1a000 stored in disk
-[Fri Aug 26 2022 13:09:18.819]:[Debug]-[DMS] - Page evicted successfuly, sending ack
-[Fri Aug 26 2022 13:09:18.819]:[Debug]-[DMS] request_evict_page_status is 0
-[Fri Aug 26 2022 13:09:18.819]:[Debug]-DMS- Print SPT STATE
+[Sat Aug 27 2022 09:44:27.707]:[Debug]-[DMS] - Handle page eviction in address 0x1e1a000
+[Sat Aug 27 2022 09:44:27.707]:[Debug]-[DMS] - page in address : 0x1e1a000 stored in disk
+[Sat Aug 27 2022 09:44:27.707]:[Debug]-[DMS] - Page evicted successfuly, sending ack
+[Sat Aug 27 2022 09:44:27.708]:[Debug]-[DMS] request_evict_page_status is 0
+[Sat Aug 27 2022 09:44:27.708]:[Debug]-[DM HANDLER] - got ack for evict page in 0x1e1a000Ack message : 
+[Sat Aug 27 2022 09:44:27.708]:[Debug]-[LPET] checking page in addr 0x1e1b000
+[Sat Aug 27 2022 09:44:27.708]:[Debug]-[LPET] removing page in addr 0x1e1b000
+[Sat Aug 27 2022 09:44:27.708]:[Debug]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -1514,15 +1520,16 @@ address : 0x1e85000  location : INSTANCE_0
 address : 0x1e86000  location : INSTANCE_0
 ------END SPT-----
 
-[Fri Aug 26 2022 13:09:18.819]:[Debug]-[DM HANDLER] - got ack for evict page in 0x1e1a000Ack message : 
-[Fri Aug 26 2022 13:09:18.819]:[Debug]-[LPET] checking page in addr 0x1e1b000
-[Fri Aug 26 2022 13:09:18.819]:[Debug]-[LPET] removing page in addr 0x1e1b000
-[Fri Aug 26 2022 13:09:18.819]:[Debug]-[DMS] - Handle page eviction in address 0x1e1b000
-[Fri Aug 26 2022 13:09:18.819]:[Debug]-[DM HANDLER] - send requet to evict page in address 0x1e1b000
-[Fri Aug 26 2022 13:09:18.819]:[Debug]-[DMS] - page in address : 0x1e1b000 stored in disk
-[Fri Aug 26 2022 13:09:18.819]:[Debug]-[DMS] - Page evicted successfuly, sending ack
-[Fri Aug 26 2022 13:09:18.819]:[Debug]-[DMS] request_evict_page_status is 0
-[Fri Aug 26 2022 13:09:18.819]:[Debug]-DMS- Print SPT STATE
+[Sat Aug 27 2022 09:44:27.708]:[Debug]-[DM HANDLER] - send requet to evict page in address 0x1e1b000
+[Sat Aug 27 2022 09:44:27.708]:[Debug]-[DMS] - Handle page eviction in address 0x1e1b000
+[Sat Aug 27 2022 09:44:27.708]:[Debug]-[DMS] - page in address : 0x1e1b000 stored in disk
+[Sat Aug 27 2022 09:44:27.708]:[Debug]-[DMS] - Page evicted successfuly, sending ack
+[Sat Aug 27 2022 09:44:27.708]:[Debug]-[DMS] request_evict_page_status is 0
+[Sat Aug 27 2022 09:44:27.708]:[Debug]-[DM HANDLER] - got ack for evict page in 0x1e1b000Ack message : 
+[Sat Aug 27 2022 09:44:27.708]:[Debug]-[LPET] checking page in addr 0x1e1c000
+[Sat Aug 27 2022 09:44:27.709]:[Debug]-[LPET] removing page in addr 0x1e1c000
+[Sat Aug 27 2022 09:44:27.709]:[Debug]-[DM HANDLER] - send requet to evict page in address 0x1e1c000
+[Sat Aug 27 2022 09:44:27.709]:[Debug]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -1551,15 +1558,14 @@ address : 0x1e85000  location : INSTANCE_0
 address : 0x1e86000  location : INSTANCE_0
 ------END SPT-----
 
-[Fri Aug 26 2022 13:09:18.820]:[Debug]-[DM HANDLER] - got ack for evict page in 0x1e1b000Ack message : 
-[Fri Aug 26 2022 13:09:18.820]:[Debug]-[LPET] checking page in addr 0x1e1c000
-[Fri Aug 26 2022 13:09:18.820]:[Debug]-[LPET] removing page in addr 0x1e1c000
-[Fri Aug 26 2022 13:09:18.820]:[Debug]-[DMS] - Handle page eviction in address 0x1e1c000
-[Fri Aug 26 2022 13:09:18.820]:[Debug]-[DM HANDLER] - send requet to evict page in address 0x1e1c000
-[Fri Aug 26 2022 13:09:18.820]:[Debug]-[DMS] - page in address : 0x1e1c000 stored in disk
-[Fri Aug 26 2022 13:09:18.820]:[Debug]-[DMS] - Page evicted successfuly, sending ack
-[Fri Aug 26 2022 13:09:18.820]:[Debug]-[DMS] request_evict_page_status is 0
-[Fri Aug 26 2022 13:09:18.820]:[Debug]-DMS- Print SPT STATE
+[Sat Aug 27 2022 09:44:27.709]:[Debug]-[DMS] - Handle page eviction in address 0x1e1c000
+[Sat Aug 27 2022 09:44:27.709]:[Debug]-[DMS] - page in address : 0x1e1c000 stored in disk
+[Sat Aug 27 2022 09:44:27.709]:[Debug]-[DMS] - Page evicted successfuly, sending ack
+[Sat Aug 27 2022 09:44:27.709]:[Debug]-[DMS] request_evict_page_status is 0
+[Sat Aug 27 2022 09:44:27.709]:[Debug]-[DM HANDLER] - got ack for evict page in 0x1e1c000Ack message : 
+[Sat Aug 27 2022 09:44:27.709]:[Debug]-[LPET] checking page in addr 0x1e1d000
+[Sat Aug 27 2022 09:44:27.709]:[Debug]-[LPET] removing page in addr 0x1e1d000
+[Sat Aug 27 2022 09:44:27.709]:[Debug]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -1584,19 +1590,19 @@ address : 0x1e1d000  location : INSTANCE_0
 address : 0x1e82000  location : INSTANCE_0
 address : 0x1e83000  location : INSTANCE_0
 address : 0x1e84000  location : INSTANCE_0
-address : 0x1e85000  location : INSTANCE_0
+address : 0x1e85000  location : INSTANC[Sat Aug 27 2022 09:44:27.710]:[Debug]-[DM HANDLER] - send requet to evict page in address 0x1e1d000
+E_0
 address : 0x1e86000  location : INSTANCE_0
 ------END SPT-----
 
-[Fri Aug 26 2022 13:09:18.820]:[Debug]-[DM HANDLER] - got ack for evict page in 0x1e1c000Ack message : 
-[Fri Aug 26 2022 13:09:18.820]:[Debug]-[LPET] checking page in addr 0x1e1d000
-[Fri Aug 26 2022 13:09:18.820]:[Debug]-[LPET] removing page in addr 0x1e1d000
-[Fri Aug 26 2022 13:09:18.820]:[Debug]-[DMS] - Handle page eviction in address 0x1e1d000
-[Fri Aug 26 2022 13:09:18.820]:[Debug]-[DM HANDLER] - send requet to evict page in address 0x1e1d000
-[Fri Aug 26 2022 13:09:18.820]:[Debug]-[DMS] - page in address : 0x1e1d000 stored in disk
-[Fri Aug 26 2022 13:09:18.820]:[Debug]-[DMS] - Page evicted successfuly, sending ack
-[Fri Aug 26 2022 13:09:18.820]:[Debug]-[DMS] request_evict_page_status is 0
-[Fri Aug 26 2022 13:09:18.820]:[Debug]-DMS- Print SPT STATE
+[Sat Aug 27 2022 09:44:27.710]:[Debug]-[DMS] - Handle page eviction in address 0x1e1d000
+[Sat Aug 27 2022 09:44:27.710]:[Debug]-[DMS] - page in address : 0x1e1d000 stored in disk
+[Sat Aug 27 2022 09:44:27.710]:[Debug]-[DMS] - Page evicted successfuly, sending ack
+[Sat Aug 27 2022 09:44:27.710]:[Debug]-[DMS] request_evict_page_status is 0
+[Sat Aug 27 2022 09:44:27.710]:[Debug]-[DM HANDLER] - got ack for evict page in 0x1e1d000Ack message : 
+[Sat Aug 27 2022 09:44:27.710]:[Debug]-[CLIENT] - lpet end running cycle.
+[Sat Aug 27 2022 09:44:27.710]:[Debug]-[DM HANDLER] - request the page in address 0x1e89000
+[Sat Aug 27 2022 09:44:27.710]:[Debug]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -1625,12 +1631,9 @@ address : 0x1e85000  location : INSTANCE_0
 address : 0x1e86000  location : INSTANCE_0
 ------END SPT-----
 
-[Fri Aug 26 2022 13:09:18.821]:[Debug]-[DM HANDLER] - got ack for evict page in 0x1e1d000Ack message : 
-[Fri Aug 26 2022 13:09:18.821]:[Debug]-[Uffd] - num of evicted pages : 10
-[Fri Aug 26 2022 13:09:18.821]:[Debug]-[DM HANDLER] - request the page in address 0x1e89000
-[Fri Aug 26 2022 13:09:18.828]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1e89000
-[Fri Aug 26 2022 13:09:18.828]:[Debug]-[DMS] - page accessed first time, set info - new_page
-[Fri Aug 26 2022 13:09:18.828]:[Debug]-DMS- Print SPT STATE
+[Sat Aug 27 2022 09:44:27.725]:[Debug]-[DMS] - get request to send content of page in addreass: 0x1e89000
+[Sat Aug 27 2022 09:44:27.726]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Sat Aug 27 2022 09:44:27.726]:[Debug]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -1660,8 +1663,8 @@ address : 0x1e86000  location : INSTANCE_0
 address : 0x1e89000  location : INSTANCE_0
 ------END SPT-----
 
-[Fri Aug 26 2022 13:09:18.828]:[Debug]-[DMS] - page in address: 0x1e89000 send to app
-[Fri Aug 26 2022 13:09:18.828]:[Debug]-[DM HANDLER] - get response of the page in address 0x1e89000
-[Fri Aug 26 2022 13:09:18.828]:[Debug]-[Uffd] - RequestPageFromDMS succeeded. 
-[Fri Aug 26 2022 13:09:18.829]:[Debug]-[Uffd] - page accessed first time, copy zero page of address 0x1e89000
-[Fri Aug 26 2022 13:09:18.829]:[Debug]-[EDM CLIENT] - SHUTDOWN!
+[Sat Aug 27 2022 09:44:27.726]:[Debug]-[DMS] - page in address: 0x1e89000 send to app
+[Sat Aug 27 2022 09:44:27.732]:[Debug]-[DM HANDLER] - get response of the page in address 0x1e89000
+[Sat Aug 27 2022 09:44:27.733]:[Debug]-[DmHandler] - RequestPageFromDMS succeeded. 
+[Sat Aug 27 2022 09:44:27.733]:[Debug]-[DmHandler] - page accessed first time, copy zero page of address 0x1e89000
+[Sat Aug 27 2022 09:44:27.733]:[Debug]-[EDM CLIENT] - SHUTDOWN!

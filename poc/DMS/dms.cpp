@@ -11,6 +11,7 @@ DMS::DMS(int argc, char *argv[]){
     mpi_instance = new MPI_EDM::MpiDms(argc,argv);
     dm_tread = std::thread(&DMS::DmHandlerThread,this);
     xpet_thread = std::thread(&DMS::XpetThread,this);
+    LOG(DEBUG) << "[DMS] - DMS ready for serving requests";
     
 }
 void DMS::ParseConfigFile () {

@@ -19,18 +19,20 @@ class Lpet{
     uint32_t high_thresh;
     MPI_EDM::MpiClient* mpi_instance;
     char* buffer;
+    std::mutex& page_list_mutex;
 
 
 
 public:
 
-    Lpet(MPI_EDM::MpiClient* mpi_instance, vector<Page>& page_list_ref, int high, int low);
+    Lpet(MPI_EDM::MpiClient* mpi_instance, vector<Page>& page_list_ref, int high, int low, std::mutex& page_list_mutex);
     Lpet() = default;
     ~Lpet() = default;
     Lpet& operator=(const Lpet& a);
     vector<Page>& page_list;
     uint32_t run();
     std::string PrintLpetState(); 
+    //void RunLpetThread();
     friend std::ostream& operator<<(std::ostream& os, const Lpet& lpet);
 };
 std::ostream& operator<<(std::ostream& os, const Lpet& lpet);

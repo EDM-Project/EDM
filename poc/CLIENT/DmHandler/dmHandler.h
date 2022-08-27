@@ -1,5 +1,5 @@
-#ifndef UFFD_H
-#define UFFD_H
+#ifndef DMHANDLER_H
+#define DMHANDLER_H
 
 #include <inttypes.h>
 #include <sys/types.h>
@@ -26,25 +26,28 @@
 #define PAGE_SIZE 4096
 class Client;
 
-class Uffd {
+class DmHandler {
     private:
 
     long uffd;          /* userfaultfd file descriptor */
     char *addr;         /* Start of region handled by userfaultfd */
+    int high_threshold;
+    int low_threshold;
     uint64_t len;       /* Length of region handled by userfaultfd */
     std::thread thr;      /* ID of thread that handles page faults */
     MPI_EDM::MpiClient* mpi_instance;
     Client* client; 
 
     public:
-    Uffd() = default;
-    Uffd(MPI_EDM::MpiClient* mpi_instance, Client* client);
-    ~Uffd() = default;
+    DmHandler() = default;
+    DmHandler(MPI_EDM::MpiClient* mpi_instance, Client* client, int high_threshold, int low_threshold);
+    ~DmHandler() = default;
     void ListenPageFaults();
     void HandleMissPageFault(struct uffd_msg* msg);
     void CopyZeroPage(uintptr_t vaddr);
     void CopyExistingPage(uintptr_t vaddr,char* source_page_content);
     std::thread ActivateDM_Handler();
+    void InvokeLpetIfNeeded();
 
 };
 #endif

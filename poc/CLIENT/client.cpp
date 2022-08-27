@@ -9,11 +9,11 @@ Client::Client ()
     setenv("start_addr",std::to_string(start_addr).c_str(),1);
     setenv("end_addr",std::to_string(end_addr).c_str(),1);
     this->mpi_instance = new MPI_EDM::MpiClient(0,NULL);
-    this->ufd = new Uffd(this->mpi_instance,this); 
+    this->ufd = new DmHandler(this->mpi_instance,this,high_threshold,low_threshold); 
     this->dm_handler_thread = ufd->ActivateDM_Handler();
     this->page_list =  std::vector<Page>();
-    this->lpet = new Lpet(this->mpi_instance, page_list, this->high_threshold, this->low_threshold);
-    
+    this->lpet = new Lpet(this->mpi_instance, page_list, this->high_threshold, this->low_threshold,page_list_mutex);
+    this->lpet_thread = std::thread(&Client::RunLpetThread, this);
 }
 
 void Client::ParseConfigFile () {
@@ -62,12 +62,37 @@ Client::~Client(){
 
 
 void Client::AddToPageList(uintptr_t vaddr) {
+    std::lock_guard<std::mutex> lockGuard(page_list_mutex);
     Page page = Page(vaddr);
     page_list.push_back(page);
 }
 
-int Client::RunLpet() {
-    return lpet->run();
+int Client::GetPageListSize() { 
+    return page_list.size();
+}
+
+bool Client::IsPageExist(uintptr_t vaddr) {
+    for (auto& page : page_list){
+        if (page.vaddr == vaddr){
+            return true;
+        }
+    }
+    return false;
+}
+
+void Client::RunLpetThread() {
+    while (true) {
+        is_lpet_running = false;
+        std::unique_lock<std::mutex> lck(run_lpet_mutex);
+        while(page_list.size() < high_threshold) cv.wait(lck);
+        LOG(DEBUG) << "[CLIENT] - reached high threshold. invoke lpet thread";
+        is_lpet_running = true;
+        lpet->run();
+        LOG(DEBUG) << "[CLIENT] - lpet end running cycle.";
+        is_lpet_running = false;
+        cv.notify_all();
+    }
+    //return lpet->run();
 }
 
 void Client::PrintPageList() {

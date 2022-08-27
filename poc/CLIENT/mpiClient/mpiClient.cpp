@@ -19,14 +19,14 @@ RequestGetPageData MpiClient::RequestPageFromDMS (uintptr_t vaddr) {
     for (int i =0 ; i < NUM_OF_RETRIES ; i++)
     {
         MPI_Send(&request_page, 1, MPI_RequestPage, 0, PAGE_REQUEST_TAG, mpi_comm);
-        LOG(DEBUG) << "[DM HANDLER] - request the page in address " << PRINT_AS_HEX(vaddr) ;
+        LOG(DEBUG) << "[DmHandler] - request the page in address " << PRINT_AS_HEX(vaddr) ;
         MPI_Recv(&request_page, 1, MPI_RequestPage, 0, PAGE_REQUEST_TAG, mpi_comm, MPI_STATUS_IGNORE);
-        LOG(DEBUG) << "[DM HANDLER] - get response of the page in address " << PRINT_AS_HEX(vaddr) ;
+        LOG(DEBUG) << "[DmHandler] - get response of the page in address " << PRINT_AS_HEX(vaddr) ;
         if (request_page.info == MPI_EDM::error){
-            LOG(ERROR) << "[Uffd] - RequestPageFromDMS failed. Retry " ;
+            LOG(ERROR) << "[DmHandler] - RequestPageFromDMS failed. Retry " ;
         }
         else{
-            LOG(DEBUG) << "[Uffd] - RequestPageFromDMS succeeded. " ;
+            LOG(DEBUG) << "[DmHandler] - RequestPageFromDMS succeeded. " ;
             break;
         }
     }
@@ -46,9 +46,9 @@ void MpiClient::RequestEvictPage (uintptr_t vaddr, char* page) {
     for (int i= 0 ; i < NUM_OF_RETRIES ; i++) {
 
         MPI_Send(&request, 1, MPI_RequestEvictPage, 0, EVICT_REQUEST_TAG, mpi_comm);
-        LOG(DEBUG) << "[DM HANDLER] - send requet to evict page in address " << PRINT_AS_HEX(request.vaddr) ;
+        LOG(DEBUG) << "[DmHandler] - send requet to evict page in address " << PRINT_AS_HEX(request.vaddr) ;
         MPI_Recv(&ack_page, 1, MPI_AckPage, 0, ACK_TAG, mpi_comm, MPI_STATUS_IGNORE);
-        LOG(DEBUG) << "[DM HANDLER] - got ack for evict page in " << PRINT_AS_HEX(ack_page.vaddr) << 
+        LOG(DEBUG) << "[DmHandler] - got ack for evict page in " << PRINT_AS_HEX(ack_page.vaddr) << 
             "Ack message : " << ack_page.error;
 
         if (std::string(ack_page.error).empty()) {

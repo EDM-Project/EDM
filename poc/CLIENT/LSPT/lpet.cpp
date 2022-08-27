@@ -12,8 +12,8 @@ using std::string;
 
 #include "lpet.h"
 
-Lpet::Lpet(MPI_EDM::MpiClient* mpi_instance, vector<Page>& page_list_ref, int high, int low) :
-    page_list(page_list_ref), high_thresh(high), low_thresh(low), first_run(true)
+Lpet::Lpet(MPI_EDM::MpiClient* mpi_instance, vector<Page>& page_list_ref, int high, int low, std::mutex& page_list_mutex) :
+    page_list(page_list_ref), high_thresh(high), low_thresh(low), first_run(true), page_list_mutex(page_list_mutex)
 {
         
          this->start_point = 0;
@@ -34,30 +34,25 @@ Lpet& Lpet::operator=(const Lpet& a)
 uint32_t Lpet::run()
 {
     
-    if(page_list.size() == 0)
-    {
-        if(DEBUG_STATUS) {LOG(DEBUG) << "[Lpet] PAGE LIST EMPTY " ;}
-        return 0;
-    }
+    // if(page_list.size() == 0)
+    // {
+    //     if(DEBUG_STATUS) {LOG(DEBUG) << "[Lpet] PAGE LIST EMPTY " ;}
+    //     return 0;
+    // }
 
     uint32_t ctr = 0;
     uint32_t evicted_ctr = 0;
-    if(page_list.size() >= high_thresh) //need to evict pages
-    {
-        // LOG(DEBUG) << "[LPET run - 60 ] start point is : "<< PRINT_AS_HEX(page_list[start_point].vaddr); 
-        // LOG(DEBUG) << "===========PAGE LIST START============";
-        // for (auto& it : page_list){
-        //     LOG(DEBUG) << it ;
-        // }
-        // LOG(DEBUG) << "===========PAGE LIST END============";
+    // if(page_list.size() >= high_thresh) //need to evict pages
+    // {
+        
         LOG(DEBUG) << *this;
         int init_size = page_list.size();
         bool first_cycle = true;
         bool is_evicted = false;
         int index = start_point;
-        //vector<Page>::iterator it = this->start_point;
         while(page_list.size() > low_thresh)
         {
+            std::lock_guard<std::mutex> lockGuard(this->page_list_mutex);
             is_evicted = false;
             if(first_cycle && ctr >= init_size)
             {
@@ -97,7 +92,7 @@ uint32_t Lpet::run()
 
         this->start_point = index;
 
-    }
+    //}
     return evicted_ctr;
 }
 
@@ -116,3 +111,4 @@ std::ostream& operator<<(std::ostream& os, const Lpet& lpet){
 
     os << std::endl;
 }
+
