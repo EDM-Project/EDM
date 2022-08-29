@@ -70,13 +70,12 @@ void Client::RunLpetThread() {
         is_lpet_running = false;
         WaitForRunLpet();
         //now we know that page list has max 
-        LOG(DEBUG) << "[CLIENT] - reached high threshold. run lpet cycle";
+        LOG(DEBUG) << "[CLIENT] - reached high threshold, running lpet";
         is_lpet_running = true;
         std::thread lpet_thread = lpet->ActivateLpet();
-        LOG(DEBUG) << "[CLIENT] - lpet trigged";
         cv.notify_all();
         lpet_thread.join();
-        LOG(DEBUG) << "[CLIENT] - lpet end running cycle.";
+        LOG(DEBUG) << "[CLIENT] - lpet end running .";
         is_lpet_running = false;
         cv.notify_all();
     }

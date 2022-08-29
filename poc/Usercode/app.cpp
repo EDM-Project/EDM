@@ -448,7 +448,8 @@ void test_eviction_policy() {
 
 int main(int argc, char *argv[])
 { 
-   end_to_end_test();
+   
+   test_eviction_policy();
 
 
    return 0;

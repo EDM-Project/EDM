@@ -24,9 +24,9 @@ Lpet::Lpet(MPI_EDM::MpiClient* mpi_instance, LSPT& lspt, int high, int low) :
 
 uint32_t Lpet::run()
 {
-    LOG(DEBUG) << "[Lpet] - start cycle, print current state:";
-    LOG(DEBUG) << "[Lpet] - start address: " << PRINT_AS_HEX(lspt.AtIndex(start_point).vaddr);
-    LOG(DEBUG) << lspt;
+    LOG(INFO) << "\n-----------------START LPET-----------------\n";
+    LOG(INFO) << "[Lpet] - start address: " << PRINT_AS_HEX(lspt.AtIndex(start_point).vaddr);
+    LOG(INFO) << lspt;
     uint32_t ctr = 0;
     uint32_t evicted_ctr = 0;
         
@@ -47,20 +47,25 @@ uint32_t Lpet::run()
         {
             index = 0;
         }
-        if(DEBUG_STATUS) {LOG(DEBUG) << "[LPET] checking page in addr " << PRINT_AS_HEX(lspt.AtIndex(index).vaddr);}
+        LOG(INFO) << "[LPET] checking if page in addr " << PRINT_AS_HEX(lspt.AtIndex(index).vaddr) << " is idle";
         if(lspt.AtIndex(index).is_idle() || !first_cycle) // need to evict the current page
         {
             is_evicted = true;
-            if(DEBUG_STATUS) {LOG(DEBUG) << "[LPET] removing page in addr " << PRINT_AS_HEX(lspt.AtIndex(index).vaddr);}
+            LOG(INFO) << "[LPET] sending eviction request for page in addr " << PRINT_AS_HEX(lspt.AtIndex(index).vaddr);
             Page evicted = lspt.AtIndex(index);
-
-            char content [PAGE_SIZE];
+            
             char* mem  = (char*)malloc(PAGE_SIZE);
-            memcpy(mem,(char*)evicted.vaddr,PAGE_SIZE);
+            
+            mremap((void*)evicted.vaddr,PAGE_SIZE,PAGE_SIZE,MREMAP_MAYMOVE | MREMAP_DONTUNMAP | MREMAP_FIXED, buffer);
+            
+            memcpy(mem,buffer,PAGE_SIZE);
 
             mpi_instance->RequestEvictPage(evicted.vaddr, mem);
+            LOG(INFO) << "[Lpet] - received ack for eviction of page in address : " << PRINT_AS_HEX(evicted.vaddr)  ; 
+
+            
             free(mem);
-            mremap((void*)evicted.vaddr,PAGE_SIZE,PAGE_SIZE,MREMAP_MAYMOVE | MREMAP_DONTUNMAP | MREMAP_FIXED, buffer);
+            
 
             lspt.Remove(index);
             evicted_ctr++;
@@ -76,7 +81,7 @@ uint32_t Lpet::run()
     }
 
     this->start_point = index;
-
+    LOG(INFO) << "\n-----------------END LPET-----------------\n";
 
     return evicted_ctr;
 }
