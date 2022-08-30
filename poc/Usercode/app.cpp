@@ -334,29 +334,37 @@ void test_eviction_policy() {
    }
    // after 4 allocations, the memory layout:
    /*
-   .__________.
-   .0x1D4C000 . 
-   .  AREA_1  .
-   .0x1D50000 .
-   .__________.
-   .0x1D51000 .         
-   .  AREA_2  .
-   .0x1D56000.
-   .__________.
-   .   ...    .
-   .__________.
-   .0x1E14000 .
-   .  AREA_3  .
-   .0x1E18000 .
-   .__________.
-   .0x1E19000 .
-   .  AREA_4  .
-   .0X1E1D000 .
-   .__________.
+      +--------+   
+      |        |  
+      |        |
+      | Area 4 |  
+      |        |
+      |        |  <-0x1E19000
+      +--------+  
+      |        |
+      |        |  
+      | Area 3 |  
+      |        |  
+      |        |  <-0x1E14000
+      +--------+  
+      :  ..... |    
+      +--------+  
+      |        |
+      |        |    
+      | Area 2 |
+      |        |  
+      |        |  <- 0x1D51000 
+      +--------+  
+      |        |  
+      |        |  
+      | Area 1 |
+      |        |  
+      |        |  <-0x1D4C000
+      +--------+  
 
    */
 
-   usleep(200000); 
+   usleep(100000); 
 
    char* area_5 = (char*) mmap( (void*)0x1E20000, PAGE_SIZE *5 , PROT_READ | PROT_WRITE,
                      MAP_PRIVATE | MAP_ANONYMOUS | MAP_FIXED, -1, 0);
@@ -367,37 +375,44 @@ void test_eviction_policy() {
    // area 5 first page should trig lpet
    // expected memory layout:
    /*
-   .__________.
-   .0x1D4C000 . 
-   .  AREA_1  .
-   .  EVICTED .
-   .0x1D50000 .
-   .__________.
-   .0x1D51000 .         
-   .  AREA_2  .
-   .0x1D56000.
-   .__________.
-   .   ...    .
-   .__________.
-   .0x1E14000 .
-   .  AREA_3  .
-   .0x1E18000 .
-   .__________.
-   .0x1E19000 .
-   .  AREA_4  .
-   .0X1E1D000 .
-   .__________.
-   .   ...    .
-   .__________.
-   .0x1E20000 .
-   .  AREA_5  .   
-   .0x1E40000 .   
-   .__________.
+      +--------+   
+      |        |  
+      |        |
+      | Area 5 |  
+      |        |
+      |        |  <-0x1E20000
+      +--------+   
+      |        |  
+      |        |
+      | Area 4 |  
+      |        |
+      |        |  <-0x1E19000
+      +--------+  
+      |        |
+      |        |  
+      | Area 3 |  
+      |        |  
+      |        |  <-0x1E14000
+      +--------+  
+      :  ..... |    
+      +--------+  
+      |        |
+      |        |    
+      | Area 2 |
+      |        |  
+      |        |  <- 0x1D51000 
+      +--------+  
+      |        |  
+      | Area 1 |  
+      | EVICTED|
+      |        |    
+      |        |  <-0x1D4C000
+      +--------+  
    */
    usleep(70000); 
 
 
-   //touch pages in area 2 & area 3 
+   //touch pages in area 2 
    for (int i =0; i < PAGE_SIZE *5 ; i++ ) {
       area_2[i] = 'z';
    }
@@ -413,34 +428,40 @@ void test_eviction_policy() {
    // expected memory layout:
 
 /*
-   .__________.
-   .0x1D4C000 .
-   .0x1D4D000 .    
-   .  ...     .
-   .  EVICTED .
-   .0x1D50000 .
-   .__________.
-   .0x1D51000 .         
-   .  AREA_2  . // area_2 hot pages 
-   .0x1D56000.
-   .__________.
-   .   ...    .
-   .__________.
-   .0x1E14000 .
-   .  AREA_3  . // area_3 hot pages
-   .0x1E18000 .
-   .__________.
-   .0x1E19000 .
-   .  AREA_4  .
-   .  EVICTED .
-   .0X1E1D000 .
-   .__________.
-   .   ...    .
-   .__________.
-   .0x1E20000 .
-   .  AREA_5  .   
-   .0x1E60000 .   
-   .__________.
+       +--------+   
+      |        |  
+      |        |
+      | Area 5 |  
+      |        |
+      |        |  <-0x1E20000
+      +--------+   
+      |        |  
+      |        |
+      | Area 4 |  
+      | EVICTED|
+      |        |  <-0x1E19000
+      +--------+  
+      |        |
+      |        |  
+      | Area 3 |  
+      |        |  
+      |        |  <-0x1E14000
+      +--------+  
+      :  ..... |    
+      +--------+  
+      |        |
+      |        |    
+      | Area 2 |
+      |        |  
+      |        |  <- 0x1D51000 
+      +--------+  
+      |        |  
+      | Area 1 |  
+      | EVICTED|
+      +--------+    
+      | page_0 |  <-0x1D4C000
+      +--------+  
+
    */
 
 }
@@ -449,7 +470,7 @@ void test_eviction_policy() {
 int main(int argc, char *argv[])
 { 
    
-   test_eviction_policy();
+   end_to_end_test();
 
 
    return 0;

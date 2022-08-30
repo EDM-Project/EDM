@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
    MPI_Init(&argc, &argv);
    MPI_Info info;
    MPI_Info_create(&info);
-   MPI_Info_set(info, "env","LD_PRELOAD=./mymmap.so");
+   MPI_Info_set(info, "env","LD_PRELOAD=./edm_mmap.so");
 
 
 
