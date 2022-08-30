@@ -2,6 +2,8 @@
 #include "dmHandler.h"
 #include "../client.h"
 
+#define DEBUG_MODE 1
+
 DmHandler::DmHandler(MPI_EDM::MpiClient* mpi_instance, Client* client, int high_threshold, int low_threshold) {
     this->len = len;
     this->addr = addr;
@@ -79,8 +81,9 @@ void DmHandler::HandleMissPageFault(struct uffd_msg* msg){
     InvokeLpetIfNeeded();
 
     //for debug, wait until lpet done 
-    while(this->client->is_lpet_running) {}
-    
+    if (DEBUG_MODE) {
+        while(this->client->is_lpet_running) {}
+    }
     LOG(INFO) << "[DmHandler] - send request for the page in address " << PRINT_AS_HEX(vaddr) << " from DMS";
     MPI_EDM::RequestGetPageData request_page = mpi_instance->RequestPageFromDMS(vaddr);
     switch (request_page.info){
