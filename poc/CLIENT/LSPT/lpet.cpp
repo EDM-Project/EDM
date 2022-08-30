@@ -12,8 +12,8 @@ using std::string;
 
 #include "lpet.h"
 
-Lpet::Lpet(MPI_EDM::MpiClient* mpi_instance, vector<Page>& page_list_ref, int high, int low) :
-    page_list(page_list_ref), high_thresh(high), low_thresh(low), first_run(true)
+Lpet::Lpet(MPI_EDM::MpiClient* mpi_instance, LSPT& lspt, int high, int low) :
+    lspt(lspt), high_thresh(high), low_thresh(low), first_run(true)
 {
         
          this->start_point = 0;
@@ -21,85 +21,74 @@ Lpet::Lpet(MPI_EDM::MpiClient* mpi_instance, vector<Page>& page_list_ref, int hi
          buffer =  (char*) mmap(NULL,PAGE_SIZE,PROT_READ | PROT_WRITE , MAP_ANONYMOUS | MAP_PRIVATE ,-1,0);
 }
 
-Lpet& Lpet::operator=(const Lpet& a)
-{
-    this->page_list = a.page_list;
-    this->low_thresh = a.low_thresh;
-    this->high_thresh = a.high_thresh;
-    this->start_point = a.start_point;
-    return *this;
-}
-
 
 uint32_t Lpet::run()
 {
-    
-    if(page_list.size() == 0)
-    {
-        if(DEBUG_STATUS) {LOG(DEBUG) << "[Lpet] PAGE LIST EMPTY " ;}
-        return 0;
-    }
-
+    LOG(INFO) << "\n-----------------START LPET-----------------\n";
+    LOG(INFO) << "[Lpet] - start address: " << PRINT_AS_HEX(lspt.AtIndex(start_point).vaddr);
+    LOG(INFO) << lspt;
     uint32_t ctr = 0;
     uint32_t evicted_ctr = 0;
-    //LOG(DEBUG) << "[LPET] page list size: " << page_list.size() << " high tresh: " << high_thresh;
-    if(page_list.size() >= high_thresh) //need to evict pages
+        
+    int init_size = lspt.GetSize();
+    bool first_cycle = true;
+    bool is_evicted = false;
+    int index = start_point;
+    while( lspt.GetSize() > low_thresh)
     {
-        LOG(DEBUG) << "[LPET run - 60 ] start point is : "<< PRINT_AS_HEX(page_list[start_point].vaddr); 
-        LOG(DEBUG) << "===========PAGE LIST START============";
-        for (auto& it : page_list){
-            LOG(DEBUG) << it ;
-        }
-        LOG(DEBUG) << "===========PAGE LIST END============";
-        int init_size = page_list.size();
-        bool first_cycle = true;
-        bool is_evicted = false;
-        int index = start_point;
-        //vector<Page>::iterator it = this->start_point;
-        while(page_list.size() > low_thresh)
+        std::this_thread::yield();
+
+        is_evicted = false;
+        if(first_cycle && ctr >= init_size)
         {
-            is_evicted = false;
-            if(first_cycle && ctr >= init_size)
-            {
-                first_cycle = false;
-            }
-            if(index  == page_list.size())
-            {
-                index = 0;
-            }
-            if(DEBUG_STATUS) {LOG(DEBUG) << "[LPET] checking page in addr " << PRINT_AS_HEX(page_list[index].vaddr);}
-            if(page_list[index].is_idle() || !first_cycle) // need to evict the current page
-            {
-                is_evicted = true;
-                if(DEBUG_STATUS) {LOG(DEBUG) << "[LPET] removing page in addr " << PRINT_AS_HEX(page_list[index].vaddr);}
-                Page evicted = page_list[index];
-
-                char content [PAGE_SIZE];
-                char* mem  = (char*)malloc(PAGE_SIZE);
-                memcpy(mem,(char*)evicted.vaddr,PAGE_SIZE);
-
-                mpi_instance->RequestEvictPage(evicted.vaddr, mem);
-                free(mem);
-                mremap((void*)evicted.vaddr,PAGE_SIZE,PAGE_SIZE,MREMAP_MAYMOVE | MREMAP_DONTUNMAP | MREMAP_FIXED, buffer);
-
-                page_list.erase(page_list.begin() + index);
-                evicted_ctr++;
-            }
-            else // no need to evict the current page - raise idle flag to 1'
-            {
-                page_list[index].set_idle();
-            }
-            if (!is_evicted){
-                index++;
-            }
-            ctr++;
+            first_cycle = false;
         }
+        if(index == lspt.GetSize())
+        {
+            index = 0;
+        }
+        LOG(INFO) << "[LPET] checking if page in addr " << PRINT_AS_HEX(lspt.AtIndex(index).vaddr) << " is idle";
+        if(lspt.AtIndex(index).is_idle() || !first_cycle) // need to evict the current page
+        {
+            is_evicted = true;
+            LOG(INFO) << "[LPET] sending eviction request for page in addr " << PRINT_AS_HEX(lspt.AtIndex(index).vaddr);
+            Page evicted = lspt.AtIndex(index);
+            
+            char* mem  = (char*)malloc(PAGE_SIZE);
+            
+            mremap((void*)evicted.vaddr,PAGE_SIZE,PAGE_SIZE,MREMAP_MAYMOVE | MREMAP_DONTUNMAP | MREMAP_FIXED, buffer);
+            
+            memcpy(mem,buffer,PAGE_SIZE);
 
-        this->start_point = index;
+            mpi_instance->RequestEvictPage(evicted.vaddr, mem);
+            LOG(INFO) << "[Lpet] - received ack for eviction of page in address : " << PRINT_AS_HEX(evicted.vaddr)  ; 
 
+            
+            free(mem);
+            
+
+            lspt.Remove(index);
+            evicted_ctr++;
+        }
+        else // no need to evict the current page - raise idle flag to 1'
+        {
+            lspt.AtIndex(index).set_idle();
+        }
+        if (!is_evicted){
+            index++;
+        }
+        ctr++;
     }
+
+    this->start_point = index;
+    LOG(INFO) << "\n-----------------END LPET-----------------\n";
+
     return evicted_ctr;
 }
 
 
+std::thread Lpet::ActivateLpet() { 
+    std::thread t (&Lpet::run,this);
+    return t;
 
+}

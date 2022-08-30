@@ -1,21 +1,25 @@
 #include <iostream>
-#include "uffd.h"
+#include "dmHandler.h"
 #include "../client.h"
 
-Uffd::Uffd(MPI_EDM::MpiClient* mpi_instance, Client* client) {
+#define DEBUG_MODE 1
+
+DmHandler::DmHandler(MPI_EDM::MpiClient* mpi_instance, Client* client, int high_threshold, int low_threshold) {
     this->len = len;
     this->addr = addr;
+    this->high_threshold = high_threshold;
+    this->low_threshold = low_threshold;
     this->mpi_instance = mpi_instance;
     struct uffdio_api uffdio_api;
     struct uffdio_register uffdio_register;
     long uffd = syscall(__NR_userfaultfd, O_CLOEXEC | O_NONBLOCK);
     if (uffd == -1)
-        LOG(ERROR) << "[Uffd] : syscall userfaultfd failed";
+        LOG(ERROR) << "[DmHandler] : syscall userfaultfd failed";
     setenv("uffd",std::to_string(uffd).c_str(),1);
     uffdio_api.api = UFFD_API;
     uffdio_api.features = 0;
     if (ioctl(uffd, UFFDIO_API, &uffdio_api) == -1)
-        LOG(ERROR) << "[Uffd] : ioctl- UFFDIO_API failed";
+        LOG(ERROR) << "[DmHandler] : ioctl- UFFDIO_API failed";
 
     
     this->uffd = uffd;
@@ -23,7 +27,7 @@ Uffd::Uffd(MPI_EDM::MpiClient* mpi_instance, Client* client) {
 }
 
 
-void Uffd::ListenPageFaults(){
+void DmHandler::ListenPageFaults(){
     static struct uffd_msg msg;   /* Data read from userfaultfd */
     ssize_t nread;
 
@@ -39,7 +43,7 @@ void Uffd::ListenPageFaults(){
         /* Read an event from the userfaultfd. */
         nread = read(uffd, &msg, sizeof(msg));
         if (nread == 0) {
-            LOG(ERROR) << " [Uffd] - EOF on userfaultfd! ";
+            LOG(ERROR) << " [DmHandler] - EOF on userfaultfd! ";
             exit(EXIT_FAILURE);
         }
         if (nread == -1) {
@@ -60,50 +64,76 @@ void Uffd::ListenPageFaults(){
         }
     }
 }
-void Uffd::HandleMissPageFault(struct uffd_msg* msg){
+void DmHandler::HandleMissPageFault(struct uffd_msg* msg){
 
     /* Display info about the page-fault event. */
-    LOG(DEBUG) << "[Uffd] - UFFD_EVENT_PAGEFAULT event: \n" <<
-     "flags = " << msg->arg.pagefault.flags << "  address = " << PRINT_AS_HEX(msg->arg.pagefault.address) ;
+    LOG(INFO) << "\n--------------START HADNLING PAGE FAULT--------------";
+    LOG(INFO) << "[DmHandler] - UFFD_EVENT_PAGEFAULT in address = " << PRINT_AS_HEX(msg->arg.pagefault.address) ;
     
     unsigned long long vaddr = msg->arg.pagefault.address;
-    int evicted_counter = this->client->RunLpet();
-    if (evicted_counter != 0) {
-        LOG(DEBUG) << "[Uffd] - num of evicted pages : " <<evicted_counter; 
-        //this->client->PrintPageList();
+    
+    //handle race condition with lpet
+    while(this->client->lspt.IsPageExist(vaddr)) {
+        //busy wait. should be very short period of time
     }
+
+    
+    InvokeLpetIfNeeded();
+
+    //for debug, wait until lpet done 
+    if (DEBUG_MODE) {
+        while(this->client->is_lpet_running) {}
+    }
+    LOG(INFO) << "[DmHandler] - send request for the page in address " << PRINT_AS_HEX(vaddr) << " from DMS";
     MPI_EDM::RequestGetPageData request_page = mpi_instance->RequestPageFromDMS(vaddr);
     switch (request_page.info){
         case(MPI_EDM::error):
-            LOG(ERROR) << "[Uffd] - failed to resolve page fault for address " <<  PRINT_AS_HEX(vaddr) ;
+            LOG(ERROR) << "[DmHandler] - failed to resolve page fault for address " <<  PRINT_AS_HEX(vaddr) ;
         break;
         case (MPI_EDM::new_page):
-            LOG(DEBUG) << "[Uffd] - page accessed first time, copy zero page of address " << PRINT_AS_HEX(vaddr) ; 
+            LOG(INFO) << "[DmHandler] - received ack for page in address : " << PRINT_AS_HEX(vaddr) << " (first access)" ; 
+            LOG(INFO) << "[DmHandler] - copying zero page to address : " << PRINT_AS_HEX(vaddr);
             CopyZeroPage(vaddr);
         break;
         case (MPI_EDM::existing_page):
-            LOG(DEBUG) << "[Uffd] - page evicted before, copy page content from dms"; 
+            LOG(INFO) << "[DmHandler] - received ack for page in address : " << PRINT_AS_HEX(vaddr) << " (previously accessed)" ; 
+            LOG(INFO) << "[DmHandler] - copying page content from DMS to address : " << PRINT_AS_HEX(vaddr);
             CopyExistingPage(vaddr,request_page.page);
         break;
 
     }
     
-    this->client->AddToPageList(vaddr);
+    this->client->lspt.Add(vaddr);
 }
 
-void Uffd::CopyZeroPage(uintptr_t vaddr){
+void DmHandler::InvokeLpetIfNeeded(){ 
+    std::unique_lock<std::mutex> lck(this->client->run_lpet_mutex);
+    if (this->client->lspt.GetSize() >= high_threshold ) {
+        LOG(INFO) << "[DmHandler] - reached high threshold, waking up lpet" ;
+        this->client->cv.notify_all();
+    }
+    //avoid memory flood
+    while (this->client->lspt.GetSize() >= high_threshold){
+        LOG(DEBUG) << "[DmHandler] - avoid memory flood- dmhandler goes to sleep";
+        this->client->cv.wait(lck);
+    }
+}
+
+
+void DmHandler::CopyZeroPage(uintptr_t vaddr){
     struct uffdio_zeropage uffdio_zero;
 
     uffdio_zero.range.start =  (unsigned long) vaddr &
                         ~(PAGE_SIZE - 1);
     uffdio_zero.range.len = PAGE_SIZE;
     uffdio_zero.mode = 0;
+    LOG(INFO) << "\n--------------FINISH HADNLING PAGE FAULT--------------\n\n";
 
     if (ioctl(uffd, UFFDIO_ZEROPAGE, &uffdio_zero) == -1)
-        LOG(ERROR) << "[Uffd] - ioctl UFFDIO_ZEROPAGE failed";
+        LOG(ERROR) << "[DmHandler] - ioctl UFFDIO_ZEROPAGE failed";
     
 }
-void Uffd::CopyExistingPage(uintptr_t vaddr,char* source_page_content){
+void DmHandler::CopyExistingPage(uintptr_t vaddr,char* source_page_content){
 
     static char *page = NULL;
     /* Create a page that will be copied into the faulting region. */
@@ -112,7 +142,7 @@ void Uffd::CopyExistingPage(uintptr_t vaddr,char* source_page_content){
         page = (char*)mmap(NULL, PAGE_SIZE, PROT_READ | PROT_WRITE,
                     MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
         if (page == MAP_FAILED)
-            LOG(ERROR) << "[Uffd] - mmap temp page for copying failed ";
+            LOG(ERROR) << "[DmHandler] - mmap temp page for copying failed ";
     }
     
     struct uffdio_copy uffdio_copy;
@@ -128,12 +158,13 @@ void Uffd::CopyExistingPage(uintptr_t vaddr,char* source_page_content){
     uffdio_copy.len = PAGE_SIZE;
     uffdio_copy.mode = 0;
     uffdio_copy.copy = 0;
+    LOG(INFO) << "\n--------------FINISH HADNLING PAGE FAULT--------------\n\n";
     if (ioctl(uffd, UFFDIO_COPY, &uffdio_copy) == -1)
-        LOG(ERROR) << "[Uffd] - ioctl UFFDIO_COPY failed";
+        LOG(ERROR) << "[DmHandler] - ioctl UFFDIO_COPY failed";
 }
 
 
-std::thread Uffd::ActivateDM_Handler(){
-    std::thread t (&Uffd::ListenPageFaults,this);
+std::thread DmHandler::ActivateDM_Handler(){
+    std::thread t (&DmHandler::ListenPageFaults,this);
     return t;
 }

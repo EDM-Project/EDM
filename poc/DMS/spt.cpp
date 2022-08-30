@@ -34,5 +34,5 @@ std::ostream& operator<<(std::ostream& os, const SPT& spt){
         }
         os << std::endl;
     }
-    os << "------END SPT-----" <<std::endl;
+    os << "------END SPT-----";
 }

@@ -37,7 +37,6 @@ RequestEvictPageData MpiDms::ListenRequestEvictPage() {
 void MpiDms::SendAckForEvictPage(uintptr_t vaddr, MPI_EDM::request_evict_page_status status) {
     AckPage ack_page;
     ack_page.vaddr = vaddr;
-    LOG(DEBUG) << "[DMS] request_evict_page_status is " << status;
     std::string error_message = "";
     if (status == fail) {
         error_message = "failed to evict page";

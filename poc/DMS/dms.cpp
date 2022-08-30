@@ -9,8 +9,9 @@ DMS::DMS(int argc, char *argv[]){
     disk_path = "disk";
     ParseConfigFile();
     mpi_instance = new MPI_EDM::MpiDms(argc,argv);
-    dm_tread = std::thread(&DMS::DmHandlerThread,this);
+    dm_tread = std::thread(&DMS::ServeDmHandlerRequests,this);
     xpet_thread = std::thread(&DMS::XpetThread,this);
+    LOG(DEBUG) << "[DMS] - DMS ready for serving requests";
     
 }
 void DMS::ParseConfigFile () {
@@ -65,11 +66,11 @@ void DMS::WritePageTodisk(uintptr_t addr, char* page, int* info){
     off_t offset = addr - start_addr;
     if (int res = pwrite(fd, page,PAGE_SIZE,offset) < 0) {
          *info = (int)MPI_EDM::fail;
-         LOG(ERROR)<< "[DMS] - Error writing page in address : " << PRINT_AS_HEX(addr) << "to disk" ;
+         LOG(ERROR)<< "[DMS] - Error writing page in address " << PRINT_AS_HEX(addr) << "to disk" ;
     }
     else{
          *info = (int)MPI_EDM::success;
-         LOG(DEBUG)<< "[DMS] - page in address : " << PRINT_AS_HEX(addr) << " stored in disk" ;
+         LOG(INFO)<< "[DMS] - page in address " << PRINT_AS_HEX(addr) << " stored in disk" ;
     }
     close(fd);
 }
@@ -91,17 +92,18 @@ void DMS::HandleRequestEvictPage (MPI_EDM::RequestEvictPageData* request) {
 
 }
 
-void DMS::DmHandlerThread()
+void DMS::ServeDmHandlerRequests()
 {
    
    for (;;) { 
       
       MPI_EDM::RequestGetPageData page_request = mpi_instance->ListenRequestGetPage();
-      LOG(DEBUG) << "[DMS] - get request to send content of page in addreass: " << PRINT_AS_HEX(page_request.vaddr) ;  
+      LOG(INFO) << "[DMS] - get request to send content of page in address: " << PRINT_AS_HEX(page_request.vaddr) ;  
       HandleRequestGetPage(&page_request);
       mpi_instance->SendPageBackToApp(page_request);
       spt.UpdateSPT(page_request.vaddr, INSTANCE_0);
-      LOG(DEBUG) << spt ;
+      LOG(DEBUG) << "[DMS] - SPT updated. Current state: ";
+      LOG(INFO) << spt ;
       LOG(DEBUG) << "[DMS] - page in address: " << PRINT_AS_HEX(page_request.vaddr) << " send to app" ; 
 
    }
@@ -117,7 +119,8 @@ void DMS::XpetThread()
         LOG(DEBUG) << "[DMS] - Page evicted successfuly, sending ack" ;
         mpi_instance->SendAckForEvictPage(evict_request.vaddr, MPI_EDM::request_evict_page_status(evict_request.info));
         spt.UpdateSPT(evict_request.vaddr,DISK);
-        LOG(DEBUG) << spt;
+        LOG(DEBUG) << "[DMS] - SPT updated. Current state: ";
+        LOG(INFO) << spt;
 
    }
 

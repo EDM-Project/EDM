@@ -18,8 +18,8 @@ bool comparePages(char* source, char* dest){
    return false;
 }
 /**
- * @brief simple end-to-end test to verify flow correctness. 
- * 
+ * @brief simple end-to-end test to verify flow correctness. with one lpet cycle
+ *        config: high_treshold=20 , low_threshold=10
  */
 void test_simple_flow_eviction() {
 
@@ -98,6 +98,7 @@ void test_simple_flow_eviction() {
 
 /**
  * @brief much complicated e2e test with 2 eviction cycles and memory correctness
+ *       config: high_treshold=20 , low_threshold=10
  * 
  */
 void end_to_end_test() {
@@ -118,7 +119,7 @@ void end_to_end_test() {
    for (int i =0; i < PAGE_SIZE *10 ; i++ ) {
       area_2[i] = 'y';
    }
-   
+   usleep(150000);
    /*
    NOW, the memory layout should look like this.
    20 pages allocated which means we is the maximum allowed. 
@@ -211,13 +212,12 @@ void end_to_end_test() {
    .__________.
 
    */
-
+   
    //create forth mapping which cause another eviction cycle
-   char* area_4 = (char*) mmap( (void*)0x1E89000, PAGE_SIZE *1 , PROT_READ | PROT_WRITE,
+   char* area_4 = (char*) mmap( (void*)0x1E89000, PAGE_SIZE , PROT_READ | PROT_WRITE,
                      MAP_PRIVATE | MAP_ANONYMOUS | MAP_FIXED, -1, 0); 
 
    area_4[0] = 'w';
-   
    //now memory layout should look like this:
 
    /*
@@ -225,13 +225,13 @@ void end_to_end_test() {
    .0x1D4C000 .
    .          .
    .          .
+   .0x1D5000 .
    .0x1D51000 .
-   .0x1D52000 .
    .  MAPPED  .
    .    BUT   .
    .   EMPTY  .
    .   DATA   .
-   .0x1D56000 .
+   .0x1D55000 .
    .__________.
    .
    .__________.
@@ -240,15 +240,15 @@ void end_to_end_test() {
    .    BUT   .
    .   EMPTY  .
    .   DATA   .  
-   .0X1E1E000 .
+   .0X1E1D000 .
    .__________.
    .          .
    .__________.
    .0x1E82000 . 
    .          .
-   .0x1E87000 . 
+   .0x1E86000 . 
    .__________.
-   .0X1E87000
+   .0X1E89000
    .__________.
 
    */
@@ -256,7 +256,30 @@ void end_to_end_test() {
 
 }
 
+/**
+ * @brief test 
+ * 
+ */
+void test_dm_handler() {
 
+   LOG(DEBUG) << "[Usercode] : User code main function start running" ;
+
+   char* area_1 = (char*) mmap( (void*)0x1D4C000, PAGE_SIZE, PROT_READ | PROT_WRITE,
+                       MAP_PRIVATE | MAP_ANONYMOUS | MAP_FIXED, -1, 0);
+    
+   char* area_2 = (char*) mmap( (void*)0x1E14000, PAGE_SIZE, PROT_READ | PROT_WRITE,
+                     MAP_PRIVATE | MAP_ANONYMOUS | MAP_FIXED, -1, 0);
+   char* area_3 = (char*) mmap( (void*)0x1E78000, PAGE_SIZE, PROT_READ | PROT_WRITE,
+                     MAP_PRIVATE | MAP_ANONYMOUS | MAP_FIXED, -1, 0);                       
+
+   area_1[0] = 'x';
+   LOG(DEBUG)<< "[Usercode] : area_1[0] " << area_1[0] ;
+   area_2[0] = 'y';
+   LOG(DEBUG)<< "[Usercode] : area_2[0] " << area_2[0] ;
+   area_3[0] = 'z';
+   LOG(DEBUG)<< "[Usercode] : area_3[0] " << area_3[0] ;
+
+}
 
 void test_mremap() {
 
@@ -275,31 +298,180 @@ void test_mremap() {
 
 }
 
+/**
+ * @brief simple test for validate that lpet evicts cold pages
+ * in this case, high_threshold= 20 , low_threshold= 15 
+ * 
+ */
+void test_eviction_policy() { 
+
+   char* area_1 = (char*) mmap( (void*)0x1D4C000, PAGE_SIZE *5 , PROT_READ | PROT_WRITE,
+                     MAP_PRIVATE | MAP_ANONYMOUS | MAP_FIXED, -1, 0);
+   
+   for (int i =0; i < PAGE_SIZE *5 ; i++ ) {
+      area_1[i] = 'x';
+   }
+
+   char* area_2 = (char*) mmap( (void*)0x1D51000, PAGE_SIZE *5 , PROT_READ | PROT_WRITE,
+                     MAP_PRIVATE | MAP_ANONYMOUS | MAP_FIXED, -1, 0);
+   
+   for (int i =0; i < PAGE_SIZE *5 ; i++ ) {
+      area_2[i] = 'x';
+   }
+
+   char* area_3 = (char*) mmap( (void*)0x1E14000, PAGE_SIZE *5 , PROT_READ | PROT_WRITE,
+                     MAP_PRIVATE | MAP_ANONYMOUS | MAP_FIXED, -1, 0);
+   
+   for (int i =0; i < PAGE_SIZE *5 ; i++ ) {
+      area_3[i] = 'x';
+   }
+
+   char* area_4 = (char*) mmap( (void*)0x1E19000, PAGE_SIZE *5 , PROT_READ | PROT_WRITE,
+                     MAP_PRIVATE | MAP_ANONYMOUS | MAP_FIXED, -1, 0);
+   
+   for (int i =0; i < PAGE_SIZE *5 ; i++ ) {
+      area_4[i] = 'x';
+   }
+   // after 4 allocations, the memory layout:
+   /*
+      +--------+   
+      |        |  
+      |        |
+      | Area 4 |  
+      |        |
+      |        |  <-0x1E19000
+      +--------+  
+      |        |
+      |        |  
+      | Area 3 |  
+      |        |  
+      |        |  <-0x1E14000
+      +--------+  
+      :  ..... |    
+      +--------+  
+      |        |
+      |        |    
+      | Area 2 |
+      |        |  
+      |        |  <- 0x1D51000 
+      +--------+  
+      |        |  
+      |        |  
+      | Area 1 |
+      |        |  
+      |        |  <-0x1D4C000
+      +--------+  
+
+   */
+
+   usleep(100000); 
+
+   char* area_5 = (char*) mmap( (void*)0x1E20000, PAGE_SIZE *5 , PROT_READ | PROT_WRITE,
+                     MAP_PRIVATE | MAP_ANONYMOUS | MAP_FIXED, -1, 0);
+   
+   for (int i =0; i < PAGE_SIZE *5 ; i++ ) {
+      area_5[i] = 'x';
+   }
+   // area 5 first page should trig lpet
+   // expected memory layout:
+   /*
+      +--------+   
+      |        |  
+      |        |
+      | Area 5 |  
+      |        |
+      |        |  <-0x1E20000
+      +--------+   
+      |        |  
+      |        |
+      | Area 4 |  
+      |        |
+      |        |  <-0x1E19000
+      +--------+  
+      |        |
+      |        |  
+      | Area 3 |  
+      |        |  
+      |        |  <-0x1E14000
+      +--------+  
+      :  ..... |    
+      +--------+  
+      |        |
+      |        |    
+      | Area 2 |
+      |        |  
+      |        |  <- 0x1D51000 
+      +--------+  
+      |        |  
+      | Area 1 |  
+      | EVICTED|
+      |        |    
+      |        |  <-0x1D4C000
+      +--------+  
+   */
+   usleep(70000); 
+
+
+   //touch pages in area 2 
+   for (int i =0; i < PAGE_SIZE *5 ; i++ ) {
+      area_2[i] = 'z';
+   }
+
+   //touch pages in area 3
+   for (int i =0; i < PAGE_SIZE *5 ; i++ ) {
+      area_3[i] = 'z';
+   }
+   usleep(10000); 
+
+   // bring back from disc, will trig lpet
+   area_1[0] = 'y';
+   // expected memory layout:
+
+/*
+       +--------+   
+      |        |  
+      |        |
+      | Area 5 |  
+      |        |
+      |        |  <-0x1E20000
+      +--------+   
+      |        |  
+      |        |
+      | Area 4 |  
+      | EVICTED|
+      |        |  <-0x1E19000
+      +--------+  
+      |        |
+      |        |  
+      | Area 3 |  
+      |        |  
+      |        |  <-0x1E14000
+      +--------+  
+      :  ..... |    
+      +--------+  
+      |        |
+      |        |    
+      | Area 2 |
+      |        |  
+      |        |  <- 0x1D51000 
+      +--------+  
+      |        |  
+      | Area 1 |  
+      | EVICTED|
+      +--------+    
+      | page_0 |  <-0x1D4C000
+      +--------+  
+
+   */
+
+}
 
 
 int main(int argc, char *argv[])
 { 
+   
    end_to_end_test();
 
-/*
 
-   LOG(DEBUG) << "[Usercode] : User code main function start running" ;
-
-
-   char* area_1 = (char*) mmap( (void*)0x1D4C000, PAGE_SIZE, PROT_READ | PROT_WRITE,
-                       MAP_SHARED | MAP_ANONYMOUS | MAP_FIXED, -1, 0);
-    
-   char* area_2 = (char*) mmap( (void*)0x1E14000, PAGE_SIZE, PROT_READ | PROT_WRITE,
-                     MAP_SHARED | MAP_ANONYMOUS | MAP_FIXED, -1, 0);
-   char* area_3 = (char*) mmap( (void*)0x1E78000, PAGE_SIZE, PROT_READ | PROT_WRITE,
-                     MAP_SHARED | MAP_ANONYMOUS | MAP_FIXED, -1, 0);                       
-
-   area_1[0] = 'x';
-   LOG(DEBUG)<< "[Usercode] : area_1[0] " << area_1[0] ;
-   area_2[0] = 'y';
-   LOG(DEBUG)<< "[Usercode] : area_2[0] " << area_2[0] ;
-   area_3[0] = 'z';
-   LOG(DEBUG)<< "[Usercode] : area_3[0] " << area_3[0] ;
-*/
    return 0;
 }

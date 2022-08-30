@@ -21,6 +21,6 @@ std::ostream& operator<<(std::ostream& os, const Page& page){
     os << "  ";
     os << "pfn : " << page.pfn;
     os << "  ";
-    os << page.is_idle();
+    os << "is_idle: " << page.is_idle();
     os << std::endl;
 }
