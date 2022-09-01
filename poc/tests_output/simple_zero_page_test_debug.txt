@@ -1,0 +1,39 @@
+--------------------------------------------------------------------------
+[[43574,1],0]: A high-performance Open MPI point-to-point messaging module
+was unable to find any relevant network interfaces:
+
+Module: OpenFabrics (openib)
+  Host: pc
+
+Another transport will be used instead, although this may result in
+lower performance.
+
+NOTE: You can disable this warning by setting the MCA parameter
+btl_base_warn_component_unused to 0.
+--------------------------------------------------------------------------
+[Thu Sep 01 2022 12:53:54.156]:[Debug]-[EDM CLIENT] -  INIT
+[Thu Sep 01 2022 12:53:54.320]:[Debug]-[DMS] - DMS ready for serving requests
+[Thu Sep 01 2022 12:53:54.321]:[Debug]-[Usercode] : User code main function start running
+[Thu Sep 01 2022 12:53:54.321]:[Info]-
+--------------START HADNLING PAGE FAULT--------------
+[Thu Sep 01 2022 12:53:54.322]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1d4c000
+[Thu Sep 01 2022 12:53:54.322]:[Info]-[DmHandler] - send request for the page in address 0x1d4c000 from DMS
+[Thu Sep 01 2022 12:53:54.328]:[Info]-[DMS] - get request to send content of page in address: 0x1d4c000
+[Thu Sep 01 2022 12:53:54.328]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1d4c000
+[Thu Sep 01 2022 12:53:54.328]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Thu Sep 01 2022 12:53:54.328]:[Debug]-[DMS] - SPT updated. Current state: 
+[Thu Sep 01 2022 12:53:54.328]:[Info]-DMS- Print SPT STATE
+-----START SPT ----
+address : 0x1d4c000  location : INSTANCE_0
+------END SPT-----
+[Thu Sep 01 2022 12:53:54.328]:[Debug]-[DMS] - page in address: 0x1d4c000 sent to app
+[Thu Sep 01 2022 12:53:54.328]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1d4c000
+[Thu Sep 01 2022 12:53:54.328]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
+[Thu Sep 01 2022 12:53:54.328]:[Info]-[DmHandler] - received ack for page in address : 0x1d4c000 (first access)
+[Thu Sep 01 2022 12:53:54.328]:[Info]-[DmHandler] - copying zero page to address : 0x1d4c000
+[Thu Sep 01 2022 12:53:54.328]:[Info]-
+--------------FINISH HADNLING PAGE FAULT--------------
+
+
+[Thu Sep 01 2022 12:53:54.328]:[Debug]-[Usercode] : area_1[0] x
+[Thu Sep 01 2022 12:53:54.328]:[Debug]-[EDM CLIENT] - SHUTDOWN!

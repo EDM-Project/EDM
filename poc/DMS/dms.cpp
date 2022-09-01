@@ -104,7 +104,7 @@ void DMS::ServeDmHandlerRequests()
       spt.UpdateSPT(page_request.vaddr, INSTANCE_0);
       LOG(DEBUG) << "[DMS] - SPT updated. Current state: ";
       LOG(INFO) << spt ;
-      LOG(DEBUG) << "[DMS] - page in address: " << PRINT_AS_HEX(page_request.vaddr) << " send to app" ; 
+      LOG(DEBUG) << "[DMS] - page in address: " << PRINT_AS_HEX(page_request.vaddr) << " sent to app" ; 
 
    }
 

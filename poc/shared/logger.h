@@ -152,7 +152,7 @@ class logger
     
     
  private:
-  int debugLevel = INFO; //Default to errors
+  int debugLevel = DEBUG; //Default to errors
   uint8_t logMode = LOGMODE_STDOUT; //Default log mode to stdout.
   std::ofstream logFile;
 
