@@ -6,7 +6,7 @@ EDM is external distributed memory mechanism for splitting the application state
 
 /poc directory implements the following design:
 
-![image](https://user-images.githubusercontent.com/62066172/175827188-6db9c3e0-021e-495c-8643-a9609808b6b4.png)
+![image](https://user-images.githubusercontent.com/62066172/187904218-fb067d29-6e7c-4918-acbe-46116cfae585.png)
 
 
 prerequisites:
