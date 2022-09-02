@@ -19,7 +19,7 @@ MPI_EDM::MpiDms* mpi_instance;
 void ParseConfigFile ();
 public:
 
-DMS(int argc, char *argv[]);
+DMS();
 ~DMS();
 void ReadPageFromDisk(uintptr_t addr,char* page, int* info);
 void WritePageTodisk(uintptr_t addr, char* page, int* info);

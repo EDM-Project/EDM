@@ -1,8 +1,8 @@
 #include "mpiClient.h"
 #define  NUM_OF_RETRIES 3
 namespace MPI_EDM{
-MpiClient::MpiClient(int argc, char *argv[]) {
-    MPI_Init(&argc, &argv);
+MpiClient::MpiClient() {
+    MPI_Init(NULL, NULL);
     // Look up for server's port name.
     char port_name[MPI_MAX_PORT_NAME];
     MPI_Lookup_name("dms", MPI_INFO_NULL, port_name);

@@ -4,11 +4,10 @@
 #include <unistd.h>
 #include <fstream>
 
-DMS::DMS(int argc, char *argv[]){
-    
+DMS::DMS(){
     disk_path = "disk";
     ParseConfigFile();
-    mpi_instance = new MPI_EDM::MpiDms(argc,argv);
+    mpi_instance = new MPI_EDM::MpiDms();
     dm_tread = std::thread(&DMS::ServeDmHandlerRequests,this);
     xpet_thread = std::thread(&DMS::XpetThread,this);
     LOG(DEBUG) << "[DMS] - DMS ready for serving requests";

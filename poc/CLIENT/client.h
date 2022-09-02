@@ -23,8 +23,6 @@ private:
     Lpet* lpet;
     
     
-
-    
     DmHandler* ufd;
     MPI_EDM::MpiClient* mpi_instance;
     std::thread dm_handler_thread;
@@ -42,14 +40,10 @@ public:
 
     Client ();
     ~Client();
-    //void AddToPageList(uintptr_t vaddr);
-    //void PrintPageList();
-    //int GetPageListSize();
-    //bool IsPageExist(uintptr_t vaddr);
     void RunLpetThread();
     void WaitForRunLpet();
-    void UserThread();
-    void RunUserThread();
+    
+    
 
 };
 #endif

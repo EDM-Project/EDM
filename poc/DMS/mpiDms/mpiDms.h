@@ -9,7 +9,7 @@ private:
     
 public:
     
-    MpiDms (int argc, char *argv[]);
+    MpiDms ();
     RequestGetPageData ListenRequestGetPage ();
     void SendPageBackToApp (RequestGetPageData response);
     RequestEvictPageData ListenRequestEvictPage();
