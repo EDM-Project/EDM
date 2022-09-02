@@ -2,8 +2,8 @@
 #define NUM_OF_RETRIES 3
 namespace MPI_EDM {
 
-MpiDms::MpiDms (int argc, char *argv[])  {
-    MPI_Init(&argc, &argv);
+MpiDms::MpiDms ()  {
+    MPI_Init(NULL, NULL);
     // Open port.
     //char port_name[MPI_MAX_PORT_NAME];
     MPI_Open_port(MPI_INFO_NULL, port_name);

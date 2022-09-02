@@ -9,8 +9,7 @@ class MpiClient : public MpiEdm {
 private:
 
 public:
-    MpiClient() = default;
-    MpiClient(int argc, char *argv[]);
+    MpiClient();
     RequestGetPageData RequestPageFromDMS (uintptr_t vaddr);
     void RequestEvictPage (uintptr_t vaddr, char* page);
     
