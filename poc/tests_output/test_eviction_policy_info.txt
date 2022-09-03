@@ -1,5 +1,5 @@
 --------------------------------------------------------------------------
-[[60084,1],0]: A high-performance Open MPI point-to-point messaging module
+[[25149,1],0]: A high-performance Open MPI point-to-point messaging module
 was unable to find any relevant network interfaces:
 
 Module: OpenFabrics (openib)
@@ -11,78 +11,78 @@ lower performance.
 NOTE: You can disable this warning by setting the MCA parameter
 btl_base_warn_component_unused to 0.
 --------------------------------------------------------------------------
-[Tue Aug 30 2022 18:33:01.801]:[Info]-
+[Sat Sep 03 2022 08:12:39.710]:[Info]-
 --------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:33:01.801]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1d4c000
-[Tue Aug 30 2022 18:33:01.801]:[Info]-[DmHandler] - send request for the page in address 0x1d4c000 from DMS
-[Tue Aug 30 2022 18:33:01.817]:[Info]-[DMS] - get request to send content of page in address: 0x1d4c000
-[Tue Aug 30 2022 18:33:01.818]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:12:39.710]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1d4c000
+[Sat Sep 03 2022 08:12:39.710]:[Info]-[DmHandler] - send request for the page in address 0x1d4c000 from DMS
+[Sat Sep 03 2022 08:12:39.724]:[Info]-[DMS] - get request to send content of page in address: 0x1d4c000
+[Sat Sep 03 2022 08:12:39.724]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:33:01.821]:[Info]-[DmHandler] - received ack for page in address : 0x1d4c000 (first access)
-[Tue Aug 30 2022 18:33:01.821]:[Info]-[DmHandler] - copying zero page to address : 0x1d4c000
-[Tue Aug 30 2022 18:33:01.821]:[Info]-
+[Sat Sep 03 2022 08:12:39.725]:[Info]-[DmHandler] - received ack for page in address : 0x1d4c000 (first access)
+[Sat Sep 03 2022 08:12:39.725]:[Info]-[DmHandler] - copying zero page to address : 0x1d4c000
+[Sat Sep 03 2022 08:12:39.725]:[Info]-
 --------------FINISH HADNLING PAGE FAULT--------------
 
 
-[Tue Aug 30 2022 18:33:01.821]:[Info]-
+[Sat Sep 03 2022 08:12:39.725]:[Info]-
 --------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:33:01.821]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1d4d000
-[Tue Aug 30 2022 18:33:01.821]:[Info]-[DmHandler] - send request for the page in address 0x1d4d000 from DMS
-[Tue Aug 30 2022 18:33:01.821]:[Info]-[DMS] - get request to send content of page in address: 0x1d4d000
-[Tue Aug 30 2022 18:33:01.822]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:12:39.725]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1d4d000
+[Sat Sep 03 2022 08:12:39.726]:[Info]-[DmHandler] - send request for the page in address 0x1d4d000 from DMS
+[Sat Sep 03 2022 08:12:39.726]:[Info]-[DMS] - get request to send content of page in address: 0x1d4d000
+[Sat Sep 03 2022 08:12:39.726]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:33:01.822]:[Info]-[DmHandler] - received ack for page in address : 0x1d4d000 (first access)
-[Tue Aug 30 2022 18:33:01.822]:[Info]-[DmHandler] - copying zero page to address : 0x1d4d000
-[Tue Aug 30 2022 18:33:01.822]:[Info]-
+[Sat Sep 03 2022 08:12:39.726]:[Info]-[DmHandler] - received ack for page in address : 0x1d4d000 (first access)
+[Sat Sep 03 2022 08:12:39.726]:[Info]-[DmHandler] - copying zero page to address : 0x1d4d000
+[Sat Sep 03 2022 08:12:39.726]:[Info]-
 --------------FINISH HADNLING PAGE FAULT--------------
 
 
-[Tue Aug 30 2022 18:33:01.822]:[Info]-
+[Sat Sep 03 2022 08:12:39.726]:[Info]-
 --------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:33:01.822]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1d4e000
-[Tue Aug 30 2022 18:33:01.822]:[Info]-[DmHandler] - send request for the page in address 0x1d4e000 from DMS
-[Tue Aug 30 2022 18:33:01.822]:[Info]-[DMS] - get request to send content of page in address: 0x1d4e000
-[Tue Aug 30 2022 18:33:01.822]:[Info]-[DmHandler] - received ack for page in address : 0x1d4e000 (first access)
-[Tue Aug 30 2022 18:33:01.822]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:12:39.726]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1d4e000
+[Sat Sep 03 2022 08:12:39.726]:[Info]-[DmHandler] - send request for the page in address 0x1d4e000 from DMS
+[Sat Sep 03 2022 08:12:39.727]:[Info]-[DMS] - get request to send content of page in address: 0x1d4e000
+[Sat Sep 03 2022 08:12:39.727]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
 address : 0x1d4e000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:33:01.822]:[Info]-[DmHandler] - copying zero page to address : 0x1d4e000
-[Tue Aug 30 2022 18:33:01.822]:[Info]-
+[Sat Sep 03 2022 08:12:39.727]:[Info]-[DmHandler] - received ack for page in address : 0x1d4e000 (first access)
+[Sat Sep 03 2022 08:12:39.727]:[Info]-[DmHandler] - copying zero page to address : 0x1d4e000
+[Sat Sep 03 2022 08:12:39.727]:[Info]-
 --------------FINISH HADNLING PAGE FAULT--------------
 
 
-[Tue Aug 30 2022 18:33:01.822]:[Info]-
+[Sat Sep 03 2022 08:12:39.727]:[Info]-
 --------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:33:01.822]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1d4f000
-[Tue Aug 30 2022 18:33:01.822]:[Info]-[DmHandler] - send request for the page in address 0x1d4f000 from DMS
-[Tue Aug 30 2022 18:33:01.822]:[Info]-[DMS] - get request to send content of page in address: 0x1d4f000
-[Tue Aug 30 2022 18:33:01.822]:[Info]-[DmHandler] - received ack for page in address : 0x1d4f000 (first access)
-[Tue Aug 30 2022 18:33:01.822]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:12:39.727]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1d4f000
+[Sat Sep 03 2022 08:12:39.727]:[Info]-[DmHandler] - send request for the page in address 0x1d4f000 from DMS
+[Sat Sep 03 2022 08:12:39.727]:[Info]-[DMS] - get request to send content of page in address: 0x1d4f000
+[Sat Sep 03 2022 08:12:39.727]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
 address : 0x1d4e000  location : INSTANCE_0
 address : 0x1d4f000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:33:01.822]:[Info]-[DmHandler] - copying zero page to address : 0x1d4f000
-[Tue Aug 30 2022 18:33:01.822]:[Info]-
+[Sat Sep 03 2022 08:12:39.728]:[Info]-[DmHandler] - received ack for page in address : 0x1d4f000 (first access)
+[Sat Sep 03 2022 08:12:39.728]:[Info]-[DmHandler] - copying zero page to address : 0x1d4f000
+[Sat Sep 03 2022 08:12:39.728]:[Info]-
 --------------FINISH HADNLING PAGE FAULT--------------
 
 
-[Tue Aug 30 2022 18:33:01.822]:[Info]-
+[Sat Sep 03 2022 08:12:39.728]:[Info]-
 --------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:33:01.823]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1d50000
-[Tue Aug 30 2022 18:33:01.823]:[Info]-[DmHandler] - send request for the page in address 0x1d50000 from DMS
-[Tue Aug 30 2022 18:33:01.823]:[Info]-[DMS] - get request to send content of page in address: 0x1d50000
-[Tue Aug 30 2022 18:33:01.823]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:12:39.728]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1d50000
+[Sat Sep 03 2022 08:12:39.728]:[Info]-[DmHandler] - send request for the page in address 0x1d50000 from DMS
+[Sat Sep 03 2022 08:12:39.728]:[Info]-[DMS] - get request to send content of page in address: 0x1d50000
+[Sat Sep 03 2022 08:12:39.728]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -90,19 +90,18 @@ address : 0x1d4e000  location : INSTANCE_0
 address : 0x1d4f000  location : INSTANCE_0
 address : 0x1d50000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:33:01.823]:[Info]-[DmHandler] - received ack for page in address : 0x1d50000 (first access)
-[Tue Aug 30 2022 18:33:01.823]:[Info]-[DmHandler] - copying zero page to address : 0x1d50000
-[Tue Aug 30 2022 18:33:01.823]:[Info]-
+[Sat Sep 03 2022 08:12:39.728]:[Info]-[DmHandler] - received ack for page in address : 0x1d50000 (first access)
+[Sat Sep 03 2022 08:12:39.728]:[Info]-[DmHandler] - copying zero page to address : 0x1d50000
+[Sat Sep 03 2022 08:12:39.728]:[Info]-
 --------------FINISH HADNLING PAGE FAULT--------------
 
 
-[Tue Aug 30 2022 18:33:01.823]:[Info]-
+[Sat Sep 03 2022 08:12:39.729]:[Info]-
 --------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:33:01.823]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1d51000
-[Tue Aug 30 2022 18:33:01.823]:[Info]-[DmHandler] - send request for the page in address 0x1d51000 from DMS
-[Tue Aug 30 2022 18:33:01.823]:[Info]-[DMS] - get request to send content of page in address: 0x1d51000
-[Tue Aug 30 2022 18:33:01.824]:[Info]-[DmHandler] - received ack for page in address : 0x1d51000 (first access)
-[Tue Aug 30 2022 18:33:01.824]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:12:39.729]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1d51000
+[Sat Sep 03 2022 08:12:39.729]:[Info]-[DmHandler] - send request for the page in address 0x1d51000 from DMS
+[Sat Sep 03 2022 08:12:39.729]:[Info]-[DMS] - get request to send content of page in address: 0x1d51000
+[Sat Sep 03 2022 08:12:39.729]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -111,18 +110,18 @@ address : 0x1d4f000  location : INSTANCE_0
 address : 0x1d50000  location : INSTANCE_0
 address : 0x1d51000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:33:01.824]:[Info]-[DmHandler] - copying zero page to address : 0x1d51000
-[Tue Aug 30 2022 18:33:01.824]:[Info]-
+[Sat Sep 03 2022 08:12:39.729]:[Info]-[DmHandler] - received ack for page in address : 0x1d51000 (first access)
+[Sat Sep 03 2022 08:12:39.729]:[Info]-[DmHandler] - copying zero page to address : 0x1d51000
+[Sat Sep 03 2022 08:12:39.729]:[Info]-
 --------------FINISH HADNLING PAGE FAULT--------------
 
 
-[Tue Aug 30 2022 18:33:01.824]:[Info]-
+[Sat Sep 03 2022 08:12:39.729]:[Info]-
 --------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:33:01.824]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1d52000
-[Tue Aug 30 2022 18:33:01.824]:[Info]-[DmHandler] - send request for the page in address 0x1d52000 from DMS
-[Tue Aug 30 2022 18:33:01.824]:[Info]-[DMS] - get request to send content of page in address: 0x1d52000
-[Tue Aug 30 2022 18:33:01.824]:[Info]-[DmHandler] - received ack for page in address : 0x1d52000 (first access)
-[Tue Aug 30 2022 18:33:01.824]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:12:39.729]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1d52000
+[Sat Sep 03 2022 08:12:39.730]:[Info]-[DmHandler] - send request for the page in address 0x1d52000 from DMS
+[Sat Sep 03 2022 08:12:39.730]:[Info]-[DMS] - get request to send content of page in address: 0x1d52000
+[Sat Sep 03 2022 08:12:39.730]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -132,23 +131,18 @@ address : 0x1d50000  location : INSTANCE_0
 address : 0x1d51000  location : INSTANCE_0
 address : 0x1d52000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:33:01.824]:[Info]-[DmHandler] - copying zero page to address : 0x1d52000
-[Tue Aug 30 2022 18:33:01.824]:[Info]-
+[Sat Sep 03 2022 08:12:39.730]:[Info]-[DmHandler] - received ack for page in address : 0x1d52000 (first access)
+[Sat Sep 03 2022 08:12:39.730]:[Info]-[DmHandler] - copying zero page to address : 0x1d52000
+[Sat Sep 03 2022 08:12:39.730]:[Info]-
 --------------FINISH HADNLING PAGE FAULT--------------
 
 
-[Tue Aug 30 2022 18:33:01.824]:[Info]-
+[Sat Sep 03 2022 08:12:39.730]:[Info]-
 --------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:33:01.824]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1d53000
-[Tue Aug 30 2022 18:33:01.824]:[Info]-[DmHandler] - send request for the page in address 0x1d53000 from DMS
-[Tue Aug 30 2022 18:33:01.824]:[Info]-[DMS] - get request to send content of page in address: 0x1d53000
-[Tue Aug 30 2022 18:33:01.824]:[Info]-[DmHandler] - received ack for page in address : 0x1d53000 (first access)
-[Tue Aug 30 2022 18:33:01.824]:[Info]-[DmHandler] - copying zero page to address : 0x1d53000
-[Tue Aug 30 2022 18:33:01.824]:[Info]-
---------------FINISH HADNLING PAGE FAULT--------------
-
-
-[Tue Aug 30 2022 18:33:01.824]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:12:39.730]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1d53000
+[Sat Sep 03 2022 08:12:39.730]:[Info]-[DmHandler] - send request for the page in address 0x1d53000 from DMS
+[Sat Sep 03 2022 08:12:39.730]:[Info]-[DMS] - get request to send content of page in address: 0x1d53000
+[Sat Sep 03 2022 08:12:39.731]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -159,13 +153,18 @@ address : 0x1d51000  location : INSTANCE_0
 address : 0x1d52000  location : INSTANCE_0
 address : 0x1d53000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:33:01.824]:[Info]-
+[Sat Sep 03 2022 08:12:39.731]:[Info]-[DmHandler] - received ack for page in address : 0x1d53000 (first access)
+[Sat Sep 03 2022 08:12:39.731]:[Info]-[DmHandler] - copying zero page to address : 0x1d53000
+[Sat Sep 03 2022 08:12:39.731]:[Info]-
+--------------FINISH HADNLING PAGE FAULT--------------
+
+
+[Sat Sep 03 2022 08:12:39.731]:[Info]-
 --------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:33:01.824]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1d54000
-[Tue Aug 30 2022 18:33:01.824]:[Info]-[DmHandler] - send request for the page in address 0x1d54000 from DMS
-[Tue Aug 30 2022 18:33:01.825]:[Info]-[DMS] - get request to send content of page in address: 0x1d54000
-[Tue Aug 30 2022 18:33:01.825]:[Info]-[DmHandler] - received ack for page in address : 0x1d54000 (first access)
-[Tue Aug 30 2022 18:33:01.825]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:12:39.731]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1d54000
+[Sat Sep 03 2022 08:12:39.731]:[Info]-[DmHandler] - send request for the page in address 0x1d54000 from DMS
+[Sat Sep 03 2022 08:12:39.731]:[Info]-[DMS] - get request to send content of page in address: 0x1d54000
+[Sat Sep 03 2022 08:12:39.731]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -177,18 +176,18 @@ address : 0x1d52000  location : INSTANCE_0
 address : 0x1d53000  location : INSTANCE_0
 address : 0x1d54000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:33:01.825]:[Info]-[DmHandler] - copying zero page to address : 0x1d54000
-[Tue Aug 30 2022 18:33:01.825]:[Info]-
+[Sat Sep 03 2022 08:12:39.731]:[Info]-[DmHandler] - received ack for page in address : 0x1d54000 (first access)
+[Sat Sep 03 2022 08:12:39.731]:[Info]-[DmHandler] - copying zero page to address : 0x1d54000
+[Sat Sep 03 2022 08:12:39.732]:[Info]-
 --------------FINISH HADNLING PAGE FAULT--------------
 
 
-[Tue Aug 30 2022 18:33:01.825]:[Info]-
+[Sat Sep 03 2022 08:12:39.732]:[Info]-
 --------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:33:01.825]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1d55000
-[Tue Aug 30 2022 18:33:01.825]:[Info]-[DmHandler] - send request for the page in address 0x1d55000 from DMS
-[Tue Aug 30 2022 18:33:01.826]:[Info]-[DMS] - get request to send content of page in address: 0x1d55000
-[Tue Aug 30 2022 18:33:01.826]:[Info]-[DmHandler] - received ack for page in address : 0x1d55000 (first access)
-[Tue Aug 30 2022 18:33:01.826]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:12:39.732]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1d55000
+[Sat Sep 03 2022 08:12:39.732]:[Info]-[DmHandler] - send request for the page in address 0x1d55000 from DMS
+[Sat Sep 03 2022 08:12:39.732]:[Info]-[DMS] - get request to send content of page in address: 0x1d55000
+[Sat Sep 03 2022 08:12:39.732]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -201,17 +200,18 @@ address : 0x1d53000  location : INSTANCE_0
 address : 0x1d54000  location : INSTANCE_0
 address : 0x1d55000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:33:01.826]:[Info]-[DmHandler] - copying zero page to address : 0x1d55000
-[Tue Aug 30 2022 18:33:01.826]:[Info]-
+[Sat Sep 03 2022 08:12:39.732]:[Info]-[DmHandler] - received ack for page in address : 0x1d55000 (first access)
+[Sat Sep 03 2022 08:12:39.732]:[Info]-[DmHandler] - copying zero page to address : 0x1d55000
+[Sat Sep 03 2022 08:12:39.732]:[Info]-
 --------------FINISH HADNLING PAGE FAULT--------------
 
 
-[Tue Aug 30 2022 18:33:01.826]:[Info]-
+[Sat Sep 03 2022 08:12:39.732]:[Info]-
 --------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:33:01.826]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e14000
-[Tue Aug 30 2022 18:33:01.826]:[Info]-[DmHandler] - send request for the page in address 0x1e14000 from DMS
-[Tue Aug 30 2022 18:33:01.842]:[Info]-[DMS] - get request to send content of page in address: 0x1e14000
-[Tue Aug 30 2022 18:33:01.842]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:12:39.732]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e14000
+[Sat Sep 03 2022 08:12:39.733]:[Info]-[DmHandler] - send request for the page in address 0x1e14000 from DMS
+[Sat Sep 03 2022 08:12:39.733]:[Info]-[DMS] - get request to send content of page in address: 0x1e14000
+[Sat Sep 03 2022 08:12:39.733]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -225,19 +225,18 @@ address : 0x1d54000  location : INSTANCE_0
 address : 0x1d55000  location : INSTANCE_0
 address : 0x1e14000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:33:01.842]:[Info]-[DmHandler] - received ack for page in address : 0x1e14000 (first access)
-[Tue Aug 30 2022 18:33:01.842]:[Info]-[DmHandler] - copying zero page to address : 0x1e14000
-[Tue Aug 30 2022 18:33:01.842]:[Info]-
+[Sat Sep 03 2022 08:12:39.733]:[Info]-[DmHandler] - received ack for page in address : 0x1e14000 (first access)
+[Sat Sep 03 2022 08:12:39.733]:[Info]-[DmHandler] - copying zero page to address : 0x1e14000
+[Sat Sep 03 2022 08:12:39.733]:[Info]-
 --------------FINISH HADNLING PAGE FAULT--------------
 
 
-[Tue Aug 30 2022 18:33:01.842]:[Info]-
+[Sat Sep 03 2022 08:12:39.733]:[Info]-
 --------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:33:01.842]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e15000
-[Tue Aug 30 2022 18:33:01.842]:[Info]-[DmHandler] - send request for the page in address 0x1e15000 from DMS
-[Tue Aug 30 2022 18:33:01.842]:[Info]-[DMS] - get request to send content of page in address: 0x1e15000
-[Tue Aug 30 2022 18:33:01.843]:[Info]-[DmHandler] - received ack for page in address : 0x1e15000 (first access)
-[Tue Aug 30 2022 18:33:01.842]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:12:39.733]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e15000
+[Sat Sep 03 2022 08:12:39.733]:[Info]-[DmHandler] - send request for the page in address 0x1e15000 from DMS
+[Sat Sep 03 2022 08:12:39.734]:[Info]-[DMS] - get request to send content of page in address: 0x1e15000
+[Sat Sep 03 2022 08:12:39.734]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -252,18 +251,18 @@ address : 0x1d55000  location : INSTANCE_0
 address : 0x1e14000  location : INSTANCE_0
 address : 0x1e15000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:33:01.843]:[Info]-[DmHandler] - copying zero page to address : 0x1e15000
-[Tue Aug 30 2022 18:33:01.843]:[Info]-
+[Sat Sep 03 2022 08:12:39.734]:[Info]-[DmHandler] - received ack for page in address : 0x1e15000 (first access)
+[Sat Sep 03 2022 08:12:39.734]:[Info]-[DmHandler] - copying zero page to address : 0x1e15000
+[Sat Sep 03 2022 08:12:39.734]:[Info]-
 --------------FINISH HADNLING PAGE FAULT--------------
 
 
-[Tue Aug 30 2022 18:33:01.843]:[Info]-
+[Sat Sep 03 2022 08:12:39.734]:[Info]-
 --------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:33:01.843]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e16000
-[Tue Aug 30 2022 18:33:01.843]:[Info]-[DmHandler] - send request for the page in address 0x1e16000 from DMS
-[Tue Aug 30 2022 18:33:01.843]:[Info]-[DMS] - get request to send content of page in address: 0x1e16000
-[Tue Aug 30 2022 18:33:01.843]:[Info]-[DmHandler] - received ack for page in address : 0x1e16000 (first access)
-[Tue Aug 30 2022 18:33:01.843]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:12:39.734]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e16000
+[Sat Sep 03 2022 08:12:39.734]:[Info]-[DmHandler] - send request for the page in address 0x1e16000 from DMS
+[Sat Sep 03 2022 08:12:39.735]:[Info]-[DMS] - get request to send content of page in address: 0x1e16000
+[Sat Sep 03 2022 08:12:39.735]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -279,18 +278,24 @@ address : 0x1e14000  location : INSTANCE_0
 address : 0x1e15000  location : INSTANCE_0
 address : 0x1e16000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:33:01.843]:[Info]-[DmHandler] - copying zero page to address : 0x1e16000
-[Tue Aug 30 2022 18:33:01.843]:[Info]-
+[Sat Sep 03 2022 08:12:39.735]:[Info]-[DmHandler] - received ack for page in address : 0x1e16000 (first access)
+[Sat Sep 03 2022 08:12:39.735]:[Info]-[DmHandler] - copying zero page to address : 0x1e16000
+[Sat Sep 03 2022 08:12:39.735]:[Info]-
 --------------FINISH HADNLING PAGE FAULT--------------
 
 
-[Tue Aug 30 2022 18:33:01.843]:[Info]-
+[Sat Sep 03 2022 08:12:39.735]:[Info]-
 --------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:33:01.843]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e17000
-[Tue Aug 30 2022 18:33:01.843]:[Info]-[DmHandler] - send request for the page in address 0x1e17000 from DMS
-[Tue Aug 30 2022 18:33:01.843]:[Info]-[DMS] - get request to send content of page in address: 0x1e17000
-[Tue Aug 30 2022 18:33:01.843]:[Info]-[DmHandler] - received ack for page in address : 0x1e17000 (first access)
-[Tue Aug 30 2022 18:33:01.843]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:12:39.735]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e17000
+[Sat Sep 03 2022 08:12:39.735]:[Info]-[DmHandler] - send request for the page in address 0x1e17000 from DMS
+[Sat Sep 03 2022 08:12:39.735]:[Info]-[DMS] - get request to send content of page in address: 0x1e17000
+[Sat Sep 03 2022 08:12:39.741]:[Info]-[DmHandler] - received ack for page in address : 0x1e17000 (first access)
+[Sat Sep 03 2022 08:12:39.741]:[Info]-[DmHandler] - copying zero page to address : 0x1e17000
+[Sat Sep 03 2022 08:12:39.741]:[Info]-
+--------------FINISH HADNLING PAGE FAULT--------------
+
+
+[Sat Sep 03 2022 08:12:39.741]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -307,18 +312,12 @@ address : 0x1e15000  location : INSTANCE_0
 address : 0x1e16000  location : INSTANCE_0
 address : 0x1e17000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:33:01.843]:[Info]-[DmHandler] - copying zero page to address : 0x1e17000
-[Tue Aug 30 2022 18:33:01.843]:[Info]-
---------------FINISH HADNLING PAGE FAULT--------------
-
-
-[Tue Aug 30 2022 18:33:01.843]:[Info]-
+[Sat Sep 03 2022 08:12:39.741]:[Info]-
 --------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:33:01.843]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e18000
-[Tue Aug 30 2022 18:33:01.844]:[Info]-[DmHandler] - send request for the page in address 0x1e18000 from DMS
-[Tue Aug 30 2022 18:33:01.844]:[Info]-[DMS] - get request to send content of page in address: 0x1e18000
-[Tue Aug 30 2022 18:33:01.844]:[Info]-[DmHandler] - received ack for page in address : 0x1e18000 (first access)
-[Tue Aug 30 2022 18:33:01.844]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:12:39.742]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e18000
+[Sat Sep 03 2022 08:12:39.742]:[Info]-[DmHandler] - send request for the page in address 0x1e18000 from DMS
+[Sat Sep 03 2022 08:12:39.742]:[Info]-[DMS] - get request to send content of page in address: 0x1e18000
+[Sat Sep 03 2022 08:12:39.742]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -336,18 +335,18 @@ address : 0x1e16000  location : INSTANCE_0
 address : 0x1e17000  location : INSTANCE_0
 address : 0x1e18000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:33:01.844]:[Info]-[DmHandler] - copying zero page to address : 0x1e18000
-[Tue Aug 30 2022 18:33:01.844]:[Info]-
+[Sat Sep 03 2022 08:12:39.742]:[Info]-[DmHandler] - received ack for page in address : 0x1e18000 (first access)
+[Sat Sep 03 2022 08:12:39.742]:[Info]-[DmHandler] - copying zero page to address : 0x1e18000
+[Sat Sep 03 2022 08:12:39.742]:[Info]-
 --------------FINISH HADNLING PAGE FAULT--------------
 
 
-[Tue Aug 30 2022 18:33:01.844]:[Info]-
+[Sat Sep 03 2022 08:12:39.742]:[Info]-
 --------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:33:01.844]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e19000
-[Tue Aug 30 2022 18:33:01.844]:[Info]-[DmHandler] - send request for the page in address 0x1e19000 from DMS
-[Tue Aug 30 2022 18:33:01.844]:[Info]-[DMS] - get request to send content of page in address: 0x1e19000
-[Tue Aug 30 2022 18:33:01.844]:[Info]-[DmHandler] - received ack for page in address : 0x1e19000 (first access)
-[Tue Aug 30 2022 18:33:01.844]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:12:39.742]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e19000
+[Sat Sep 03 2022 08:12:39.742]:[Info]-[DmHandler] - send request for the page in address 0x1e19000 from DMS
+[Sat Sep 03 2022 08:12:39.742]:[Info]-[DMS] - get request to send content of page in address: 0x1e19000
+[Sat Sep 03 2022 08:12:39.743]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -366,18 +365,18 @@ address : 0x1e17000  location : INSTANCE_0
 address : 0x1e18000  location : INSTANCE_0
 address : 0x1e19000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:33:01.844]:[Info]-[DmHandler] - copying zero page to address : 0x1e19000
-[Tue Aug 30 2022 18:33:01.844]:[Info]-
+[Sat Sep 03 2022 08:12:39.743]:[Info]-[DmHandler] - received ack for page in address : 0x1e19000 (first access)
+[Sat Sep 03 2022 08:12:39.743]:[Info]-[DmHandler] - copying zero page to address : 0x1e19000
+[Sat Sep 03 2022 08:12:39.743]:[Info]-
 --------------FINISH HADNLING PAGE FAULT--------------
 
 
-[Tue Aug 30 2022 18:33:01.844]:[Info]-
+[Sat Sep 03 2022 08:12:39.743]:[Info]-
 --------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:33:01.844]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e1a000
-[Tue Aug 30 2022 18:33:01.844]:[Info]-[DmHandler] - send request for the page in address 0x1e1a000 from DMS
-[Tue Aug 30 2022 18:33:01.844]:[Info]-[DMS] - get request to send content of page in address: 0x1e1a000
-[Tue Aug 30 2022 18:33:01.845]:[Info]-[DmHandler] - received ack for page in address : 0x1e1a000 (first access)
-[Tue Aug 30 2022 18:33:01.845]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:12:39.743]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e1a000
+[Sat Sep 03 2022 08:12:39.743]:[Info]-[DmHandler] - send request for the page in address 0x1e1a000 from DMS
+[Sat Sep 03 2022 08:12:39.743]:[Info]-[DMS] - get request to send content of page in address: 0x1e1a000
+[Sat Sep 03 2022 08:12:39.743]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -397,17 +396,18 @@ address : 0x1e18000  location : INSTANCE_0
 address : 0x1e19000  location : INSTANCE_0
 address : 0x1e1a000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:33:01.845]:[Info]-[DmHandler] - copying zero page to address : 0x1e1a000
-[Tue Aug 30 2022 18:33:01.845]:[Info]-
+[Sat Sep 03 2022 08:12:39.743]:[Info]-[DmHandler] - received ack for page in address : 0x1e1a000 (first access)
+[Sat Sep 03 2022 08:12:39.743]:[Info]-[DmHandler] - copying zero page to address : 0x1e1a000
+[Sat Sep 03 2022 08:12:39.743]:[Info]-
 --------------FINISH HADNLING PAGE FAULT--------------
 
 
-[Tue Aug 30 2022 18:33:01.845]:[Info]-
+[Sat Sep 03 2022 08:12:39.744]:[Info]-
 --------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:33:01.845]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e1b000
-[Tue Aug 30 2022 18:33:01.845]:[Info]-[DmHandler] - send request for the page in address 0x1e1b000 from DMS
-[Tue Aug 30 2022 18:33:01.845]:[Info]-[DMS] - get request to send content of page in address: 0x1e1b000
-[Tue Aug 30 2022 18:33:01.845]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:12:39.744]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e1b000
+[Sat Sep 03 2022 08:12:39.744]:[Info]-[DmHandler] - send request for the page in address 0x1e1b000 from DMS
+[Sat Sep 03 2022 08:12:39.744]:[Info]-[DMS] - get request to send content of page in address: 0x1e1b000
+[Sat Sep 03 2022 08:12:39.744]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -428,19 +428,18 @@ address : 0x1e19000  location : INSTANCE_0
 address : 0x1e1a000  location : INSTANCE_0
 address : 0x1e1b000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:33:01.845]:[Info]-[DmHandler] - received ack for page in address : 0x1e1b000 (first access)
-[Tue Aug 30 2022 18:33:01.845]:[Info]-[DmHandler] - copying zero page to address : 0x1e1b000
-[Tue Aug 30 2022 18:33:01.845]:[Info]-
+[Sat Sep 03 2022 08:12:39.744]:[Info]-[DmHandler] - received ack for page in address : 0x1e1b000 (first access)
+[Sat Sep 03 2022 08:12:39.744]:[Info]-[DmHandler] - copying zero page to address : 0x1e1b000
+[Sat Sep 03 2022 08:12:39.744]:[Info]-
 --------------FINISH HADNLING PAGE FAULT--------------
 
 
-[Tue Aug 30 2022 18:33:01.845]:[Info]-
+[Sat Sep 03 2022 08:12:39.746]:[Info]-
 --------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:33:01.845]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e1c000
-[Tue Aug 30 2022 18:33:01.845]:[Info]-[DmHandler] - send request for the page in address 0x1e1c000 from DMS
-[Tue Aug 30 2022 18:33:01.845]:[Info]-[DMS] - get request to send content of page in address: 0x1e1c000
-[Tue Aug 30 2022 18:33:01.845]:[Info]-[DmHandler] - received ack for page in address : 0x1e1c000 (first access)
-[Tue Aug 30 2022 18:33:01.845]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:12:39.746]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e1c000
+[Sat Sep 03 2022 08:12:39.746]:[Info]-[DmHandler] - send request for the page in address 0x1e1c000 from DMS
+[Sat Sep 03 2022 08:12:39.750]:[Info]-[DMS] - get request to send content of page in address: 0x1e1c000
+[Sat Sep 03 2022 08:12:39.750]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -462,18 +461,18 @@ address : 0x1e1a000  location : INSTANCE_0
 address : 0x1e1b000  location : INSTANCE_0
 address : 0x1e1c000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:33:01.845]:[Info]-[DmHandler] - copying zero page to address : 0x1e1c000
-[Tue Aug 30 2022 18:33:01.845]:[Info]-
+[Sat Sep 03 2022 08:12:39.750]:[Info]-[DmHandler] - received ack for page in address : 0x1e1c000 (first access)
+[Sat Sep 03 2022 08:12:39.750]:[Info]-[DmHandler] - copying zero page to address : 0x1e1c000
+[Sat Sep 03 2022 08:12:39.750]:[Info]-
 --------------FINISH HADNLING PAGE FAULT--------------
 
 
-[Tue Aug 30 2022 18:33:01.845]:[Info]-
+[Sat Sep 03 2022 08:12:39.752]:[Info]-
 --------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:33:01.846]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e1d000
-[Tue Aug 30 2022 18:33:01.846]:[Info]-[DmHandler] - send request for the page in address 0x1e1d000 from DMS
-[Tue Aug 30 2022 18:33:01.846]:[Info]-[DMS] - get request to send content of page in address: 0x1e1d000
-[Tue Aug 30 2022 18:33:01.846]:[Info]-[DmHandler] - received ack for page in address : 0x1e1d000 (first access)
-[Tue Aug 30 2022 18:33:01.846]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:12:39.752]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e1d000
+[Sat Sep 03 2022 08:12:39.752]:[Info]-[DmHandler] - send request for the page in address 0x1e1d000 from DMS
+[Sat Sep 03 2022 08:12:39.754]:[Info]-[DMS] - get request to send content of page in address: 0x1e1d000
+[Sat Sep 03 2022 08:12:39.754]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -496,68 +495,69 @@ address : 0x1e1b000  location : INSTANCE_0
 address : 0x1e1c000  location : INSTANCE_0
 address : 0x1e1d000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:33:01.846]:[Info]-[DmHandler] - copying zero page to address : 0x1e1d000
-[Tue Aug 30 2022 18:33:01.846]:[Info]-
+[Sat Sep 03 2022 08:12:39.754]:[Info]-[DmHandler] - received ack for page in address : 0x1e1d000 (first access)
+[Sat Sep 03 2022 08:12:39.754]:[Info]-[DmHandler] - copying zero page to address : 0x1e1d000
+[Sat Sep 03 2022 08:12:39.755]:[Info]-
 --------------FINISH HADNLING PAGE FAULT--------------
 
 
-[Tue Aug 30 2022 18:33:01.948]:[Info]-
+[Sat Sep 03 2022 08:12:39.856]:[Info]-
 --------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:33:01.948]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e20000
-[Tue Aug 30 2022 18:33:01.948]:[Info]-[DmHandler] - reached high threshold, waking up lpet
-[Tue Aug 30 2022 18:33:01.955]:[Info]-
+[Sat Sep 03 2022 08:12:39.860]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e20000
+[Sat Sep 03 2022 08:12:39.860]:[Info]-[DmHandler] - reached high threshold, waking up lpet
+[Sat Sep 03 2022 08:12:39.871]:[Info]-
 -----------------START LPET-----------------
 
-[Tue Aug 30 2022 18:33:01.955]:[Info]-[Lpet] - start address: 0x1d4c000
-[Tue Aug 30 2022 18:33:01.956]:[Info]-page list state: 
+[Sat Sep 03 2022 08:12:39.871]:[Info]-[Lpet] - start address: 0x1d4c000
+[Sat Sep 03 2022 08:12:39.871]:[Info]-page list state: 
 -----START LSPT ----
-address : 0x1d4c000  pfn : 608684  is_idle: 0
-address : 0x1d4d000  pfn : 353029  is_idle: 0
-address : 0x1d4e000  pfn : 366068  is_idle: 0
-address : 0x1d4f000  pfn : 132226  is_idle: 0
-address : 0x1d50000  pfn : 372122  is_idle: 0
-address : 0x1d51000  pfn : 186268  is_idle: 0
-address : 0x1d52000  pfn : 344316  is_idle: 0
-address : 0x1d53000  pfn : 193303  is_idle: 0
-address : 0x1d54000  pfn : 519573  is_idle: 0
-address : 0x1d55000  pfn : 71473  is_idle: 0
-address : 0x1e14000  pfn : 744690  is_idle: 0
-address : 0x1e15000  pfn : 532253  is_idle: 0
-address : 0x1e16000  pfn : 624284  is_idle: 0
-address : 0x1e17000  pfn : 137439  is_idle: 0
-address : 0x1e18000  pfn : 653188  is_idle: 0
-address : 0x1e19000  pfn : 653189  is_idle: 0
-address : 0x1e1a000  pfn : 278724  is_idle: 0
-address : 0x1e1b000  pfn : 274494  is_idle: 0
-address : 0x1e1c000  pfn : 274495  is_idle: 0
-address : 0x1e1d000  pfn : 416628  is_idle: 0
+address : 0x1d4c000  pfn : 354924  is_idle: 0
+address : 0x1d4d000  pfn : 354925  is_idle: 0
+address : 0x1d4e000  pfn : 655824  is_idle: 0
+address : 0x1d4f000  pfn : 193034  is_idle: 0
+address : 0x1d50000  pfn : 72204  is_idle: 0
+address : 0x1d51000  pfn : 508200  is_idle: 0
+address : 0x1d52000  pfn : 183981  is_idle: 0
+address : 0x1d53000  pfn : 437520  is_idle: 0
+address : 0x1d54000  pfn : 15579  is_idle: 0
+address : 0x1d55000  pfn : 659837  is_idle: 0
+address : 0x1e14000  pfn : 374446  is_idle: 0
+address : 0x1e15000  pfn : 566045  is_idle: 0
+address : 0x1e16000  pfn : 306787  is_idle: 0
+address : 0x1e17000  pfn : 414088  is_idle: 0
+address : 0x1e18000  pfn : 94980  is_idle: 0
+address : 0x1e19000  pfn : 163802  is_idle: 0
+address : 0x1e1a000  pfn : 443503  is_idle: 0
+address : 0x1e1b000  pfn : 457389  is_idle: 0
+address : 0x1e1c000  pfn : 456716  is_idle: 0
+address : 0x1e1d000  pfn : 641177  is_idle: 0
 -----END LSPT ----
 
 
-[Tue Aug 30 2022 18:33:01.956]:[Info]-[LPET] checking if page in addr 0x1d4c000 is idle
-[Tue Aug 30 2022 18:33:01.956]:[Info]-[LPET] checking if page in addr 0x1d4d000 is idle
-[Tue Aug 30 2022 18:33:01.956]:[Info]-[LPET] checking if page in addr 0x1d4e000 is idle
-[Tue Aug 30 2022 18:33:01.956]:[Info]-[LPET] checking if page in addr 0x1d4f000 is idle
-[Tue Aug 30 2022 18:33:01.957]:[Info]-[LPET] checking if page in addr 0x1d50000 is idle
-[Tue Aug 30 2022 18:33:01.957]:[Info]-[LPET] checking if page in addr 0x1d51000 is idle
-[Tue Aug 30 2022 18:33:01.957]:[Info]-[LPET] checking if page in addr 0x1d52000 is idle
-[Tue Aug 30 2022 18:33:01.957]:[Info]-[LPET] checking if page in addr 0x1d53000 is idle
-[Tue Aug 30 2022 18:33:01.957]:[Info]-[LPET] checking if page in addr 0x1d54000 is idle
-[Tue Aug 30 2022 18:33:01.957]:[Info]-[LPET] checking if page in addr 0x1d55000 is idle
-[Tue Aug 30 2022 18:33:01.957]:[Info]-[LPET] checking if page in addr 0x1e14000 is idle
-[Tue Aug 30 2022 18:33:01.957]:[Info]-[LPET] checking if page in addr 0x1e15000 is idle
-[Tue Aug 30 2022 18:33:01.957]:[Info]-[LPET] checking if page in addr 0x1e16000 is idle
-[Tue Aug 30 2022 18:33:01.957]:[Info]-[LPET] checking if page in addr 0x1e17000 is idle
-[Tue Aug 30 2022 18:33:01.957]:[Info]-[LPET] checking if page in addr 0x1e18000 is idle
-[Tue Aug 30 2022 18:33:01.957]:[Info]-[LPET] checking if page in addr 0x1e19000 is idle
-[Tue Aug 30 2022 18:33:01.957]:[Info]-[LPET] checking if page in addr 0x1e1a000 is idle
-[Tue Aug 30 2022 18:33:01.957]:[Info]-[LPET] checking if page in addr 0x1e1b000 is idle
-[Tue Aug 30 2022 18:33:01.957]:[Info]-[LPET] checking if page in addr 0x1e1c000 is idle
-[Tue Aug 30 2022 18:33:01.957]:[Info]-[LPET] checking if page in addr 0x1e1d000 is idle
-[Tue Aug 30 2022 18:33:01.957]:[Info]-[LPET] checking if page in addr 0x1d4c000 is idle
-[Tue Aug 30 2022 18:33:01.957]:[Info]-[LPET] sending eviction request for page in addr 0x1d4c000
-[Tue Aug 30 2022 18:33:01.959]:[Info]-[DMS] - page in address 0x1d4c000 stored in disk
-[Tue Aug 30 2022 18:33:01.961]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:12:39.873]:[Info]-[LPET] checking if page in addr 0x1d4c000 is idle
+[Sat Sep 03 2022 08:12:39.873]:[Info]-[LPET] checking if page in addr 0x1d4d000 is idle
+[Sat Sep 03 2022 08:12:39.873]:[Info]-[LPET] checking if page in addr 0x1d4e000 is idle
+[Sat Sep 03 2022 08:12:39.873]:[Info]-[LPET] checking if page in addr 0x1d4f000 is idle
+[Sat Sep 03 2022 08:12:39.874]:[Info]-[LPET] checking if page in addr 0x1d50000 is idle
+[Sat Sep 03 2022 08:12:39.874]:[Info]-[LPET] checking if page in addr 0x1d51000 is idle
+[Sat Sep 03 2022 08:12:39.874]:[Info]-[LPET] checking if page in addr 0x1d52000 is idle
+[Sat Sep 03 2022 08:12:39.874]:[Info]-[LPET] checking if page in addr 0x1d53000 is idle
+[Sat Sep 03 2022 08:12:39.874]:[Info]-[LPET] checking if page in addr 0x1d54000 is idle
+[Sat Sep 03 2022 08:12:39.874]:[Info]-[LPET] checking if page in addr 0x1d55000 is idle
+[Sat Sep 03 2022 08:12:39.874]:[Info]-[LPET] checking if page in addr 0x1e14000 is idle
+[Sat Sep 03 2022 08:12:39.874]:[Info]-[LPET] checking if page in addr 0x1e15000 is idle
+[Sat Sep 03 2022 08:12:39.874]:[Info]-[LPET] checking if page in addr 0x1e16000 is idle
+[Sat Sep 03 2022 08:12:39.874]:[Info]-[LPET] checking if page in addr 0x1e17000 is idle
+[Sat Sep 03 2022 08:12:39.874]:[Info]-[LPET] checking if page in addr 0x1e18000 is idle
+[Sat Sep 03 2022 08:12:39.874]:[Info]-[LPET] checking if page in addr 0x1e19000 is idle
+[Sat Sep 03 2022 08:12:39.874]:[Info]-[LPET] checking if page in addr 0x1e1a000 is idle
+[Sat Sep 03 2022 08:12:39.874]:[Info]-[LPET] checking if page in addr 0x1e1b000 is idle
+[Sat Sep 03 2022 08:12:39.874]:[Info]-[LPET] checking if page in addr 0x1e1c000 is idle
+[Sat Sep 03 2022 08:12:39.874]:[Info]-[LPET] checking if page in addr 0x1e1d000 is idle
+[Sat Sep 03 2022 08:12:39.874]:[Info]-[LPET] checking if page in addr 0x1d4c000 is idle
+[Sat Sep 03 2022 08:12:39.874]:[Info]-[LPET] sending eviction request for page in addr 0x1d4c000
+[Sat Sep 03 2022 08:12:39.885]:[Info]-[DMS] - page in address 0x1d4c000 stored in disk
+[Sat Sep 03 2022 08:12:39.885]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : DISK
 address : 0x1d4d000  location : INSTANCE_0
@@ -580,11 +580,11 @@ address : 0x1e1b000  location : INSTANCE_0
 address : 0x1e1c000  location : INSTANCE_0
 address : 0x1e1d000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:33:01.962]:[Info]-[Lpet] - received ack for eviction of page in address : 0x1d4c000
-[Tue Aug 30 2022 18:33:01.964]:[Info]-[LPET] checking if page in addr 0x1d4d000 is idle
-[Tue Aug 30 2022 18:33:01.964]:[Info]-[LPET] sending eviction request for page in addr 0x1d4d000
-[Tue Aug 30 2022 18:33:01.965]:[Info]-[DMS] - page in address 0x1d4d000 stored in disk
-[Tue Aug 30 2022 18:33:01.967]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:12:39.906]:[Info]-[Lpet] - received ack for eviction of page in address : 0x1d4c000
+[Sat Sep 03 2022 08:12:39.914]:[Info]-[LPET] checking if page in addr 0x1d4d000 is idle
+[Sat Sep 03 2022 08:12:39.914]:[Info]-[LPET] sending eviction request for page in addr 0x1d4d000
+[Sat Sep 03 2022 08:12:39.920]:[Info]-[DMS] - page in address 0x1d4d000 stored in disk
+[Sat Sep 03 2022 08:12:39.920]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : DISK
 address : 0x1d4d000  location : DISK
@@ -607,12 +607,11 @@ address : 0x1e1b000  location : INSTANCE_0
 address : 0x1e1c000  location : INSTANCE_0
 address : 0x1e1d000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:33:01.968]:[Info]-[Lpet] - received ack for eviction of page in address : 0x1d4d000
-[Tue Aug 30 2022 18:33:01.968]:[Info]-[LPET] checking if page in addr 0x1d4e000 is idle
-[Tue Aug 30 2022 18:33:01.968]:[Info]-[LPET] sending eviction request for page in addr 0x1d4e000
-[Tue Aug 30 2022 18:33:01.969]:[Info]-[DMS] - page in address 0x1d4e000 stored in disk
-[Tue Aug 30 2022 18:33:01.970]:[Info]-[Lpet] - received ack for eviction of page in address : 0x1d4e000
-[Tue Aug 30 2022 18:33:01.970]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:12:39.923]:[Info]-[Lpet] - received ack for eviction of page in address : 0x1d4d000
+[Sat Sep 03 2022 08:12:39.934]:[Info]-[LPET] checking if page in addr 0x1d4e000 is idle
+[Sat Sep 03 2022 08:12:39.934]:[Info]-[LPET] sending eviction request for page in addr 0x1d4e000
+[Sat Sep 03 2022 08:12:39.939]:[Info]-[DMS] - page in address 0x1d4e000 stored in disk
+[Sat Sep 03 2022 08:12:39.939]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : DISK
 address : 0x1d4d000  location : DISK
@@ -635,11 +634,12 @@ address : 0x1e1b000  location : INSTANCE_0
 address : 0x1e1c000  location : INSTANCE_0
 address : 0x1e1d000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:33:01.970]:[Info]-[LPET] checking if page in addr 0x1d4f000 is idle
-[Tue Aug 30 2022 18:33:01.971]:[Info]-[LPET] sending eviction request for page in addr 0x1d4f000
-[Tue Aug 30 2022 18:33:01.978]:[Info]-[DMS] - page in address 0x1d4f000 stored in disk
-[Tue Aug 30 2022 18:33:01.978]:[Info]-[Lpet] - received ack for eviction of page in address : 0x1d4f000
-[Tue Aug 30 2022 18:33:01.978]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:12:39.946]:[Info]-[Lpet] - received ack for eviction of page in address : 0x1d4e000
+[Sat Sep 03 2022 08:12:39.948]:[Info]-[LPET] checking if page in addr 0x1d4f000 is idle
+[Sat Sep 03 2022 08:12:39.949]:[Info]-[LPET] sending eviction request for page in addr 0x1d4f000
+[Sat Sep 03 2022 08:12:39.962]:[Info]-[DMS] - page in address 0x1d4f000 stored in disk
+[Sat Sep 03 2022 08:12:39.962]:[Info]-[Lpet] - received ack for eviction of page in address : 0x1d4f000
+[Sat Sep 03 2022 08:12:39.962]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : DISK
 address : 0x1d4d000  location : DISK
@@ -662,14 +662,10 @@ address : 0x1e1b000  location : INSTANCE_0
 address : 0x1e1c000  location : INSTANCE_0
 address : 0x1e1d000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:33:01.978]:[Info]-[LPET] checking if page in addr 0x1d50000 is idle
-[Tue Aug 30 2022 18:33:01.978]:[Info]-[LPET] sending eviction request for page in addr 0x1d50000
-[Tue Aug 30 2022 18:33:01.979]:[Info]-[DMS] - page in address 0x1d50000 stored in disk
-[Tue Aug 30 2022 18:33:01.979]:[Info]-[Lpet] - received ack for eviction of page in address : 0x1d50000
-[Tue Aug 30 2022 18:33:01.979]:[Info]-
------------------END LPET-----------------
-
-[Tue Aug 30 2022 18:33:01.979]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:12:39.962]:[Info]-[LPET] checking if page in addr 0x1d50000 is idle
+[Sat Sep 03 2022 08:12:39.962]:[Info]-[LPET] sending eviction request for page in addr 0x1d50000
+[Sat Sep 03 2022 08:12:39.972]:[Info]-[DMS] - page in address 0x1d50000 stored in disk
+[Sat Sep 03 2022 08:12:39.972]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : DISK
 address : 0x1d4d000  location : DISK
@@ -692,10 +688,14 @@ address : 0x1e1b000  location : INSTANCE_0
 address : 0x1e1c000  location : INSTANCE_0
 address : 0x1e1d000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:33:01.979]:[Info]-[DmHandler] - send request for the page in address 0x1e20000 from DMS
-[Tue Aug 30 2022 18:33:01.989]:[Info]-[DMS] - get request to send content of page in address: 0x1e20000
-[Tue Aug 30 2022 18:33:01.990]:[Info]-[DmHandler] - received ack for page in address : 0x1e20000 (first access)
-[Tue Aug 30 2022 18:33:01.990]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:12:39.972]:[Info]-[Lpet] - received ack for eviction of page in address : 0x1d50000
+[Sat Sep 03 2022 08:12:39.972]:[Info]-
+-----------------END LPET-----------------
+
+[Sat Sep 03 2022 08:12:39.973]:[Info]-[DmHandler] - send request for the page in address 0x1e20000 from DMS
+[Sat Sep 03 2022 08:12:39.979]:[Info]-[DMS] - get request to send content of page in address: 0x1e20000
+[Sat Sep 03 2022 08:12:39.979]:[Info]-[DmHandler] - received ack for page in address : 0x1e20000 (first access)
+[Sat Sep 03 2022 08:12:39.979]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : DISK
 address : 0x1d4d000  location : DISK
@@ -719,18 +719,18 @@ address : 0x1e1c000  location : INSTANCE_0
 address : 0x1e1d000  location : INSTANCE_0
 address : 0x1e20000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:33:01.990]:[Info]-[DmHandler] - copying zero page to address : 0x1e20000
-[Tue Aug 30 2022 18:33:01.990]:[Info]-
+[Sat Sep 03 2022 08:12:39.979]:[Info]-[DmHandler] - copying zero page to address : 0x1e20000
+[Sat Sep 03 2022 08:12:39.979]:[Info]-
 --------------FINISH HADNLING PAGE FAULT--------------
 
 
-[Tue Aug 30 2022 18:33:01.990]:[Info]-
+[Sat Sep 03 2022 08:12:39.980]:[Info]-
 --------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:33:01.990]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e21000
-[Tue Aug 30 2022 18:33:01.990]:[Info]-[DmHandler] - send request for the page in address 0x1e21000 from DMS
-[Tue Aug 30 2022 18:33:01.990]:[Info]-[DMS] - get request to send content of page in address: 0x1e21000
-[Tue Aug 30 2022 18:33:01.990]:[Info]-[DmHandler] - received ack for page in address : 0x1e21000 (first access)
-[Tue Aug 30 2022 18:33:01.990]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:12:39.980]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e21000
+[Sat Sep 03 2022 08:12:39.980]:[Info]-[DmHandler] - send request for the page in address 0x1e21000 from DMS
+[Sat Sep 03 2022 08:12:39.980]:[Info]-[DMS] - get request to send content of page in address: 0x1e21000
+[Sat Sep 03 2022 08:12:39.980]:[Info]-[DmHandler] - received ack for page in address : 0x1e21000 (first access)
+[Sat Sep 03 2022 08:12:39.980]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : DISK
 address : 0x1d4d000  location : DISK
@@ -755,17 +755,17 @@ address : 0x1e1d000  location : INSTANCE_0
 address : 0x1e20000  location : INSTANCE_0
 address : 0x1e21000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:33:01.990]:[Info]-[DmHandler] - copying zero page to address : 0x1e21000
-[Tue Aug 30 2022 18:33:01.990]:[Info]-
+[Sat Sep 03 2022 08:12:39.980]:[Info]-[DmHandler] - copying zero page to address : 0x1e21000
+[Sat Sep 03 2022 08:12:39.980]:[Info]-
 --------------FINISH HADNLING PAGE FAULT--------------
 
 
-[Tue Aug 30 2022 18:33:01.991]:[Info]-
+[Sat Sep 03 2022 08:12:39.980]:[Info]-
 --------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:33:01.991]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e22000
-[Tue Aug 30 2022 18:33:01.991]:[Info]-[DmHandler] - send request for the page in address 0x1e22000 from DMS
-[Tue Aug 30 2022 18:33:01.997]:[Info]-[DMS] - get request to send content of page in address: 0x1e22000
-[Tue Aug 30 2022 18:33:01.997]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:12:39.980]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e22000
+[Sat Sep 03 2022 08:12:39.980]:[Info]-[DmHandler] - send request for the page in address 0x1e22000 from DMS
+[Sat Sep 03 2022 08:12:39.981]:[Info]-[DMS] - get request to send content of page in address: 0x1e22000
+[Sat Sep 03 2022 08:12:39.981]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : DISK
 address : 0x1d4d000  location : DISK
@@ -791,20 +791,18 @@ address : 0x1e20000  location : INSTANCE_0
 address : 0x1e21000  location : INSTANCE_0
 address : 0x1e22000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:33:01.998]:[Info]-[DmHandler] - received ack for page in address : 0x1e22000 (first access)
-[Tue Aug 30 2022 18:33:01.998]:[Info]-[DmHandler] - copying zero page to address : 0x1e22000
-[Tue Aug 30 2022 18:33:01.998]:[Info]-
+[Sat Sep 03 2022 08:12:39.981]:[Info]-[DmHandler] - received ack for page in address : 0x1e22000 (first access)
+[Sat Sep 03 2022 08:12:39.981]:[Info]-[DmHandler] - copying zero page to address : 0x1e22000
+[Sat Sep 03 2022 08:12:39.981]:[Info]-
 --------------FINISH HADNLING PAGE FAULT--------------
 
 
-[Tue Aug 30 2022 18:33:01.998]:[Info]-
+[Sat Sep 03 2022 08:12:39.981]:[Info]-
 --------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:33:01.998]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e23000
-[Tue Aug 30 2022 18:33:01.998]:[Info]-[DmHandler] - send request for the page in address 0x1e23000 from DMS
-[Tue Aug 30 2022 18:33:02.013]:[Info]-[DMS] - get request to send content of page in address: 0x1e23000
-[Tue Aug 30 2022 18:33:02.014]:[Info]-[DmHandler] - received ack for page in address : 0x1e23000 (first access)
-[Tue Aug 30 2022 18:33:02.014]:[Info]-[DmHandler] - copying zero page to address : 0x1e23000
-[Tue Aug 30 2022 18:33:02.014]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:12:39.981]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e23000
+[Sat Sep 03 2022 08:12:39.981]:[Info]-[DmHandler] - send request for the page in address 0x1e23000 from DMS
+[Sat Sep 03 2022 08:12:39.981]:[Info]-[DMS] - get request to send content of page in address: 0x1e23000
+[Sat Sep 03 2022 08:12:39.981]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : DISK
 address : 0x1d4d000  location : DISK
@@ -831,16 +829,18 @@ address : 0x1e21000  location : INSTANCE_0
 address : 0x1e22000  location : INSTANCE_0
 address : 0x1e23000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:33:02.014]:[Info]-
+[Sat Sep 03 2022 08:12:39.981]:[Info]-[DmHandler] - received ack for page in address : 0x1e23000 (first access)
+[Sat Sep 03 2022 08:12:39.981]:[Info]-[DmHandler] - copying zero page to address : 0x1e23000
+[Sat Sep 03 2022 08:12:39.982]:[Info]-
 --------------FINISH HADNLING PAGE FAULT--------------
 
 
-[Tue Aug 30 2022 18:33:02.014]:[Info]-
+[Sat Sep 03 2022 08:12:39.982]:[Info]-
 --------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:33:02.014]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e24000
-[Tue Aug 30 2022 18:33:02.014]:[Info]-[DmHandler] - send request for the page in address 0x1e24000 from DMS
-[Tue Aug 30 2022 18:33:02.029]:[Info]-[DMS] - get request to send content of page in address: 0x1e24000
-[Tue Aug 30 2022 18:33:02.030]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:12:39.982]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e24000
+[Sat Sep 03 2022 08:12:39.982]:[Info]-[DmHandler] - send request for the page in address 0x1e24000 from DMS
+[Sat Sep 03 2022 08:12:39.982]:[Info]-[DMS] - get request to send content of page in address: 0x1e24000
+[Sat Sep 03 2022 08:12:39.982]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : DISK
 address : 0x1d4d000  location : DISK
@@ -868,59 +868,59 @@ address : 0x1e22000  location : INSTANCE_0
 address : 0x1e23000  location : INSTANCE_0
 address : 0x1e24000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:33:02.031]:[Info]-[DmHandler] - received ack for page in address : 0x1e24000 (first access)
-[Tue Aug 30 2022 18:33:02.031]:[Info]-[DmHandler] - copying zero page to address : 0x1e24000
-[Tue Aug 30 2022 18:33:02.031]:[Info]-
+[Sat Sep 03 2022 08:12:39.982]:[Info]-[DmHandler] - received ack for page in address : 0x1e24000 (first access)
+[Sat Sep 03 2022 08:12:39.982]:[Info]-[DmHandler] - copying zero page to address : 0x1e24000
+[Sat Sep 03 2022 08:12:39.982]:[Info]-
 --------------FINISH HADNLING PAGE FAULT--------------
 
 
-[Tue Aug 30 2022 18:33:02.113]:[Info]-
+[Sat Sep 03 2022 08:12:40.063]:[Info]-
 --------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:33:02.113]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1d4c000
-[Tue Aug 30 2022 18:33:02.113]:[Info]-[DmHandler] - reached high threshold, waking up lpet
-[Tue Aug 30 2022 18:33:02.113]:[Info]-
+[Sat Sep 03 2022 08:12:40.063]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1d4c000
+[Sat Sep 03 2022 08:12:40.064]:[Info]-[DmHandler] - reached high threshold, waking up lpet
+[Sat Sep 03 2022 08:12:40.073]:[Info]-
 -----------------START LPET-----------------
 
-[Tue Aug 30 2022 18:33:02.113]:[Info]-[Lpet] - start address: 0x1d51000
-[Tue Aug 30 2022 18:33:02.113]:[Info]-page list state: 
+[Sat Sep 03 2022 08:12:40.074]:[Info]-[Lpet] - start address: 0x1d51000
+[Sat Sep 03 2022 08:12:40.074]:[Info]-page list state: 
 -----START LSPT ----
-address : 0x1d51000  pfn : 186268  is_idle: 0
-address : 0x1d52000  pfn : 344316  is_idle: 0
-address : 0x1d53000  pfn : 193303  is_idle: 0
-address : 0x1d54000  pfn : 519573  is_idle: 0
-address : 0x1d55000  pfn : 71473  is_idle: 0
-address : 0x1e14000  pfn : 744690  is_idle: 0
-address : 0x1e15000  pfn : 532253  is_idle: 0
-address : 0x1e16000  pfn : 624284  is_idle: 0
-address : 0x1e17000  pfn : 137439  is_idle: 0
-address : 0x1e18000  pfn : 653188  is_idle: 0
-address : 0x1e19000  pfn : 653189  is_idle: 1
-address : 0x1e1a000  pfn : 278724  is_idle: 1
-address : 0x1e1b000  pfn : 274494  is_idle: 1
-address : 0x1e1c000  pfn : 274495  is_idle: 1
-address : 0x1e1d000  pfn : 416628  is_idle: 1
-address : 0x1e20000  pfn : 90931  is_idle: 0
-address : 0x1e21000  pfn : 427856  is_idle: 0
-address : 0x1e22000  pfn : 451334  is_idle: 0
-address : 0x1e23000  pfn : 182704  is_idle: 0
-address : 0x1e24000  pfn : 115901  is_idle: 0
+address : 0x1d51000  pfn : 508200  is_idle: 0
+address : 0x1d52000  pfn : 183981  is_idle: 0
+address : 0x1d53000  pfn : 437520  is_idle: 0
+address : 0x1d54000  pfn : 15579  is_idle: 0
+address : 0x1d55000  pfn : 659837  is_idle: 0
+address : 0x1e14000  pfn : 374446  is_idle: 0
+address : 0x1e15000  pfn : 566045  is_idle: 0
+address : 0x1e16000  pfn : 306787  is_idle: 0
+address : 0x1e17000  pfn : 414088  is_idle: 0
+address : 0x1e18000  pfn : 94980  is_idle: 0
+address : 0x1e19000  pfn : 163802  is_idle: 1
+address : 0x1e1a000  pfn : 443503  is_idle: 1
+address : 0x1e1b000  pfn : 457389  is_idle: 1
+address : 0x1e1c000  pfn : 456716  is_idle: 1
+address : 0x1e1d000  pfn : 641177  is_idle: 1
+address : 0x1e20000  pfn : 1165742  is_idle: 0
+address : 0x1e21000  pfn : 1156436  is_idle: 0
+address : 0x1e22000  pfn : 1173609  is_idle: 0
+address : 0x1e23000  pfn : 1161715  is_idle: 0
+address : 0x1e24000  pfn : 1051470  is_idle: 0
 -----END LSPT ----
 
 
-[Tue Aug 30 2022 18:33:02.113]:[Info]-[LPET] checking if page in addr 0x1d51000 is idle
-[Tue Aug 30 2022 18:33:02.113]:[Info]-[LPET] checking if page in addr 0x1d52000 is idle
-[Tue Aug 30 2022 18:33:02.113]:[Info]-[LPET] checking if page in addr 0x1d53000 is idle
-[Tue Aug 30 2022 18:33:02.113]:[Info]-[LPET] checking if page in addr 0x1d54000 is idle
-[Tue Aug 30 2022 18:33:02.113]:[Info]-[LPET] checking if page in addr 0x1d55000 is idle
-[Tue Aug 30 2022 18:33:02.114]:[Info]-[LPET] checking if page in addr 0x1e14000 is idle
-[Tue Aug 30 2022 18:33:02.114]:[Info]-[LPET] checking if page in addr 0x1e15000 is idle
-[Tue Aug 30 2022 18:33:02.114]:[Info]-[LPET] checking if page in addr 0x1e16000 is idle
-[Tue Aug 30 2022 18:33:02.114]:[Info]-[LPET] checking if page in addr 0x1e17000 is idle
-[Tue Aug 30 2022 18:33:02.114]:[Info]-[LPET] checking if page in addr 0x1e18000 is idle
-[Tue Aug 30 2022 18:33:02.114]:[Info]-[LPET] checking if page in addr 0x1e19000 is idle
-[Tue Aug 30 2022 18:33:02.114]:[Info]-[LPET] sending eviction request for page in addr 0x1e19000
-[Tue Aug 30 2022 18:33:02.119]:[Info]-[DMS] - page in address 0x1e19000 stored in disk
-[Tue Aug 30 2022 18:33:02.121]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:12:40.090]:[Info]-[LPET] checking if page in addr 0x1d51000 is idle
+[Sat Sep 03 2022 08:12:40.090]:[Info]-[LPET] checking if page in addr 0x1d52000 is idle
+[Sat Sep 03 2022 08:12:40.090]:[Info]-[LPET] checking if page in addr 0x1d53000 is idle
+[Sat Sep 03 2022 08:12:40.090]:[Info]-[LPET] checking if page in addr 0x1d54000 is idle
+[Sat Sep 03 2022 08:12:40.090]:[Info]-[LPET] checking if page in addr 0x1d55000 is idle
+[Sat Sep 03 2022 08:12:40.090]:[Info]-[LPET] checking if page in addr 0x1e14000 is idle
+[Sat Sep 03 2022 08:12:40.090]:[Info]-[LPET] checking if page in addr 0x1e15000 is idle
+[Sat Sep 03 2022 08:12:40.090]:[Info]-[LPET] checking if page in addr 0x1e16000 is idle
+[Sat Sep 03 2022 08:12:40.091]:[Info]-[LPET] checking if page in addr 0x1e17000 is idle
+[Sat Sep 03 2022 08:12:40.091]:[Info]-[LPET] checking if page in addr 0x1e18000 is idle
+[Sat Sep 03 2022 08:12:40.091]:[Info]-[LPET] checking if page in addr 0x1e19000 is idle
+[Sat Sep 03 2022 08:12:40.091]:[Info]-[LPET] sending eviction request for page in addr 0x1e19000
+[Sat Sep 03 2022 08:12:40.095]:[Info]-[DMS] - page in address 0x1e19000 stored in disk
+[Sat Sep 03 2022 08:12:40.095]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : DISK
 address : 0x1d4d000  location : DISK
@@ -948,11 +948,11 @@ address : 0x1e22000  location : INSTANCE_0
 address : 0x1e23000  location : INSTANCE_0
 address : 0x1e24000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:33:02.122]:[Info]-[Lpet] - received ack for eviction of page in address : 0x1e19000
-[Tue Aug 30 2022 18:33:02.122]:[Info]-[LPET] checking if page in addr 0x1e1a000 is idle
-[Tue Aug 30 2022 18:33:02.123]:[Info]-[LPET] sending eviction request for page in addr 0x1e1a000
-[Tue Aug 30 2022 18:33:02.134]:[Info]-[DMS] - page in address 0x1e1a000 stored in disk
-[Tue Aug 30 2022 18:33:02.137]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:12:40.106]:[Info]-[Lpet] - received ack for eviction of page in address : 0x1e19000
+[Sat Sep 03 2022 08:12:40.106]:[Info]-[LPET] checking if page in addr 0x1e1a000 is idle
+[Sat Sep 03 2022 08:12:40.106]:[Info]-[LPET] sending eviction request for page in addr 0x1e1a000
+[Sat Sep 03 2022 08:12:40.115]:[Info]-[DMS] - page in address 0x1e1a000 stored in disk
+[Sat Sep 03 2022 08:12:40.116]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : DISK
 address : 0x1d4d000  location : DISK
@@ -980,11 +980,11 @@ address : 0x1e22000  location : INSTANCE_0
 address : 0x1e23000  location : INSTANCE_0
 address : 0x1e24000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:33:02.138]:[Info]-[Lpet] - received ack for eviction of page in address : 0x1e1a000
-[Tue Aug 30 2022 18:33:02.138]:[Info]-[LPET] checking if page in addr 0x1e1b000 is idle
-[Tue Aug 30 2022 18:33:02.138]:[Info]-[LPET] sending eviction request for page in addr 0x1e1b000
-[Tue Aug 30 2022 18:33:02.141]:[Info]-[DMS] - page in address 0x1e1b000 stored in disk
-[Tue Aug 30 2022 18:33:02.143]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:12:40.119]:[Info]-[Lpet] - received ack for eviction of page in address : 0x1e1a000
+[Sat Sep 03 2022 08:12:40.119]:[Info]-[LPET] checking if page in addr 0x1e1b000 is idle
+[Sat Sep 03 2022 08:12:40.119]:[Info]-[LPET] sending eviction request for page in addr 0x1e1b000
+[Sat Sep 03 2022 08:12:40.120]:[Info]-[DMS] - page in address 0x1e1b000 stored in disk
+[Sat Sep 03 2022 08:12:40.120]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : DISK
 address : 0x1d4d000  location : DISK
@@ -1012,12 +1012,11 @@ address : 0x1e22000  location : INSTANCE_0
 address : 0x1e23000  location : INSTANCE_0
 address : 0x1e24000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:33:02.144]:[Info]-[Lpet] - received ack for eviction of page in address : 0x1e1b000
-[Tue Aug 30 2022 18:33:02.144]:[Info]-[LPET] checking if page in addr 0x1e1c000 is idle
-[Tue Aug 30 2022 18:33:02.144]:[Info]-[LPET] sending eviction request for page in addr 0x1e1c000
-[Tue Aug 30 2022 18:33:02.146]:[Info]-[DMS] - page in address 0x1e1c000 stored in disk
-[Tue Aug 30 2022 18:33:02.146]:[Info]-[Lpet] - received ack for eviction of page in address : 0x1e1c000
-[Tue Aug 30 2022 18:33:02.146]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:12:40.120]:[Info]-[Lpet] - received ack for eviction of page in address : 0x1e1b000
+[Sat Sep 03 2022 08:12:40.120]:[Info]-[LPET] checking if page in addr 0x1e1c000 is idle
+[Sat Sep 03 2022 08:12:40.120]:[Info]-[LPET] sending eviction request for page in addr 0x1e1c000
+[Sat Sep 03 2022 08:12:40.120]:[Info]-[DMS] - page in address 0x1e1c000 stored in disk
+[Sat Sep 03 2022 08:12:40.120]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : DISK
 address : 0x1d4d000  location : DISK
@@ -1045,15 +1044,11 @@ address : 0x1e22000  location : INSTANCE_0
 address : 0x1e23000  location : INSTANCE_0
 address : 0x1e24000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:33:02.146]:[Info]-[LPET] checking if page in addr 0x1e1d000 is idle
-[Tue Aug 30 2022 18:33:02.147]:[Info]-[LPET] sending eviction request for page in addr 0x1e1d000
-[Tue Aug 30 2022 18:33:02.147]:[Info]-[DMS] - page in address 0x1e1d000 stored in disk
-[Tue Aug 30 2022 18:33:02.147]:[Info]-[Lpet] - received ack for eviction of page in address : 0x1e1d000
-[Tue Aug 30 2022 18:33:02.147]:[Info]-
------------------END LPET-----------------
-
-[Tue Aug 30 2022 18:33:02.147]:[Info]-[DmHandler] - send request for the page in address 0x1d4c000 from DMS
-[Tue Aug 30 2022 18:33:02.147]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:12:40.120]:[Info]-[Lpet] - received ack for eviction of page in address : 0x1e1c000
+[Sat Sep 03 2022 08:12:40.120]:[Info]-[LPET] checking if page in addr 0x1e1d000 is idle
+[Sat Sep 03 2022 08:12:40.120]:[Info]-[LPET] sending eviction request for page in addr 0x1e1d000
+[Sat Sep 03 2022 08:12:40.120]:[Info]-[DMS] - page in address 0x1e1d000 stored in disk
+[Sat Sep 03 2022 08:12:40.121]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : DISK
 address : 0x1d4d000  location : DISK
@@ -1081,9 +1076,13 @@ address : 0x1e22000  location : INSTANCE_0
 address : 0x1e23000  location : INSTANCE_0
 address : 0x1e24000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:33:02.153]:[Info]-[DMS] - get request to send content of page in address: 0x1d4c000
-[Tue Aug 30 2022 18:33:02.154]:[Info]-[DmHandler] - received ack for page in address : 0x1d4c000 (previously accessed)
-[Tue Aug 30 2022 18:33:02.154]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:12:40.121]:[Info]-[Lpet] - received ack for eviction of page in address : 0x1e1d000
+[Sat Sep 03 2022 08:12:40.121]:[Info]-
+-----------------END LPET-----------------
+
+[Sat Sep 03 2022 08:12:40.126]:[Info]-[DMS] - get request to send content of page in address: 0x1d4c000
+[Sat Sep 03 2022 08:12:40.121]:[Info]-[DmHandler] - send request for the page in address 0x1d4c000 from DMS
+[Sat Sep 03 2022 08:12:40.126]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : DISK
@@ -1111,8 +1110,9 @@ address : 0x1e22000  location : INSTANCE_0
 address : 0x1e23000  location : INSTANCE_0
 address : 0x1e24000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:33:02.154]:[Info]-[DmHandler] - copying page content from DMS to address : 0x1d4c000
-[Tue Aug 30 2022 18:33:02.154]:[Info]-
+[Sat Sep 03 2022 08:12:40.134]:[Info]-[DmHandler] - received ack for page in address : 0x1d4c000 (previously accessed)
+[Sat Sep 03 2022 08:12:40.134]:[Info]-[DmHandler] - copying page content from DMS to address : 0x1d4c000
+[Sat Sep 03 2022 08:12:40.134]:[Info]-
 --------------FINISH HADNLING PAGE FAULT--------------
 
 

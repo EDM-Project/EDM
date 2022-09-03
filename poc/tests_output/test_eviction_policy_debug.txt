@@ -1,5 +1,5 @@
 --------------------------------------------------------------------------
-[[58456,1],0]: A high-performance Open MPI point-to-point messaging module
+[[31913,1],0]: A high-performance Open MPI point-to-point messaging module
 was unable to find any relevant network interfaces:
 
 Module: OpenFabrics (openib)
@@ -11,115 +11,120 @@ lower performance.
 NOTE: You can disable this warning by setting the MCA parameter
 btl_base_warn_component_unused to 0.
 --------------------------------------------------------------------------
-[Tue Aug 30 2022 18:36:00.502]:[Debug]-[EDM CLIENT] -  INIT
-[Tue Aug 30 2022 18:36:00.653]:[Info]-
+[Sat Sep 03 2022 08:14:22.339]:[Debug]-[EDM CLIENT] -  INIT
+[Sat Sep 03 2022 08:14:22.489]:[Debug]-[DMS] - DMS ready for serving requests
+[Sat Sep 03 2022 08:14:22.491]:[Info]-
 --------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:36:00.654]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1d4c000
-[Tue Aug 30 2022 18:36:00.654]:[Info]-[DmHandler] - send request for the page in address 0x1d4c000 from DMS
-[Tue Aug 30 2022 18:36:00.656]:[Debug]-[DMS] - DMS ready for serving requests
-[Tue Aug 30 2022 18:36:00.655]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1d4c000
-[Tue Aug 30 2022 18:36:00.661]:[Info]-[DMS] - get request to send content of page in address: 0x1d4c000
-[Tue Aug 30 2022 18:36:00.662]:[Debug]-[DMS] - page accessed first time, set info - new_page
-[Tue Aug 30 2022 18:36:00.663]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1d4c000
-[Tue Aug 30 2022 18:36:00.663]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
-[Tue Aug 30 2022 18:36:00.663]:[Debug]-[DMS] - SPT updated. Current state: 
-[Tue Aug 30 2022 18:36:00.663]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:14:22.491]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1d4c000
+[Sat Sep 03 2022 08:14:22.491]:[Info]-[DmHandler] - send request for the page in address 0x1d4c000 from DMS
+[Sat Sep 03 2022 08:14:22.491]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1d4c000
+[Sat Sep 03 2022 08:14:22.497]:[Info]-[DMS] - get request to send content of page in address: 0x1d4c000
+[Sat Sep 03 2022 08:14:22.498]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Sat Sep 03 2022 08:14:22.498]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1d4c000
+[Sat Sep 03 2022 08:14:22.498]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
+[Sat Sep 03 2022 08:14:22.498]:[Debug]-[DMS] - SPT updated. Current state: 
+[Sat Sep 03 2022 08:14:22.498]:[Info]-[DmHandler] - received ack for page in address : 0x1d4c000 (first access)
+[Sat Sep 03 2022 08:14:22.498]:[Info]-[DmHandler] - copying zero page to address : 0x1d4c000
+[Sat Sep 03 2022 08:14:22.498]:[Info]-
+--------------FINISH HADNLING PAGE FAULT--------------
+
+
+[Sat Sep 03 2022 08:14:22.498]:[Info]-
+--------------START HADNLING PAGE FAULT--------------
+[Sat Sep 03 2022 08:14:22.498]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1d4d000
+[Sat Sep 03 2022 08:14:22.498]:[Info]-[DmHandler] - send request for the page in address 0x1d4d000 from DMS
+[Sat Sep 03 2022 08:14:22.498]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1d4d000
+[Sat Sep 03 2022 08:14:22.498]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:36:00.663]:[Info]-[DmHandler] - received ack for page in address : 0x1d4c000 (first access)
-[Tue Aug 30 2022 18:36:00.663]:[Info]-[DmHandler] - copying zero page to address : 0x1d4c000
-[Tue Aug 30 2022 18:36:00.663]:[Info]-
+[Sat Sep 03 2022 08:14:22.498]:[Debug]-[DMS] - page in address: 0x1d4c000 sent to app
+[Sat Sep 03 2022 08:14:22.498]:[Info]-[DMS] - get request to send content of page in address: 0x1d4d000
+[Sat Sep 03 2022 08:14:22.498]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Sat Sep 03 2022 08:14:22.499]:[Debug]-[DMS] - SPT updated. Current state: 
+[Sat Sep 03 2022 08:14:22.499]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1d4d000
+[Sat Sep 03 2022 08:14:22.499]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
+[Sat Sep 03 2022 08:14:22.499]:[Info]-[DmHandler] - received ack for page in address : 0x1d4d000 (first access)
+[Sat Sep 03 2022 08:14:22.499]:[Info]-[DmHandler] - copying zero page to address : 0x1d4d000
+[Sat Sep 03 2022 08:14:22.499]:[Info]-
 --------------FINISH HADNLING PAGE FAULT--------------
 
 
-[Tue Aug 30 2022 18:36:00.663]:[Info]-
---------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:36:00.663]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1d4d000
-[Tue Aug 30 2022 18:36:00.663]:[Info]-[DmHandler] - send request for the page in address 0x1d4d000 from DMS
-[Tue Aug 30 2022 18:36:00.663]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1d4d000
-[Tue Aug 30 2022 18:36:00.669]:[Debug]-[DMS] - page in address: 0x1d4c000 send to app
-[Tue Aug 30 2022 18:36:00.670]:[Info]-[DMS] - get request to send content of page in address: 0x1d4d000
-[Tue Aug 30 2022 18:36:00.670]:[Debug]-[DMS] - page accessed first time, set info - new_page
-[Tue Aug 30 2022 18:36:00.670]:[Debug]-[DMS] - SPT updated. Current state: 
-[Tue Aug 30 2022 18:36:00.670]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1d4d000
-[Tue Aug 30 2022 18:36:00.670]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
-[Tue Aug 30 2022 18:36:00.670]:[Info]-[DmHandler] - received ack for page in address : 0x1d4d000 (first access)
-[Tue Aug 30 2022 18:36:00.670]:[Info]-[DmHandler] - copying zero page to address : 0x1d4d000
-[Tue Aug 30 2022 18:36:00.670]:[Info]-
---------------FINISH HADNLING PAGE FAULT--------------
-
-
-[Tue Aug 30 2022 18:36:00.670]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:14:22.499]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:36:00.670]:[Info]-
+[Sat Sep 03 2022 08:14:22.499]:[Info]-
 --------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:36:00.670]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1d4e000
-[Tue Aug 30 2022 18:36:00.670]:[Info]-[DmHandler] - send request for the page in address 0x1d4e000 from DMS
-[Tue Aug 30 2022 18:36:00.670]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1d4e000
-[Tue Aug 30 2022 18:36:00.670]:[Debug]-[DMS] - page in address: 0x1d4d000 send to app
-[Tue Aug 30 2022 18:36:00.671]:[Info]-[DMS] - get request to send content of page in address: 0x1d4e000
-[Tue Aug 30 2022 18:36:00.671]:[Debug]-[DMS] - page accessed first time, set info - new_page
-[Tue Aug 30 2022 18:36:00.671]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1d4e000
-[Tue Aug 30 2022 18:36:00.671]:[Debug]-[DMS] - SPT updated. Current state: 
-[Tue Aug 30 2022 18:36:00.671]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
-[Tue Aug 30 2022 18:36:00.671]:[Info]-[DmHandler] - received ack for page in address : 0x1d4e000 (first access)
-[Tue Aug 30 2022 18:36:00.671]:[Info]-[DmHandler] - copying zero page to address : 0x1d4e000
-[Tue Aug 30 2022 18:36:00.671]:[Info]-
+[Sat Sep 03 2022 08:14:22.499]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1d4e000
+[Sat Sep 03 2022 08:14:22.499]:[Info]-[DmHandler] - send request for the page in address 0x1d4e000 from DMS
+[Sat Sep 03 2022 08:14:22.499]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1d4e000
+[Sat Sep 03 2022 08:14:22.499]:[Debug]-[DMS] - page in address: 0x1d4d000 sent to app
+[Sat Sep 03 2022 08:14:22.499]:[Info]-[DMS] - get request to send content of page in address: 0x1d4e000
+[Sat Sep 03 2022 08:14:22.499]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Sat Sep 03 2022 08:14:22.499]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1d4e000
+[Sat Sep 03 2022 08:14:22.499]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
+[Sat Sep 03 2022 08:14:22.499]:[Debug]-[DMS] - SPT updated. Current state: 
+[Sat Sep 03 2022 08:14:22.499]:[Info]-[DmHandler] - received ack for page in address : 0x1d4e000 (first access)
+[Sat Sep 03 2022 08:14:22.499]:[Info]-[DmHandler] - copying zero page to address : 0x1d4e000
+[Sat Sep 03 2022 08:14:22.499]:[Info]-
 --------------FINISH HADNLING PAGE FAULT--------------
 
 
-[Tue Aug 30 2022 18:36:00.671]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:14:22.499]:[Info]-
+--------------START HADNLING PAGE FAULT--------------
+[Sat Sep 03 2022 08:14:22.499]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1d4f000
+[Sat Sep 03 2022 08:14:22.500]:[Info]-[DmHandler] - send request for the page in address 0x1d4f000 from DMS
+[Sat Sep 03 2022 08:14:22.500]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1d4f000
+[Sat Sep 03 2022 08:14:22.499]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
 address : 0x1d4e000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:36:00.671]:[Debug]-[DMS] - page in address: 0x1d4e000 send to app
-[Tue Aug 30 2022 18:36:00.671]:[Info]-
---------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:36:00.671]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1d4f000
-[Tue Aug 30 2022 18:36:00.671]:[Info]-[DmHandler] - send request for the page in address 0x1d4f000 from DMS
-[Tue Aug 30 2022 18:36:00.671]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1d4f000
-[Tue Aug 30 2022 18:36:00.671]:[Info]-[DMS] - get request to send content of page in address: 0x1d4f000
-[Tue Aug 30 2022 18:36:00.671]:[Debug]-[DMS] - page accessed first time, set info - new_page
-[Tue Aug 30 2022 18:36:00.672]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1d4f000
-[Tue Aug 30 2022 18:36:00.672]:[Debug]-[DMS] - SPT updated. Current state: 
-[Tue Aug 30 2022 18:36:00.672]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
-[Tue Aug 30 2022 18:36:00.672]:[Info]-[DmHandler] - received ack for page in address : 0x1d4f000 (first access)
-[Tue Aug 30 2022 18:36:00.672]:[Info]-[DmHandler] - copying zero page to address : 0x1d4f000
-[Tue Aug 30 2022 18:36:00.672]:[Info]-
+[Sat Sep 03 2022 08:14:22.500]:[Debug]-[DMS] - page in address: 0x1d4e000 sent to app
+[Sat Sep 03 2022 08:14:22.500]:[Info]-[DMS] - get request to send content of page in address: 0x1d4f000
+[Sat Sep 03 2022 08:14:22.500]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Sat Sep 03 2022 08:14:22.500]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1d4f000
+[Sat Sep 03 2022 08:14:22.500]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
+[Sat Sep 03 2022 08:14:22.500]:[Debug]-[DMS] - SPT updated. Current state: 
+[Sat Sep 03 2022 08:14:22.500]:[Info]-[DmHandler] - received ack for page in address : 0x1d4f000 (first access)
+[Sat Sep 03 2022 08:14:22.500]:[Info]-[DmHandler] - copying zero page to address : 0x1d4f000
+[Sat Sep 03 2022 08:14:22.500]:[Info]-
 --------------FINISH HADNLING PAGE FAULT--------------
 
 
-[Tue Aug 30 2022 18:36:00.672]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:14:22.500]:[Info]-
+--------------START HADNLING PAGE FAULT--------------
+[Sat Sep 03 2022 08:14:22.500]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1d50000
+[Sat Sep 03 2022 08:14:22.500]:[Info]-[DmHandler] - send request for the page in address 0x1d50000 from DMS
+[Sat Sep 03 2022 08:14:22.500]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1d50000
+[Sat Sep 03 2022 08:14:22.500]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
 address : 0x1d4e000  location : INSTANCE_0
 address : 0x1d4f000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:36:00.672]:[Info]-
---------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:36:00.672]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1d50000
-[Tue Aug 30 2022 18:36:00.672]:[Info]-[DmHandler] - send request for the page in address 0x1d50000 from DMS
-[Tue Aug 30 2022 18:36:00.672]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1d50000
-[Tue Aug 30 2022 18:36:00.672]:[Debug]-[DMS] - page in address: 0x1d4f000 send to app
-[Tue Aug 30 2022 18:36:00.672]:[Info]-[DMS] - get request to send content of page in address: 0x1d50000
-[Tue Aug 30 2022 18:36:00.672]:[Debug]-[DMS] - page accessed first time, set info - new_page
-[Tue Aug 30 2022 18:36:00.672]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1d50000
-[Tue Aug 30 2022 18:36:00.672]:[Debug]-[DMS] - SPT updated. Current state: 
-[Tue Aug 30 2022 18:36:00.672]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
-[Tue Aug 30 2022 18:36:00.672]:[Info]-[DmHandler] - received ack for page in address : 0x1d50000 (first access)
-[Tue Aug 30 2022 18:36:00.672]:[Info]-[DmHandler] - copying zero page to address : 0x1d50000
-[Tue Aug 30 2022 18:36:00.673]:[Info]-
+[Sat Sep 03 2022 08:14:22.500]:[Debug]-[DMS] - page in address: 0x1d4f000 sent to app
+[Sat Sep 03 2022 08:14:22.501]:[Info]-[DMS] - get request to send content of page in address: 0x1d50000
+[Sat Sep 03 2022 08:14:22.501]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Sat Sep 03 2022 08:14:22.501]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1d50000
+[Sat Sep 03 2022 08:14:22.501]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
+[Sat Sep 03 2022 08:14:22.501]:[Info]-[DmHandler] - received ack for page in address : 0x1d50000 (first access)
+[Sat Sep 03 2022 08:14:22.501]:[Debug]-[DMS] - SPT updated. Current state: 
+[Sat Sep 03 2022 08:14:22.501]:[Info]-[DmHandler] - copying zero page to address : 0x1d50000
+[Sat Sep 03 2022 08:14:22.501]:[Info]-
 --------------FINISH HADNLING PAGE FAULT--------------
 
 
-[Tue Aug 30 2022 18:36:00.673]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:14:22.501]:[Info]-
+--------------START HADNLING PAGE FAULT--------------
+[Sat Sep 03 2022 08:14:22.501]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1d51000
+[Sat Sep 03 2022 08:14:22.501]:[Info]-[DmHandler] - send request for the page in address 0x1d51000 from DMS
+[Sat Sep 03 2022 08:14:22.501]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1d51000
+[Sat Sep 03 2022 08:14:22.501]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -127,24 +132,24 @@ address : 0x1d4e000  location : INSTANCE_0
 address : 0x1d4f000  location : INSTANCE_0
 address : 0x1d50000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:36:00.673]:[Debug]-[DMS] - page in address: 0x1d50000 send to app
-[Tue Aug 30 2022 18:36:00.673]:[Info]-
---------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:36:00.673]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1d51000
-[Tue Aug 30 2022 18:36:00.673]:[Info]-[DmHandler] - send request for the page in address 0x1d51000 from DMS
-[Tue Aug 30 2022 18:36:00.673]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1d51000
-[Tue Aug 30 2022 18:36:00.673]:[Info]-[DMS] - get request to send content of page in address: 0x1d51000
-[Tue Aug 30 2022 18:36:00.673]:[Debug]-[DMS] - page accessed first time, set info - new_page
-[Tue Aug 30 2022 18:36:00.673]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1d51000
-[Tue Aug 30 2022 18:36:00.673]:[Debug]-[DMS] - SPT updated. Current state: 
-[Tue Aug 30 2022 18:36:00.673]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
-[Tue Aug 30 2022 18:36:00.673]:[Info]-[DmHandler] - received ack for page in address : 0x1d51000 (first access)
-[Tue Aug 30 2022 18:36:00.673]:[Info]-[DmHandler] - copying zero page to address : 0x1d51000
-[Tue Aug 30 2022 18:36:00.673]:[Info]-
+[Sat Sep 03 2022 08:14:22.501]:[Debug]-[DMS] - page in address: 0x1d50000 sent to app
+[Sat Sep 03 2022 08:14:22.501]:[Info]-[DMS] - get request to send content of page in address: 0x1d51000
+[Sat Sep 03 2022 08:14:22.501]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Sat Sep 03 2022 08:14:22.501]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1d51000
+[Sat Sep 03 2022 08:14:22.501]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
+[Sat Sep 03 2022 08:14:22.501]:[Debug]-[DMS] - SPT updated. Current state: 
+[Sat Sep 03 2022 08:14:22.501]:[Info]-[DmHandler] - received ack for page in address : 0x1d51000 (first access)
+[Sat Sep 03 2022 08:14:22.501]:[Info]-[DmHandler] - copying zero page to address : 0x1d51000
+[Sat Sep 03 2022 08:14:22.501]:[Info]-
 --------------FINISH HADNLING PAGE FAULT--------------
 
 
-[Tue Aug 30 2022 18:36:00.673]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:14:22.501]:[Info]-
+--------------START HADNLING PAGE FAULT--------------
+[Sat Sep 03 2022 08:14:22.502]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1d52000
+[Sat Sep 03 2022 08:14:22.502]:[Info]-[DmHandler] - send request for the page in address 0x1d52000 from DMS
+[Sat Sep 03 2022 08:14:22.502]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1d52000
+[Sat Sep 03 2022 08:14:22.502]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -153,24 +158,23 @@ address : 0x1d4f000  location : INSTANCE_0
 address : 0x1d50000  location : INSTANCE_0
 address : 0x1d51000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:36:00.673]:[Debug]-[DMS] - page in address: 0x1d51000 send to app
-[Tue Aug 30 2022 18:36:00.673]:[Info]-
---------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:36:00.673]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1d52000
-[Tue Aug 30 2022 18:36:00.673]:[Info]-[DmHandler] - send request for the page in address 0x1d52000 from DMS
-[Tue Aug 30 2022 18:36:00.673]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1d52000
-[Tue Aug 30 2022 18:36:00.674]:[Info]-[DMS] - get request to send content of page in address: 0x1d52000
-[Tue Aug 30 2022 18:36:00.674]:[Debug]-[DMS] - page accessed first time, set info - new_page
-[Tue Aug 30 2022 18:36:00.674]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1d52000
-[Tue Aug 30 2022 18:36:00.674]:[Debug]-[DMS] - SPT updated. Current state: 
-[Tue Aug 30 2022 18:36:00.674]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
-[Tue Aug 30 2022 18:36:00.674]:[Info]-[DmHandler] - received ack for page in address : 0x1d52000 (first access)
-[Tue Aug 30 2022 18:36:00.674]:[Info]-[DmHandler] - copying zero page to address : 0x1d52000
-[Tue Aug 30 2022 18:36:00.674]:[Info]-
+[Sat Sep 03 2022 08:14:22.502]:[Debug]-[DMS] - page in address: 0x1d51000 sent to app
+[Sat Sep 03 2022 08:14:22.502]:[Info]-[DMS] - get request to send content of page in address: 0x1d52000
+[Sat Sep 03 2022 08:14:22.502]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Sat Sep 03 2022 08:14:22.502]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1d52000
+[Sat Sep 03 2022 08:14:22.502]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
+[Sat Sep 03 2022 08:14:22.502]:[Info]-[DmHandler] - received ack for page in address : 0x1d52000 (first access)
+[Sat Sep 03 2022 08:14:22.502]:[Debug]-[DMS] - SPT updated. Current state: 
+[Sat Sep 03 2022 08:14:22.502]:[Info]-[DmHandler] - copying zero page to address : 0x1d52000
+[Sat Sep 03 2022 08:14:22.502]:[Info]-
 --------------FINISH HADNLING PAGE FAULT--------------
 
 
-[Tue Aug 30 2022 18:36:00.674]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:14:22.502]:[Info]-
+--------------START HADNLING PAGE FAULT--------------
+[Sat Sep 03 2022 08:14:22.502]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1d53000
+[Sat Sep 03 2022 08:14:22.502]:[Info]-[DmHandler] - send request for the page in address 0x1d53000 from DMS
+[Sat Sep 03 2022 08:14:22.502]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -180,29 +184,25 @@ address : 0x1d50000  location : INSTANCE_0
 address : 0x1d51000  location : INSTANCE_0
 address : 0x1d52000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:36:00.674]:[Debug]-[DMS] - page in address: 0x1d52000 send to app
-[Tue Aug 30 2022 18:36:00.674]:[Info]-
---------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:36:00.674]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1d53000
-[Tue Aug 30 2022 18:36:00.674]:[Info]-[DmHandler] - send request for the page in address 0x1d53000 from DMS
-[Tue Aug 30 2022 18:36:00.674]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1d53000
-[Tue Aug 30 2022 18:36:00.678]:[Info]-[DMS] - get request to send content of page in address: 0x1d53000
-[Tue Aug 30 2022 18:36:00.678]:[Debug]-[DMS] - page accessed first time, set info - new_page
-[Tue Aug 30 2022 18:36:00.678]:[Debug]-[DMS] - SPT updated. Current state: 
-[Tue Aug 30 2022 18:36:00.679]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1d53000
-[Tue Aug 30 2022 18:36:00.679]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
-[Tue Aug 30 2022 18:36:00.679]:[Info]-[DmHandler] - received ack for page in address : 0x1d53000 (first access)
-[Tue Aug 30 2022 18:36:00.679]:[Info]-[DmHandler] - copying zero page to address : 0x1d53000
-[Tue Aug 30 2022 18:36:00.679]:[Info]-
+[Sat Sep 03 2022 08:14:22.502]:[Debug]-[DMS] - page in address: 0x1d52000 sent to app
+[Sat Sep 03 2022 08:14:22.503]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1d53000
+[Sat Sep 03 2022 08:14:22.503]:[Info]-[DMS] - get request to send content of page in address: 0x1d53000
+[Sat Sep 03 2022 08:14:22.503]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Sat Sep 03 2022 08:14:22.503]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1d53000
+[Sat Sep 03 2022 08:14:22.503]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
+[Sat Sep 03 2022 08:14:22.503]:[Debug]-[DMS] - SPT updated. Current state: 
+[Sat Sep 03 2022 08:14:22.503]:[Info]-[DmHandler] - received ack for page in address : 0x1d53000 (first access)
+[Sat Sep 03 2022 08:14:22.503]:[Info]-[DmHandler] - copying zero page to address : 0x1d53000
+[Sat Sep 03 2022 08:14:22.503]:[Info]-
 --------------FINISH HADNLING PAGE FAULT--------------
 
 
-[Tue Aug 30 2022 18:36:00.679]:[Info]-
+[Sat Sep 03 2022 08:14:22.503]:[Info]-
 --------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:36:00.679]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1d54000
-[Tue Aug 30 2022 18:36:00.679]:[Info]-[DmHandler] - send request for the page in address 0x1d54000 from DMS
-[Tue Aug 30 2022 18:36:00.679]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1d54000
-[Tue Aug 30 2022 18:36:00.679]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:14:22.503]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1d54000
+[Sat Sep 03 2022 08:14:22.503]:[Info]-[DmHandler] - send request for the page in address 0x1d54000 from DMS
+[Sat Sep 03 2022 08:14:22.503]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1d54000
+[Sat Sep 03 2022 08:14:22.503]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -213,12 +213,24 @@ address : 0x1d51000  location : INSTANCE_0
 address : 0x1d52000  location : INSTANCE_0
 address : 0x1d53000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:36:00.679]:[Debug]-[DMS] - page in address: 0x1d53000 send to app
-[Tue Aug 30 2022 18:36:00.679]:[Info]-[DMS] - get request to send content of page in address: 0x1d54000
-[Tue Aug 30 2022 18:36:00.679]:[Debug]-[DMS] - page accessed first time, set info - new_page
-[Tue Aug 30 2022 18:36:00.679]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1d54000
-[Tue Aug 30 2022 18:36:00.679]:[Debug]-[DMS] - SPT updated. Current state: 
-[Tue Aug 30 2022 18:36:00.679]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:14:22.503]:[Debug]-[DMS] - page in address: 0x1d53000 sent to app
+[Sat Sep 03 2022 08:14:22.504]:[Info]-[DMS] - get request to send content of page in address: 0x1d54000
+[Sat Sep 03 2022 08:14:22.504]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Sat Sep 03 2022 08:14:22.504]:[Debug]-[DMS] - SPT updated. Current state: 
+[Sat Sep 03 2022 08:14:22.504]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1d54000
+[Sat Sep 03 2022 08:14:22.504]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
+[Sat Sep 03 2022 08:14:22.504]:[Info]-[DmHandler] - received ack for page in address : 0x1d54000 (first access)
+[Sat Sep 03 2022 08:14:22.504]:[Info]-[DmHandler] - copying zero page to address : 0x1d54000
+[Sat Sep 03 2022 08:14:22.504]:[Info]-
+--------------FINISH HADNLING PAGE FAULT--------------
+
+
+[Sat Sep 03 2022 08:14:22.504]:[Info]-
+--------------START HADNLING PAGE FAULT--------------
+[Sat Sep 03 2022 08:14:22.504]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1d55000
+[Sat Sep 03 2022 08:14:22.504]:[Info]-[DmHandler] - send request for the page in address 0x1d55000 from DMS
+[Sat Sep 03 2022 08:14:22.504]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1d55000
+[Sat Sep 03 2022 08:14:22.504]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -230,31 +242,24 @@ address : 0x1d52000  location : INSTANCE_0
 address : 0x1d53000  location : INSTANCE_0
 address : 0x1d54000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:36:00.679]:[Debug]-[DMS] - page in address: 0x1d54000 send to app
-[Tue Aug 30 2022 18:36:00.679]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
-[Tue Aug 30 2022 18:36:00.680]:[Info]-[DmHandler] - received ack for page in address : 0x1d54000 (first access)
-[Tue Aug 30 2022 18:36:00.680]:[Info]-[DmHandler] - copying zero page to address : 0x1d54000
-[Tue Aug 30 2022 18:36:00.680]:[Info]-
+[Sat Sep 03 2022 08:14:22.505]:[Debug]-[DMS] - page in address: 0x1d54000 sent to app
+[Sat Sep 03 2022 08:14:22.505]:[Info]-[DMS] - get request to send content of page in address: 0x1d55000
+[Sat Sep 03 2022 08:14:22.505]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Sat Sep 03 2022 08:14:22.505]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1d55000
+[Sat Sep 03 2022 08:14:22.505]:[Debug]-[DMS] - SPT updated. Current state: 
+[Sat Sep 03 2022 08:14:22.505]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
+[Sat Sep 03 2022 08:14:22.505]:[Info]-[DmHandler] - received ack for page in address : 0x1d55000 (first access)
+[Sat Sep 03 2022 08:14:22.505]:[Info]-[DmHandler] - copying zero page to address : 0x1d55000
+[Sat Sep 03 2022 08:14:22.505]:[Info]-
 --------------FINISH HADNLING PAGE FAULT--------------
 
 
-[Tue Aug 30 2022 18:36:00.680]:[Info]-
+[Sat Sep 03 2022 08:14:22.505]:[Info]-
 --------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:36:00.680]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1d55000
-[Tue Aug 30 2022 18:36:00.680]:[Info]-[DmHandler] - send request for the page in address 0x1d55000 from DMS
-[Tue Aug 30 2022 18:36:00.680]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1d55000
-[Tue Aug 30 2022 18:36:00.680]:[Info]-[DMS] - get request to send content of page in address: 0x1d55000
-[Tue Aug 30 2022 18:36:00.680]:[Debug]-[DMS] - page accessed first time, set info - new_page
-[Tue Aug 30 2022 18:36:00.680]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1d55000
-[Tue Aug 30 2022 18:36:00.680]:[Debug]-[DMS] - SPT updated. Current state: 
-[Tue Aug 30 2022 18:36:00.680]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
-[Tue Aug 30 2022 18:36:00.680]:[Info]-[DmHandler] - received ack for page in address : 0x1d55000 (first access)
-[Tue Aug 30 2022 18:36:00.680]:[Info]-[DmHandler] - copying zero page to address : 0x1d55000
-[Tue Aug 30 2022 18:36:00.680]:[Info]-
---------------FINISH HADNLING PAGE FAULT--------------
-
-
-[Tue Aug 30 2022 18:36:00.681]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:14:22.505]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e14000
+[Sat Sep 03 2022 08:14:22.505]:[Info]-[DmHandler] - send request for the page in address 0x1e14000 from DMS
+[Sat Sep 03 2022 08:14:22.505]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1e14000
+[Sat Sep 03 2022 08:14:22.505]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -267,29 +272,24 @@ address : 0x1d53000  location : INSTANCE_0
 address : 0x1d54000  location : INSTANCE_0
 address : 0x1d55000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:36:00.681]:[Debug]-[DMS] - page in address: 0x1d55000 send to app
-[Tue Aug 30 2022 18:36:00.681]:[Info]-
---------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:36:00.681]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e14000
-[Tue Aug 30 2022 18:36:00.681]:[Info]-[DmHandler] - send request for the page in address 0x1e14000 from DMS
-[Tue Aug 30 2022 18:36:00.681]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1e14000
-[Tue Aug 30 2022 18:36:00.681]:[Info]-[DMS] - get request to send content of page in address: 0x1e14000
-[Tue Aug 30 2022 18:36:00.681]:[Debug]-[DMS] - page accessed first time, set info - new_page
-[Tue Aug 30 2022 18:36:00.681]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1e14000
-[Tue Aug 30 2022 18:36:00.681]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
-[Tue Aug 30 2022 18:36:00.681]:[Debug]-[DMS] - SPT updated. Current state: 
-[Tue Aug 30 2022 18:36:00.681]:[Info]-[DmHandler] - received ack for page in address : 0x1e14000 (first access)
-[Tue Aug 30 2022 18:36:00.681]:[Info]-[DmHandler] - copying zero page to address : 0x1e14000
-[Tue Aug 30 2022 18:36:00.681]:[Info]-
+[Sat Sep 03 2022 08:14:22.506]:[Debug]-[DMS] - page in address: 0x1d55000 sent to app
+[Sat Sep 03 2022 08:14:22.506]:[Info]-[DMS] - get request to send content of page in address: 0x1e14000
+[Sat Sep 03 2022 08:14:22.506]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Sat Sep 03 2022 08:14:22.506]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1e14000
+[Sat Sep 03 2022 08:14:22.506]:[Debug]-[DMS] - SPT updated. Current state: 
+[Sat Sep 03 2022 08:14:22.506]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
+[Sat Sep 03 2022 08:14:22.506]:[Info]-[DmHandler] - received ack for page in address : 0x1e14000 (first access)
+[Sat Sep 03 2022 08:14:22.506]:[Info]-[DmHandler] - copying zero page to address : 0x1e14000
+[Sat Sep 03 2022 08:14:22.506]:[Info]-
 --------------FINISH HADNLING PAGE FAULT--------------
 
 
-[Tue Aug 30 2022 18:36:00.681]:[Info]-
+[Sat Sep 03 2022 08:14:22.506]:[Info]-
 --------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:36:00.681]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e15000
-[Tue Aug 30 2022 18:36:00.681]:[Info]-[DmHandler] - send request for the page in address 0x1e15000 from DMS
-[Tue Aug 30 2022 18:36:00.681]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1e15000
-[Tue Aug 30 2022 18:36:00.681]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:14:22.506]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e15000
+[Sat Sep 03 2022 08:14:22.506]:[Info]-[DmHandler] - send request for the page in address 0x1e15000 from DMS
+[Sat Sep 03 2022 08:14:22.506]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1e15000
+[Sat Sep 03 2022 08:14:22.506]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -303,21 +303,24 @@ address : 0x1d54000  location : INSTANCE_0
 address : 0x1d55000  location : INSTANCE_0
 address : 0x1e14000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:36:00.681]:[Debug]-[DMS] - page in address: 0x1e14000 send to app
-[Tue Aug 30 2022 18:36:00.682]:[Info]-[DMS] - get request to send content of page in address: 0x1e15000
-[Tue Aug 30 2022 18:36:00.682]:[Debug]-[DMS] - page accessed first time, set info - new_page
-[Tue Aug 30 2022 18:36:00.682]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1e15000
-[Tue Aug 30 2022 18:36:00.682]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
-[Tue Aug 30 2022 18:36:00.682]:[Info]-[DmHandler] - received ack for page in address : 0x1e15000 (first access)
-[Tue Aug 30 2022 18:36:00.682]:[Info]-[DmHandler] - copying zero page to address : 0x1e15000
-[Tue Aug 30 2022 18:36:00.682]:[Info]-
+[Sat Sep 03 2022 08:14:22.506]:[Debug]-[DMS] - page in address: 0x1e14000 sent to app
+[Sat Sep 03 2022 08:14:22.507]:[Info]-[DMS] - get request to send content of page in address: 0x1e15000
+[Sat Sep 03 2022 08:14:22.507]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Sat Sep 03 2022 08:14:22.507]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1e15000
+[Sat Sep 03 2022 08:14:22.507]:[Debug]-[DMS] - SPT updated. Current state: 
+[Sat Sep 03 2022 08:14:22.507]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
+[Sat Sep 03 2022 08:14:22.507]:[Info]-[DmHandler] - received ack for page in address : 0x1e15000 (first access)
+[Sat Sep 03 2022 08:14:22.507]:[Info]-[DmHandler] - copying zero page to address : 0x1e15000
+[Sat Sep 03 2022 08:14:22.507]:[Info]-
 --------------FINISH HADNLING PAGE FAULT--------------
 
 
-[Tue Aug 30 2022 18:36:00.682]:[Debug]-[DMS] - SPT updated. Current state: 
-[Tue Aug 30 2022 18:36:00.682]:[Info]-
+[Sat Sep 03 2022 08:14:22.507]:[Info]-
 --------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:36:00.682]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:14:22.507]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e16000
+[Sat Sep 03 2022 08:14:22.507]:[Info]-[DmHandler] - send request for the page in address 0x1e16000 from DMS
+[Sat Sep 03 2022 08:14:22.507]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1e16000
+[Sat Sep 03 2022 08:14:22.507]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -332,27 +335,24 @@ address : 0x1d55000  location : INSTANCE_0
 address : 0x1e14000  location : INSTANCE_0
 address : 0x1e15000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:36:00.682]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e16000
-[Tue Aug 30 2022 18:36:00.682]:[Info]-[DmHandler] - send request for the page in address 0x1e16000 from DMS
-[Tue Aug 30 2022 18:36:00.682]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1e16000
-[Tue Aug 30 2022 18:36:00.682]:[Debug]-[DMS] - page in address: 0x1e15000 send to app
-[Tue Aug 30 2022 18:36:00.683]:[Info]-[DMS] - get request to send content of page in address: 0x1e16000
-[Tue Aug 30 2022 18:36:00.683]:[Debug]-[DMS] - page accessed first time, set info - new_page
-[Tue Aug 30 2022 18:36:00.683]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1e16000
-[Tue Aug 30 2022 18:36:00.683]:[Debug]-[DMS] - SPT updated. Current state: 
-[Tue Aug 30 2022 18:36:00.683]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
-[Tue Aug 30 2022 18:36:00.683]:[Info]-[DmHandler] - received ack for page in address : 0x1e16000 (first access)
-[Tue Aug 30 2022 18:36:00.683]:[Info]-[DmHandler] - copying zero page to address : 0x1e16000
-[Tue Aug 30 2022 18:36:00.683]:[Info]-
+[Sat Sep 03 2022 08:14:22.507]:[Debug]-[DMS] - page in address: 0x1e15000 sent to app
+[Sat Sep 03 2022 08:14:22.507]:[Info]-[DMS] - get request to send content of page in address: 0x1e16000
+[Sat Sep 03 2022 08:14:22.508]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Sat Sep 03 2022 08:14:22.508]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1e16000
+[Sat Sep 03 2022 08:14:22.508]:[Debug]-[DMS] - SPT updated. Current state: 
+[Sat Sep 03 2022 08:14:22.508]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
+[Sat Sep 03 2022 08:14:22.508]:[Info]-[DmHandler] - received ack for page in address : 0x1e16000 (first access)
+[Sat Sep 03 2022 08:14:22.508]:[Info]-[DmHandler] - copying zero page to address : 0x1e16000
+[Sat Sep 03 2022 08:14:22.508]:[Info]-
 --------------FINISH HADNLING PAGE FAULT--------------
 
 
-[Tue Aug 30 2022 18:36:00.683]:[Info]-
+[Sat Sep 03 2022 08:14:22.508]:[Info]-
 --------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:36:00.683]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e17000
-[Tue Aug 30 2022 18:36:00.683]:[Info]-[DmHandler] - send request for the page in address 0x1e17000 from DMS
-[Tue Aug 30 2022 18:36:00.683]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1e17000
-[Tue Aug 30 2022 18:36:00.683]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:14:22.508]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e17000
+[Sat Sep 03 2022 08:14:22.508]:[Info]-[DmHandler] - send request for the page in address 0x1e17000 from DMS
+[Sat Sep 03 2022 08:14:22.508]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1e17000
+[Sat Sep 03 2022 08:14:22.508]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -368,24 +368,24 @@ address : 0x1e14000  location : INSTANCE_0
 address : 0x1e15000  location : INSTANCE_0
 address : 0x1e16000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:36:00.683]:[Debug]-[DMS] - page in address: 0x1e16000 send to app
-[Tue Aug 30 2022 18:36:00.683]:[Info]-[DMS] - get request to send content of page in address: 0x1e17000
-[Tue Aug 30 2022 18:36:00.684]:[Debug]-[DMS] - page accessed first time, set info - new_page
-[Tue Aug 30 2022 18:36:00.684]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1e17000
-[Tue Aug 30 2022 18:36:00.684]:[Debug]-[DMS] - SPT updated. Current state: 
-[Tue Aug 30 2022 18:36:00.684]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
-[Tue Aug 30 2022 18:36:00.684]:[Info]-[DmHandler] - received ack for page in address : 0x1e17000 (first access)
-[Tue Aug 30 2022 18:36:00.684]:[Info]-[DmHandler] - copying zero page to address : 0x1e17000
-[Tue Aug 30 2022 18:36:00.684]:[Info]-
+[Sat Sep 03 2022 08:14:22.508]:[Debug]-[DMS] - page in address: 0x1e16000 sent to app
+[Sat Sep 03 2022 08:14:22.508]:[Info]-[DMS] - get request to send content of page in address: 0x1e17000
+[Sat Sep 03 2022 08:14:22.509]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Sat Sep 03 2022 08:14:22.509]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1e17000
+[Sat Sep 03 2022 08:14:22.509]:[Debug]-[DMS] - SPT updated. Current state: 
+[Sat Sep 03 2022 08:14:22.509]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
+[Sat Sep 03 2022 08:14:22.509]:[Info]-[DmHandler] - received ack for page in address : 0x1e17000 (first access)
+[Sat Sep 03 2022 08:14:22.509]:[Info]-[DmHandler] - copying zero page to address : 0x1e17000
+[Sat Sep 03 2022 08:14:22.509]:[Info]-
 --------------FINISH HADNLING PAGE FAULT--------------
 
 
-[Tue Aug 30 2022 18:36:00.684]:[Info]-
+[Sat Sep 03 2022 08:14:22.509]:[Info]-
 --------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:36:00.684]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e18000
-[Tue Aug 30 2022 18:36:00.684]:[Info]-[DmHandler] - send request for the page in address 0x1e18000 from DMS
-[Tue Aug 30 2022 18:36:00.684]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1e18000
-[Tue Aug 30 2022 18:36:00.684]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:14:22.509]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e18000
+[Sat Sep 03 2022 08:14:22.509]:[Info]-[DmHandler] - send request for the page in address 0x1e18000 from DMS
+[Sat Sep 03 2022 08:14:22.509]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1e18000
+[Sat Sep 03 2022 08:14:22.509]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -402,24 +402,24 @@ address : 0x1e15000  location : INSTANCE_0
 address : 0x1e16000  location : INSTANCE_0
 address : 0x1e17000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:36:00.684]:[Debug]-[DMS] - page in address: 0x1e17000 send to app
-[Tue Aug 30 2022 18:36:00.684]:[Info]-[DMS] - get request to send content of page in address: 0x1e18000
-[Tue Aug 30 2022 18:36:00.684]:[Debug]-[DMS] - page accessed first time, set info - new_page
-[Tue Aug 30 2022 18:36:00.684]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1e18000
-[Tue Aug 30 2022 18:36:00.684]:[Debug]-[DMS] - SPT updated. Current state: 
-[Tue Aug 30 2022 18:36:00.684]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
-[Tue Aug 30 2022 18:36:00.684]:[Info]-[DmHandler] - received ack for page in address : 0x1e18000 (first access)
-[Tue Aug 30 2022 18:36:00.684]:[Info]-[DmHandler] - copying zero page to address : 0x1e18000
-[Tue Aug 30 2022 18:36:00.685]:[Info]-
+[Sat Sep 03 2022 08:14:22.509]:[Debug]-[DMS] - page in address: 0x1e17000 sent to app
+[Sat Sep 03 2022 08:14:22.509]:[Info]-[DMS] - get request to send content of page in address: 0x1e18000
+[Sat Sep 03 2022 08:14:22.509]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Sat Sep 03 2022 08:14:22.510]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1e18000
+[Sat Sep 03 2022 08:14:22.510]:[Debug]-[DMS] - SPT updated. Current state: 
+[Sat Sep 03 2022 08:14:22.510]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
+[Sat Sep 03 2022 08:14:22.510]:[Info]-[DmHandler] - received ack for page in address : 0x1e18000 (first access)
+[Sat Sep 03 2022 08:14:22.510]:[Info]-[DmHandler] - copying zero page to address : 0x1e18000
+[Sat Sep 03 2022 08:14:22.510]:[Info]-
 --------------FINISH HADNLING PAGE FAULT--------------
 
 
-[Tue Aug 30 2022 18:36:00.685]:[Info]-
+[Sat Sep 03 2022 08:14:22.510]:[Info]-
 --------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:36:00.685]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e19000
-[Tue Aug 30 2022 18:36:00.685]:[Info]-[DmHandler] - send request for the page in address 0x1e19000 from DMS
-[Tue Aug 30 2022 18:36:00.685]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1e19000
-[Tue Aug 30 2022 18:36:00.685]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:14:22.510]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e19000
+[Sat Sep 03 2022 08:14:22.510]:[Info]-[DmHandler] - send request for the page in address 0x1e19000 from DMS
+[Sat Sep 03 2022 08:14:22.510]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1e19000
+[Sat Sep 03 2022 08:14:22.510]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -437,24 +437,24 @@ address : 0x1e16000  location : INSTANCE_0
 address : 0x1e17000  location : INSTANCE_0
 address : 0x1e18000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:36:00.685]:[Debug]-[DMS] - page in address: 0x1e18000 send to app
-[Tue Aug 30 2022 18:36:00.685]:[Info]-[DMS] - get request to send content of page in address: 0x1e19000
-[Tue Aug 30 2022 18:36:00.685]:[Debug]-[DMS] - page accessed first time, set info - new_page
-[Tue Aug 30 2022 18:36:00.685]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1e19000
-[Tue Aug 30 2022 18:36:00.685]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
-[Tue Aug 30 2022 18:36:00.685]:[Debug]-[DMS] - SPT updated. Current state: 
-[Tue Aug 30 2022 18:36:00.685]:[Info]-[DmHandler] - received ack for page in address : 0x1e19000 (first access)
-[Tue Aug 30 2022 18:36:00.685]:[Info]-[DmHandler] - copying zero page to address : 0x1e19000
-[Tue Aug 30 2022 18:36:00.685]:[Info]-
+[Sat Sep 03 2022 08:14:22.510]:[Debug]-[DMS] - page in address: 0x1e18000 sent to app
+[Sat Sep 03 2022 08:14:22.510]:[Info]-[DMS] - get request to send content of page in address: 0x1e19000
+[Sat Sep 03 2022 08:14:22.510]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Sat Sep 03 2022 08:14:22.511]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1e19000
+[Sat Sep 03 2022 08:14:22.511]:[Debug]-[DMS] - SPT updated. Current state: 
+[Sat Sep 03 2022 08:14:22.511]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
+[Sat Sep 03 2022 08:14:22.511]:[Info]-[DmHandler] - received ack for page in address : 0x1e19000 (first access)
+[Sat Sep 03 2022 08:14:22.511]:[Info]-[DmHandler] - copying zero page to address : 0x1e19000
+[Sat Sep 03 2022 08:14:22.511]:[Info]-
 --------------FINISH HADNLING PAGE FAULT--------------
 
 
-[Tue Aug 30 2022 18:36:00.685]:[Info]-
+[Sat Sep 03 2022 08:14:22.511]:[Info]-
 --------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:36:00.685]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e1a000
-[Tue Aug 30 2022 18:36:00.685]:[Info]-[DmHandler] - send request for the page in address 0x1e1a000 from DMS
-[Tue Aug 30 2022 18:36:00.685]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1e1a000
-[Tue Aug 30 2022 18:36:00.685]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:14:22.511]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e1a000
+[Sat Sep 03 2022 08:14:22.511]:[Info]-[DmHandler] - send request for the page in address 0x1e1a000 from DMS
+[Sat Sep 03 2022 08:14:22.511]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1e1a000
+[Sat Sep 03 2022 08:14:22.511]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -473,19 +473,24 @@ address : 0x1e17000  location : INSTANCE_0
 address : 0x1e18000  location : INSTANCE_0
 address : 0x1e19000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:36:00.685]:[Debug]-[DMS] - page in address: 0x1e19000 send to app
-[Tue Aug 30 2022 18:36:00.686]:[Info]-[DMS] - get request to send content of page in address: 0x1e1a000
-[Tue Aug 30 2022 18:36:00.686]:[Debug]-[DMS] - page accessed first time, set info - new_page
-[Tue Aug 30 2022 18:36:00.686]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1e1a000
-[Tue Aug 30 2022 18:36:00.686]:[Debug]-[DMS] - SPT updated. Current state: 
-[Tue Aug 30 2022 18:36:00.686]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
-[Tue Aug 30 2022 18:36:00.686]:[Info]-[DmHandler] - received ack for page in address : 0x1e1a000 (first access)
-[Tue Aug 30 2022 18:36:00.686]:[Info]-[DmHandler] - copying zero page to address : 0x1e1a000
-[Tue Aug 30 2022 18:36:00.686]:[Info]-
+[Sat Sep 03 2022 08:14:22.511]:[Debug]-[DMS] - page in address: 0x1e19000 sent to app
+[Sat Sep 03 2022 08:14:22.511]:[Info]-[DMS] - get request to send content of page in address: 0x1e1a000
+[Sat Sep 03 2022 08:14:22.511]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Sat Sep 03 2022 08:14:22.511]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1e1a000
+[Sat Sep 03 2022 08:14:22.511]:[Debug]-[DMS] - SPT updated. Current state: 
+[Sat Sep 03 2022 08:14:22.511]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
+[Sat Sep 03 2022 08:14:22.512]:[Info]-[DmHandler] - received ack for page in address : 0x1e1a000 (first access)
+[Sat Sep 03 2022 08:14:22.512]:[Info]-[DmHandler] - copying zero page to address : 0x1e1a000
+[Sat Sep 03 2022 08:14:22.512]:[Info]-
 --------------FINISH HADNLING PAGE FAULT--------------
 
 
-[Tue Aug 30 2022 18:36:00.686]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:14:22.512]:[Info]-
+--------------START HADNLING PAGE FAULT--------------
+[Sat Sep 03 2022 08:14:22.512]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e1b000
+[Sat Sep 03 2022 08:14:22.512]:[Info]-[DmHandler] - send request for the page in address 0x1e1b000 from DMS
+[Sat Sep 03 2022 08:14:22.512]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1e1b000
+[Sat Sep 03 2022 08:14:22.512]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -505,29 +510,24 @@ address : 0x1e18000  location : INSTANCE_0
 address : 0x1e19000  location : INSTANCE_0
 address : 0x1e1a000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:36:00.686]:[Info]-
---------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:36:00.686]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e1b000
-[Tue Aug 30 2022 18:36:00.686]:[Info]-[DmHandler] - send request for the page in address 0x1e1b000 from DMS
-[Tue Aug 30 2022 18:36:00.686]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1e1b000
-[Tue Aug 30 2022 18:36:00.686]:[Debug]-[DMS] - page in address: 0x1e1a000 send to app
-[Tue Aug 30 2022 18:36:00.686]:[Info]-[DMS] - get request to send content of page in address: 0x1e1b000
-[Tue Aug 30 2022 18:36:00.687]:[Debug]-[DMS] - page accessed first time, set info - new_page
-[Tue Aug 30 2022 18:36:00.687]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1e1b000
-[Tue Aug 30 2022 18:36:00.687]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
-[Tue Aug 30 2022 18:36:00.687]:[Debug]-[DMS] - SPT updated. Current state: 
-[Tue Aug 30 2022 18:36:00.687]:[Info]-[DmHandler] - received ack for page in address : 0x1e1b000 (first access)
-[Tue Aug 30 2022 18:36:00.687]:[Info]-[DmHandler] - copying zero page to address : 0x1e1b000
-[Tue Aug 30 2022 18:36:00.687]:[Info]-
+[Sat Sep 03 2022 08:14:22.512]:[Debug]-[DMS] - page in address: 0x1e1a000 sent to app
+[Sat Sep 03 2022 08:14:22.512]:[Info]-[DMS] - get request to send content of page in address: 0x1e1b000
+[Sat Sep 03 2022 08:14:22.512]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Sat Sep 03 2022 08:14:22.512]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1e1b000
+[Sat Sep 03 2022 08:14:22.512]:[Debug]-[DMS] - SPT updated. Current state: 
+[Sat Sep 03 2022 08:14:22.512]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
+[Sat Sep 03 2022 08:14:22.512]:[Info]-[DmHandler] - received ack for page in address : 0x1e1b000 (first access)
+[Sat Sep 03 2022 08:14:22.513]:[Info]-[DmHandler] - copying zero page to address : 0x1e1b000
+[Sat Sep 03 2022 08:14:22.513]:[Info]-
 --------------FINISH HADNLING PAGE FAULT--------------
 
 
-[Tue Aug 30 2022 18:36:00.687]:[Info]-
+[Sat Sep 03 2022 08:14:22.513]:[Info]-
 --------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:36:00.687]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e1c000
-[Tue Aug 30 2022 18:36:00.687]:[Info]-[DmHandler] - send request for the page in address 0x1e1c000 from DMS
-[Tue Aug 30 2022 18:36:00.687]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1e1c000
-[Tue Aug 30 2022 18:36:00.687]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:14:22.513]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e1c000
+[Sat Sep 03 2022 08:14:22.513]:[Info]-[DmHandler] - send request for the page in address 0x1e1c000 from DMS
+[Sat Sep 03 2022 08:14:22.513]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1e1c000
+[Sat Sep 03 2022 08:14:22.513]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -548,24 +548,24 @@ address : 0x1e19000  location : INSTANCE_0
 address : 0x1e1a000  location : INSTANCE_0
 address : 0x1e1b000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:36:00.687]:[Debug]-[DMS] - page in address: 0x1e1b000 send to app
-[Tue Aug 30 2022 18:36:00.687]:[Info]-[DMS] - get request to send content of page in address: 0x1e1c000
-[Tue Aug 30 2022 18:36:00.687]:[Debug]-[DMS] - page accessed first time, set info - new_page
-[Tue Aug 30 2022 18:36:00.687]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1e1c000
-[Tue Aug 30 2022 18:36:00.687]:[Debug]-[DMS] - SPT updated. Current state: 
-[Tue Aug 30 2022 18:36:00.687]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
-[Tue Aug 30 2022 18:36:00.688]:[Info]-[DmHandler] - received ack for page in address : 0x1e1c000 (first access)
-[Tue Aug 30 2022 18:36:00.688]:[Info]-[DmHandler] - copying zero page to address : 0x1e1c000
-[Tue Aug 30 2022 18:36:00.688]:[Info]-
+[Sat Sep 03 2022 08:14:22.513]:[Debug]-[DMS] - page in address: 0x1e1b000 sent to app
+[Sat Sep 03 2022 08:14:22.513]:[Info]-[DMS] - get request to send content of page in address: 0x1e1c000
+[Sat Sep 03 2022 08:14:22.513]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Sat Sep 03 2022 08:14:22.513]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1e1c000
+[Sat Sep 03 2022 08:14:22.513]:[Debug]-[DMS] - SPT updated. Current state: 
+[Sat Sep 03 2022 08:14:22.513]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
+[Sat Sep 03 2022 08:14:22.513]:[Info]-[DmHandler] - received ack for page in address : 0x1e1c000 (first access)
+[Sat Sep 03 2022 08:14:22.513]:[Info]-[DmHandler] - copying zero page to address : 0x1e1c000
+[Sat Sep 03 2022 08:14:22.513]:[Info]-
 --------------FINISH HADNLING PAGE FAULT--------------
 
 
-[Tue Aug 30 2022 18:36:00.688]:[Info]-
+[Sat Sep 03 2022 08:14:22.514]:[Info]-
 --------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:36:00.688]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e1d000
-[Tue Aug 30 2022 18:36:00.688]:[Info]-[DmHandler] - send request for the page in address 0x1e1d000 from DMS
-[Tue Aug 30 2022 18:36:00.688]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1e1d000
-[Tue Aug 30 2022 18:36:00.688]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:14:22.514]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e1d000
+[Sat Sep 03 2022 08:14:22.514]:[Info]-[DmHandler] - send request for the page in address 0x1e1d000 from DMS
+[Sat Sep 03 2022 08:14:22.514]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1e1d000
+[Sat Sep 03 2022 08:14:22.514]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -587,19 +587,19 @@ address : 0x1e1a000  location : INSTANCE_0
 address : 0x1e1b000  location : INSTANCE_0
 address : 0x1e1c000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:36:00.688]:[Debug]-[DMS] - page in address: 0x1e1c000 send to app
-[Tue Aug 30 2022 18:36:00.688]:[Info]-[DMS] - get request to send content of page in address: 0x1e1d000
-[Tue Aug 30 2022 18:36:00.688]:[Debug]-[DMS] - page accessed first time, set info - new_page
-[Tue Aug 30 2022 18:36:00.688]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1e1d000
-[Tue Aug 30 2022 18:36:00.688]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
-[Tue Aug 30 2022 18:36:00.688]:[Info]-[DmHandler] - received ack for page in address : 0x1e1d000 (first access)
-[Tue Aug 30 2022 18:36:00.688]:[Info]-[DmHandler] - copying zero page to address : 0x1e1d000
-[Tue Aug 30 2022 18:36:00.688]:[Info]-
+[Sat Sep 03 2022 08:14:22.514]:[Debug]-[DMS] - page in address: 0x1e1c000 sent to app
+[Sat Sep 03 2022 08:14:22.514]:[Info]-[DMS] - get request to send content of page in address: 0x1e1d000
+[Sat Sep 03 2022 08:14:22.514]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Sat Sep 03 2022 08:14:22.514]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1e1d000
+[Sat Sep 03 2022 08:14:22.514]:[Debug]-[DMS] - SPT updated. Current state: 
+[Sat Sep 03 2022 08:14:22.514]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
+[Sat Sep 03 2022 08:14:22.514]:[Info]-[DmHandler] - received ack for page in address : 0x1e1d000 (first access)
+[Sat Sep 03 2022 08:14:22.514]:[Info]-[DmHandler] - copying zero page to address : 0x1e1d000
+[Sat Sep 03 2022 08:14:22.514]:[Info]-
 --------------FINISH HADNLING PAGE FAULT--------------
 
 
-[Tue Aug 30 2022 18:36:00.688]:[Debug]-[DMS] - SPT updated. Current state: 
-[Tue Aug 30 2022 18:36:00.692]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:14:22.515]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : INSTANCE_0
@@ -622,71 +622,76 @@ address : 0x1e1b000  location : INSTANCE_0
 address : 0x1e1c000  location : INSTANCE_0
 address : 0x1e1d000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:36:00.692]:[Debug]-[DMS] - page in address: 0x1e1d000 send to app
-[Tue Aug 30 2022 18:36:00.789]:[Info]-
+[Sat Sep 03 2022 08:14:22.515]:[Debug]-[DMS] - page in address: 0x1e1d000 sent to app
+[Sat Sep 03 2022 08:14:22.616]:[Info]-
 --------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:36:00.789]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e20000
-[Tue Aug 30 2022 18:36:00.789]:[Info]-[DmHandler] - reached high threshold, waking up lpet
-[Tue Aug 30 2022 18:36:00.789]:[Debug]-[DmHandler] - avoid memory flood- dmhandler goes to sleep
-[Tue Aug 30 2022 18:36:00.789]:[Debug]-[CLIENT] - reached high threshold, running lpet
-[Tue Aug 30 2022 18:36:00.789]:[Debug]-[DmHandler] - avoid memory flood- dmhandler goes to sleep
-[Tue Aug 30 2022 18:36:00.794]:[Info]-
+[Sat Sep 03 2022 08:14:22.616]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e20000
+[Sat Sep 03 2022 08:14:22.616]:[Info]-[DmHandler] - reached high threshold, waking up lpet
+[Sat Sep 03 2022 08:14:22.616]:[Debug]-[DmHandler] - avoid memory flood- dmhandler goes to sleep
+[Sat Sep 03 2022 08:14:22.616]:[Debug]-[CLIENT] - reached high threshold, running lpet
+[Sat Sep 03 2022 08:14:22.616]:[Debug]-[DmHandler] - avoid memory flood- dmhandler goes to sleep
+[Sat Sep 03 2022 08:14:22.616]:[Info]-
 -----------------START LPET-----------------
 
-[Tue Aug 30 2022 18:36:00.794]:[Info]-[Lpet] - start address: 0x1d4c000
-[Tue Aug 30 2022 18:36:00.794]:[Info]-page list state: 
+[Sat Sep 03 2022 08:14:22.616]:[Info]-[Lpet] - start address: 0x1d4c000
+[Sat Sep 03 2022 08:14:22.616]:[Info]-page list state: 
 -----START LSPT ----
-address : 0x1d4c000  pfn : 334158  is_idle: 0
-address : 0x1d4d000  pfn : 664363  is_idle: 0
-address : 0x1d4e000  pfn : 348833  is_idle: 0
-address : 0x1d4f000  pfn : 255980  is_idle: 0
-address : 0x1d50000  pfn : 95644  is_idle: 0
-address : 0x1d51000  pfn : 326948  is_idle: 0
-address : 0x1d52000  pfn : 593424  is_idle: 0
-address : 0x1d53000  pfn : 31064  is_idle: 0
-address : 0x1d54000  pfn : 482423  is_idle: 0
-address : 0x1d55000  pfn : 449697  is_idle: 0
-address : 0x1e14000  pfn : 605977  is_idle: 0
-address : 0x1e15000  pfn : 751242  is_idle: 0
-address : 0x1e16000  pfn : 279643  is_idle: 0
-address : 0x1e17000  pfn : 420258  is_idle: 0
-address : 0x1e18000  pfn : 638316  is_idle: 0
-address : 0x1e19000  pfn : 712774  is_idle: 0
-address : 0x1e1a000  pfn : 362781  is_idle: 0
-address : 0x1e1b000  pfn : 366935  is_idle: 0
-address : 0x1e1c000  pfn : 266936  is_idle: 0
-address : 0x1e1d000  pfn : 11516  is_idle: 0
+address : 0x1d4c000  pfn : 602043  is_idle: 0
+address : 0x1d4d000  pfn : 396479  is_idle: 0
+address : 0x1d4e000  pfn : 315327  is_idle: 0
+address : 0x1d4f000  pfn : 631219  is_idle: 0
+address : 0x1d50000  pfn : 172244  is_idle: 0
+address : 0x1d51000  pfn : 426111  is_idle: 0
+address : 0x1d52000  pfn : 40336  is_idle: 0
+address : 0x1d53000  pfn : 429229  is_idle: 0
+address : 0x1d54000  pfn : 14781  is_idle: 0
+address : 0x1d55000  pfn : 55137  is_idle: 0
+address : 0x1e14000  pfn : 101341  is_idle: 0
+address : 0x1e15000  pfn : 673922  is_idle: 0
+address : 0x1e16000  pfn : 70622  is_idle: 0
+address : 0x1e17000  pfn : 496682  is_idle: 0
+address : 0x1e18000  pfn : 428425  is_idle: 0
+address : 0x1e19000  pfn : 214150  is_idle: 0
+address : 0x1e1a000  pfn : 261415  is_idle: 0
+address : 0x1e1b000  pfn : 406012  is_idle: 0
+address : 0x1e1c000  pfn : 320038  is_idle: 0
+address : 0x1e1d000  pfn : 320264  is_idle: 0
 -----END LSPT ----
 
 
-[Tue Aug 30 2022 18:36:00.795]:[Info]-[LPET] checking if page in addr 0x1d4c000 is idle
-[Tue Aug 30 2022 18:36:00.795]:[Info]-[LPET] checking if page in addr 0x1d4d000 is idle
-[Tue Aug 30 2022 18:36:00.795]:[Info]-[LPET] checking if page in addr 0x1d4e000 is idle
-[Tue Aug 30 2022 18:36:00.795]:[Info]-[LPET] checking if page in addr 0x1d4f000 is idle
-[Tue Aug 30 2022 18:36:00.795]:[Info]-[LPET] checking if page in addr 0x1d50000 is idle
-[Tue Aug 30 2022 18:36:00.795]:[Info]-[LPET] checking if page in addr 0x1d51000 is idle
-[Tue Aug 30 2022 18:36:00.795]:[Info]-[LPET] checking if page in addr 0x1d52000 is idle
-[Tue Aug 30 2022 18:36:00.795]:[Info]-[LPET] checking if page in addr 0x1d53000 is idle
-[Tue Aug 30 2022 18:36:00.795]:[Info]-[LPET] checking if page in addr 0x1d54000 is idle
-[Tue Aug 30 2022 18:36:00.795]:[Info]-[LPET] checking if page in addr 0x1d55000 is idle
-[Tue Aug 30 2022 18:36:00.795]:[Info]-[LPET] checking if page in addr 0x1e14000 is idle
-[Tue Aug 30 2022 18:36:00.795]:[Info]-[LPET] checking if page in addr 0x1e15000 is idle
-[Tue Aug 30 2022 18:36:00.796]:[Info]-[LPET] checking if page in addr 0x1e16000 is idle
-[Tue Aug 30 2022 18:36:00.796]:[Info]-[LPET] checking if page in addr 0x1e17000 is idle
-[Tue Aug 30 2022 18:36:00.796]:[Info]-[LPET] checking if page in addr 0x1e18000 is idle
-[Tue Aug 30 2022 18:36:00.796]:[Info]-[LPET] checking if page in addr 0x1e19000 is idle
-[Tue Aug 30 2022 18:36:00.796]:[Info]-[LPET] checking if page in addr 0x1e1a000 is idle
-[Tue Aug 30 2022 18:36:00.796]:[Info]-[LPET] checking if page in addr 0x1e1b000 is idle
-[Tue Aug 30 2022 18:36:00.796]:[Info]-[LPET] checking if page in addr 0x1e1c000 is idle
-[Tue Aug 30 2022 18:36:00.796]:[Info]-[LPET] checking if page in addr 0x1e1d000 is idle
-[Tue Aug 30 2022 18:36:00.796]:[Info]-[LPET] checking if page in addr 0x1d4c000 is idle
-[Tue Aug 30 2022 18:36:00.796]:[Info]-[LPET] sending eviction request for page in addr 0x1d4c000
-[Tue Aug 30 2022 18:36:00.796]:[Debug]-[MpiClient] - send lpet's requset to evict page in address 0x1d4c000
-[Tue Aug 30 2022 18:36:00.802]:[Debug]-[DMS] - Handle page eviction in address 0x1d4c000
-[Tue Aug 30 2022 18:36:00.804]:[Info]-[DMS] - page in address 0x1d4c000 stored in disk
-[Tue Aug 30 2022 18:36:00.806]:[Debug]-[DMS] - Page evicted successfuly, sending ack
-[Tue Aug 30 2022 18:36:00.807]:[Debug]-[DMS] - SPT updated. Current state: 
-[Tue Aug 30 2022 18:36:00.807]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:14:22.616]:[Info]-[LPET] checking if page in addr 0x1d4c000 is idle
+[Sat Sep 03 2022 08:14:22.616]:[Info]-[LPET] checking if page in addr 0x1d4d000 is idle
+[Sat Sep 03 2022 08:14:22.616]:[Info]-[LPET] checking if page in addr 0x1d4e000 is idle
+[Sat Sep 03 2022 08:14:22.617]:[Info]-[LPET] checking if page in addr 0x1d4f000 is idle
+[Sat Sep 03 2022 08:14:22.617]:[Info]-[LPET] checking if page in addr 0x1d50000 is idle
+[Sat Sep 03 2022 08:14:22.617]:[Info]-[LPET] checking if page in addr 0x1d51000 is idle
+[Sat Sep 03 2022 08:14:22.617]:[Info]-[LPET] checking if page in addr 0x1d52000 is idle
+[Sat Sep 03 2022 08:14:22.617]:[Info]-[LPET] checking if page in addr 0x1d53000 is idle
+[Sat Sep 03 2022 08:14:22.617]:[Info]-[LPET] checking if page in addr 0x1d54000 is idle
+[Sat Sep 03 2022 08:14:22.617]:[Info]-[LPET] checking if page in addr 0x1d55000 is idle
+[Sat Sep 03 2022 08:14:22.617]:[Info]-[LPET] checking if page in addr 0x1e14000 is idle
+[Sat Sep 03 2022 08:14:22.617]:[Info]-[LPET] checking if page in addr 0x1e15000 is idle
+[Sat Sep 03 2022 08:14:22.617]:[Info]-[LPET] checking if page in addr 0x1e16000 is idle
+[Sat Sep 03 2022 08:14:22.617]:[Info]-[LPET] checking if page in addr 0x1e17000 is idle
+[Sat Sep 03 2022 08:14:22.617]:[Info]-[LPET] checking if page in addr 0x1e18000 is idle
+[Sat Sep 03 2022 08:14:22.617]:[Info]-[LPET] checking if page in addr 0x1e19000 is idle
+[Sat Sep 03 2022 08:14:22.617]:[Info]-[LPET] checking if page in addr 0x1e1a000 is idle
+[Sat Sep 03 2022 08:14:22.617]:[Info]-[LPET] checking if page in addr 0x1e1b000 is idle
+[Sat Sep 03 2022 08:14:22.617]:[Info]-[LPET] checking if page in addr 0x1e1c000 is idle
+[Sat Sep 03 2022 08:14:22.617]:[Info]-[LPET] checking if page in addr 0x1e1d000 is idle
+[Sat Sep 03 2022 08:14:22.617]:[Info]-[LPET] checking if page in addr 0x1d4c000 is idle
+[Sat Sep 03 2022 08:14:22.617]:[Info]-[LPET] sending eviction request for page in addr 0x1d4c000
+[Sat Sep 03 2022 08:14:22.617]:[Debug]-[MpiClient] - send lpet's requset to evict page in address 0x1d4c000
+[Sat Sep 03 2022 08:14:22.618]:[Debug]-[DMS] - Handle page eviction in address 0x1d4c000
+[Sat Sep 03 2022 08:14:22.618]:[Info]-[DMS] - page in address 0x1d4c000 stored in disk
+[Sat Sep 03 2022 08:14:22.618]:[Debug]-[DMS] - Page evicted successfuly, sending ack
+[Sat Sep 03 2022 08:14:22.618]:[Debug]-[MpiClient] - got ack for evict page of lpet in address 0x1d4c000 Ack message : 
+[Sat Sep 03 2022 08:14:22.618]:[Info]-[Lpet] - received ack for eviction of page in address : 0x1d4c000
+[Sat Sep 03 2022 08:14:22.618]:[Debug]-[DMS] - SPT updated. Current state: 
+[Sat Sep 03 2022 08:14:22.618]:[Info]-[LPET] checking if page in addr 0x1d4d000 is idle
+[Sat Sep 03 2022 08:14:22.618]:[Info]-[LPET] sending eviction request for page in addr 0x1d4d000
+[Sat Sep 03 2022 08:14:22.618]:[Debug]-[MpiClient] - send lpet's requset to evict page in address 0x1d4d000
+[Sat Sep 03 2022 08:14:22.618]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : DISK
 address : 0x1d4d000  location : INSTANCE_0
@@ -709,16 +714,11 @@ address : 0x1e1b000  location : INSTANCE_0
 address : 0x1e1c000  location : INSTANCE_0
 address : 0x1e1d000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:36:00.809]:[Debug]-[MpiClient] - got ack for evict page of lpet in address 0x1d4c000 Ack message : 
-[Tue Aug 30 2022 18:36:00.809]:[Info]-[Lpet] - received ack for eviction of page in address : 0x1d4c000
-[Tue Aug 30 2022 18:36:00.809]:[Info]-[LPET] checking if page in addr 0x1d4d000 is idle
-[Tue Aug 30 2022 18:36:00.809]:[Info]-[LPET] sending eviction request for page in addr 0x1d4d000
-[Tue Aug 30 2022 18:36:00.809]:[Debug]-[MpiClient] - send lpet's requset to evict page in address 0x1d4d000
-[Tue Aug 30 2022 18:36:00.809]:[Debug]-[DMS] - Handle page eviction in address 0x1d4d000
-[Tue Aug 30 2022 18:36:00.811]:[Info]-[DMS] - page in address 0x1d4d000 stored in disk
-[Tue Aug 30 2022 18:36:00.814]:[Debug]-[DMS] - Page evicted successfuly, sending ack
-[Tue Aug 30 2022 18:36:00.814]:[Debug]-[DMS] - SPT updated. Current state: 
-[Tue Aug 30 2022 18:36:00.814]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:14:22.618]:[Debug]-[DMS] - Handle page eviction in address 0x1d4d000
+[Sat Sep 03 2022 08:14:22.621]:[Info]-[DMS] - page in address 0x1d4d000 stored in disk
+[Sat Sep 03 2022 08:14:22.622]:[Debug]-[DMS] - Page evicted successfuly, sending ack
+[Sat Sep 03 2022 08:14:22.622]:[Debug]-[DMS] - SPT updated. Current state: 
+[Sat Sep 03 2022 08:14:22.622]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : DISK
 address : 0x1d4d000  location : DISK
@@ -741,21 +741,21 @@ address : 0x1e1b000  location : INSTANCE_0
 address : 0x1e1c000  location : INSTANCE_0
 address : 0x1e1d000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:36:00.815]:[Debug]-[MpiClient] - got ack for evict page of lpet in address 0x1d4d000 Ack message : 
-[Tue Aug 30 2022 18:36:00.815]:[Info]-[Lpet] - received ack for eviction of page in address : 0x1d4d000
-[Tue Aug 30 2022 18:36:00.815]:[Info]-[LPET] checking if page in addr 0x1d4e000 is idle
-[Tue Aug 30 2022 18:36:00.815]:[Info]-[LPET] sending eviction request for page in addr 0x1d4e000
-[Tue Aug 30 2022 18:36:00.815]:[Debug]-[MpiClient] - send lpet's requset to evict page in address 0x1d4e000
-[Tue Aug 30 2022 18:36:00.823]:[Debug]-[DMS] - Handle page eviction in address 0x1d4e000
-[Tue Aug 30 2022 18:36:00.825]:[Info]-[DMS] - page in address 0x1d4e000 stored in disk
-[Tue Aug 30 2022 18:36:00.826]:[Debug]-[DMS] - Page evicted successfuly, sending ack
-[Tue Aug 30 2022 18:36:00.826]:[Debug]-[DMS] - SPT updated. Current state: 
-[Tue Aug 30 2022 18:36:00.826]:[Debug]-[MpiClient] - got ack for evict page of lpet in address 0x1d4e000 Ack message : 
-[Tue Aug 30 2022 18:36:00.826]:[Info]-[Lpet] - received ack for eviction of page in address : 0x1d4e000
-[Tue Aug 30 2022 18:36:00.826]:[Info]-[LPET] checking if page in addr 0x1d4f000 is idle
-[Tue Aug 30 2022 18:36:00.826]:[Info]-[LPET] sending eviction request for page in addr 0x1d4f000
-[Tue Aug 30 2022 18:36:00.827]:[Debug]-[MpiClient] - send lpet's requset to evict page in address 0x1d4f000
-[Tue Aug 30 2022 18:36:00.827]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:14:22.624]:[Debug]-[MpiClient] - got ack for evict page of lpet in address 0x1d4d000 Ack message : 
+[Sat Sep 03 2022 08:14:22.625]:[Info]-[Lpet] - received ack for eviction of page in address : 0x1d4d000
+[Sat Sep 03 2022 08:14:22.625]:[Info]-[LPET] checking if page in addr 0x1d4e000 is idle
+[Sat Sep 03 2022 08:14:22.625]:[Info]-[LPET] sending eviction request for page in addr 0x1d4e000
+[Sat Sep 03 2022 08:14:22.625]:[Debug]-[MpiClient] - send lpet's requset to evict page in address 0x1d4e000
+[Sat Sep 03 2022 08:14:22.633]:[Debug]-[DMS] - Handle page eviction in address 0x1d4e000
+[Sat Sep 03 2022 08:14:22.633]:[Info]-[DMS] - page in address 0x1d4e000 stored in disk
+[Sat Sep 03 2022 08:14:22.633]:[Debug]-[DMS] - Page evicted successfuly, sending ack
+[Sat Sep 03 2022 08:14:22.633]:[Debug]-[DMS] - SPT updated. Current state: 
+[Sat Sep 03 2022 08:14:22.633]:[Debug]-[MpiClient] - got ack for evict page of lpet in address 0x1d4e000 Ack message : 
+[Sat Sep 03 2022 08:14:22.633]:[Info]-[Lpet] - received ack for eviction of page in address : 0x1d4e000
+[Sat Sep 03 2022 08:14:22.633]:[Info]-[LPET] checking if page in addr 0x1d4f000 is idle
+[Sat Sep 03 2022 08:14:22.633]:[Info]-[LPET] sending eviction request for page in addr 0x1d4f000
+[Sat Sep 03 2022 08:14:22.633]:[Debug]-[MpiClient] - send lpet's requset to evict page in address 0x1d4f000
+[Sat Sep 03 2022 08:14:22.634]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : DISK
 address : 0x1d4d000  location : DISK
@@ -778,11 +778,11 @@ address : 0x1e1b000  location : INSTANCE_0
 address : 0x1e1c000  location : INSTANCE_0
 address : 0x1e1d000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:36:00.846]:[Debug]-[DMS] - Handle page eviction in address 0x1d4f000
-[Tue Aug 30 2022 18:36:00.847]:[Info]-[DMS] - page in address 0x1d4f000 stored in disk
-[Tue Aug 30 2022 18:36:00.849]:[Debug]-[DMS] - Page evicted successfuly, sending ack
-[Tue Aug 30 2022 18:36:00.850]:[Debug]-[DMS] - SPT updated. Current state: 
-[Tue Aug 30 2022 18:36:00.850]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:14:22.652]:[Debug]-[DMS] - Handle page eviction in address 0x1d4f000
+[Sat Sep 03 2022 08:14:22.653]:[Info]-[DMS] - page in address 0x1d4f000 stored in disk
+[Sat Sep 03 2022 08:14:22.654]:[Debug]-[DMS] - Page evicted successfuly, sending ack
+[Sat Sep 03 2022 08:14:22.654]:[Debug]-[DMS] - SPT updated. Current state: 
+[Sat Sep 03 2022 08:14:22.654]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : DISK
 address : 0x1d4d000  location : DISK
@@ -805,16 +805,24 @@ address : 0x1e1b000  location : INSTANCE_0
 address : 0x1e1c000  location : INSTANCE_0
 address : 0x1e1d000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:36:00.851]:[Debug]-[MpiClient] - got ack for evict page of lpet in address 0x1d4f000 Ack message : 
-[Tue Aug 30 2022 18:36:00.851]:[Info]-[Lpet] - received ack for eviction of page in address : 0x1d4f000
-[Tue Aug 30 2022 18:36:00.851]:[Info]-[LPET] checking if page in addr 0x1d50000 is idle
-[Tue Aug 30 2022 18:36:00.851]:[Info]-[LPET] sending eviction request for page in addr 0x1d50000
-[Tue Aug 30 2022 18:36:00.851]:[Debug]-[MpiClient] - send lpet's requset to evict page in address 0x1d50000
-[Tue Aug 30 2022 18:36:00.865]:[Debug]-[DMS] - Handle page eviction in address 0x1d50000
-[Tue Aug 30 2022 18:36:00.867]:[Info]-[DMS] - page in address 0x1d50000 stored in disk
-[Tue Aug 30 2022 18:36:00.867]:[Debug]-[DMS] - Page evicted successfuly, sending ack
-[Tue Aug 30 2022 18:36:00.868]:[Debug]-[DMS] - SPT updated. Current state: 
-[Tue Aug 30 2022 18:36:00.868]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:14:22.664]:[Debug]-[MpiClient] - got ack for evict page of lpet in address 0x1d4f000 Ack message : 
+[Sat Sep 03 2022 08:14:22.664]:[Info]-[Lpet] - received ack for eviction of page in address : 0x1d4f000
+[Sat Sep 03 2022 08:14:22.664]:[Info]-[LPET] checking if page in addr 0x1d50000 is idle
+[Sat Sep 03 2022 08:14:22.664]:[Info]-[LPET] sending eviction request for page in addr 0x1d50000
+[Sat Sep 03 2022 08:14:22.664]:[Debug]-[MpiClient] - send lpet's requset to evict page in address 0x1d50000
+[Sat Sep 03 2022 08:14:22.679]:[Debug]-[DMS] - Handle page eviction in address 0x1d50000
+[Sat Sep 03 2022 08:14:22.679]:[Info]-[DMS] - page in address 0x1d50000 stored in disk
+[Sat Sep 03 2022 08:14:22.679]:[Debug]-[DMS] - Page evicted successfuly, sending ack
+[Sat Sep 03 2022 08:14:22.679]:[Debug]-[DMS] - SPT updated. Current state: 
+[Sat Sep 03 2022 08:14:22.679]:[Debug]-[MpiClient] - got ack for evict page of lpet in address 0x1d50000 Ack message : 
+[Sat Sep 03 2022 08:14:22.679]:[Info]-[Lpet] - received ack for eviction of page in address : 0x1d50000
+[Sat Sep 03 2022 08:14:22.679]:[Info]-
+-----------------END LPET-----------------
+
+[Sat Sep 03 2022 08:14:22.679]:[Debug]-[CLIENT] - lpet end running .
+[Sat Sep 03 2022 08:14:22.679]:[Info]-[DmHandler] - send request for the page in address 0x1e20000 from DMS
+[Sat Sep 03 2022 08:14:22.679]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1e20000
+[Sat Sep 03 2022 08:14:22.679]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : DISK
 address : 0x1d4d000  location : DISK
@@ -837,26 +845,23 @@ address : 0x1e1b000  location : INSTANCE_0
 address : 0x1e1c000  location : INSTANCE_0
 address : 0x1e1d000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:36:00.868]:[Debug]-[MpiClient] - got ack for evict page of lpet in address 0x1d50000 Ack message : 
-[Tue Aug 30 2022 18:36:00.868]:[Info]-[Lpet] - received ack for eviction of page in address : 0x1d50000
-[Tue Aug 30 2022 18:36:00.868]:[Info]-
------------------END LPET-----------------
-
-[Tue Aug 30 2022 18:36:00.868]:[Debug]-[CLIENT] - lpet end running .
-[Tue Aug 30 2022 18:36:00.869]:[Info]-[DmHandler] - send request for the page in address 0x1e20000 from DMS
-[Tue Aug 30 2022 18:36:00.869]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1e20000
-[Tue Aug 30 2022 18:36:00.886]:[Info]-[DMS] - get request to send content of page in address: 0x1e20000
-[Tue Aug 30 2022 18:36:00.886]:[Debug]-[DMS] - page accessed first time, set info - new_page
-[Tue Aug 30 2022 18:36:00.886]:[Debug]-[DMS] - SPT updated. Current state: 
-[Tue Aug 30 2022 18:36:00.886]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1e20000
-[Tue Aug 30 2022 18:36:00.886]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
-[Tue Aug 30 2022 18:36:00.886]:[Info]-[DmHandler] - received ack for page in address : 0x1e20000 (first access)
-[Tue Aug 30 2022 18:36:00.886]:[Info]-[DmHandler] - copying zero page to address : 0x1e20000
-[Tue Aug 30 2022 18:36:00.886]:[Info]-
+[Sat Sep 03 2022 08:14:22.689]:[Info]-[DMS] - get request to send content of page in address: 0x1e20000
+[Sat Sep 03 2022 08:14:22.690]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Sat Sep 03 2022 08:14:22.690]:[Debug]-[DMS] - SPT updated. Current state: 
+[Sat Sep 03 2022 08:14:22.690]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1e20000
+[Sat Sep 03 2022 08:14:22.690]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
+[Sat Sep 03 2022 08:14:22.690]:[Info]-[DmHandler] - received ack for page in address : 0x1e20000 (first access)
+[Sat Sep 03 2022 08:14:22.690]:[Info]-[DmHandler] - copying zero page to address : 0x1e20000
+[Sat Sep 03 2022 08:14:22.690]:[Info]-
 --------------FINISH HADNLING PAGE FAULT--------------
 
 
-[Tue Aug 30 2022 18:36:00.887]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:14:22.690]:[Info]-
+--------------START HADNLING PAGE FAULT--------------
+[Sat Sep 03 2022 08:14:22.691]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e21000
+[Sat Sep 03 2022 08:14:22.691]:[Info]-[DmHandler] - send request for the page in address 0x1e21000 from DMS
+[Sat Sep 03 2022 08:14:22.691]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1e21000
+[Sat Sep 03 2022 08:14:22.691]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : DISK
 address : 0x1d4d000  location : DISK
@@ -880,29 +885,24 @@ address : 0x1e1c000  location : INSTANCE_0
 address : 0x1e1d000  location : INSTANCE_0
 address : 0x1e20000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:36:00.887]:[Debug]-[DMS] - page in address: 0x1e20000 send to app
-[Tue Aug 30 2022 18:36:00.887]:[Info]-
---------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:36:00.887]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e21000
-[Tue Aug 30 2022 18:36:00.887]:[Info]-[DmHandler] - send request for the page in address 0x1e21000 from DMS
-[Tue Aug 30 2022 18:36:00.887]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1e21000
-[Tue Aug 30 2022 18:36:00.909]:[Info]-[DMS] - get request to send content of page in address: 0x1e21000
-[Tue Aug 30 2022 18:36:00.909]:[Debug]-[DMS] - page accessed first time, set info - new_page
-[Tue Aug 30 2022 18:36:00.909]:[Debug]-[DMS] - SPT updated. Current state: 
-[Tue Aug 30 2022 18:36:00.909]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1e21000
-[Tue Aug 30 2022 18:36:00.910]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
-[Tue Aug 30 2022 18:36:00.910]:[Info]-[DmHandler] - received ack for page in address : 0x1e21000 (first access)
-[Tue Aug 30 2022 18:36:00.910]:[Info]-[DmHandler] - copying zero page to address : 0x1e21000
-[Tue Aug 30 2022 18:36:00.910]:[Info]-
+[Sat Sep 03 2022 08:14:22.695]:[Debug]-[DMS] - page in address: 0x1e20000 sent to app
+[Sat Sep 03 2022 08:14:22.700]:[Info]-[DMS] - get request to send content of page in address: 0x1e21000
+[Sat Sep 03 2022 08:14:22.700]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Sat Sep 03 2022 08:14:22.700]:[Debug]-[DMS] - SPT updated. Current state: 
+[Sat Sep 03 2022 08:14:22.700]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1e21000
+[Sat Sep 03 2022 08:14:22.700]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
+[Sat Sep 03 2022 08:14:22.700]:[Info]-[DmHandler] - received ack for page in address : 0x1e21000 (first access)
+[Sat Sep 03 2022 08:14:22.700]:[Info]-[DmHandler] - copying zero page to address : 0x1e21000
+[Sat Sep 03 2022 08:14:22.700]:[Info]-
 --------------FINISH HADNLING PAGE FAULT--------------
 
 
-[Tue Aug 30 2022 18:36:00.910]:[Info]-
+[Sat Sep 03 2022 08:14:22.700]:[Info]-
 --------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:36:00.910]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e22000
-[Tue Aug 30 2022 18:36:00.910]:[Info]-[DmHandler] - send request for the page in address 0x1e22000 from DMS
-[Tue Aug 30 2022 18:36:00.910]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1e22000
-[Tue Aug 30 2022 18:36:00.910]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:14:22.700]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e22000
+[Sat Sep 03 2022 08:14:22.700]:[Info]-[DmHandler] - send request for the page in address 0x1e22000 from DMS
+[Sat Sep 03 2022 08:14:22.700]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1e22000
+[Sat Sep 03 2022 08:14:22.700]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : DISK
 address : 0x1d4d000  location : DISK
@@ -927,24 +927,24 @@ address : 0x1e1d000  location : INSTANCE_0
 address : 0x1e20000  location : INSTANCE_0
 address : 0x1e21000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:36:00.910]:[Debug]-[DMS] - page in address: 0x1e21000 send to app
-[Tue Aug 30 2022 18:36:00.910]:[Info]-[DMS] - get request to send content of page in address: 0x1e22000
-[Tue Aug 30 2022 18:36:00.910]:[Debug]-[DMS] - page accessed first time, set info - new_page
-[Tue Aug 30 2022 18:36:00.910]:[Debug]-[DMS] - SPT updated. Current state: 
-[Tue Aug 30 2022 18:36:00.910]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1e22000
-[Tue Aug 30 2022 18:36:00.910]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
-[Tue Aug 30 2022 18:36:00.910]:[Info]-[DmHandler] - received ack for page in address : 0x1e22000 (first access)
-[Tue Aug 30 2022 18:36:00.910]:[Info]-[DmHandler] - copying zero page to address : 0x1e22000
-[Tue Aug 30 2022 18:36:00.910]:[Info]-
+[Sat Sep 03 2022 08:14:22.701]:[Debug]-[DMS] - page in address: 0x1e21000 sent to app
+[Sat Sep 03 2022 08:14:22.701]:[Info]-[DMS] - get request to send content of page in address: 0x1e22000
+[Sat Sep 03 2022 08:14:22.701]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Sat Sep 03 2022 08:14:22.701]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1e22000
+[Sat Sep 03 2022 08:14:22.701]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
+[Sat Sep 03 2022 08:14:22.701]:[Info]-[DmHandler] - received ack for page in address : 0x1e22000 (first access)
+[Sat Sep 03 2022 08:14:22.701]:[Debug]-[DMS] - SPT updated. Current state: 
+[Sat Sep 03 2022 08:14:22.701]:[Info]-[DmHandler] - copying zero page to address : 0x1e22000
+[Sat Sep 03 2022 08:14:22.701]:[Info]-
 --------------FINISH HADNLING PAGE FAULT--------------
 
 
-[Tue Aug 30 2022 18:36:00.910]:[Info]-
+[Sat Sep 03 2022 08:14:22.701]:[Info]-
 --------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:36:00.910]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e23000
-[Tue Aug 30 2022 18:36:00.911]:[Info]-[DmHandler] - send request for the page in address 0x1e23000 from DMS
-[Tue Aug 30 2022 18:36:00.911]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1e23000
-[Tue Aug 30 2022 18:36:00.911]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:14:22.701]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e23000
+[Sat Sep 03 2022 08:14:22.701]:[Info]-[DmHandler] - send request for the page in address 0x1e23000 from DMS
+[Sat Sep 03 2022 08:14:22.701]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1e23000
+[Sat Sep 03 2022 08:14:22.701]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : DISK
 address : 0x1d4d000  location : DISK
@@ -970,24 +970,24 @@ address : 0x1e20000  location : INSTANCE_0
 address : 0x1e21000  location : INSTANCE_0
 address : 0x1e22000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:36:00.911]:[Debug]-[DMS] - page in address: 0x1e22000 send to app
-[Tue Aug 30 2022 18:36:00.911]:[Info]-[DMS] - get request to send content of page in address: 0x1e23000
-[Tue Aug 30 2022 18:36:00.911]:[Debug]-[DMS] - page accessed first time, set info - new_page
-[Tue Aug 30 2022 18:36:00.911]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1e23000
-[Tue Aug 30 2022 18:36:00.911]:[Debug]-[DMS] - SPT updated. Current state: 
-[Tue Aug 30 2022 18:36:00.911]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
-[Tue Aug 30 2022 18:36:00.911]:[Info]-[DmHandler] - received ack for page in address : 0x1e23000 (first access)
-[Tue Aug 30 2022 18:36:00.911]:[Info]-[DmHandler] - copying zero page to address : 0x1e23000
-[Tue Aug 30 2022 18:36:00.911]:[Info]-
+[Sat Sep 03 2022 08:14:22.701]:[Debug]-[DMS] - page in address: 0x1e22000 sent to app
+[Sat Sep 03 2022 08:14:22.701]:[Info]-[DMS] - get request to send content of page in address: 0x1e23000
+[Sat Sep 03 2022 08:14:22.702]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Sat Sep 03 2022 08:14:22.702]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1e23000
+[Sat Sep 03 2022 08:14:22.702]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
+[Sat Sep 03 2022 08:14:22.702]:[Info]-[DmHandler] - received ack for page in address : 0x1e23000 (first access)
+[Sat Sep 03 2022 08:14:22.702]:[Debug]-[DMS] - SPT updated. Current state: 
+[Sat Sep 03 2022 08:14:22.702]:[Info]-[DmHandler] - copying zero page to address : 0x1e23000
+[Sat Sep 03 2022 08:14:22.702]:[Info]-
 --------------FINISH HADNLING PAGE FAULT--------------
 
 
-[Tue Aug 30 2022 18:36:00.911]:[Info]-
+[Sat Sep 03 2022 08:14:22.702]:[Info]-
 --------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:36:00.911]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e24000
-[Tue Aug 30 2022 18:36:00.911]:[Info]-[DmHandler] - send request for the page in address 0x1e24000 from DMS
-[Tue Aug 30 2022 18:36:00.911]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1e24000
-[Tue Aug 30 2022 18:36:00.911]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:14:22.702]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1e24000
+[Sat Sep 03 2022 08:14:22.702]:[Info]-[DmHandler] - send request for the page in address 0x1e24000 from DMS
+[Sat Sep 03 2022 08:14:22.702]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1e24000
+[Sat Sep 03 2022 08:14:22.702]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : DISK
 address : 0x1d4d000  location : DISK
@@ -1014,19 +1014,19 @@ address : 0x1e21000  location : INSTANCE_0
 address : 0x1e22000  location : INSTANCE_0
 address : 0x1e23000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:36:00.911]:[Debug]-[DMS] - page in address: 0x1e23000 send to app
-[Tue Aug 30 2022 18:36:00.912]:[Info]-[DMS] - get request to send content of page in address: 0x1e24000
-[Tue Aug 30 2022 18:36:00.912]:[Debug]-[DMS] - page accessed first time, set info - new_page
-[Tue Aug 30 2022 18:36:00.912]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1e24000
-[Tue Aug 30 2022 18:36:00.912]:[Debug]-[DMS] - SPT updated. Current state: 
-[Tue Aug 30 2022 18:36:00.912]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
-[Tue Aug 30 2022 18:36:00.912]:[Info]-[DmHandler] - received ack for page in address : 0x1e24000 (first access)
-[Tue Aug 30 2022 18:36:00.912]:[Info]-[DmHandler] - copying zero page to address : 0x1e24000
-[Tue Aug 30 2022 18:36:00.912]:[Info]-
+[Sat Sep 03 2022 08:14:22.702]:[Debug]-[DMS] - page in address: 0x1e23000 sent to app
+[Sat Sep 03 2022 08:14:22.702]:[Info]-[DMS] - get request to send content of page in address: 0x1e24000
+[Sat Sep 03 2022 08:14:22.702]:[Debug]-[DMS] - page accessed first time, set info - new_page
+[Sat Sep 03 2022 08:14:22.702]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1e24000
+[Sat Sep 03 2022 08:14:22.702]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
+[Sat Sep 03 2022 08:14:22.702]:[Info]-[DmHandler] - received ack for page in address : 0x1e24000 (first access)
+[Sat Sep 03 2022 08:14:22.702]:[Info]-[DmHandler] - copying zero page to address : 0x1e24000
+[Sat Sep 03 2022 08:14:22.703]:[Info]-
 --------------FINISH HADNLING PAGE FAULT--------------
 
 
-[Tue Aug 30 2022 18:36:00.912]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:14:22.702]:[Debug]-[DMS] - SPT updated. Current state: 
+[Sat Sep 03 2022 08:14:22.703]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : DISK
 address : 0x1d4d000  location : DISK
@@ -1054,61 +1054,66 @@ address : 0x1e22000  location : INSTANCE_0
 address : 0x1e23000  location : INSTANCE_0
 address : 0x1e24000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:36:00.912]:[Debug]-[DMS] - page in address: 0x1e24000 send to app
-[Tue Aug 30 2022 18:36:00.994]:[Info]-
+[Sat Sep 03 2022 08:14:22.703]:[Debug]-[DMS] - page in address: 0x1e24000 sent to app
+[Sat Sep 03 2022 08:14:22.785]:[Info]-
 --------------START HADNLING PAGE FAULT--------------
-[Tue Aug 30 2022 18:36:00.994]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1d4c000
-[Tue Aug 30 2022 18:36:00.994]:[Info]-[DmHandler] - reached high threshold, waking up lpet
-[Tue Aug 30 2022 18:36:00.994]:[Debug]-[DmHandler] - avoid memory flood- dmhandler goes to sleep
-[Tue Aug 30 2022 18:36:00.994]:[Debug]-[CLIENT] - reached high threshold, running lpet
-[Tue Aug 30 2022 18:36:00.994]:[Debug]-[DmHandler] - avoid memory flood- dmhandler goes to sleep
-[Tue Aug 30 2022 18:36:00.994]:[Info]-
+[Sat Sep 03 2022 08:14:22.785]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1d4c000
+[Sat Sep 03 2022 08:14:22.785]:[Info]-[DmHandler] - reached high threshold, waking up lpet
+[Sat Sep 03 2022 08:14:22.785]:[Debug]-[DmHandler] - avoid memory flood- dmhandler goes to sleep
+[Sat Sep 03 2022 08:14:22.785]:[Debug]-[CLIENT] - reached high threshold, running lpet
+[Sat Sep 03 2022 08:14:22.786]:[Debug]-[DmHandler] - avoid memory flood- dmhandler goes to sleep
+[Sat Sep 03 2022 08:14:22.790]:[Info]-
 -----------------START LPET-----------------
 
-[Tue Aug 30 2022 18:36:00.994]:[Info]-[Lpet] - start address: 0x1d51000
-[Tue Aug 30 2022 18:36:00.995]:[Info]-page list state: 
+[Sat Sep 03 2022 08:14:22.790]:[Info]-[Lpet] - start address: 0x1d51000
+[Sat Sep 03 2022 08:14:22.790]:[Info]-page list state: 
 -----START LSPT ----
-address : 0x1d51000  pfn : 326948  is_idle: 0
-address : 0x1d52000  pfn : 593424  is_idle: 0
-address : 0x1d53000  pfn : 31064  is_idle: 0
-address : 0x1d54000  pfn : 482423  is_idle: 0
-address : 0x1d55000  pfn : 449697  is_idle: 0
-address : 0x1e14000  pfn : 605977  is_idle: 0
-address : 0x1e15000  pfn : 751242  is_idle: 0
-address : 0x1e16000  pfn : 279643  is_idle: 0
-address : 0x1e17000  pfn : 420258  is_idle: 0
-address : 0x1e18000  pfn : 638316  is_idle: 0
-address : 0x1e19000  pfn : 712774  is_idle: 1
-address : 0x1e1a000  pfn : 362781  is_idle: 1
-address : 0x1e1b000  pfn : 366935  is_idle: 1
-address : 0x1e1c000  pfn : 266936  is_idle: 1
-address : 0x1e1d000  pfn : 11516  is_idle: 1
-address : 0x1e20000  pfn : 255980  is_idle: 0
-address : 0x1e21000  pfn : 467882  is_idle: 0
-address : 0x1e22000  pfn : 617830  is_idle: 0
-address : 0x1e23000  pfn : 450810  is_idle: 0
-address : 0x1e24000  pfn : 537805  is_idle: 0
+address : 0x1d51000  pfn : 426111  is_idle: 0
+address : 0x1d52000  pfn : 40336  is_idle: 0
+address : 0x1d53000  pfn : 429229  is_idle: 0
+address : 0x1d54000  pfn : 14781  is_idle: 0
+address : 0x1d55000  pfn : 55137  is_idle: 0
+address : 0x1e14000  pfn : 101341  is_idle: 0
+address : 0x1e15000  pfn : 673922  is_idle: 0
+address : 0x1e16000  pfn : 70622  is_idle: 0
+address : 0x1e17000  pfn : 496682  is_idle: 0
+address : 0x1e18000  pfn : 428425  is_idle: 0
+address : 0x1e19000  pfn : 214150  is_idle: 1
+address : 0x1e1a000  pfn : 261415  is_idle: 1
+address : 0x1e1b000  pfn : 406012  is_idle: 1
+address : 0x1e1c000  pfn : 320038  is_idle: 1
+address : 0x1e1d000  pfn : 320264  is_idle: 1
+address : 0x1e20000  pfn : 415380  is_idle: 0
+address : 0x1e21000  pfn : 531034  is_idle: 0
+address : 0x1e22000  pfn : 67116  is_idle: 0
+address : 0x1e23000  pfn : 732865  is_idle: 0
+address : 0x1e24000  pfn : 261489  is_idle: 0
 -----END LSPT ----
 
 
-[Tue Aug 30 2022 18:36:00.995]:[Info]-[LPET] checking if page in addr 0x1d51000 is idle
-[Tue Aug 30 2022 18:36:00.995]:[Info]-[LPET] checking if page in addr 0x1d52000 is idle
-[Tue Aug 30 2022 18:36:00.995]:[Info]-[LPET] checking if page in addr 0x1d53000 is idle
-[Tue Aug 30 2022 18:36:00.995]:[Info]-[LPET] checking if page in addr 0x1d54000 is idle
-[Tue Aug 30 2022 18:36:00.995]:[Info]-[LPET] checking if page in addr 0x1d55000 is idle
-[Tue Aug 30 2022 18:36:00.995]:[Info]-[LPET] checking if page in addr 0x1e14000 is idle
-[Tue Aug 30 2022 18:36:00.995]:[Info]-[LPET] checking if page in addr 0x1e15000 is idle
-[Tue Aug 30 2022 18:36:00.995]:[Info]-[LPET] checking if page in addr 0x1e16000 is idle
-[Tue Aug 30 2022 18:36:00.995]:[Info]-[LPET] checking if page in addr 0x1e17000 is idle
-[Tue Aug 30 2022 18:36:00.995]:[Info]-[LPET] checking if page in addr 0x1e18000 is idle
-[Tue Aug 30 2022 18:36:00.995]:[Info]-[LPET] checking if page in addr 0x1e19000 is idle
-[Tue Aug 30 2022 18:36:00.995]:[Info]-[LPET] sending eviction request for page in addr 0x1e19000
-[Tue Aug 30 2022 18:36:00.995]:[Debug]-[MpiClient] - send lpet's requset to evict page in address 0x1e19000
-[Tue Aug 30 2022 18:36:01.005]:[Debug]-[DMS] - Handle page eviction in address 0x1e19000
-[Tue Aug 30 2022 18:36:01.007]:[Info]-[DMS] - page in address 0x1e19000 stored in disk
-[Tue Aug 30 2022 18:36:01.009]:[Debug]-[DMS] - Page evicted successfuly, sending ack
-[Tue Aug 30 2022 18:36:01.009]:[Debug]-[DMS] - SPT updated. Current state: 
-[Tue Aug 30 2022 18:36:01.009]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:14:22.790]:[Info]-[LPET] checking if page in addr 0x1d51000 is idle
+[Sat Sep 03 2022 08:14:22.790]:[Info]-[LPET] checking if page in addr 0x1d52000 is idle
+[Sat Sep 03 2022 08:14:22.791]:[Info]-[LPET] checking if page in addr 0x1d53000 is idle
+[Sat Sep 03 2022 08:14:22.791]:[Info]-[LPET] checking if page in addr 0x1d54000 is idle
+[Sat Sep 03 2022 08:14:22.791]:[Info]-[LPET] checking if page in addr 0x1d55000 is idle
+[Sat Sep 03 2022 08:14:22.791]:[Info]-[LPET] checking if page in addr 0x1e14000 is idle
+[Sat Sep 03 2022 08:14:22.791]:[Info]-[LPET] checking if page in addr 0x1e15000 is idle
+[Sat Sep 03 2022 08:14:22.791]:[Info]-[LPET] checking if page in addr 0x1e16000 is idle
+[Sat Sep 03 2022 08:14:22.791]:[Info]-[LPET] checking if page in addr 0x1e17000 is idle
+[Sat Sep 03 2022 08:14:22.791]:[Info]-[LPET] checking if page in addr 0x1e18000 is idle
+[Sat Sep 03 2022 08:14:22.791]:[Info]-[LPET] checking if page in addr 0x1e19000 is idle
+[Sat Sep 03 2022 08:14:22.791]:[Info]-[LPET] sending eviction request for page in addr 0x1e19000
+[Sat Sep 03 2022 08:14:22.791]:[Debug]-[MpiClient] - send lpet's requset to evict page in address 0x1e19000
+[Sat Sep 03 2022 08:14:22.803]:[Debug]-[DMS] - Handle page eviction in address 0x1e19000
+[Sat Sep 03 2022 08:14:22.803]:[Info]-[DMS] - page in address 0x1e19000 stored in disk
+[Sat Sep 03 2022 08:14:22.803]:[Debug]-[DMS] - Page evicted successfuly, sending ack
+[Sat Sep 03 2022 08:14:22.803]:[Debug]-[DMS] - SPT updated. Current state: 
+[Sat Sep 03 2022 08:14:22.803]:[Debug]-[MpiClient] - got ack for evict page of lpet in address 0x1e19000 Ack message : 
+[Sat Sep 03 2022 08:14:22.804]:[Info]-[Lpet] - received ack for eviction of page in address : 0x1e19000
+[Sat Sep 03 2022 08:14:22.804]:[Info]-[LPET] checking if page in addr 0x1e1a000 is idle
+[Sat Sep 03 2022 08:14:22.804]:[Info]-[LPET] sending eviction request for page in addr 0x1e1a000
+[Sat Sep 03 2022 08:14:22.804]:[Debug]-[MpiClient] - send lpet's requset to evict page in address 0x1e1a000
+[Sat Sep 03 2022 08:14:22.804]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : DISK
 address : 0x1d4d000  location : DISK
@@ -1136,16 +1141,16 @@ address : 0x1e22000  location : INSTANCE_0
 address : 0x1e23000  location : INSTANCE_0
 address : 0x1e24000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:36:01.010]:[Debug]-[MpiClient] - got ack for evict page of lpet in address 0x1e19000 Ack message : 
-[Tue Aug 30 2022 18:36:01.010]:[Info]-[Lpet] - received ack for eviction of page in address : 0x1e19000
-[Tue Aug 30 2022 18:36:01.010]:[Info]-[LPET] checking if page in addr 0x1e1a000 is idle
-[Tue Aug 30 2022 18:36:01.010]:[Info]-[LPET] sending eviction request for page in addr 0x1e1a000
-[Tue Aug 30 2022 18:36:01.010]:[Debug]-[MpiClient] - send lpet's requset to evict page in address 0x1e1a000
-[Tue Aug 30 2022 18:36:01.010]:[Debug]-[DMS] - Handle page eviction in address 0x1e1a000
-[Tue Aug 30 2022 18:36:01.011]:[Info]-[DMS] - page in address 0x1e1a000 stored in disk
-[Tue Aug 30 2022 18:36:01.013]:[Debug]-[DMS] - Page evicted successfuly, sending ack
-[Tue Aug 30 2022 18:36:01.013]:[Debug]-[DMS] - SPT updated. Current state: 
-[Tue Aug 30 2022 18:36:01.014]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:14:22.829]:[Debug]-[DMS] - Handle page eviction in address 0x1e1a000
+[Sat Sep 03 2022 08:14:22.829]:[Info]-[DMS] - page in address 0x1e1a000 stored in disk
+[Sat Sep 03 2022 08:14:22.829]:[Debug]-[DMS] - Page evicted successfuly, sending ack
+[Sat Sep 03 2022 08:14:22.829]:[Debug]-[DMS] - SPT updated. Current state: 
+[Sat Sep 03 2022 08:14:22.829]:[Debug]-[MpiClient] - got ack for evict page of lpet in address 0x1e1a000 Ack message : 
+[Sat Sep 03 2022 08:14:22.829]:[Info]-[Lpet] - received ack for eviction of page in address : 0x1e1a000
+[Sat Sep 03 2022 08:14:22.829]:[Info]-[LPET] checking if page in addr 0x1e1b000 is idle
+[Sat Sep 03 2022 08:14:22.829]:[Info]-[LPET] sending eviction request for page in addr 0x1e1b000
+[Sat Sep 03 2022 08:14:22.829]:[Debug]-[MpiClient] - send lpet's requset to evict page in address 0x1e1b000
+[Sat Sep 03 2022 08:14:22.829]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : DISK
 address : 0x1d4d000  location : DISK
@@ -1173,21 +1178,16 @@ address : 0x1e22000  location : INSTANCE_0
 address : 0x1e23000  location : INSTANCE_0
 address : 0x1e24000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:36:01.014]:[Debug]-[MpiClient] - got ack for evict page of lpet in address 0x1e1a000 Ack message : 
-[Tue Aug 30 2022 18:36:01.014]:[Info]-[Lpet] - received ack for eviction of page in address : 0x1e1a000
-[Tue Aug 30 2022 18:36:01.014]:[Info]-[LPET] checking if page in addr 0x1e1b000 is idle
-[Tue Aug 30 2022 18:36:01.014]:[Info]-[LPET] sending eviction request for page in addr 0x1e1b000
-[Tue Aug 30 2022 18:36:01.014]:[Debug]-[MpiClient] - send lpet's requset to evict page in address 0x1e1b000
-[Tue Aug 30 2022 18:36:01.014]:[Debug]-[DMS] - Handle page eviction in address 0x1e1b000
-[Tue Aug 30 2022 18:36:01.016]:[Info]-[DMS] - page in address 0x1e1b000 stored in disk
-[Tue Aug 30 2022 18:36:01.017]:[Debug]-[DMS] - Page evicted successfuly, sending ack
-[Tue Aug 30 2022 18:36:01.018]:[Debug]-[DMS] - SPT updated. Current state: 
-[Tue Aug 30 2022 18:36:01.018]:[Debug]-[MpiClient] - got ack for evict page of lpet in address 0x1e1b000 Ack message : 
-[Tue Aug 30 2022 18:36:01.018]:[Info]-[Lpet] - received ack for eviction of page in address : 0x1e1b000
-[Tue Aug 30 2022 18:36:01.018]:[Info]-[LPET] checking if page in addr 0x1e1c000 is idle
-[Tue Aug 30 2022 18:36:01.018]:[Info]-[LPET] sending eviction request for page in addr 0x1e1c000
-[Tue Aug 30 2022 18:36:01.018]:[Debug]-[MpiClient] - send lpet's requset to evict page in address 0x1e1c000
-[Tue Aug 30 2022 18:36:01.018]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:14:22.830]:[Debug]-[DMS] - Handle page eviction in address 0x1e1b000
+[Sat Sep 03 2022 08:14:22.830]:[Info]-[DMS] - page in address 0x1e1b000 stored in disk
+[Sat Sep 03 2022 08:14:22.830]:[Debug]-[DMS] - Page evicted successfuly, sending ack
+[Sat Sep 03 2022 08:14:22.830]:[Debug]-[DMS] - SPT updated. Current state: 
+[Sat Sep 03 2022 08:14:22.830]:[Debug]-[MpiClient] - got ack for evict page of lpet in address 0x1e1b000 Ack message : 
+[Sat Sep 03 2022 08:14:22.830]:[Info]-[Lpet] - received ack for eviction of page in address : 0x1e1b000
+[Sat Sep 03 2022 08:14:22.830]:[Info]-[LPET] checking if page in addr 0x1e1c000 is idle
+[Sat Sep 03 2022 08:14:22.830]:[Info]-[LPET] sending eviction request for page in addr 0x1e1c000
+[Sat Sep 03 2022 08:14:22.830]:[Debug]-[MpiClient] - send lpet's requset to evict page in address 0x1e1c000
+[Sat Sep 03 2022 08:14:22.830]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : DISK
 address : 0x1d4d000  location : DISK
@@ -1215,16 +1215,16 @@ address : 0x1e22000  location : INSTANCE_0
 address : 0x1e23000  location : INSTANCE_0
 address : 0x1e24000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:36:01.018]:[Debug]-[DMS] - Handle page eviction in address 0x1e1c000
-[Tue Aug 30 2022 18:36:01.018]:[Info]-[DMS] - page in address 0x1e1c000 stored in disk
-[Tue Aug 30 2022 18:36:01.018]:[Debug]-[DMS] - Page evicted successfuly, sending ack
-[Tue Aug 30 2022 18:36:01.018]:[Debug]-[MpiClient] - got ack for evict page of lpet in address 0x1e1c000 Ack message : 
-[Tue Aug 30 2022 18:36:01.018]:[Debug]-[DMS] - SPT updated. Current state: 
-[Tue Aug 30 2022 18:36:01.019]:[Info]-[Lpet] - received ack for eviction of page in address : 0x1e1c000
-[Tue Aug 30 2022 18:36:01.019]:[Info]-[LPET] checking if page in addr 0x1e1d000 is idle
-[Tue Aug 30 2022 18:36:01.019]:[Info]-[LPET] sending eviction request for page in addr 0x1e1d000
-[Tue Aug 30 2022 18:36:01.019]:[Debug]-[MpiClient] - send lpet's requset to evict page in address 0x1e1d000
-[Tue Aug 30 2022 18:36:01.019]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:14:22.830]:[Debug]-[DMS] - Handle page eviction in address 0x1e1c000
+[Sat Sep 03 2022 08:14:22.830]:[Info]-[DMS] - page in address 0x1e1c000 stored in disk
+[Sat Sep 03 2022 08:14:22.830]:[Debug]-[DMS] - Page evicted successfuly, sending ack
+[Sat Sep 03 2022 08:14:22.831]:[Debug]-[MpiClient] - got ack for evict page of lpet in address 0x1e1c000 Ack message : 
+[Sat Sep 03 2022 08:14:22.831]:[Info]-[Lpet] - received ack for eviction of page in address : 0x1e1c000
+[Sat Sep 03 2022 08:14:22.831]:[Debug]-[DMS] - SPT updated. Current state: 
+[Sat Sep 03 2022 08:14:22.831]:[Info]-[LPET] checking if page in addr 0x1e1d000 is idle
+[Sat Sep 03 2022 08:14:22.831]:[Info]-[LPET] sending eviction request for page in addr 0x1e1d000
+[Sat Sep 03 2022 08:14:22.831]:[Debug]-[MpiClient] - send lpet's requset to evict page in address 0x1e1d000
+[Sat Sep 03 2022 08:14:22.831]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : DISK
 address : 0x1d4d000  location : DISK
@@ -1252,11 +1252,19 @@ address : 0x1e22000  location : INSTANCE_0
 address : 0x1e23000  location : INSTANCE_0
 address : 0x1e24000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:36:01.019]:[Debug]-[DMS] - Handle page eviction in address 0x1e1d000
-[Tue Aug 30 2022 18:36:01.019]:[Info]-[DMS] - page in address 0x1e1d000 stored in disk
-[Tue Aug 30 2022 18:36:01.019]:[Debug]-[DMS] - Page evicted successfuly, sending ack
-[Tue Aug 30 2022 18:36:01.022]:[Debug]-[DMS] - SPT updated. Current state: 
-[Tue Aug 30 2022 18:36:01.022]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:14:22.831]:[Debug]-[DMS] - Handle page eviction in address 0x1e1d000
+[Sat Sep 03 2022 08:14:22.831]:[Info]-[DMS] - page in address 0x1e1d000 stored in disk
+[Sat Sep 03 2022 08:14:22.832]:[Debug]-[DMS] - Page evicted successfuly, sending ack
+[Sat Sep 03 2022 08:14:22.832]:[Debug]-[MpiClient] - got ack for evict page of lpet in address 0x1e1d000 Ack message : 
+[Sat Sep 03 2022 08:14:22.832]:[Debug]-[DMS] - SPT updated. Current state: 
+[Sat Sep 03 2022 08:14:22.832]:[Info]-[Lpet] - received ack for eviction of page in address : 0x1e1d000
+[Sat Sep 03 2022 08:14:22.832]:[Info]-
+-----------------END LPET-----------------
+
+[Sat Sep 03 2022 08:14:22.832]:[Debug]-[CLIENT] - lpet end running .
+[Sat Sep 03 2022 08:14:22.832]:[Info]-[DmHandler] - send request for the page in address 0x1d4c000 from DMS
+[Sat Sep 03 2022 08:14:22.832]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1d4c000
+[Sat Sep 03 2022 08:14:22.832]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : DISK
 address : 0x1d4d000  location : DISK
@@ -1284,27 +1292,19 @@ address : 0x1e22000  location : INSTANCE_0
 address : 0x1e23000  location : INSTANCE_0
 address : 0x1e24000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:36:01.022]:[Debug]-[MpiClient] - got ack for evict page of lpet in address 0x1e1d000 Ack message : 
-[Tue Aug 30 2022 18:36:01.022]:[Info]-[Lpet] - received ack for eviction of page in address : 0x1e1d000
-[Tue Aug 30 2022 18:36:01.022]:[Info]-
------------------END LPET-----------------
-
-[Tue Aug 30 2022 18:36:01.022]:[Debug]-[CLIENT] - lpet end running .
-[Tue Aug 30 2022 18:36:01.022]:[Info]-[DmHandler] - send request for the page in address 0x1d4c000 from DMS
-[Tue Aug 30 2022 18:36:01.023]:[Debug]-[MpiClient] - send DmHandler's request for the page in address 0x1d4c000
-[Tue Aug 30 2022 18:36:01.029]:[Info]-[DMS] - get request to send content of page in address: 0x1d4c000
-[Tue Aug 30 2022 18:36:01.030]:[Debug]-[DMS] - read page address: 0x1d4c000 from disk
-[Tue Aug 30 2022 18:36:01.030]:[Debug]-[DMS] - SPT updated. Current state: 
-[Tue Aug 30 2022 18:36:01.030]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1d4c000
-[Tue Aug 30 2022 18:36:01.030]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
-[Tue Aug 30 2022 18:36:01.030]:[Info]-[DmHandler] - received ack for page in address : 0x1d4c000 (previously accessed)
-[Tue Aug 30 2022 18:36:01.030]:[Info]-[DmHandler] - copying page content from DMS to address : 0x1d4c000
-[Tue Aug 30 2022 18:36:01.030]:[Info]-
+[Sat Sep 03 2022 08:14:22.845]:[Info]-[DMS] - get request to send content of page in address: 0x1d4c000
+[Sat Sep 03 2022 08:14:22.845]:[Debug]-[DMS] - read page address: 0x1d4c000 from disk
+[Sat Sep 03 2022 08:14:22.845]:[Debug]-[DMS] - SPT updated. Current state: 
+[Sat Sep 03 2022 08:14:22.845]:[Debug]-[MpiClient] - get DMS's response for the page in address 0x1d4c000
+[Sat Sep 03 2022 08:14:22.845]:[Debug]-[MpiClient] - RequestPageFromDMS succeeded. 
+[Sat Sep 03 2022 08:14:22.845]:[Info]-[DmHandler] - received ack for page in address : 0x1d4c000 (previously accessed)
+[Sat Sep 03 2022 08:14:22.845]:[Info]-[DmHandler] - copying page content from DMS to address : 0x1d4c000
+[Sat Sep 03 2022 08:14:22.845]:[Info]-
 --------------FINISH HADNLING PAGE FAULT--------------
 
 
-[Tue Aug 30 2022 18:36:01.030]:[Debug]-[EDM CLIENT] - SHUTDOWN!
-[Tue Aug 30 2022 18:36:01.030]:[Info]-DMS- Print SPT STATE
+[Sat Sep 03 2022 08:14:22.845]:[Debug]-[EDM CLIENT] - SHUTDOWN!
+[Sat Sep 03 2022 08:14:22.845]:[Info]-DMS- Print SPT STATE
 -----START SPT ----
 address : 0x1d4c000  location : INSTANCE_0
 address : 0x1d4d000  location : DISK
@@ -1332,4 +1332,4 @@ address : 0x1e22000  location : INSTANCE_0
 address : 0x1e23000  location : INSTANCE_0
 address : 0x1e24000  location : INSTANCE_0
 ------END SPT-----
-[Tue Aug 30 2022 18:36:01.030]:[Debug]-[DMS] - page in address: 0x1d4c000 send to app
+[Sat Sep 03 2022 08:14:22.846]:[Debug]-[DMS] - page in address: 0x1d4c000 sent to app
