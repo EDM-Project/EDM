@@ -4,7 +4,7 @@
 
 int main(int argc, char *argv[])
 { 
-   test_simple_flow_eviction();
+   test_eviction_policy();
 
    return 0;
 }
