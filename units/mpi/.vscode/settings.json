@@ -1,6 +1,0 @@
-{
-    "files.associations": {
-        "mpi.h": "c",
-        "pthread.h": "c"
-    }
-}
