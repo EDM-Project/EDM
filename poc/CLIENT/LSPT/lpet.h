@@ -5,6 +5,7 @@
 #include "../../shared/logger.h"
 #include "lspt.h"
 #include "../mpiClient/mpiClient.h"
+#include <sw/redis++/redis++.h>
 #define PRINT_AS_HEX(ADDR) std::hex << "0x" << ADDR << std::dec
 
 
@@ -18,14 +19,14 @@ class Lpet{
     int start_point;
     uint32_t low_thresh;
     uint32_t high_thresh;
-    MPI_EDM::MpiClient* mpi_instance;
+    sw::redis::Redis redis_instance;
     char* buffer;
 
 
 
 public:
 
-    Lpet(MPI_EDM::MpiClient* mpi_instance, LSPT& lspt, int high, int low);
+    Lpet(sw::redis::Redis redis_instance, LSPT& lspt, int high, int low);
     Lpet() = default;
     ~Lpet() = default;
     Lpet& operator=(const Lpet& a);

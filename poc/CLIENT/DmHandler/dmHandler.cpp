@@ -4,12 +4,12 @@
 
 #define DEBUG_MODE 1
 
-DmHandler::DmHandler(MPI_EDM::MpiClient* mpi_instance, Client* client, int high_threshold, int low_threshold) {
+DmHandler::DmHandler(sw::redis::Redis redis_instance, Client* client, int high_threshold, int low_threshold) {
     this->len = len;
     this->addr = addr;
     this->high_threshold = high_threshold;
     this->low_threshold = low_threshold;
-    this->mpi_instance = mpi_instance;
+    this->redis_instance = redis_instance;
     struct uffdio_api uffdio_api;
     struct uffdio_register uffdio_register;
     long uffd = syscall(__NR_userfaultfd, O_CLOEXEC | O_NONBLOCK);
@@ -21,7 +21,7 @@ DmHandler::DmHandler(MPI_EDM::MpiClient* mpi_instance, Client* client, int high_
     if (ioctl(uffd, UFFDIO_API, &uffdio_api) == -1)
         LOG(ERROR) << "[DmHandler] : ioctl- UFFDIO_API failed";
 
-    
+    auto redis = sw::redis::Redis("tcp://127.0.0.1:6379");
     this->uffd = uffd;
     this->client = client;
 }
@@ -85,23 +85,26 @@ void DmHandler::HandleMissPageFault(struct uffd_msg* msg){
         while(this->client->is_lpet_running) {}
     }
     LOG(INFO) << "[DmHandler] - send request for the page in address " << PRINT_AS_HEX(vaddr) << " from DMS";
-    MPI_EDM::RequestGetPageData request_page = mpi_instance->RequestPageFromDMS(vaddr);
-    switch (request_page.info){
-        case(MPI_EDM::error):
-            LOG(ERROR) << "[DmHandler] - failed to resolve page fault for address " <<  PRINT_AS_HEX(vaddr) ;
-        break;
-        case (MPI_EDM::new_page):
+    /* thinking about error handling approach, thus:*/
+    try {
+        auto request_page = this->redis_instance.get(std::to_string(vaddr)); /* conversion should be ok*/
+        if (request_page) /* key exists*/ {
+            LOG(INFO) << "[DmHandler] - received ack for page in address : " << PRINT_AS_HEX(vaddr) << " (previously accessed)" ; 
+            LOG(INFO) << "[DmHandler] - copying page content from DMS to address : " << PRINT_AS_HEX(vaddr);
+           CopyExistingPage(vaddr,request_page.page);
+        }
+        else { /* key does not exist*/
             LOG(INFO) << "[DmHandler] - received ack for page in address : " << PRINT_AS_HEX(vaddr) << " (first access)" ; 
             LOG(INFO) << "[DmHandler] - copying zero page to address : " << PRINT_AS_HEX(vaddr);
             CopyZeroPage(vaddr);
-        break;
-        case (MPI_EDM::existing_page):
-            LOG(INFO) << "[DmHandler] - received ack for page in address : " << PRINT_AS_HEX(vaddr) << " (previously accessed)" ; 
-            LOG(INFO) << "[DmHandler] - copying page content from DMS to address : " << PRINT_AS_HEX(vaddr);
-            CopyExistingPage(vaddr,request_page.page);
-        break;
+        }
+    }
+    
+    catch (const Error &e) {    
+        LOG(ERROR) << "[DmHandler] - failed to resolve page fault for address " <<  PRINT_AS_HEX(vaddr) ;
 
     }
+    /*MPI_EDM::RequestGetPageData request_page = mpi_instance->RequestPageFromDMS(vaddr);*/
     
     this->client->lspt.Add(vaddr);
 }

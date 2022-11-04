@@ -11,6 +11,7 @@
 #include "LSPT/page.h"
 #include "LSPT/lspt.h"
 #include "DmHandler/dmHandler.h"
+#include <sw/redis++/redis++.h>
 
 
 class Client {
@@ -24,7 +25,7 @@ private:
     
     
     DmHandler* ufd;
-    MPI_EDM::MpiClient* mpi_instance;
+    sw::redis::Redis redis_instance;
     std::thread dm_handler_thread;
     std::thread lpet_thread;
     

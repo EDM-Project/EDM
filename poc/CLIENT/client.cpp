@@ -8,12 +8,14 @@ Client::Client ()
     ParseConfigFile();
     setenv("start_addr",std::to_string(start_addr).c_str(),1);
     setenv("end_addr",std::to_string(end_addr).c_str(),1);
-    this->mpi_instance = new MPI_EDM::MpiClient();
-    this->ufd = new DmHandler(this->mpi_instance,this,high_threshold,low_threshold); 
+    this->redis_instance = sw::redis::Redis("tcp://127.0.0.1:6379"); 
+    /* REDIS_INTEGRATION: for phase I we need one redis server as localhost.
+    tcp is optional. advanced options can be set using the ConnectionOptions data structure later*/
+    this->ufd = new DmHandler(this->redis_instance,this,high_threshold,low_threshold); 
     this->dm_handler_thread = ufd->ActivateDM_Handler();
-    this->lpet = new Lpet(this->mpi_instance, lspt, this->high_threshold, this->low_threshold);
+    this->lpet = new Lpet(this->redis_instance, lspt, this->high_threshold, this->low_threshold);
     this->lpet_thread = std::thread(&Client::RunLpetThread, this);
-}
+}   
 
 void Client::ParseConfigFile () {
     std::ifstream ReadFile("CLIENT/client_config.txt");
@@ -56,7 +58,7 @@ Client::~Client(){
 
     MPI_Finalize();
     delete ufd;
-    delete mpi_instance;
+    delete redis_instance;
 }
 
 
