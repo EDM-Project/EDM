@@ -100,7 +100,7 @@ void DmHandler::HandleMissPageFault(struct uffd_msg* msg){
         }
     }
     
-    catch (const Error &e) {    
+    catch (const Error &e) {   /* an error has occured*/  
         LOG(ERROR) << "[DmHandler] - failed to resolve page fault for address " <<  PRINT_AS_HEX(vaddr) ;
 
     }
