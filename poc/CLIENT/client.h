@@ -5,7 +5,6 @@
 #include <vector>
 #include <condition_variable> 
 #include <algorithm>
-#include "../shared/mpiEdm.h"
 #include "../shared/logger.h"
 #include "LSPT/lpet.h"
 #include "LSPT/page.h"
@@ -25,7 +24,7 @@ private:
     
     
     DmHandler* ufd;
-    sw::redis::Redis redis_instance;
+    sw::redis::Redis* redis_instance;
     std::thread dm_handler_thread;
     std::thread lpet_thread;
     

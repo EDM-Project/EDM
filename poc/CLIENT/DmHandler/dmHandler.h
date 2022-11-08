@@ -37,12 +37,12 @@ class DmHandler {
     int low_threshold;
     uint64_t len;       /* Length of region handled by userfaultfd */
     std::thread thr;      /* ID of thread that handles page faults */
-    sw::redis::Redis redis_instance;
+    sw::redis::Redis* redis_instance;
     Client* client; 
 
     public:
     DmHandler() = default;
-    DmHandler(sw::redis::Redis redis_instance, Client* client, int high_threshold, int low_threshold);
+    DmHandler(sw::redis::Redis* redis_instance, Client* client, int high_threshold, int low_threshold);
     ~DmHandler() = default;
     void ListenPageFaults();
     void HandleMissPageFault(struct uffd_msg* msg);

@@ -4,7 +4,7 @@
 
 #define DEBUG_MODE 1
 
-DmHandler::DmHandler(sw::redis::Redis redis_instance, Client* client, int high_threshold, int low_threshold) {
+DmHandler::DmHandler(sw::redis::Redis* redis_instance, Client* client, int high_threshold, int low_threshold) {
     this->len = len;
     this->addr = addr;
     this->high_threshold = high_threshold;
@@ -87,7 +87,7 @@ void DmHandler::HandleMissPageFault(struct uffd_msg* msg){
     LOG(INFO) << "[DmHandler] - send request for the page in address " << PRINT_AS_HEX(vaddr) << " from DMS";
     /* thinking about error handling approach, thus:*/
     try {
-        auto request_page = this->redis_instance.get(std::to_string(vaddr)); /* conversion should be ok*/
+        auto request_page = this->redis_instance->get(std::to_string(vaddr)); /* conversion should be ok*/
         if (request_page) /* key exists*/ {
             LOG(INFO) << "[DmHandler] - received ack for page in address : " << PRINT_AS_HEX(vaddr) << " (previously accessed)" ; 
             LOG(INFO) << "[DmHandler] - copying page content from DMS to address : " << PRINT_AS_HEX(vaddr);
@@ -100,7 +100,7 @@ void DmHandler::HandleMissPageFault(struct uffd_msg* msg){
         }
     }
     
-    catch (const Error &e) {   /* an error has occured*/  
+    catch (...) {   /* an error has occured - catch any type of error*/  
         LOG(ERROR) << "[DmHandler] - failed to resolve page fault for address " <<  PRINT_AS_HEX(vaddr) ;
 
     }

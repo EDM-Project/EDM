@@ -12,7 +12,7 @@ using std::string;
 
 #include "lpet.h"
 
-Lpet::Lpet(sw::redis::Redis redis_instance, LSPT& lspt, int high, int low) :
+Lpet::Lpet(sw::redis::Redis* redis_instance, LSPT& lspt, int high, int low) :
     lspt(lspt), high_thresh(high), low_thresh(low), first_run(true)
 {
         
@@ -61,9 +61,9 @@ uint32_t Lpet::run()
             memcpy(mem,buffer,PAGE_SIZE);
 
             /* from what was discussed - here a set command should be applied instead of MIP evict*/
-            redis_instance.set(std::to_string(evicted.vaddr),mem);
+            this->redis_instance->set(std::to_string(evicted.vaddr),mem);
             /*mpi_instance->RequestEvictPage(evicted.vaddr, mem);*/
-            LOG(INFO) << "[Lpet] - received ack for eviction of page in address : " << PRINT_AS_HEX(evicted.vaddr)  ; 
+            LOG(INFO) << "[Lsspet] - received ack for eviction of page in address : " << PRINT_AS_HEX(evicted.vaddr)  ; 
 
             
             free(mem);
