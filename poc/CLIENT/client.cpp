@@ -56,7 +56,6 @@ Client::~Client(){
     dm_handler_thread.join();
     lpet_thread.join();
 
-    /*MPI_Finalize();*/
     delete ufd;
     delete redis_instance;
 }
