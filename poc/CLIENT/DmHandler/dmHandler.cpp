@@ -20,8 +20,6 @@ DmHandler::DmHandler(sw::redis::Redis* redis_instance, Client* client, int high_
     uffdio_api.features = 0;
     if (ioctl(uffd, UFFDIO_API, &uffdio_api) == -1)
         LOG(ERROR) << "[DmHandler] : ioctl- UFFDIO_API failed";
-
-    auto redis = sw::redis::Redis("tcp://127.0.0.1:6379");
     this->uffd = uffd;
     this->client = client;
 }
@@ -88,10 +86,12 @@ void DmHandler::HandleMissPageFault(struct uffd_msg* msg){
     /* thinking about error handling approach, thus:*/
     try {
         auto request_page = this->redis_instance->get(std::to_string(vaddr)); /* conversion should be ok*/
+        /* now request_page is of type sw::Redis::OptionalString, meaning Optional<std::string>*/
         if (request_page) /* key exists*/ {
             LOG(INFO) << "[DmHandler] - received ack for page in address : " << PRINT_AS_HEX(vaddr) << " (previously accessed)" ; 
             LOG(INFO) << "[DmHandler] - copying page content from DMS to address : " << PRINT_AS_HEX(vaddr);
-           CopyExistingPage(vaddr,request_page.page);
+           CopyExistingPage(vaddr,request_page.value().c_str()); /* here it's request_page since it's the key's value in Redis*/
+            /* request_page is converted to const char **/
         }
         else { /* key does not exist*/
             LOG(INFO) << "[DmHandler] - received ack for page in address : " << PRINT_AS_HEX(vaddr) << " (first access)" ; 
@@ -136,7 +136,7 @@ void DmHandler::CopyZeroPage(uintptr_t vaddr){
         LOG(ERROR) << "[DmHandler] - ioctl UFFDIO_ZEROPAGE failed";
     
 }
-void DmHandler::CopyExistingPage(uintptr_t vaddr,char* source_page_content){
+void DmHandler::CopyExistingPage(uintptr_t vaddr,const char* source_page_content){
 
     static char *page = NULL;
     /* Create a page that will be copied into the faulting region. */

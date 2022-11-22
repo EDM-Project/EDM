@@ -18,7 +18,6 @@
 #include <sys/ioctl.h>
 #include <poll.h>
 #include <thread>
-/*#include "../mpiClient/mpiClient.h"*/
 #include "../../shared/logger.h"
 #include <sw/redis++/redis++.h>
 
@@ -47,7 +46,7 @@ class DmHandler {
     void ListenPageFaults();
     void HandleMissPageFault(struct uffd_msg* msg);
     void CopyZeroPage(uintptr_t vaddr);
-    void CopyExistingPage(uintptr_t vaddr,char* source_page_content);
+    void CopyExistingPage(uintptr_t vaddr,const char* source_page_content);
     std::thread ActivateDM_Handler();
     void InvokeLpetIfNeeded();
 
