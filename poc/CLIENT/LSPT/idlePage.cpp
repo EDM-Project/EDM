@@ -222,4 +222,5 @@ void* get_idle_flags(uint64_t nr_pfns, const uint64_t pfns[],uint8_t results[])
     }
 
     close(fd);
+    return nullptr;
 }

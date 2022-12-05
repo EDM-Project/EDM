@@ -23,4 +23,5 @@ std::ostream& operator<<(std::ostream& os, const Page& page){
     os << "  ";
     os << "is_idle: " << page.is_idle();
     os << std::endl;
+    return os;
 }
