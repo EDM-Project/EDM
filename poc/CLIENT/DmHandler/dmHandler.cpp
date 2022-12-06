@@ -22,6 +22,7 @@ DmHandler::DmHandler(sw::redis::Redis* redis_instance, Client* client, int high_
         LOG(ERROR) << "[DmHandler] : ioctl- UFFDIO_API failed";
     this->uffd = uffd;
     this->client = client;
+    LOG(DEBUG) << "[DmHandler] : initiated DmHandler";
 }
 
 
@@ -35,9 +36,10 @@ void DmHandler::ListenPageFaults(){
     struct pollfd pollfd;
     pollfd.fd = uffd;
     pollfd.events = POLLIN;
-
+    LOG(DEBUG) << "[DmHanlder] : before polling while loop";
     while (poll(&pollfd, 1, -1) > 0)
     {
+        LOG(DEBUG) << "[DmHandler] : inside poll while";
         /* Read an event from the userfaultfd. */
         nread = read(uffd, &msg, sizeof(msg));
         if (nread == 0) {
@@ -49,6 +51,7 @@ void DmHandler::ListenPageFaults(){
         }
         switch (msg.event) {
             case UFFD_EVENT_PAGEFAULT:
+                LOG(DEBUG) << "[DmHandler] going to handle PAGE FAULT";
                 HandleMissPageFault(&msg);
                 break;
             case UFFD_EVENT_FORK:
@@ -61,12 +64,13 @@ void DmHandler::ListenPageFaults(){
                 break;
         }
     }
+    LOG(DEBUG) << "[DmHandler] : AFTER WHILE LOOP";
 }
 void DmHandler::HandleMissPageFault(struct uffd_msg* msg){
 
     /* Display info about the page-fault event. */
-    LOG(INFO) << "\n--------------START HADNLING PAGE FAULT--------------";
-    LOG(INFO) << "[DmHandler] - UFFD_EVENT_PAGEFAULT in address = " << PRINT_AS_HEX(msg->arg.pagefault.address) ;
+    LOG(DEBUG) << "\n--------------START HADNLING PAGE FAULT--------------";
+    LOG(DEBUG) << "[DmHandler] - UFFD_EVENT_PAGEFAULT in address = " << PRINT_AS_HEX(msg->arg.pagefault.address) ;
     
     unsigned long long vaddr = msg->arg.pagefault.address;
     

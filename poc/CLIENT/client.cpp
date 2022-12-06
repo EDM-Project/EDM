@@ -8,7 +8,7 @@ Client::Client ()
     ParseConfigFile();
     setenv("start_addr",std::to_string(start_addr).c_str(),1);
     setenv("end_addr",std::to_string(end_addr).c_str(),1);
-    this->redis_instance = new sw::redis::Redis("tcp://127.0.0.1:6379"); 
+    this->redis_instance = new sw::redis::Redis("tcp://127.0.0.1:6380"); 
     /* REDIS_INTEGRATION: for phase I we need one redis server as localhost.
     tcp is optional. advanced options can be set using the ConnectionOptions data structure later*/
     this->ufd = new DmHandler(this->redis_instance,this,high_threshold,low_threshold); 
@@ -63,7 +63,10 @@ Client::~Client(){
 
 void Client::WaitForRunLpet() {
     std::unique_lock<std::mutex> lck(run_lpet_mutex);
+    LOG(DEBUG) << "[CLIENT] - waiting for lspt size threshold ";
     while(lspt.GetSize() < high_threshold) cv.wait(lck);
+    LOG(DEBUG) << "[CLIENT] - stopped waiting for lspt size threshold ";
+
 
 }
 void Client::RunLpetThread() {
