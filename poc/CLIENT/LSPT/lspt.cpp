@@ -13,7 +13,6 @@ void LSPT::Remove(int index) {
 }
 int LSPT::GetSize() {
     std::lock_guard<std::mutex> lockGuard(mutex);
-    LOG(DEBUG) << "[LSPT] - lspt size is: " << page_list.size();
     return page_list.size();
 
 } 

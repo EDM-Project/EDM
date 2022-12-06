@@ -63,9 +63,7 @@ Client::~Client(){
 
 void Client::WaitForRunLpet() {
     std::unique_lock<std::mutex> lck(run_lpet_mutex);
-    LOG(DEBUG) << "[CLIENT] - waiting for lspt size threshold ";
     while(lspt.GetSize() < high_threshold) cv.wait(lck);
-    LOG(DEBUG) << "[CLIENT] - stopped waiting for lspt size threshold ";
 
 
 }
