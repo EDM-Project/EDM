@@ -84,7 +84,10 @@ void DmHandler::HandleMissPageFault(struct uffd_msg* msg){
     LOG(INFO) << "[DmHandler] - send request for the page in address " << PRINT_AS_HEX(vaddr) << " from DMS";
     /* thinking about error handling approach, thus:*/
     try {
-        auto request_page = this->redis_instance->get(std::to_string(vaddr)); /* conversion should be ok*/
+        std::ostringstream temp_stream;
+        temp_stream << "0x" << std::setfill('0') << std::setw(8) << std::hex << vaddr; /* convert vaddr to hex correct format*/
+        std::string str_vaddr = temp_stream.str();  
+        auto request_page = this->redis_instance->get(str_vaddr); /* conversion should be ok*/
         /* now request_page is of type sw::Redis::OptionalString, meaning Optional<std::string>*/
         if (request_page) /* key exists*/ {
             LOG(INFO) << "[DmHandler] - received ack for page in address : " << PRINT_AS_HEX(vaddr) << " (previously accessed)" ; 

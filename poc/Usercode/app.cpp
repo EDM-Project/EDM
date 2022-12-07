@@ -4,7 +4,7 @@
 
 int main(int argc, char *argv[])
 { 
-   test_eviction_policy();
+   simpleZeroPageTest();
 
    return 0;
 }
