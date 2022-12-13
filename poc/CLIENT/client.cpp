@@ -10,7 +10,8 @@ Client::Client ()
     setenv("end_addr",std::to_string(end_addr).c_str(),1);
     this->redis_instance = new sw::redis::Redis("tcp://127.0.0.1:6380"); 
     /* REDIS_INTEGRATION: for phase I we need one redis server as localhost.
-    tcp is optional. advanced options can be set using the ConnectionOptions data structure later*/
+    tcp is optional. advanced options can be set using the ConnectionOptions data structure later
+    port number could be changed according to the intended server's open port*/
     this->ufd = new DmHandler(this->redis_instance,this,high_threshold,low_threshold); 
     this->dm_handler_thread = ufd->ActivateDM_Handler();
     this->lpet = new Lpet(this->redis_instance, lspt, this->high_threshold, this->low_threshold);

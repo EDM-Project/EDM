@@ -60,10 +60,8 @@ uint32_t Lpet::run()
             
             memcpy(mem,buffer,PAGE_SIZE);
 
-            /* from what was discussed - here a set command should be applied instead of MIP evict*/
             std::string str_vaddr = convertToHexRep(evicted.vaddr);
-            this->redis_instance->set(str_vaddr,mem);
-            /*mpi_instance->RequestEvictPage(evicted.vaddr, mem);*/
+            this->redis_instance->set(str_vaddr,mem); /* update command using Redis server*/
             LOG(INFO) << "[Lsspet] - received ack for eviction of page in address : " << PRINT_AS_HEX(evicted.vaddr)  ; 
 
             

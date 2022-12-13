@@ -31,7 +31,6 @@ void DmHandler::ListenPageFaults(){
 
     /* Loop, handling incoming events on the userfaultfd
         file descriptor. */
-    LOG(DEBUG) << " [DmHandler] - IN LISTENPAGEFAULTS ";
     struct pollfd pollfd;
     pollfd.fd = uffd;
     pollfd.events = POLLIN;
@@ -48,7 +47,6 @@ void DmHandler::ListenPageFaults(){
         }
         switch (msg.event) {
             case UFFD_EVENT_PAGEFAULT:
-                LOG(DEBUG) << "[DmHandler] page fault"; 
                 HandleMissPageFault(&msg);
                 break;
             case UFFD_EVENT_FORK:
@@ -85,7 +83,6 @@ void DmHandler::HandleMissPageFault(struct uffd_msg* msg){
     LOG(INFO) << "[DmHandler] - send request for the page in address " << PRINT_AS_HEX(vaddr) << " from DMS";
     /* thinking about error handling approach, thus:*/
     try {
-        LOG(INFO) << "[DmHandler] goint go invoke redis"; 
         std::string str_vaddr = convertToHexRep(vaddr);
         auto request_page = this->redis_instance->get(str_vaddr); /* conversion should be ok*/
         /* now request_page is of type sw::Redis::OptionalString, meaning Optional<std::string>*/
@@ -106,7 +103,6 @@ void DmHandler::HandleMissPageFault(struct uffd_msg* msg){
         LOG(ERROR) << "[DmHandler] - failed to resolve page fault for address " <<  PRINT_AS_HEX(vaddr) ;
 
     }
-    /*MPI_EDM::RequestGetPageData request_page = mpi_instance->RequestPageFromDMS(vaddr);*/
     
     this->client->lspt.Add(vaddr);
 }
