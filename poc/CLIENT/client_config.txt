@@ -1,4 +1,4 @@
 start_addr = 0x1B58000
 end_addr = 0x1F40000
-low_threshold = 2
-high_threshold = 4
+low_threshold = 15
+high_threshold = 20

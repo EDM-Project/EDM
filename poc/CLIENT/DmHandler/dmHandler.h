@@ -19,6 +19,7 @@
 #include <poll.h>
 #include <thread>
 #include "../../shared/logger.h"
+#include "../../shared/helperfunc.h"
 #include <sw/redis++/redis++.h>
 
 

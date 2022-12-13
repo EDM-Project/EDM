@@ -3,6 +3,7 @@
 #include <vector>
 #include "page.h"
 #include "../../shared/logger.h"
+#include "../../shared/helperfunc.h"
 #include "lspt.h"
 #include <sw/redis++/redis++.h>
 #define PRINT_AS_HEX(ADDR) std::hex << "0x" << ADDR << std::dec

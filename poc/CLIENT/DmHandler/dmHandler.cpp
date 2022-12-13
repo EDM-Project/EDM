@@ -31,7 +31,7 @@ void DmHandler::ListenPageFaults(){
 
     /* Loop, handling incoming events on the userfaultfd
         file descriptor. */
-    
+    LOG(DEBUG) << " [DmHandler] - IN LISTENPAGEFAULTS ";
     struct pollfd pollfd;
     pollfd.fd = uffd;
     pollfd.events = POLLIN;
@@ -48,6 +48,7 @@ void DmHandler::ListenPageFaults(){
         }
         switch (msg.event) {
             case UFFD_EVENT_PAGEFAULT:
+                LOG(DEBUG) << "[DmHandler] page fault"; 
                 HandleMissPageFault(&msg);
                 break;
             case UFFD_EVENT_FORK:
@@ -84,9 +85,8 @@ void DmHandler::HandleMissPageFault(struct uffd_msg* msg){
     LOG(INFO) << "[DmHandler] - send request for the page in address " << PRINT_AS_HEX(vaddr) << " from DMS";
     /* thinking about error handling approach, thus:*/
     try {
-        std::ostringstream temp_stream;
-        temp_stream << "0x" << std::setfill('0') << std::setw(8) << std::hex << vaddr; /* convert vaddr to hex correct format*/
-        std::string str_vaddr = temp_stream.str();  
+        LOG(INFO) << "[DmHandler] goint go invoke redis"; 
+        std::string str_vaddr = convertToHexRep(vaddr);
         auto request_page = this->redis_instance->get(str_vaddr); /* conversion should be ok*/
         /* now request_page is of type sw::Redis::OptionalString, meaning Optional<std::string>*/
         if (request_page) /* key exists*/ {
