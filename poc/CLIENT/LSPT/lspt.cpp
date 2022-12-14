@@ -37,4 +37,5 @@ std::ostream& operator<<(std::ostream& os, const LSPT& lspt){
     }
     os << "-----END LSPT ----" << std::endl;
     os << std::endl;
+    return os;
 }

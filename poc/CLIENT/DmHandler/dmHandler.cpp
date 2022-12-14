@@ -4,12 +4,12 @@
 
 #define DEBUG_MODE 1
 
-DmHandler::DmHandler(MPI_EDM::MpiClient* mpi_instance, Client* client, int high_threshold, int low_threshold) {
+DmHandler::DmHandler(sw::redis::Redis* redis_instance, Client* client, int high_threshold, int low_threshold) {
     this->len = len;
     this->addr = addr;
     this->high_threshold = high_threshold;
     this->low_threshold = low_threshold;
-    this->mpi_instance = mpi_instance;
+    this->redis_instance = redis_instance;
     struct uffdio_api uffdio_api;
     struct uffdio_register uffdio_register;
     long uffd = syscall(__NR_userfaultfd, O_CLOEXEC | O_NONBLOCK);
@@ -20,8 +20,6 @@ DmHandler::DmHandler(MPI_EDM::MpiClient* mpi_instance, Client* client, int high_
     uffdio_api.features = 0;
     if (ioctl(uffd, UFFDIO_API, &uffdio_api) == -1)
         LOG(ERROR) << "[DmHandler] : ioctl- UFFDIO_API failed";
-
-    
     this->uffd = uffd;
     this->client = client;
 }
@@ -33,11 +31,9 @@ void DmHandler::ListenPageFaults(){
 
     /* Loop, handling incoming events on the userfaultfd
         file descriptor. */
-    
     struct pollfd pollfd;
     pollfd.fd = uffd;
     pollfd.events = POLLIN;
-
     while (poll(&pollfd, 1, -1) > 0)
     {
         /* Read an event from the userfaultfd. */
@@ -67,8 +63,8 @@ void DmHandler::ListenPageFaults(){
 void DmHandler::HandleMissPageFault(struct uffd_msg* msg){
 
     /* Display info about the page-fault event. */
-    LOG(INFO) << "\n--------------START HADNLING PAGE FAULT--------------";
-    LOG(INFO) << "[DmHandler] - UFFD_EVENT_PAGEFAULT in address = " << PRINT_AS_HEX(msg->arg.pagefault.address) ;
+    LOG(DEBUG) << "\n--------------START HADNLING PAGE FAULT--------------";
+    LOG(DEBUG) << "[DmHandler] - UFFD_EVENT_PAGEFAULT in address = " << PRINT_AS_HEX(msg->arg.pagefault.address) ;
     
     unsigned long long vaddr = msg->arg.pagefault.address;
     
@@ -85,21 +81,26 @@ void DmHandler::HandleMissPageFault(struct uffd_msg* msg){
         while(this->client->is_lpet_running) {}
     }
     LOG(INFO) << "[DmHandler] - send request for the page in address " << PRINT_AS_HEX(vaddr) << " from DMS";
-    MPI_EDM::RequestGetPageData request_page = mpi_instance->RequestPageFromDMS(vaddr);
-    switch (request_page.info){
-        case(MPI_EDM::error):
-            LOG(ERROR) << "[DmHandler] - failed to resolve page fault for address " <<  PRINT_AS_HEX(vaddr) ;
-        break;
-        case (MPI_EDM::new_page):
+    /* thinking about error handling approach, thus:*/
+    try {
+        std::string str_vaddr = convertToHexRep(vaddr);
+        auto request_page = this->redis_instance->get(str_vaddr); /* conversion should be ok*/
+        /* now request_page is of type sw::Redis::OptionalString, meaning Optional<std::string>*/
+        if (request_page) /* key exists*/ {
+            LOG(INFO) << "[DmHandler] - received ack for page in address : " << PRINT_AS_HEX(vaddr) << " (previously accessed)" ; 
+            LOG(INFO) << "[DmHandler] - copying page content from DMS to address : " << PRINT_AS_HEX(vaddr);
+           CopyExistingPage(vaddr,request_page.value().c_str()); /* here it's request_page since it's the key's value in Redis*/
+            /* request_page is converted to const char **/
+        }
+        else { /* key does not exist*/
             LOG(INFO) << "[DmHandler] - received ack for page in address : " << PRINT_AS_HEX(vaddr) << " (first access)" ; 
             LOG(INFO) << "[DmHandler] - copying zero page to address : " << PRINT_AS_HEX(vaddr);
             CopyZeroPage(vaddr);
-        break;
-        case (MPI_EDM::existing_page):
-            LOG(INFO) << "[DmHandler] - received ack for page in address : " << PRINT_AS_HEX(vaddr) << " (previously accessed)" ; 
-            LOG(INFO) << "[DmHandler] - copying page content from DMS to address : " << PRINT_AS_HEX(vaddr);
-            CopyExistingPage(vaddr,request_page.page);
-        break;
+        }
+    }
+    
+    catch (...) {   /* an error has occured - catch any type of error*/  
+        LOG(ERROR) << "[DmHandler] - failed to resolve page fault for address " <<  PRINT_AS_HEX(vaddr) ;
 
     }
     
@@ -133,7 +134,7 @@ void DmHandler::CopyZeroPage(uintptr_t vaddr){
         LOG(ERROR) << "[DmHandler] - ioctl UFFDIO_ZEROPAGE failed";
     
 }
-void DmHandler::CopyExistingPage(uintptr_t vaddr,char* source_page_content){
+void DmHandler::CopyExistingPage(uintptr_t vaddr,const char* source_page_content){
 
     static char *page = NULL;
     /* Create a page that will be copied into the faulting region. */

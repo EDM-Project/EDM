@@ -18,8 +18,10 @@
 #include <sys/ioctl.h>
 #include <poll.h>
 #include <thread>
-#include "../mpiClient/mpiClient.h"
 #include "../../shared/logger.h"
+#include "../../shared/helperfunc.h"
+#include <sw/redis++/redis++.h>
+
 
 #define PRINT_AS_HEX(ADDR) std::hex << "0x" << ADDR << std::dec
 
@@ -35,17 +37,17 @@ class DmHandler {
     int low_threshold;
     uint64_t len;       /* Length of region handled by userfaultfd */
     std::thread thr;      /* ID of thread that handles page faults */
-    MPI_EDM::MpiClient* mpi_instance;
+    sw::redis::Redis* redis_instance;
     Client* client; 
 
     public:
     DmHandler() = default;
-    DmHandler(MPI_EDM::MpiClient* mpi_instance, Client* client, int high_threshold, int low_threshold);
+    DmHandler(sw::redis::Redis* redis_instance, Client* client, int high_threshold, int low_threshold);
     ~DmHandler() = default;
     void ListenPageFaults();
     void HandleMissPageFault(struct uffd_msg* msg);
     void CopyZeroPage(uintptr_t vaddr);
-    void CopyExistingPage(uintptr_t vaddr,char* source_page_content);
+    void CopyExistingPage(uintptr_t vaddr,const char* source_page_content);
     std::thread ActivateDM_Handler();
     void InvokeLpetIfNeeded();
 
