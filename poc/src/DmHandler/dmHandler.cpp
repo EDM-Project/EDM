@@ -1,10 +1,10 @@
 #include <iostream>
 #include "dmHandler.h"
-#include "../client.h"
+#include "../appMonitor.h"
 
 #define DEBUG_MODE 1
 
-DmHandler::DmHandler(sw::redis::Redis* redis_instance, Client* client, int high_threshold, int low_threshold) {
+DmHandler::DmHandler(sw::redis::Redis* redis_instance, AppMonitor* client, int high_threshold, int low_threshold) {
     this->len = len;
     this->addr = addr;
     this->high_threshold = high_threshold;

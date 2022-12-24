@@ -18,15 +18,15 @@
 #include <sys/ioctl.h>
 #include <poll.h>
 #include <thread>
-#include "../../shared/logger.h"
-#include "../../shared/helperfunc.h"
+#include "../utils/logger.h"
+#include "../utils/helperfunc.h"
 #include <sw/redis++/redis++.h>
 
 
 #define PRINT_AS_HEX(ADDR) std::hex << "0x" << ADDR << std::dec
 
 #define PAGE_SIZE 4096
-class Client;
+class AppMonitor;
 
 class DmHandler {
     private:
@@ -38,11 +38,11 @@ class DmHandler {
     uint64_t len;       /* Length of region handled by userfaultfd */
     std::thread thr;      /* ID of thread that handles page faults */
     sw::redis::Redis* redis_instance;
-    Client* client; 
+    AppMonitor* client; 
 
     public:
     DmHandler() = default;
-    DmHandler(sw::redis::Redis* redis_instance, Client* client, int high_threshold, int low_threshold);
+    DmHandler(sw::redis::Redis* redis_instance, AppMonitor* client, int high_threshold, int low_threshold);
     ~DmHandler() = default;
     void ListenPageFaults();
     void HandleMissPageFault(struct uffd_msg* msg);

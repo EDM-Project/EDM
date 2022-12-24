@@ -1,29 +1,31 @@
-#ifndef CLIENT_H
-#define CLIENT_H
+#ifndef APPMONITOR_H
+#define APPMONITOR_H
 
 #include <thread>
 #include <vector>
 #include <condition_variable> 
 #include <algorithm>
-#include "../shared/logger.h"
+#include "utils/logger.h"
 #include "LSPT/lpet.h"
 #include "LSPT/page.h"
 #include "LSPT/lspt.h"
+#include "MonitoredAreas.h"
 #include "DmHandler/dmHandler.h"
 #include <sw/redis++/redis++.h>
 
 
-class Client {
+class AppMonitor {
 
 private:
-    uintptr_t start_addr;
-    uintptr_t end_addr;
+    
+    std::string path;
     int high_threshold;
     int low_threshold;
-    Lpet* lpet;
     
     
+    Lpet* lpet;    
     DmHandler* ufd;
+
     sw::redis::Redis* redis_instance;
     std::thread dm_handler_thread;
     std::thread lpet_thread;
@@ -33,13 +35,15 @@ private:
 public:
     std::mutex run_lpet_mutex;
     std::condition_variable cv;
+    
     LSPT lspt;    
+    MonitoredAreas monitoredAreas;
 
     //for debug
     bool is_lpet_running;
 
-    Client ();
-    ~Client();
+    AppMonitor ();
+    ~AppMonitor();
     void RunLpetThread();
     void WaitForRunLpet();
     
