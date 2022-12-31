@@ -9,7 +9,7 @@
 #include "LSPT/lpet.h"
 #include "LSPT/page.h"
 #include "LSPT/lspt.h"
-#include "MonitoredAreas.h"
+#include "monitoredAreas.h"
 #include "DmHandler/dmHandler.h"
 #include <sw/redis++/redis++.h>
 

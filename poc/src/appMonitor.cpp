@@ -25,6 +25,9 @@ AppMonitor::~AppMonitor() {
 
 }
 
+int main() { 
+    LOG(DEBUG) << "main function start running";
+}
 
 
 

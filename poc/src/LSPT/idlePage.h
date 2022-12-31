@@ -22,6 +22,7 @@
 #include <stdint.h> /* uint64_t  */
 #include <stdbool.h>
 #include <time.h>
+#include <string>
 #include "../utils/logger.h"
 
 
@@ -85,13 +86,13 @@ int get_page_flags_lru(KpageFlagsEntry *entry, uint64_t pfn);
 // /* read and print the relevant kpageflags.
 //  * @param[in]  vaddr  page virtual adress of the page
 //  */
-void read_kflags(uintptr_t vaddr);
+void read_kflags(uintptr_t vaddr, pid_t pid = -1);
 
 
 /* get page frame number of a given virtual address
 * @param[in]  vaddr  page virtual adress of the page
 */
-uint64_t get_pfn_by_addr(uintptr_t vaddr);
+uint64_t get_pfn_by_addr(uintptr_t vaddr, pid_t pid = -1);
 
 
 static uint64_t pread_uint64(int fd, uint64_t index);
@@ -101,5 +102,9 @@ static bool is_page_idle(int page_idle_fd, uint64_t pfn);
 void set_idle_pages(uint64_t nr_pfns, uint64_t pfns[]);
 
 void* get_idle_flags(uint64_t nr_pfns, const uint64_t pfns[],uint8_t results[]);
+
+bool isPageSwappedOrPresent(pid_t pid, uint64_t vaddr);
+
+std::string getProcPagemapPath(pid_t pid = -1);
 
 #endif

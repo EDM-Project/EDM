@@ -97,10 +97,11 @@ int get_page_flags_lru(KpageFlagsEntry *entry, uint64_t pfn)
 // /* read and print the relevant kpageflags.
 //  * @param[in]  vaddr  page virtual adress of the page
 //  */
-void read_kflags(uintptr_t vaddr)
+void read_kflags(uintptr_t vaddr, pid_t pid)
 {
+    std::string proc_maps_path = getProcPagemapPath(pid);
     int fd;
-    fd = open("/proc/self/pagemap", O_RDONLY);
+    fd = open(proc_maps_path.c_str(), O_RDONLY);
     if (fd < 0) {
         perror("Can't open pagemap");
         exit(1);
@@ -118,11 +119,12 @@ void read_kflags(uintptr_t vaddr)
 /* get page frame number of a given virtual address
  * @param[in]  vaddr  page virtual adress of the page
  */
-uint64_t get_pfn_by_addr(uintptr_t vaddr)
+uint64_t get_pfn_by_addr(uintptr_t vaddr, pid_t pid)
 {
-    //LOG(DEBUG) << "[idle_page line 123] - get pfn of vaddr :" << PRINT_AS_HEX(vaddr);
+    std::string proc_maps_path = getProcPagemapPath(pid);
+    //LOG(DEBUG) << "[idle_page line 124] - get pfn of vaddr :" << PRINT_AS_HEX(vaddr);
     int fd;
-    fd = open("/proc/self/pagemap", O_RDONLY);
+    fd = open(proc_maps_path.c_str(), O_RDONLY);
     if (fd < 0) {
         perror("Can't open pagemap");
         exit(1);
@@ -131,7 +133,7 @@ uint64_t get_pfn_by_addr(uintptr_t vaddr)
     PagemapEntry page_map_entry;
     pagemap_get_entry(&page_map_entry,fd,vaddr);
     uint64_t pfn = page_map_entry.pfn;
-    //LOG(DEBUG) << "[idle_page line 134] - got pfn  :" << pfn;
+    //LOG(DEBUG) << "[idle_page line 135] - got pfn  :" << pfn;
     close(fd);
     // LOG(DEBUG) << "_____________ Kflags____________";
     // read_kflags(vaddr);
@@ -223,4 +225,34 @@ void* get_idle_flags(uint64_t nr_pfns, const uint64_t pfns[],uint8_t results[])
 
     close(fd);
     return nullptr;
+}
+
+std::string getProcPagemapPath(pid_t pid) { 
+    std::string proc_pagemap_path;
+    if (pid == -1) { 
+        proc_pagemap_path = "/proc/self/pagemap";
+    } 
+    else { 
+        proc_pagemap_path = "/proc/" + std::to_string(pid) + "/pagemap";
+    }
+    return proc_pagemap_path;
+}
+
+bool isPageSwappedOrPresent(pid_t pid, uint64_t vaddr) { 
+    std::string proc_maps_path = getProcPagemapPath(pid);
+    int fd;
+    fd = open(proc_maps_path.c_str(), O_RDONLY);
+    if (fd < 0) {
+        perror("Can't open pagemap");
+        exit(1);
+    }
+
+    PagemapEntry page_map_entry;
+    pagemap_get_entry(&page_map_entry,fd,vaddr);
+    bool result = false;
+    if (page_map_entry.present == 1 || page_map_entry.swapped == 1) { 
+        result = true;
+    }
+    close(fd);
+    return result;
 }

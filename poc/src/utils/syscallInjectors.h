@@ -1,3 +1,5 @@
+#ifndef SYSCALL_INJECTORS
+#define SYSCALL_INJECTORS
 
 #include "ptrace_do/libptrace_do.h"
 #include "helperfunc.h"
@@ -34,3 +36,5 @@ void injectUffdRegister(pid_t pid, int fd, uint64_t start_address, uint64_t end_
 char* injectMmap(pid_t pid);
 void injectMremapPage(pid_t pid, uint64_t addr,uint64_t dest);
 void injectCloseFd(pid_t pid, int fd);
+
+#endif
