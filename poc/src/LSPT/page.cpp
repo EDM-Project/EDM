@@ -1,6 +1,6 @@
 #include "page.h"
 
-Page::Page(uintptr_t vaddr) : vaddr(vaddr) ,pfn(get_pfn_by_addr(vaddr)) {};
+Page::Page(uintptr_t vaddr, pid_t pid) : vaddr(vaddr), pid(pid), pfn(get_pfn_by_addr(vaddr, pid)) {};
 
 
 bool Page::is_idle() const
@@ -22,6 +22,8 @@ std::ostream& operator<<(std::ostream& os, const Page& page){
     os << "pfn : " << page.pfn;
     os << "  ";
     os << "is_idle: " << page.is_idle();
+    os << "  ";
+    os << "pid: " << page.pid;
     os << std::endl;
     return os;
 }

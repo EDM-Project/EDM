@@ -4,23 +4,16 @@
 
 #define DEBUG_MODE 1
 
-DmHandler::DmHandler(sw::redis::Redis* redis_instance, AppMonitor* client, int high_threshold, int low_threshold) {
+DmHandler::DmHandler(sw::redis::Redis* redis_instance, AppMonitor* client, int high_threshold, int low_threshold,pid_t pid) {
     this->len = len;
     this->addr = addr;
     this->high_threshold = high_threshold;
     this->low_threshold = low_threshold;
     this->redis_instance = redis_instance;
-    struct uffdio_api uffdio_api;
-    struct uffdio_register uffdio_register;
-    long uffd = syscall(__NR_userfaultfd, O_CLOEXEC | O_NONBLOCK);
-    if (uffd == -1)
-        LOG(ERROR) << "[DmHandler] : syscall userfaultfd failed";
-    setenv("uffd",std::to_string(uffd).c_str(),1);
-    uffdio_api.api = UFFD_API;
-    uffdio_api.features = 0;
-    if (ioctl(uffd, UFFDIO_API, &uffdio_api) == -1)
-        LOG(ERROR) << "[DmHandler] : ioctl- UFFDIO_API failed";
-    this->uffd = uffd;
+    this->pid = pid;
+
+    int uffd_son = injectUffdCreate(pid);
+    this->uffd = duplicateFileDescriptor(pid, uffd_son);
     this->client = client;
 }
 
@@ -60,6 +53,7 @@ void DmHandler::ListenPageFaults(){
         }
     }
 }
+
 void DmHandler::HandleMissPageFault(struct uffd_msg* msg){
 
     /* Display info about the page-fault event. */
@@ -104,7 +98,7 @@ void DmHandler::HandleMissPageFault(struct uffd_msg* msg){
 
     }
     
-    this->client->lspt.Add(vaddr);
+    this->client->lspt.Add(Page(vaddr, pid));
 }
 
 void DmHandler::InvokeLpetIfNeeded(){ 
@@ -120,7 +114,6 @@ void DmHandler::InvokeLpetIfNeeded(){
     }
 }
 
-
 void DmHandler::CopyZeroPage(uintptr_t vaddr){
     struct uffdio_zeropage uffdio_zero;
 
@@ -134,6 +127,7 @@ void DmHandler::CopyZeroPage(uintptr_t vaddr){
         LOG(ERROR) << "[DmHandler] - ioctl UFFDIO_ZEROPAGE failed";
     
 }
+
 void DmHandler::CopyExistingPage(uintptr_t vaddr,const char* source_page_content){
 
     static char *page = NULL;
@@ -163,7 +157,6 @@ void DmHandler::CopyExistingPage(uintptr_t vaddr,const char* source_page_content
     if (ioctl(uffd, UFFDIO_COPY, &uffdio_copy) == -1)
         LOG(ERROR) << "[DmHandler] - ioctl UFFDIO_COPY failed";
 }
-
 
 std::thread DmHandler::ActivateDM_Handler(){
     std::thread t (&DmHandler::ListenPageFaults,this);

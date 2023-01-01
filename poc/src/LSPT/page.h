@@ -9,8 +9,9 @@
 class Page{
 
 public:
-    Page(uintptr_t vaddr);
+    Page(uintptr_t vaddr,pid_t pid);
     ~Page() = default;
+    pid_t pid;
     int page_idle_fd;
     bool is_idle() const;
     void set_idle();

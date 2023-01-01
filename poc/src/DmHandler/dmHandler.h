@@ -20,6 +20,7 @@
 #include <thread>
 #include "../utils/logger.h"
 #include "../utils/helperfunc.h"
+#include "../utils/syscallInjectors.h"
 #include <sw/redis++/redis++.h>
 
 
@@ -39,10 +40,11 @@ class DmHandler {
     std::thread thr;      /* ID of thread that handles page faults */
     sw::redis::Redis* redis_instance;
     AppMonitor* client; 
+    pid_t pid;
 
     public:
     DmHandler() = default;
-    DmHandler(sw::redis::Redis* redis_instance, AppMonitor* client, int high_threshold, int low_threshold);
+    DmHandler(sw::redis::Redis* redis_instance, AppMonitor* client, int high_threshold, int low_threshold, pid_t pid);
     ~DmHandler() = default;
     void ListenPageFaults();
     void HandleMissPageFault(struct uffd_msg* msg);

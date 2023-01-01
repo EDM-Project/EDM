@@ -29,7 +29,7 @@ void MapTracker::updateMaps() {
                 uint64_t address = current->start_address;
                 while (address <= current->end_address) {
                     if (isPageSwappedOrPresent(pid, address)) { 
-                        lspt.Add(Page(address));
+                        lspt.Add(Page(address, pid));
                     }
                     address += PAGE_SIZE;
                 }

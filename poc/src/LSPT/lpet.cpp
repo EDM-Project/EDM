@@ -12,13 +12,13 @@ using std::string;
 
 #include "lpet.h"
 
-Lpet::Lpet(sw::redis::Redis* redis_instance, LSPT& lspt, int high, int low) :
-    lspt(lspt), high_thresh(high), low_thresh(low), first_run(true)
+Lpet::Lpet(pid_t pid,sw::redis::Redis* redis_instance, LSPT& lspt, int high, int low) :
+    pid(pid), lspt(lspt), high_thresh(high), low_thresh(low), first_run(true)
 {
         
          this->start_point = 0;
          this->redis_instance = redis_instance;
-         buffer =  (char*) mmap(NULL,PAGE_SIZE,PROT_READ | PROT_WRITE , MAP_ANONYMOUS | MAP_PRIVATE ,-1,0);
+         buffer =  injectMmap(pid,PAGE_SIZE);
 }
 
 
@@ -56,15 +56,16 @@ uint32_t Lpet::run()
             
             char* mem  = (char*)malloc(PAGE_SIZE);
             
-            mremap((void*)evicted.vaddr,PAGE_SIZE,PAGE_SIZE,MREMAP_MAYMOVE | MREMAP_DONTUNMAP | MREMAP_FIXED, buffer);
-            
-            memcpy(mem,buffer,PAGE_SIZE);
+            //mremap((void*)evicted.vaddr,PAGE_SIZE,PAGE_SIZE,MREMAP_MAYMOVE | MREMAP_DONTUNMAP | MREMAP_FIXED, buffer);
+            injectMremapPage(pid, evicted.vaddr, (uintptr_t) buffer);
+
+            readPageFromProcess(pid, (uintptr_t) buffer, mem);
+            //memcpy(mem,buffer,PAGE_SIZE);
 
             std::string str_vaddr = convertToHexRep(evicted.vaddr);
             this->redis_instance->set(str_vaddr,mem); /* update command using Redis server*/
-            LOG(INFO) << "[Lsspet] - received ack for eviction of page in address : " << PRINT_AS_HEX(evicted.vaddr)  ; 
-
-            
+            LOG(INFO) << "[Lpet] - received ack for eviction of page in address : " << PRINT_AS_HEX(evicted.vaddr)  ; 
+           
             free(mem);
             
 

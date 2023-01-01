@@ -1,10 +1,8 @@
 #ifndef SYSCALL_INJECTORS
 #define SYSCALL_INJECTORS
 
-#include "ptrace_do/libptrace_do.h"
-#include "helperfunc.h"
+
 #include <sys/syscall.h>
-#include "logger.h"
 #include <errno.h>
 #include <stdio.h>
 #include <string.h>
@@ -24,7 +22,11 @@
 #include <sys/syscall.h>
 #include <sys/ioctl.h>
 #include <poll.h>
+#include <sys/uio.h>
 
+#include "ptrace_do/libptrace_do.h"
+#include "helperfunc.h"
+#include "logger.h"
 
 #define __NR_pidfd_getfd 438
 #define SYS_pidfd_open 434
@@ -32,9 +34,11 @@
 
 unsigned long injectUffdCreate(pid_t pid);
 int duplicateFileDescriptor(pid_t pid, int fd);
-void injectUffdRegister(pid_t pid, int fd, uint64_t start_address, uint64_t end_address);
-char* injectMmap(pid_t pid);
-void injectMremapPage(pid_t pid, uint64_t addr,uint64_t dest);
+void injectUffdRegister(pid_t pid, int fd, uintptr_t start_address, uintptr_t end_address);
+char* injectMmap(pid_t pid, size_t len);
+void injectMremapPage(pid_t pid, uintptr_t addr,uintptr_t dest);
 void injectCloseFd(pid_t pid, int fd);
+
+void readPageFromProcess(pid_t pid, uintptr_t address, char* buffer, size_t page_size = PAGE_SIZE);
 
 #endif

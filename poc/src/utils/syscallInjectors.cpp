@@ -1,6 +1,6 @@
 #include "syscallInjectors.h"
 
-unsigned long remoteUffd(pid_t pid) {
+unsigned long injectUffdCreate(pid_t pid) {
         struct ptrace_do* target = ptrace_do_init(pid);
 		long uffd = ptrace_do_syscall(target, __NR_userfaultfd,  O_NONBLOCK, 0, 0, 0, 0, 0);
 
@@ -33,7 +33,7 @@ int duplicateFileDescriptor(pid_t pid, int fd) {
     return duplicatedFd;
 }
 
-void injectUffdRegister(pid_t pid, int fd, uint64_t start_address, uint64_t end_address) { 
+void injectUffdRegister(pid_t pid, int fd, uintptr_t start_address, uintptr_t end_address) { 
     
         struct ptrace_do* target = ptrace_do_init(pid);
         LOG(INFO) << " UFFDIO_REGISTER - start_address" << convertToHexRep(start_address) << " end_address" << convertToHexRep(end_address);
@@ -60,7 +60,7 @@ char* injectMmap(pid_t pid, size_t len) {
     ptrace_do_cleanup(target);
     return addr;
 }
-void injectMremapPage(pid_t pid, uint64_t addr,uint64_t dest) { 
+void injectMremapPage(pid_t pid, uintptr_t addr,uintptr_t dest) { 
     struct ptrace_do* target = ptrace_do_init(pid);
 	int res = ptrace_do_syscall(target, __NR_mremap, addr,PAGE_SIZE,PAGE_SIZE,MREMAP_MAYMOVE | MREMAP_DONTUNMAP | MREMAP_FIXED, dest, 0);
     ptrace_do_cleanup(target);
@@ -70,4 +70,21 @@ void injectCloseFd(pid_t pid, int fd) {
     struct ptrace_do* target = ptrace_do_init(pid);
 	int res = ptrace_do_syscall(target, __NR_close,fd,0,0,0,0,0);
     ptrace_do_cleanup(target);
+}
+
+void readPageFromProcess(pid_t pid, uintptr_t address, char* buffer, size_t page_size) { 
+    struct iovec local[1];
+    struct iovec remote[1];
+    ssize_t nread;
+
+    local[0].iov_base = buffer;
+    local[0].iov_len = page_size;
+    remote[0].iov_base = (void *) address;
+    remote[0].iov_len = page_size;
+
+    nread = process_vm_readv(pid, local, 1, remote, 1, 0);
+    if (nread != page_size) { 
+        LOG(ERROR) << "failed to read page from address" << convertToHexRep(address);
+    }
+    
 }
