@@ -5,11 +5,13 @@
 #include <vector>
 #include <condition_variable> 
 #include <algorithm>
+#include <signal.h>
 #include "utils/logger.h"
 #include "LSPT/lpet.h"
 #include "LSPT/page.h"
 #include "LSPT/lspt.h"
 #include "monitoredAreas.h"
+#include "mapTracker.h"
 #include "DmHandler/dmHandler.h"
 #include <sw/redis++/redis++.h>
 
@@ -18,17 +20,21 @@ class AppMonitor {
 
 private:
     
-    std::string path;
+    std::string binary_path;
     int high_threshold;
     int low_threshold;
     
-    
+    char* child_stack;
+    pid_t son_pid;
+
     Lpet* lpet;    
-    DmHandler* ufd;
+    DmHandler* dm_handler;
+    MapTracker* map_tracker;
 
     sw::redis::Redis* redis_instance;
     std::thread dm_handler_thread;
     std::thread lpet_thread;
+    std::thread map_tracker_thread;
     
     void ParseConfigFile ();
 
@@ -37,16 +43,21 @@ public:
     std::condition_variable cv;
     
     LSPT lspt;    
-    MonitoredAreas monitoredAreas;
+    MonitoredAreas monitored_areas;
 
     //for debug
     bool is_lpet_running;
 
-    AppMonitor ();
+    AppMonitor();
     ~AppMonitor();
+
+    static int child_function(void *arg);
+    pid_t RunUserCode();
     void RunLpetThread();
     void WaitForRunLpet();
-    
+    pid_t getSonPid() { 
+        return son_pid;
+    }
     
 
 };

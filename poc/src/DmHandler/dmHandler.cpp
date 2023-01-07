@@ -12,13 +12,14 @@ DmHandler::DmHandler(sw::redis::Redis* redis_instance, AppMonitor* client, int h
     this->redis_instance = redis_instance;
     this->pid = pid;
 
-    int uffd_son = injectUffdCreate(pid);
+    this->uffd_son = injectUffdCreate(pid);
     this->uffd = duplicateFileDescriptor(pid, uffd_son);
     this->client = client;
 }
 
 
 void DmHandler::ListenPageFaults(){
+
     static struct uffd_msg msg;   /* Data read from userfaultfd */
     ssize_t nread;
 
@@ -27,6 +28,8 @@ void DmHandler::ListenPageFaults(){
     struct pollfd pollfd;
     pollfd.fd = uffd;
     pollfd.events = POLLIN;
+
+    LOG(DEBUG) << "[DmHandler] - Waiting for events " << "fd: " << this->uffd;
     while (poll(&pollfd, 1, -1) > 0)
     {
         /* Read an event from the userfaultfd. */
@@ -158,7 +161,41 @@ void DmHandler::CopyExistingPage(uintptr_t vaddr,const char* source_page_content
         LOG(ERROR) << "[DmHandler] - ioctl UFFDIO_COPY failed";
 }
 
+// void* func(void* arg)
+// {
+//     printf("--------->Inside the thread\n");
+//     pid_t pid =  *((pid_t*)arg);
+//     printf("pid is : %d\n",pid);
+//     injectMmap(pid,256);
+//     printf("--------->Inside the thread\n");
+//     injectMmap(pid,256);
+//     printf("--------->Inside the thread\n");
+//     injectMmap(pid,256);
+//     printf("--------->Inside the thread\n");
+//     injectMmap(pid,256);
+//     printf("--------->Inside the thread\n");
+//     // exit the current thread
+
+//     pthread_exit(NULL);
+// }
+// void foo (pid_t pid) { 
+//     printf("--------->Inside CPP thread\n");
+//     injectMmap(pid,512);
+// }
+
+
 std::thread DmHandler::ActivateDM_Handler(){
+
+
+    // pthread_t ptid;
+  
+    // // Creating a new thread
+    // pthread_create(&ptid, NULL, &func, &pid);
+    // pthread_join(ptid, NULL);
+
+    // std::thread q(foo, pid);
+    // q.join();
+
     std::thread t (&DmHandler::ListenPageFaults,this);
     return t;
 }

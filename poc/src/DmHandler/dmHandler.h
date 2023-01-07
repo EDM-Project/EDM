@@ -33,6 +33,7 @@ class DmHandler {
     private:
 
     long uffd;          /* userfaultfd file descriptor */
+    long uffd_son;
     char *addr;         /* Start of region handled by userfaultfd */
     int high_threshold;
     int low_threshold;
@@ -46,6 +47,13 @@ class DmHandler {
     DmHandler() = default;
     DmHandler(sw::redis::Redis* redis_instance, AppMonitor* client, int high_threshold, int low_threshold, pid_t pid);
     ~DmHandler() = default;
+
+    long getUffd() { 
+        return uffd;
+    }
+    long getUffdSon() { 
+        return uffd_son;
+    }
     void ListenPageFaults();
     void HandleMissPageFault(struct uffd_msg* msg);
     void CopyZeroPage(uintptr_t vaddr);

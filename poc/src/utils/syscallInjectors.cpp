@@ -1,9 +1,12 @@
 #include "syscallInjectors.h"
 
+
+
 unsigned long injectUffdCreate(pid_t pid) {
         struct ptrace_do* target = ptrace_do_init(pid);
 		long uffd = ptrace_do_syscall(target, __NR_userfaultfd,  O_NONBLOCK, 0, 0, 0, 0, 0);
 
+        LOG(DEBUG) << "injectUffdCreate: uffd in son process is: " << uffd;
         struct uffdio_api uffdio_api;
 		
         uffdio_api.api = UFFD_API;
@@ -30,13 +33,15 @@ int duplicateFileDescriptor(pid_t pid, int fd) {
         LOG(ERROR) << "__NR_pidfd_getfd errno is " << errno;
     
     }
+    LOG(DEBUG)<< "duplicateFileDescriptor : the duplicate fd is : " << duplicatedFd;
     return duplicatedFd;
 }
 
 void injectUffdRegister(pid_t pid, int fd, uintptr_t start_address, uintptr_t end_address) { 
     
+        LOG(DEBUG) << "injectUffdRegister try to inject in pid: " <<pid;
         struct ptrace_do* target = ptrace_do_init(pid);
-        LOG(INFO) << " UFFDIO_REGISTER - start_address" << convertToHexRep(start_address) << " end_address" << convertToHexRep(end_address);
+        LOG(INFO) << " UFFDIO_REGISTER - start_address: " << convertToHexRep(start_address) << " end_address: " << convertToHexRep(end_address);
     	struct uffdio_register uffdio_register;
         
         uffdio_register.range.start = (unsigned long)start_address;
@@ -54,9 +59,13 @@ void injectUffdRegister(pid_t pid, int fd, uintptr_t start_address, uintptr_t en
 
 }
 
+
+
 char* injectMmap(pid_t pid, size_t len) { 
+    LOG(DEBUG) << "injectMmap in len:" << len;
     struct ptrace_do* target = ptrace_do_init(pid);
     char* addr = (char *) ptrace_do_malloc(target, len);
+    LOG(DEBUG) << "injectMmap ended";
     ptrace_do_cleanup(target);
     return addr;
 }

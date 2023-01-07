@@ -1,16 +1,39 @@
-#include "tests.h"
+#include <iostream>
+#include <unistd.h>
+#include <stdio.h>
+#include <iostream>
+#include <sys/mman.h>
+#include <unistd.h>
+#include <string.h>
+#include <algorithm>
 
 #define PAGE_SIZE 4096
 
-void simpleZeroPageTest() {
+void waitFor(int time_in_seconds) { 
+  int cnt = 0; 
 
-   LOG(DEBUG) << "[Usercode] : User code main function start running" ;
+  while (cnt < time_in_seconds)
+  {
+      time_t current_time;
+      time(&current_time);
+      printf("PID: %d, Current time: %s", getpid(), ctime(&current_time));
 
-  
+      sleep(1);
+      cnt++;
+  }
+}
+
+int main() {
+
+   std::cout<< "[Usercode] : User code main function start running" << std::endl;
+
+    waitFor(7);
 
    char* area_1 = (char*) mmap( (void*)0x1D4C000, PAGE_SIZE, PROT_READ | PROT_WRITE,
                        MAP_PRIVATE | MAP_ANONYMOUS | MAP_FIXED, -1, 0);  
     /* 0x1D4C000 is in shared virtual space, so the memory mapping is registered in userfaultfd */
+
+    waitFor(3);
     area_1[0] = 'x';
 
     /*
@@ -48,7 +71,8 @@ void simpleZeroPageTest() {
 
     */      
 
-   LOG(DEBUG)<< "[Usercode] : area_1[0] " << area_1[0] ;
+   std::cout<< "[Usercode] : area_1[0] " << area_1[0] << std::endl;
    
+    waitFor(5);
 
 }
