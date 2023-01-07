@@ -95,9 +95,9 @@ pid_t AppMonitor::RunUserCode() {
 
 AppMonitor::~AppMonitor() {
 
-   dm_handler_thread.join();
-   lpet_thread.join();
-   map_tracker_thread.join();
+//    dm_handler_thread.join();
+//    lpet_thread.join();
+//    map_tracker_thread.join();
    free(child_stack);
 
 }
@@ -106,6 +106,9 @@ int main() {
     LOG(DEBUG) << "main function start running";
 
     AppMonitor a;
+    a.dm_handler_thread.join();
+    a.lpet_thread.join();
+    a.map_tracker_thread.join();
     waitpid(a.getSonPid(), NULL, 0);
 }
 

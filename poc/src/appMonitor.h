@@ -32,9 +32,7 @@ private:
     MapTracker* map_tracker;
 
     sw::redis::Redis* redis_instance;
-    std::thread dm_handler_thread;
-    std::thread lpet_thread;
-    std::thread map_tracker_thread;
+
     
     void ParseConfigFile ();
 
@@ -42,6 +40,10 @@ public:
     std::mutex run_lpet_mutex;
     std::condition_variable cv;
     
+    std::thread dm_handler_thread;
+    std::thread lpet_thread;
+    std::thread map_tracker_thread;
+
     LSPT lspt;    
     MonitoredAreas monitored_areas;
 
