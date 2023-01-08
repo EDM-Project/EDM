@@ -18,7 +18,7 @@ AppMonitor::AppMonitor () {
     LOG(DEBUG) << " RunUserCode run";
     // sigstop (after execv), init uffd of son process, and duplicate fd ()
 
-    //kill(son_pid, SIGSTOP);
+    kill(son_pid, SIGSTOP);
 
     LOG(DEBUG) << " usercode stopped";
 
@@ -53,14 +53,11 @@ AppMonitor::AppMonitor () {
 
     this->map_tracker_thread = map_tracker->ActivateMapTracker();
 
-    //this->map_tracker_thread = std::thread(&MapTracker::updateMaps, this->map_tracker);
-    //std::thread t (&MapTracker::updateMaps,this);
-
     LOG(DEBUG) << " MapTracker start";
 
     // sigcont user code
 
-    //kill(son_pid, SIGCONT);
+    kill(son_pid, SIGCONT);
 
     LOG(DEBUG) << " user code resume";
 
@@ -110,6 +107,7 @@ int main() {
     a.lpet_thread.join();
     a.map_tracker_thread.join();
     waitpid(a.getSonPid(), NULL, 0);
+   
 }
 
 void AppMonitor::ParseConfigFile () {

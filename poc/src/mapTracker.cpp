@@ -10,14 +10,15 @@ bool isSupportedMapping (struct parse_maps* entry) {
         return false;
     }
 
+    if (entry->start_address < 0x1B58000 || entry->end_address > 0x1F40000) { 
+        return false;
+    }
+
     return true;
 }
 
 
 void MapTracker::updateMaps() { 
-
-    printf("--------->Inside updateMaps CPP thread\n");
-    injectMmap(pid,512);
 
     LOG(DEBUG) << "[MapTracker] - start parsing maps: pid:" << pid;
     int i = 0; 
@@ -37,7 +38,7 @@ void MapTracker::updateMaps() {
                 injectUffdRegister(pid, uffd, current->start_address, current->end_address);
                 monitoredAreas.addVMA(VmaMetadata(current));
                 uint64_t address = current->start_address;
-                while (address <= current->end_address) {
+                while (address < current->end_address) {
                     if (isPageSwappedOrPresent(pid, address)) { 
                         lspt.Add(Page(address, pid));
                     }

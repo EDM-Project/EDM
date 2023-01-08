@@ -64,14 +64,19 @@ void injectUffdRegister(pid_t pid, int fd, uintptr_t start_address, uintptr_t en
 char* injectMmap(pid_t pid, size_t len) { 
     LOG(DEBUG) << "injectMmap in len:" << len;
     struct ptrace_do* target = ptrace_do_init(pid);
-    char* addr = (char *) ptrace_do_malloc(target, len);
+    //char* addr = (char *) ptrace_do_malloc(target, len);
+    char* addr = (char*) ptrace_do_syscall(target, __NR_mmap , (unsigned long) NULL, len,  PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0); 
     LOG(DEBUG) << "injectMmap ended";
     ptrace_do_cleanup(target);
     return addr;
 }
 void injectMremapPage(pid_t pid, uintptr_t addr,uintptr_t dest) { 
     struct ptrace_do* target = ptrace_do_init(pid);
-	int res = ptrace_do_syscall(target, __NR_mremap, addr,PAGE_SIZE,PAGE_SIZE,MREMAP_MAYMOVE | MREMAP_DONTUNMAP | MREMAP_FIXED, dest, 0);
+	uintptr_t res = ptrace_do_syscall(target, __NR_mremap, addr,PAGE_SIZE,PAGE_SIZE,MREMAP_MAYMOVE | MREMAP_DONTUNMAP | MREMAP_FIXED, dest, 0);
+    if (res != dest) { 
+        LOG(ERROR) << "[injectMremapPage] - returned address: " << convertToHexRep(res);
+    }
+
     ptrace_do_cleanup(target);
 }
 
@@ -93,7 +98,8 @@ void readPageFromProcess(pid_t pid, uintptr_t address, char* buffer, size_t page
 
     nread = process_vm_readv(pid, local, 1, remote, 1, 0);
     if (nread != page_size) { 
-        LOG(ERROR) << "failed to read page from address" << convertToHexRep(address);
+        LOG(ERROR) << "failed to read page from address " << convertToHexRep(address);
+        LOG(ERROR) << "nread: " << nread;
     }
     
 }

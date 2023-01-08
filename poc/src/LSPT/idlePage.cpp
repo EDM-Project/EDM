@@ -53,7 +53,7 @@ int pagemap_get_entry(PagemapEntry *entry, int pagemap_fd, uintptr_t vaddr)
         entry->file_page = (data >> 61) & 1;
         entry->swapped = (data >> 62) & 1;
     } else {
-        printf("page not presented");
+        printf("page not presented\n");
         //exit(1);
     }
 
