@@ -12,12 +12,11 @@ using std::string;
 
 #include "lpet.h"
 
-Lpet::Lpet(pid_t pid,sw::redis::Redis* redis_instance, LSPT& lspt, int high, int low) :
+Lpet::Lpet(pid_t pid, LSPT& lspt, int high, int low) :
     pid(pid), lspt(lspt), high_thresh(high), low_thresh(low), first_run(true)
 {
         
          this->start_point = 0;
-         this->redis_instance = redis_instance;
          buffer =  injectMmap(pid,PAGE_SIZE);
 }
 
@@ -63,7 +62,7 @@ uint32_t Lpet::run()
             //memcpy(mem,buffer,PAGE_SIZE);
 
             std::string str_vaddr = convertToHexRep(evicted.vaddr);
-            this->redis_instance->set(str_vaddr,mem); /* update command using Redis server*/
+            RedisClient::getInstance()->redis_instance->set(str_vaddr,mem); /* update command using Redis server*/
             LOG(INFO) << "[Lpet] - received ack for eviction of page in address : " << PRINT_AS_HEX(evicted.vaddr)  ; 
            
             free(mem);

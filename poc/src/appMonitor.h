@@ -32,8 +32,6 @@ private:
     DmHandler* dm_handler;
     MapTracker* map_tracker;
 
-    sw::redis::Redis* redis_instance;
-
     
     void ParseConfigFile ();
 
@@ -61,7 +59,8 @@ public:
     pid_t getSonPid() { 
         return son_pid;
     }
-    void ReplaceRedisClient();
+
+    static void replaceRedisClient(int signum);
 
 };
 #endif

@@ -21,10 +21,8 @@ AppMonitor::AppMonitor () {
 
     LOG(DEBUG) << " usercode stopped";
 
-    this->redis_instance = new sw::redis::Redis(this->redis_uri); 
 
-
-    this->dm_handler = new DmHandler(this->redis_instance,this,high_threshold,low_threshold, son_pid); 
+    this->dm_handler = new DmHandler(this,high_threshold,low_threshold, son_pid); 
 
     // run dmhander(fd) and init redis client
 
@@ -33,7 +31,7 @@ AppMonitor::AppMonitor () {
     LOG(DEBUG) << " DmHandler start";
 
 
-    this->lpet = new Lpet(son_pid, this->redis_instance, lspt, this->high_threshold, this->low_threshold);
+    this->lpet = new Lpet(son_pid, lspt, this->high_threshold, this->low_threshold);
 
     // run lpet + proc/maps threads
 
@@ -95,7 +93,7 @@ AppMonitor::~AppMonitor() {
 int main() { 
 
     LOG(DEBUG) << "main function start running. pid: " << getpid();
-    //signal(SIGUSR1, AppMonitor::ReplaceRedisClient);
+    signal(SIGUSR1, AppMonitor::replaceRedisClient);
 
     AppMonitor a;
     a.dm_handler_thread.join();
@@ -161,8 +159,7 @@ void AppMonitor::RunLpetThread() {
     }
 }
 
-void AppMonitor::ReplaceRedisClient() { 
-    this->ParseConfigFile();
-    this->redis_instance = new sw::redis::Redis(this->redis_uri); 
+void AppMonitor::replaceRedisClient(int signum) { 
+    LOG(DEBUG) << "[AppMonitor] - get signal to replace redis client";
+    RedisClient::getInstance()->replaceRedisClient();
 }
-

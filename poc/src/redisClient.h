@@ -87,6 +87,7 @@ std::string GetRedisUri () {
 
 void replaceRedisClient() {
     this->redis_uri = GetRedisUri();
+    LOG(DEBUG) << "[RedisClient] - redis uri changed to : " << this->redis_uri;
     this->redis_instance = new sw::redis::Redis(redis_uri); 
 }
    

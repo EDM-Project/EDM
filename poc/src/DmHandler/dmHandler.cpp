@@ -4,12 +4,11 @@
 
 #define DEBUG_MODE 1
 
-DmHandler::DmHandler(sw::redis::Redis* redis_instance, AppMonitor* client, int high_threshold, int low_threshold,pid_t pid) {
+DmHandler::DmHandler(AppMonitor* client, int high_threshold, int low_threshold,pid_t pid) {
     this->len = len;
     this->addr = addr;
     this->high_threshold = high_threshold;
     this->low_threshold = low_threshold;
-    this->redis_instance = redis_instance;
     this->pid = pid;
 
     this->uffd_son = injectUffdCreate(pid);
@@ -81,7 +80,7 @@ void DmHandler::HandleMissPageFault(struct uffd_msg* msg){
     /* thinking about error handling approach, thus:*/
     try {
         std::string str_vaddr = convertToHexRep(vaddr);
-        auto request_page = this->redis_instance->get(str_vaddr); /* conversion should be ok*/
+        auto request_page = RedisClient::getInstance()->redis_instance->get(str_vaddr); /* conversion should be ok*/
         /* now request_page is of type sw::Redis::OptionalString, meaning Optional<std::string>*/
         if (request_page) /* key exists*/ {
             LOG(INFO) << "[DmHandler] - received ack for page in address : " << PRINT_AS_HEX(vaddr) << " (previously accessed)" ; 

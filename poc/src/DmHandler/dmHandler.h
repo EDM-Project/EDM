@@ -21,6 +21,7 @@
 #include "../utils/logger.h"
 #include "../utils/helperfunc.h"
 #include "../utils/syscallInjectors.h"
+#include "../redisClient.h"
 #include <sw/redis++/redis++.h>
 
 
@@ -39,13 +40,12 @@ class DmHandler {
     int low_threshold;
     uint64_t len;       /* Length of region handled by userfaultfd */
     std::thread thr;      /* ID of thread that handles page faults */
-    sw::redis::Redis* redis_instance;
     AppMonitor* client; 
     pid_t pid;
 
     public:
     DmHandler() = default;
-    DmHandler(sw::redis::Redis* redis_instance, AppMonitor* client, int high_threshold, int low_threshold, pid_t pid);
+    DmHandler(AppMonitor* client, int high_threshold, int low_threshold, pid_t pid);
     ~DmHandler() = default;
 
     long getUffd() { 
