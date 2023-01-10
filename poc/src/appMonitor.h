@@ -14,13 +14,14 @@
 #include "mapTracker.h"
 #include "DmHandler/dmHandler.h"
 #include <sw/redis++/redis++.h>
-
+#include "redisClient.h"
 
 class AppMonitor {
 
 private:
     
     std::string binary_path;
+    std::string redis_uri;
     int high_threshold;
     int low_threshold;
     
@@ -60,7 +61,7 @@ public:
     pid_t getSonPid() { 
         return son_pid;
     }
-    
+    void ReplaceRedisClient();
 
 };
 #endif

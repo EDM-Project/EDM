@@ -77,7 +77,7 @@ void DmHandler::HandleMissPageFault(struct uffd_msg* msg){
     if (DEBUG_MODE) {
         while(this->client->is_lpet_running) {}
     }
-    LOG(INFO) << "[DmHandler] - send request for the page in address " << PRINT_AS_HEX(vaddr) << " from DMS";
+    LOG(INFO) << "[DmHandler] - send request for the page in address " << PRINT_AS_HEX(vaddr) << " from redis";
     /* thinking about error handling approach, thus:*/
     try {
         std::string str_vaddr = convertToHexRep(vaddr);
@@ -85,7 +85,7 @@ void DmHandler::HandleMissPageFault(struct uffd_msg* msg){
         /* now request_page is of type sw::Redis::OptionalString, meaning Optional<std::string>*/
         if (request_page) /* key exists*/ {
             LOG(INFO) << "[DmHandler] - received ack for page in address : " << PRINT_AS_HEX(vaddr) << " (previously accessed)" ; 
-            LOG(INFO) << "[DmHandler] - copying page content from DMS to address : " << PRINT_AS_HEX(vaddr);
+            LOG(INFO) << "[DmHandler] - copying page content from redis to address : " << PRINT_AS_HEX(vaddr);
            CopyExistingPage(vaddr,request_page.value().c_str()); /* here it's request_page since it's the key's value in Redis*/
             /* request_page is converted to const char **/
         }
@@ -161,40 +161,8 @@ void DmHandler::CopyExistingPage(uintptr_t vaddr,const char* source_page_content
         LOG(ERROR) << "[DmHandler] - ioctl UFFDIO_COPY failed";
 }
 
-// void* func(void* arg)
-// {
-//     printf("--------->Inside the thread\n");
-//     pid_t pid =  *((pid_t*)arg);
-//     printf("pid is : %d\n",pid);
-//     injectMmap(pid,256);
-//     printf("--------->Inside the thread\n");
-//     injectMmap(pid,256);
-//     printf("--------->Inside the thread\n");
-//     injectMmap(pid,256);
-//     printf("--------->Inside the thread\n");
-//     injectMmap(pid,256);
-//     printf("--------->Inside the thread\n");
-//     // exit the current thread
-
-//     pthread_exit(NULL);
-// }
-// void foo (pid_t pid) { 
-//     printf("--------->Inside CPP thread\n");
-//     injectMmap(pid,512);
-// }
-
 
 std::thread DmHandler::ActivateDM_Handler(){
-
-
-    // pthread_t ptid;
-  
-    // // Creating a new thread
-    // pthread_create(&ptid, NULL, &func, &pid);
-    // pthread_join(ptid, NULL);
-
-    // std::thread q(foo, pid);
-    // q.join();
 
     std::thread t (&DmHandler::ListenPageFaults,this);
     return t;

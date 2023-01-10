@@ -39,7 +39,6 @@ int duplicateFileDescriptor(pid_t pid, int fd) {
 
 void injectUffdRegister(pid_t pid, int fd, uintptr_t start_address, uintptr_t end_address) { 
     
-        LOG(DEBUG) << "injectUffdRegister try to inject in pid: " <<pid;
         struct ptrace_do* target = ptrace_do_init(pid);
         LOG(INFO) << " UFFDIO_REGISTER - start_address: " << convertToHexRep(start_address) << " end_address: " << convertToHexRep(end_address);
     	struct uffdio_register uffdio_register;

@@ -5,13 +5,12 @@
 #define STACK_SIZE 8*1024*1024 
 
 AppMonitor::AppMonitor () { 
+
     // parse config file (lpet params, app path) -> implement ParseConfigFile()
     
     ParseConfigFile();
 
     // fork + excev user code
-
-    LOG(DEBUG) << "ParseConfigFile run";
 
     this->son_pid = RunUserCode();
 
@@ -22,12 +21,10 @@ AppMonitor::AppMonitor () {
 
     LOG(DEBUG) << " usercode stopped";
 
-    this->redis_instance = new sw::redis::Redis("tcp://127.0.0.1:6380"); 
+    this->redis_instance = new sw::redis::Redis(this->redis_uri); 
 
 
     this->dm_handler = new DmHandler(this->redis_instance,this,high_threshold,low_threshold, son_pid); 
-
-    LOG(DEBUG) << " DmHandler constructor run";
 
     // run dmhander(fd) and init redis client
 
@@ -38,8 +35,6 @@ AppMonitor::AppMonitor () {
 
     this->lpet = new Lpet(son_pid, this->redis_instance, lspt, this->high_threshold, this->low_threshold);
 
-    LOG(DEBUG) << " Lpet constructor run";
-
     // run lpet + proc/maps threads
 
     this->lpet_thread = std::thread(&AppMonitor::RunLpetThread, this);
@@ -49,8 +44,6 @@ AppMonitor::AppMonitor () {
     
     this->map_tracker  = new MapTracker(son_pid, this->dm_handler->getUffdSon(), this->monitored_areas, this->lspt);
     
-    LOG(DEBUG) << " MapTracker constructor run";
-
     this->map_tracker_thread = map_tracker->ActivateMapTracker();
 
     LOG(DEBUG) << " MapTracker start";
@@ -100,13 +93,16 @@ AppMonitor::~AppMonitor() {
 }
 
 int main() { 
-    LOG(DEBUG) << "main function start running";
+
+    LOG(DEBUG) << "main function start running. pid: " << getpid();
+    //signal(SIGUSR1, AppMonitor::ReplaceRedisClient);
 
     AppMonitor a;
     a.dm_handler_thread.join();
     a.lpet_thread.join();
     a.map_tracker_thread.join();
-    waitpid(a.getSonPid(), NULL, 0);
+    int status;
+    waitpid(a.getSonPid(), &status, 0);
    
 }
 
@@ -117,6 +113,11 @@ void AppMonitor::ParseConfigFile () {
 	}
 	std::string word;
 	while(ReadFile >> word) {
+        if (word == "redis_uri") { 
+            ReadFile.ignore(3);
+			ReadFile >> word;
+            this->redis_uri  = std::string(word);
+        }
 		if(word == "binary_path") {
 			ReadFile.ignore(3);
 			ReadFile >> word;
@@ -138,36 +139,6 @@ void AppMonitor::ParseConfigFile () {
 }
 
 
-// AppMonitor::AppMonitor () 
-//  {
-
-//     LOG(DEBUG) << "[EDM CLIENT] -  INIT";
-//     ParseConfigFile();
-//     setenv("start_addr",std::to_string(start_addr).c_str(),1);
-//     setenv("end_addr",std::to_string(end_addr).c_str(),1);
-//     this->redis_instance = new sw::redis::Redis("tcp://127.0.0.1:6380"); 
-//     /* REDIS_INTEGRATION: for phase I we need one redis server as localhost.
-//     tcp is optional. advanced options can be set using the ConnectionOptions data structure later
-//     port number could be changed according to the intended server's open port*/
-//     this->ufd = new DmHandler(this->redis_instance,this,high_threshold,low_threshold); 
-//     this->dm_handler_thread = ufd->ActivateDM_Handler();
-//     this->lpet = new Lpet(this->redis_instance, lspt, this->high_threshold, this->low_threshold);
-//     this->lpet_thread = std::thread(&AppMonitor::RunLpetThread, this);
-// }   
-
-
-
-// AppMonitor::~AppMonitor(){
-//     //release all
-//     LOG(DEBUG)<< "[EDM CLIENT] - SHUTDOWN!";
-//     dm_handler_thread.join();
-//     lpet_thread.join();
-
-//     delete ufd;
-//     delete redis_instance;
-// }
-
-
 void AppMonitor::WaitForRunLpet() {
     std::unique_lock<std::mutex> lck(run_lpet_mutex);
     while(lspt.GetSize() < high_threshold) cv.wait(lck);
@@ -179,14 +150,19 @@ void AppMonitor::RunLpetThread() {
         is_lpet_running = false;
         WaitForRunLpet();
         //now we know that page list has max 
-        LOG(DEBUG) << "[CLIENT] - reached high threshold, running lpet";
+        LOG(DEBUG) << "[AppMonitor] - reached high threshold, running lpet";
         is_lpet_running = true;
         std::thread lpet_thread = lpet->ActivateLpet();
         cv.notify_all();
         lpet_thread.join();
-        LOG(DEBUG) << "[CLIENT] - lpet end running .";
+        LOG(DEBUG) << "[AppMonitor] - lpet end running .";
         is_lpet_running = false;
         cv.notify_all();
     }
+}
+
+void AppMonitor::ReplaceRedisClient() { 
+    this->ParseConfigFile();
+    this->redis_instance = new sw::redis::Redis(this->redis_uri); 
 }
 

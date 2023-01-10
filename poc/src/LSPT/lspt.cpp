@@ -3,11 +3,13 @@
 
 void LSPT::Add(Page page) { 
     std::lock_guard<std::mutex> lockGuard(mutex);
+    LOG(DEBUG) << "[LSPT] - page in address: " << convertToHexRep(page.vaddr) << " added to lspt";
     page_list.push_back(page);
 
 }
 void LSPT::Remove(int index) {
     std::lock_guard<std::mutex> lockGuard(mutex);
+    LOG(DEBUG) << "[LSPT] - page in address: " << convertToHexRep(AtIndex(index).vaddr) << " removed from lspt";
     page_list.erase(page_list.begin() + index);
 
 }

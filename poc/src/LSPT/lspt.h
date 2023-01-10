@@ -11,6 +11,7 @@
 #include <string>
 
 #include "../utils/logger.h"
+#include "../utils/helperfunc.h"
 #include "page.h"
 
 class LSPT {

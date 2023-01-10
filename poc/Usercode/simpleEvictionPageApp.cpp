@@ -6,6 +6,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <algorithm>
+#include "logger.h"
 
 #define PAGE_SIZE 4096
 
@@ -16,7 +17,7 @@ void waitFor(int time_in_seconds) {
   {
       time_t current_time;
       time(&current_time);
-      printf("PID: %d, Current time: %s", getpid(), ctime(&current_time));
+     // printf("PID: %d, Current time: %s", getpid(), ctime(&current_time));
 
       sleep(1);
       cnt++;
@@ -35,8 +36,9 @@ static bool comparePages(char* source, char* dest){
  *      configuration: high_threshold = 4 , low_threshold = 2
  */
 int main() {
-    std::cout<< "[Usercode] : User code main function start running" << std::endl;
+    LOG(INFO) << "[Usercode] : User code main function start running";
     waitFor(2);
+    LOG(INFO) <<  "[Usercode] : mmap vma, start address: 0x1D4C000 , size : 4 pages ";
     char* area_1 = (char*) mmap( (void*)0x1D4C000, 4 *PAGE_SIZE, PROT_READ | PROT_WRITE,
                        MAP_PRIVATE | MAP_ANONYMOUS | MAP_FIXED, -1, 0); 
     waitFor(3); 
@@ -86,7 +88,7 @@ area_1|   +--------+
       
 
     */      
-   
+    LOG(INFO) <<  "[Usercode] : mmap vma, start address: 0x1D5C000 , size : 1 pages ";
     char* area_2 = (char*) mmap( (void*)0x1D5C000, PAGE_SIZE, PROT_READ | PROT_WRITE,
                        MAP_PRIVATE | MAP_ANONYMOUS | MAP_FIXED, -1, 0);  
     waitFor(2);

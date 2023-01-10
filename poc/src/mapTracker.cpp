@@ -23,7 +23,7 @@ void MapTracker::updateMaps() {
     LOG(DEBUG) << "[MapTracker] - start parsing maps: pid:" << pid;
     int i = 0; 
     while (true) { 
-        LOG(DEBUG) << "[MapTracker] start iteration num: " << i;
+       // LOG(DEBUG) << "[MapTracker] start iteration num: " << i;
         i++;
         struct parse_maps *maps = get_proc_pid_maps(pid);
 
@@ -34,13 +34,15 @@ void MapTracker::updateMaps() {
                 continue;
             }
             if (!monitoredAreas.keyExists(current->start_address, current->end_address)) {
-                LOG(DEBUG) << "[MapTracker] add vma:" << current->start_address;
+                LOG(DEBUG) << "[MapTracker] - Detected new vma. starting address: " << convertToHexRep(current->start_address);
                 injectUffdRegister(pid, uffd, current->start_address, current->end_address);
                 monitoredAreas.addVMA(VmaMetadata(current));
                 uint64_t address = current->start_address;
                 while (address < current->end_address) {
                     if (isPageSwappedOrPresent(pid, address)) { 
                         lspt.Add(Page(address, pid));
+                    } else{
+                        LOG(DEBUG) << "[MapTracker] - Page: " << convertToHexRep(address) << " is not presented";
                     }
                     address += PAGE_SIZE;
                 }
