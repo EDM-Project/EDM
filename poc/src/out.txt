@@ -1,0 +1,109 @@
+[Wed Jan 11 2023 20:46:59.333]:[Info]-[AppMonitor] - main function start running. pid: 41181
+[Wed Jan 11 2023 20:46:59.334]:[Info]-[AppMonitor] - execute user code
+[Wed Jan 11 2023 20:46:59.334]:[Info]- [AppMonitor] - usercode stopped
+[Wed Jan 11 2023 20:46:59.414]:[Info]-[DmHandler] - Userfaultfd injected to process. Usercode fd: 3. Polling duplicated fd: 4
+[Wed Jan 11 2023 20:46:59.561]:[Info]-[AppMonitor] - user code resume
+[Wed Jan 11 2023 20:46:59.562]:[Info]-[Usercode] : User code main function start running
+[Wed Jan 11 2023 20:46:59.566]:[Info]-[MapTracker] - start parsing maps: pid:41182
+[Wed Jan 11 2023 20:47:01.566]:[Info]-[Usercode] : mmap vma, start address: 0x1D4C000 , size : 4 pages 
+[Wed Jan 11 2023 20:47:01.566]:[Info]-[Usercode] : touch 2 first pages (0x1D4C000 ,0x1D4D000)
+[Wed Jan 11 2023 20:47:01.624]:[Info]-[MapTracker] - Detected new vma. starting address: 0x01d4c000
+[Wed Jan 11 2023 20:47:01.625]:[Info]- UFFDIO_REGISTER - start_address: 0x01d4c000 end_address: 0x01d50000
+[Wed Jan 11 2023 20:47:01.626]:[Info]-[MonitoredAreas] - VMA : start: 0x01d4c000 end: 0x01d50000 added to MonitoredAreas
+[Wed Jan 11 2023 20:47:01.626]:[Info]-[LSPT] - Add page in address: 0x01d4c000 to lspt
+[Wed Jan 11 2023 20:47:01.626]:[Info]-[LSPT] - Add page in address: 0x01d4d000 to lspt
+[Wed Jan 11 2023 20:47:01.627]:[Info]-[MapTracker] - Page: 0x01d4e000 is not presented
+[Wed Jan 11 2023 20:47:01.627]:[Info]-[MapTracker] - Page: 0x01d4f000 is not presented
+[Wed Jan 11 2023 20:47:03.570]:[Info]-[Usercode] : touch 2 last pages (0x1D4E000 ,0x1D4F000)
+[Wed Jan 11 2023 20:47:03.570]:[Info]-
+--------------START HADNLING PAGE FAULT--------------
+[Wed Jan 11 2023 20:47:03.570]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1d4e000
+[Wed Jan 11 2023 20:47:03.570]:[Info]-[DmHandler] - send request for the page in address 0x1d4e000 from redis
+[Wed Jan 11 2023 20:47:03.570]:[Info]-[RedisClient] - get connection: tcp://127.0.0.1:6380
+[Wed Jan 11 2023 20:47:03.571]:[Info]-[DmHandler] - copying zero page to address : 0x1d4e000
+[Wed Jan 11 2023 20:47:03.571]:[Info]-
+--------------FINISH HADNLING PAGE FAULT--------------
+
+
+[Wed Jan 11 2023 20:47:03.571]:[Info]-[LSPT] - Add page in address: 0x01d4e000 to lspt
+[Wed Jan 11 2023 20:47:03.572]:[Info]-
+--------------START HADNLING PAGE FAULT--------------
+[Wed Jan 11 2023 20:47:03.572]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1d4f000
+[Wed Jan 11 2023 20:47:03.572]:[Info]-[DmHandler] - send request for the page in address 0x1d4f000 from redis
+[Wed Jan 11 2023 20:47:03.572]:[Info]-[DmHandler] - copying zero page to address : 0x1d4f000
+[Wed Jan 11 2023 20:47:03.572]:[Info]-
+--------------FINISH HADNLING PAGE FAULT--------------
+
+
+[Wed Jan 11 2023 20:47:03.572]:[Info]-[LSPT] - Add page in address: 0x01d4f000 to lspt
+[Wed Jan 11 2023 20:47:03.572]:[Info]-[Usercode] : mmap vma, start address: 0x1D5C000 , size : 1 pages 
+[Wed Jan 11 2023 20:47:03.643]:[Info]-[MapTracker] - Detected new vma. starting address: 0x01d5c000
+[Wed Jan 11 2023 20:47:03.644]:[Info]- UFFDIO_REGISTER - start_address: 0x01d5c000 end_address: 0x01d5d000
+[Wed Jan 11 2023 20:47:03.645]:[Info]-[MonitoredAreas] - VMA : start: 0x01d5c000 end: 0x01d5d000 added to MonitoredAreas
+[Wed Jan 11 2023 20:47:03.646]:[Info]-[MapTracker] - Page: 0x01d5c000 is not presented
+[Wed Jan 11 2023 20:47:05.574]:[Info]-[Usercode] - touch page in address: 0x1D5C000
+[Wed Jan 11 2023 20:47:05.574]:[Info]-
+--------------START HADNLING PAGE FAULT--------------
+[Wed Jan 11 2023 20:47:05.574]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1d5c000
+[Wed Jan 11 2023 20:47:05.574]:[Info]-[DmHandler] - reached high threshold, waking up lpet
+[Wed Jan 11 2023 20:47:05.574]:[Info]-[AppMonitor] - reached high threshold, running lpet
+[Wed Jan 11 2023 20:47:05.575]:[Info]-
+-----------------START LPET-----------------
+
+[Wed Jan 11 2023 20:47:05.575]:[Info]-[Lpet] - start address: 0x1d4c000
+[Wed Jan 11 2023 20:47:05.575]:[Info]-page list state: 
+-----START LSPT ----
+address : 0x1d4c000  pfn : 1214768  is_idle: 0  pid: 41182
+address : 0x1d4d000  pfn : 1154959  is_idle: 0  pid: 41182
+address : 0x1d4e000  pfn : 1281643  is_idle: 0  pid: 41182
+address : 0x1d4f000  pfn : 1281643  is_idle: 0  pid: 41182
+-----END LSPT ----
+
+
+[Wed Jan 11 2023 20:47:05.575]:[Info]-[LPET] checking if page in addr 0x1d4c000 is idle
+[Wed Jan 11 2023 20:47:05.575]:[Info]-[LPET] checking if page in addr 0x1d4d000 is idle
+[Wed Jan 11 2023 20:47:05.575]:[Info]-[LPET] checking if page in addr 0x1d4e000 is idle
+[Wed Jan 11 2023 20:47:05.575]:[Info]-[LPET] checking if page in addr 0x1d4f000 is idle
+[Wed Jan 11 2023 20:47:05.575]:[Info]-[LPET] checking if page in addr 0x1d4c000 is idle
+[Wed Jan 11 2023 20:47:05.575]:[Info]-[LPET] - evicting page in addr 0x1d4c000
+[Wed Jan 11 2023 20:47:05.662]:[Info]-[LPET] - successfull eviction of page in addr: 0x1d4c000
+[Wed Jan 11 2023 20:47:05.662]:[Info]-[LSPT] - Remove page in address: 0x01d4c000 from lspt
+[Wed Jan 11 2023 20:47:05.662]:[Info]-[LPET] checking if page in addr 0x1d4d000 is idle
+[Wed Jan 11 2023 20:47:05.662]:[Info]-[LPET] - evicting page in addr 0x1d4d000
+[Wed Jan 11 2023 20:47:05.736]:[Info]-[LPET] - successfull eviction of page in addr: 0x1d4d000
+[Wed Jan 11 2023 20:47:05.751]:[Info]-[LSPT] - Remove page in address: 0x01d4d000 from lspt
+[Wed Jan 11 2023 20:47:05.757]:[Info]-
+-----------------END LPET-----------------
+
+[Wed Jan 11 2023 20:47:05.757]:[Info]-[AppMonitor] - lpet end running .
+[Wed Jan 11 2023 20:47:05.757]:[Info]-[DmHandler] - send request for the page in address 0x1d5c000 from redis
+[Wed Jan 11 2023 20:47:05.757]:[Info]-[DmHandler] - copying zero page to address : 0x1d5c000
+[Wed Jan 11 2023 20:47:05.757]:[Info]-
+--------------FINISH HADNLING PAGE FAULT--------------
+
+
+[Wed Jan 11 2023 20:47:05.757]:[Info]-[LSPT] - Add page in address: 0x01d5c000 to lspt
+[Wed Jan 11 2023 20:47:05.757]:[Info]-[Usercode] - PID: 41182 workload...time to migrate redis
+[Wed Jan 11 2023 20:47:06.758]:[Info]-[Usercode] - PID: 41182 workload...time to migrate redis
+[Wed Jan 11 2023 20:47:07.403]:[Info]-[AppMonitor] - get signal to replace redis client
+[Wed Jan 11 2023 20:47:07.404]:[Info]-[RedisClient] - redis uri changed to : tcp://127.0.0.1:6381
+[Wed Jan 11 2023 20:47:07.759]:[Info]-[Usercode] - PID: 41182 workload...time to migrate redis
+[Wed Jan 11 2023 20:47:08.760]:[Info]-[Usercode] - PID: 41182 workload...time to migrate redis
+[Wed Jan 11 2023 20:47:09.761]:[Info]-[Usercode] - PID: 41182 workload...time to migrate redis
+[Wed Jan 11 2023 20:47:10.762]:[Info]-[Usercode] - PID: 41182 workload...time to migrate redis
+[Wed Jan 11 2023 20:47:11.764]:[Info]-[Usercode] - PID: 41182 workload...time to migrate redis
+[Wed Jan 11 2023 20:47:12.766]:[Info]-[Usercode] - PID: 41182 workload...time to migrate redis
+[Wed Jan 11 2023 20:47:13.766]:[Info]-[Usercode] - PID: 41182 workload...time to migrate redis
+[Wed Jan 11 2023 20:47:14.767]:[Info]-[Usercode] - PID: 41182 workload...time to migrate redis
+[Wed Jan 11 2023 20:47:15.769]:[Info]-[Usercode] - touch the first page (0x1D4C000)
+[Wed Jan 11 2023 20:47:15.769]:[Info]-
+--------------START HADNLING PAGE FAULT--------------
+[Wed Jan 11 2023 20:47:15.769]:[Info]-[DmHandler] - UFFD_EVENT_PAGEFAULT in address = 0x1d4c000
+[Wed Jan 11 2023 20:47:15.769]:[Info]-[DmHandler] - send request for the page in address 0x1d4c000 from redis
+[Wed Jan 11 2023 20:47:15.770]:[Info]-[DmHandler] - copying page content from redis to address : 0x1d4c000
+[Wed Jan 11 2023 20:47:15.770]:[Info]-
+--------------FINISH HADNLING PAGE FAULT--------------
+
+
+[Wed Jan 11 2023 20:47:15.771]:[Info]-[LSPT] - Add page in address: 0x01d4c000 to lspt
+compare pages SUCCESS

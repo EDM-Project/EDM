@@ -10,40 +10,24 @@ class RedisClient{
 
   private:
    
-  // member variables
-  std::string redis_uri;
-  
      
   static RedisClient* instancePtr;
          
-  // Default constructor
   RedisClient()
   {
     redis_uri = GetRedisUri();
+    LOG(INFO) << "[RedisClient] - get connection: " << redis_uri;
     redis_instance = new sw::redis::Redis(redis_uri); 
   }
    
   public:
   sw::redis::Redis* redis_instance;
+  std::string redis_uri;
    
-  // deleting copy constructor
   RedisClient(const RedisClient& obj)
     = delete;
  
-  /*
-    getInstance() is a static method that returns an
-    instance when it is invoked. It returns the same
-    instance if it is invoked more than once as an instance
-    of Singleton class is already created. It is static
-    because we have to invoke this method without any object
-    of Singleton class and static method can be invoked
-    without object of class
- 
-    As constructor is private so we cannot create object of
-    Singleton class without a static method as they can be
-    called without objects. We have to create an instance of
-    this Singleton class by using getInstance() method.
-  */
+  
   static RedisClient* getInstance()
   {
     // If there is no instance of class
@@ -59,10 +43,6 @@ class RedisClient{
     }
     else
     {
-      // if instancePtr != NULL that means
-      // the class already have an instance.
-      // So, we are returning that instance
-      // and not creating new one.
       return instancePtr;
     }
   }
@@ -87,7 +67,7 @@ std::string GetRedisUri () {
 
 void replaceRedisClient() {
     this->redis_uri = GetRedisUri();
-    LOG(DEBUG) << "[RedisClient] - redis uri changed to : " << this->redis_uri;
+    LOG(INFO) << "[RedisClient] - redis uri changed to : " << this->redis_uri;
     this->redis_instance = new sw::redis::Redis(redis_uri); 
 }
    

@@ -50,7 +50,7 @@ uint32_t Lpet::run()
         if(lspt.AtIndex(index).is_idle() || !first_cycle) // need to evict the current page
         {
             is_evicted = true;
-            LOG(INFO) << "[LPET] sending eviction request for page in addr " << PRINT_AS_HEX(lspt.AtIndex(index).vaddr);
+            LOG(INFO) << "[LPET] - evicting page in addr " << PRINT_AS_HEX(lspt.AtIndex(index).vaddr);
             Page evicted = lspt.AtIndex(index);
             
             char* mem  = (char*)malloc(PAGE_SIZE);
@@ -63,7 +63,7 @@ uint32_t Lpet::run()
 
             std::string str_vaddr = convertToHexRep(evicted.vaddr);
             RedisClient::getInstance()->redis_instance->set(str_vaddr,mem); /* update command using Redis server*/
-            LOG(INFO) << "[Lpet] - received ack for eviction of page in address : " << PRINT_AS_HEX(evicted.vaddr)  ; 
+            LOG(INFO) << "[LPET] - successfull eviction of page in addr: " << PRINT_AS_HEX(evicted.vaddr)  ; 
            
             free(mem);
             

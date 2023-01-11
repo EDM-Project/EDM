@@ -10,7 +10,7 @@ bool MonitoredAreas::keyExists(uint64_t start_addr,uint64_t end_addr){
 
 void MonitoredAreas::addVMA(VmaMetadata entry) { 
     std::lock_guard<std::mutex> lock(mutex);
-    LOG(DEBUG) << "vma: start: " << convertToHexRep(entry.start_address) << " end: " << convertToHexRep(entry.end_address) << " added to MonitoredAreas";
+    LOG(INFO) << "[MonitoredAreas] - VMA : start: " << convertToHexRep(entry.start_address) << " end: " << convertToHexRep(entry.end_address) << " added to MonitoredAreas";
     areas.insert({std::make_pair(entry.start_address, entry.end_address),entry});
 }
 

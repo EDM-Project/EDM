@@ -13,6 +13,7 @@ DmHandler::DmHandler(AppMonitor* client, int high_threshold, int low_threshold,p
 
     this->uffd_son = injectUffdCreate(pid);
     this->uffd = duplicateFileDescriptor(pid, uffd_son);
+    LOG(INFO) << "[DmHandler] - Userfaultfd injected to process. Usercode fd: " << this->uffd_son << "Polling duplicated fd:" << this->uffd; 
     this->client = client;
 }
 
@@ -59,8 +60,8 @@ void DmHandler::ListenPageFaults(){
 void DmHandler::HandleMissPageFault(struct uffd_msg* msg){
 
     /* Display info about the page-fault event. */
-    LOG(DEBUG) << "\n--------------START HADNLING PAGE FAULT--------------";
-    LOG(DEBUG) << "[DmHandler] - UFFD_EVENT_PAGEFAULT in address = " << PRINT_AS_HEX(msg->arg.pagefault.address) ;
+    LOG(INFO) << "\n--------------START HADNLING PAGE FAULT--------------";
+    LOG(INFO) << "[DmHandler] - UFFD_EVENT_PAGEFAULT in address = " << PRINT_AS_HEX(msg->arg.pagefault.address) ;
     
     unsigned long long vaddr = msg->arg.pagefault.address;
     
@@ -83,13 +84,11 @@ void DmHandler::HandleMissPageFault(struct uffd_msg* msg){
         auto request_page = RedisClient::getInstance()->redis_instance->get(str_vaddr); /* conversion should be ok*/
         /* now request_page is of type sw::Redis::OptionalString, meaning Optional<std::string>*/
         if (request_page) /* key exists*/ {
-            LOG(INFO) << "[DmHandler] - received ack for page in address : " << PRINT_AS_HEX(vaddr) << " (previously accessed)" ; 
             LOG(INFO) << "[DmHandler] - copying page content from redis to address : " << PRINT_AS_HEX(vaddr);
            CopyExistingPage(vaddr,request_page.value().c_str()); /* here it's request_page since it's the key's value in Redis*/
             /* request_page is converted to const char **/
         }
         else { /* key does not exist*/
-            LOG(INFO) << "[DmHandler] - received ack for page in address : " << PRINT_AS_HEX(vaddr) << " (first access)" ; 
             LOG(INFO) << "[DmHandler] - copying zero page to address : " << PRINT_AS_HEX(vaddr);
             CopyZeroPage(vaddr);
         }

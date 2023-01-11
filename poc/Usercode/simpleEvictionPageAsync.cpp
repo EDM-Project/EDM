@@ -42,10 +42,18 @@ int main() {
     LOG(INFO) <<  "[Usercode] : mmap vma, start address: 0x1D4C000 , size : 4 pages ";
     char* area_1 = (char*) mmap( (void*)0x1D4C000, 4 *PAGE_SIZE, PROT_READ | PROT_WRITE,
                        MAP_PRIVATE | MAP_ANONYMOUS | MAP_FIXED, -1, 0); 
-    waitFor(3); 
-    for (int i=0 ; i < 4 *PAGE_SIZE ; i++) {
+    
+    LOG(INFO) <<  "[Usercode] : touch 2 first pages (0x1D4C000 ,0x1D4D000)";             
+    for (int i=0 ; i < 2 *PAGE_SIZE ; i++) {
         area_1[i] = 'x';
     }
+    waitFor(2); 
+    LOG(INFO) <<  "[Usercode] : touch 2 last pages (0x1D4E000 ,0x1D4F000)";             
+    for (int i= 2*PAGE_SIZE ; i < 4 *PAGE_SIZE ; i++) {
+        area_1[i] = 'x';
+    }
+
+
     /* save area_1 first page in buffer for validation */
     
     char* area_1_first_page = (char*)malloc(PAGE_SIZE);
@@ -93,6 +101,8 @@ area_1|   +--------+
     char* area_2 = (char*) mmap( (void*)0x1D5C000, PAGE_SIZE, PROT_READ | PROT_WRITE,
                        MAP_PRIVATE | MAP_ANONYMOUS | MAP_FIXED, -1, 0);  
     waitFor(2);
+
+    LOG(INFO) <<  "[Usercode] - touch page in address: 0x1D5C000";
     area_2[0] = 'z';
 
     /*
@@ -123,6 +133,7 @@ area_1|   +--------+
 
     waitFor(10,"workload...time to migrate redis",true);   
 
+    LOG(INFO) <<  "[Usercode] - touch the first page (0x1D4C000)";
     char first_byte_area_1 = area_1[0];
     /* area_1 was evicted before. page fault handling will fetch its data from disc.  */
     /*

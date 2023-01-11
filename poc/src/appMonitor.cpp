@@ -14,12 +14,12 @@ AppMonitor::AppMonitor () {
 
     this->son_pid = RunUserCode();
 
-    LOG(DEBUG) << " RunUserCode run";
+    LOG(INFO) << "[AppMonitor] - execute user code";
     // sigstop (after execv), init uffd of son process, and duplicate fd ()
 
     kill(son_pid, SIGSTOP);
 
-    LOG(DEBUG) << " usercode stopped";
+    LOG(INFO) << " [AppMonitor] - usercode stopped";
 
 
     this->dm_handler = new DmHandler(this,high_threshold,low_threshold, son_pid); 
@@ -50,8 +50,7 @@ AppMonitor::AppMonitor () {
 
     kill(son_pid, SIGCONT);
 
-    LOG(DEBUG) << " user code resume";
-
+    LOG(INFO) << "[AppMonitor] - user code resume";
 
 }
 
@@ -92,7 +91,7 @@ AppMonitor::~AppMonitor() {
 
 int main() { 
 
-    LOG(DEBUG) << "main function start running. pid: " << getpid();
+    LOG(INFO) << "[AppMonitor] - main function start running. pid: " << getpid();
     signal(SIGUSR1, AppMonitor::replaceRedisClient);
 
     AppMonitor a;
@@ -148,18 +147,18 @@ void AppMonitor::RunLpetThread() {
         is_lpet_running = false;
         WaitForRunLpet();
         //now we know that page list has max 
-        LOG(DEBUG) << "[AppMonitor] - reached high threshold, running lpet";
+        LOG(INFO) << "[AppMonitor] - reached high threshold, running lpet";
         is_lpet_running = true;
         std::thread lpet_thread = lpet->ActivateLpet();
         cv.notify_all();
         lpet_thread.join();
-        LOG(DEBUG) << "[AppMonitor] - lpet end running .";
+        LOG(INFO) << "[AppMonitor] - lpet end running .";
         is_lpet_running = false;
         cv.notify_all();
     }
 }
 
 void AppMonitor::replaceRedisClient(int signum) { 
-    LOG(DEBUG) << "[AppMonitor] - get signal to replace redis client";
+    LOG(INFO) << "[AppMonitor] - get signal to replace redis client";
     RedisClient::getInstance()->replaceRedisClient();
 }
