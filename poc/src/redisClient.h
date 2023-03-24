@@ -17,11 +17,11 @@ class RedisClient{
   {
     redis_uri = GetRedisUri();
     LOG(INFO) << "[RedisClient] - get connection: " << redis_uri;
-    redis_instance = new sw::redis::Redis(redis_uri); 
+    redis_instance = new sw::redis::RedisCluster(redis_uri); 
   }
    
   public:
-  sw::redis::Redis* redis_instance;
+  sw::redis::RedisCluster* redis_instance;
   std::string redis_uri;
    
   RedisClient(const RedisClient& obj)
@@ -68,7 +68,7 @@ std::string GetRedisUri () {
 void replaceRedisClient() {
     this->redis_uri = GetRedisUri();
     LOG(INFO) << "[RedisClient] - redis uri changed to : " << this->redis_uri;
-    this->redis_instance = new sw::redis::Redis(redis_uri); 
+    this->redis_instance = new sw::redis::RedisCluster(redis_uri); 
 }
    
 };
