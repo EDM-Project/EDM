@@ -9,19 +9,28 @@ When one uses this function, he/she must NOT close the process as long as
 the server is supposed to work. Forking might help with that*/
 void initializeServer(char* pathToConfig, char* port) {
     /* important note: whenever we run this line of code, it createas a NEW server
-    within the same poort and ip values, thus OVERRIDING the previous/existing one*/
+    within the same port and ip values, thus OVERRIDING the previous/existing one*/
     /* naive way*/
-    char* directWayArgs[] = {(char*)"redis-server", (char*)"--port ",port,NULL};
-    if (execvp("redis-server", directWayArgs)==-1) {
+    /*char* directWayArgs[] = {(char*)"redis-server", (char*)"--port ",port,NULL};*/
+    /*if (execvp("redis-server", directWayArgs)==-1) {
         printf("failed to open a new redis server\n");
-    }
-    exit(0);
+    }*/
+    /*exit(0); -> does not cause the termination of the function after server init */
     /* more proper way - using config file*/
     /* the original command is ./redis-server /path/to/redis.conf
     in the current implementation we assume the we get the path to a default config file
     and need to change it*/
-    char* configWayArgs[] = {(char*)"redis-server", pathToConfig,port,NULL};
+    char* configWayArgs[] = {(char*)"redis-server", pathToConfig,NULL};
     if (execvp("redis-server", configWayArgs)==-1) {
         printf("failed to open a new redis server\n");
     }
+    printf("end of func\n");
+}
+
+/* TODO: realize what important aspects we would like to change in a server and add
+them as arguments */
+/* We assume that there is a default demo config file called redis.conf in the EDMSimpleManager folder
+*/
+void setConfigFileForServer() {
+
 }

@@ -1,0 +1,428 @@
+94385:C 20 Apr 2023 16:57:38.998 # Can't chdir to '/var/lib/redis': Permission denied
+94480:C 20 Apr 2023 16:58:35.096 # Can't chdir to '/var/lib/redis': Permission denied
+95467:C 20 Apr 2023 23:41:09.043 # Can't chdir to '/var/lib/redis': Permission denied
+95593:C 20 Apr 2023 23:43:14.415 # Can't chdir to '/var/lib/redis': Permission denied
+97424:C 27 Apr 2023 10:11:08.846 # Can't chdir to '/var/lib/redis': Permission denied
+97476:C 27 Apr 2023 10:12:44.528 # Can't chdir to '/var/lib/redis': Permission denied
+97528:C 27 Apr 2023 10:13:33.445 # Can't chdir to '/var/lib/redis': Permission denied
+97654:C 27 Apr 2023 10:15:31.420 # Can't chdir to '/var/lib/redis': Permission denied
+103349:C 27 Apr 2023 11:59:11.080 # Can't chdir to '/var/lib/redis': Permission denied
+104164:C 27 Apr 2023 13:16:43.525 # Can't chdir to '/var/lib/redis': Permission denied
+104222:C 27 Apr 2023 13:18:06.550 # WARNING supervised by systemd - you MUST set appropriate values for TimeoutStartSec and TimeoutStopSec in your service unit.
+104222:C 27 Apr 2023 13:18:06.566 # systemd supervision requested, but NOTIFY_SOCKET not found
+104224:C 27 Apr 2023 13:18:06.578 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+104224:C 27 Apr 2023 13:18:06.578 # Redis version=6.0.16, bits=64, commit=00000000, modified=0, pid=104224, just started
+104224:C 27 Apr 2023 13:18:06.578 # Configuration loaded
+                _._                                                  
+           _.-``__ ''-._                                             
+      _.-``    `.  `_.  ''-._           Redis 6.0.16 (00000000/0) 64 bit
+  .-`` .-```.  ```\/    _.,_ ''-._                                   
+ (    '      ,       .-`  | `,    )     Running in standalone mode
+ |`-._`-...-` __...-.``-._|'` _.-'|     Port: 5777
+ |    `-._   `._    /     _.-'    |     PID: 104224
+  `-._    `-._  `-./  _.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |           http://redis.io        
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |                                  
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+      `-._    `-.__.-'    _.-'                                       
+          `-._        _.-'                                           
+              `-.__.-'                                               
+
+104224:M 27 Apr 2023 13:18:06.583 # Server initialized
+104224:M 27 Apr 2023 13:18:06.584 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+104224:M 27 Apr 2023 13:18:06.585 # Fatal error loading the DB: Permission denied. Exiting.
+105051:C 27 Apr 2023 13:37:07.373 # WARNING supervised by systemd - you MUST set appropriate values for TimeoutStartSec and TimeoutStopSec in your service unit.
+105051:C 27 Apr 2023 13:37:07.378 # systemd supervision requested, but NOTIFY_SOCKET not found
+105052:C 27 Apr 2023 13:37:07.387 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+105052:C 27 Apr 2023 13:37:07.387 # Redis version=6.0.16, bits=64, commit=00000000, modified=0, pid=105052, just started
+105052:C 27 Apr 2023 13:37:07.387 # Configuration loaded
+                _._                                                  
+           _.-``__ ''-._                                             
+      _.-``    `.  `_.  ''-._           Redis 6.0.16 (00000000/0) 64 bit
+  .-`` .-```.  ```\/    _.,_ ''-._                                   
+ (    '      ,       .-`  | `,    )     Running in standalone mode
+ |`-._`-...-` __...-.``-._|'` _.-'|     Port: 5777
+ |    `-._   `._    /     _.-'    |     PID: 105052
+  `-._    `-._  `-./  _.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |           http://redis.io        
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |                                  
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+      `-._    `-.__.-'    _.-'                                       
+          `-._        _.-'                                           
+              `-.__.-'                                               
+
+105052:M 27 Apr 2023 13:37:07.398 # Server initialized
+105052:M 27 Apr 2023 13:37:07.398 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+105052:M 27 Apr 2023 13:37:07.398 # Fatal error loading the DB: Permission denied. Exiting.
+105138:C 27 Apr 2023 13:40:19.954 # Can't chdir to '/var/lib/redis': Permission denied
+105185:C 27 Apr 2023 13:42:19.998 # WARNING supervised by systemd - you MUST set appropriate values for TimeoutStartSec and TimeoutStopSec in your service unit.
+105185:C 27 Apr 2023 13:42:20.004 # systemd supervision requested, but NOTIFY_SOCKET not found
+105186:C 27 Apr 2023 13:42:20.006 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+105186:C 27 Apr 2023 13:42:20.006 # Redis version=6.0.16, bits=64, commit=00000000, modified=0, pid=105186, just started
+105186:C 27 Apr 2023 13:42:20.006 # Configuration loaded
+                _._                                                  
+           _.-``__ ''-._                                             
+      _.-``    `.  `_.  ''-._           Redis 6.0.16 (00000000/0) 64 bit
+  .-`` .-```.  ```\/    _.,_ ''-._                                   
+ (    '      ,       .-`  | `,    )     Running in standalone mode
+ |`-._`-...-` __...-.``-._|'` _.-'|     Port: 5777
+ |    `-._   `._    /     _.-'    |     PID: 105186
+  `-._    `-._  `-./  _.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |           http://redis.io        
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |                                  
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+      `-._    `-.__.-'    _.-'                                       
+          `-._        _.-'                                           
+              `-.__.-'                                               
+
+105186:M 27 Apr 2023 13:42:20.009 # Server initialized
+105186:M 27 Apr 2023 13:42:20.009 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+105186:M 27 Apr 2023 13:42:20.013 # Fatal error loading the DB: Permission denied. Exiting.
+105242:C 27 Apr 2023 13:43:27.367 # WARNING supervised by systemd - you MUST set appropriate values for TimeoutStartSec and TimeoutStopSec in your service unit.
+105242:C 27 Apr 2023 13:43:27.376 # systemd supervision requested, but NOTIFY_SOCKET not found
+105243:C 27 Apr 2023 13:43:27.377 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+105243:C 27 Apr 2023 13:43:27.377 # Redis version=6.0.16, bits=64, commit=00000000, modified=0, pid=105243, just started
+105243:C 27 Apr 2023 13:43:27.377 # Configuration loaded
+                _._                                                  
+           _.-``__ ''-._                                             
+      _.-``    `.  `_.  ''-._           Redis 6.0.16 (00000000/0) 64 bit
+  .-`` .-```.  ```\/    _.,_ ''-._                                   
+ (    '      ,       .-`  | `,    )     Running in standalone mode
+ |`-._`-...-` __...-.``-._|'` _.-'|     Port: 5777
+ |    `-._   `._    /     _.-'    |     PID: 105243
+  `-._    `-._  `-./  _.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |           http://redis.io        
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |                                  
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+      `-._    `-.__.-'    _.-'                                       
+          `-._        _.-'                                           
+              `-.__.-'                                               
+
+105243:M 27 Apr 2023 13:43:27.381 # Server initialized
+105243:M 27 Apr 2023 13:43:27.381 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+105243:M 27 Apr 2023 13:43:27.385 * Loading RDB produced by version 6.0.16
+105243:M 27 Apr 2023 13:43:27.385 * RDB age 199 seconds
+105243:M 27 Apr 2023 13:43:27.385 * RDB memory usage when created 0.77 Mb
+105243:M 27 Apr 2023 13:43:27.385 * DB loaded from disk: 0.003 seconds
+105243:M 27 Apr 2023 13:43:27.385 * Ready to accept connections
+105243:M 27 Apr 2023 13:43:27.385 # systemd supervision requested, but NOTIFY_SOCKET not found
+105243:M 27 Apr 2023 13:43:27.385 # systemd supervision requested, but NOTIFY_SOCKET not found
+105243:M 27 Apr 2023 13:44:20.855 - Accepted 127.0.0.1:46402
+105243:M 27 Apr 2023 13:47:56.610 - Client closed connection
+105243:M 27 Apr 2023 13:48:00.010 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:48:05.051 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:48:10.075 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:48:15.102 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:48:20.146 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105427:C 27 Apr 2023 13:48:22.528 # WARNING supervised by systemd - you MUST set appropriate values for TimeoutStartSec and TimeoutStopSec in your service unit.
+105427:C 27 Apr 2023 13:48:22.528 # systemd supervision requested, but NOTIFY_SOCKET not found
+105428:C 27 Apr 2023 13:48:22.537 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+105428:C 27 Apr 2023 13:48:22.537 # Redis version=6.0.16, bits=64, commit=00000000, modified=0, pid=105428, just started
+105428:C 27 Apr 2023 13:48:22.537 # Configuration loaded
+105428:M 27 Apr 2023 13:48:22.538 # Could not create server TCP listening socket 127.0.0.1:5777: bind: Address already in use
+105243:M 27 Apr 2023 13:48:25.325 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:48:30.515 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:48:35.567 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:48:35.925 - Accepted 127.0.0.1:44160
+105243:M 27 Apr 2023 13:48:40.664 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:48:40.946 - Client closed connection
+105243:M 27 Apr 2023 13:48:45.700 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:48:50.726 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:48:55.742 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:49:00.763 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:49:05.798 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:49:10.837 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:49:15.854 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:49:20.872 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:49:25.904 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:49:30.937 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:49:35.975 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:49:41.002 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:49:46.026 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:49:51.059 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:49:56.099 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:50:01.134 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:50:06.156 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:50:11.187 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:50:16.210 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:50:21.242 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:50:26.273 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:50:31.315 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:50:36.367 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:50:41.403 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:50:47.403 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:50:52.450 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:50:57.613 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:51:02.679 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:51:07.697 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:51:12.745 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:51:17.785 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:51:22.835 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:51:25.036 - Accepted 127.0.0.1:54194
+105243:M 27 Apr 2023 13:51:27.903 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:51:28.588 - Client closed connection
+105243:M 27 Apr 2023 13:51:32.999 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105647:C 27 Apr 2023 13:51:33.076 # WARNING supervised by systemd - you MUST set appropriate values for TimeoutStartSec and TimeoutStopSec in your service unit.
+105647:C 27 Apr 2023 13:51:33.080 # systemd supervision requested, but NOTIFY_SOCKET not found
+105648:C 27 Apr 2023 13:51:33.084 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+105648:C 27 Apr 2023 13:51:33.084 # Redis version=6.0.16, bits=64, commit=00000000, modified=0, pid=105648, just started
+105648:C 27 Apr 2023 13:51:33.084 # Configuration loaded
+105648:M 27 Apr 2023 13:51:33.085 # Could not create server TCP listening socket 127.0.0.1:5777: bind: Address already in use
+105243:M 27 Apr 2023 13:51:38.139 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:51:43.171 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:51:48.200 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:51:53.222 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:51:58.247 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105694:C 27 Apr 2023 13:52:02.581 # WARNING supervised by systemd - you MUST set appropriate values for TimeoutStartSec and TimeoutStopSec in your service unit.
+105694:C 27 Apr 2023 13:52:02.588 # systemd supervision requested, but NOTIFY_SOCKET not found
+105695:C 27 Apr 2023 13:52:02.590 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+105695:C 27 Apr 2023 13:52:02.590 # Redis version=6.0.16, bits=64, commit=00000000, modified=0, pid=105695, just started
+105695:C 27 Apr 2023 13:52:02.590 # Configuration loaded
+105695:M 27 Apr 2023 13:52:02.592 # Could not create server TCP listening socket 127.0.0.1:5777: bind: Address already in use
+105243:M 27 Apr 2023 13:52:03.293 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:52:08.432 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:52:13.454 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:52:18.482 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:52:23.497 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:52:28.520 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:52:33.552 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:52:38.576 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:52:43.613 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:52:48.651 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:52:53.691 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:52:58.719 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:53:03.745 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:53:08.774 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:53:13.855 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105747:C 27 Apr 2023 13:53:14.485 # WARNING supervised by systemd - you MUST set appropriate values for TimeoutStartSec and TimeoutStopSec in your service unit.
+105747:C 27 Apr 2023 13:53:14.485 # systemd supervision requested, but NOTIFY_SOCKET not found
+105748:C 27 Apr 2023 13:53:14.491 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+105748:C 27 Apr 2023 13:53:14.491 # Redis version=6.0.16, bits=64, commit=00000000, modified=0, pid=105748, just started
+105748:C 27 Apr 2023 13:53:14.491 # Configuration loaded
+105748:M 27 Apr 2023 13:53:14.494 # Could not create server TCP listening socket 127.0.0.1:5777: bind: Address already in use
+105243:M 27 Apr 2023 13:53:18.978 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:53:23.997 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:53:29.012 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:53:34.031 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:53:39.057 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:53:44.100 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:53:49.142 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:53:54.195 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:53:59.264 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:54:04.537 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:54:09.591 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:54:14.705 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:54:20.000 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:54:25.025 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:54:30.091 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:54:35.235 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:54:40.377 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:54:45.544 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:54:50.657 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:54:55.707 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:55:00.738 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:55:05.880 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:55:11.157 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:55:16.352 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:55:21.685 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:55:26.823 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:55:31.952 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:55:37.081 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:55:42.266 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:55:47.441 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:55:52.505 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:55:57.557 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:56:02.586 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:56:07.653 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:56:12.824 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:56:18.139 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:56:23.379 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:56:28.567 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:56:33.754 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105942:C 27 Apr 2023 13:56:33.924 # WARNING supervised by systemd - you MUST set appropriate values for TimeoutStartSec and TimeoutStopSec in your service unit.
+105942:C 27 Apr 2023 13:56:33.924 # systemd supervision requested, but NOTIFY_SOCKET not found
+105943:C 27 Apr 2023 13:56:33.926 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+105943:C 27 Apr 2023 13:56:33.926 # Redis version=6.0.16, bits=64, commit=00000000, modified=0, pid=105943, just started
+105943:C 27 Apr 2023 13:56:33.926 # Configuration loaded
+                _._                                                  
+           _.-``__ ''-._                                             
+      _.-``    `.  `_.  ''-._           Redis 6.0.16 (00000000/0) 64 bit
+  .-`` .-```.  ```\/    _.,_ ''-._                                   
+ (    '      ,       .-`  | `,    )     Running in standalone mode
+ |`-._`-...-` __...-.``-._|'` _.-'|     Port: 5800
+ |    `-._   `._    /     _.-'    |     PID: 105943
+  `-._    `-._  `-./  _.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |           http://redis.io        
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |                                  
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+      `-._    `-.__.-'    _.-'                                       
+          `-._        _.-'                                           
+              `-.__.-'                                               
+
+105943:M 27 Apr 2023 13:56:33.942 # Server initialized
+105943:M 27 Apr 2023 13:56:33.942 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+105943:M 27 Apr 2023 13:56:33.946 * Loading RDB produced by version 6.0.16
+105943:M 27 Apr 2023 13:56:33.946 * RDB age 985 seconds
+105943:M 27 Apr 2023 13:56:33.946 * RDB memory usage when created 0.77 Mb
+105943:M 27 Apr 2023 13:56:33.946 * DB loaded from disk: 0.004 seconds
+105943:M 27 Apr 2023 13:56:33.946 * Ready to accept connections
+105943:M 27 Apr 2023 13:56:33.946 # systemd supervision requested, but NOTIFY_SOCKET not found
+105943:M 27 Apr 2023 13:56:33.946 # systemd supervision requested, but NOTIFY_SOCKET not found
+105243:M 27 Apr 2023 13:56:38.864 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:56:43.899 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:56:49.018 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:56:54.106 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105943:M 27 Apr 2023 13:56:57.407 - Accepted 127.0.0.1:52944
+105243:M 27 Apr 2023 13:56:59.193 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:57:04.339 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:57:09.891 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:57:14.936 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:57:19.968 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:57:24.984 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:57:30.015 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:57:35.044 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:57:40.073 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:57:45.133 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:57:50.172 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:57:55.197 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:58:00.223 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:58:05.255 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:58:10.282 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:58:15.323 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:58:20.354 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:58:25.494 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:58:28.029 * 1 changes in 900 seconds. Saving...
+105243:M 27 Apr 2023 13:58:28.046 * Background saving started by pid 106080
+106080:C 27 Apr 2023 13:58:28.080 * DB saved on disk
+106080:C 27 Apr 2023 13:58:28.083 * RDB: 0 MB of memory used by copy-on-write
+105243:M 27 Apr 2023 13:58:28.147 * Background saving terminated with success
+105243:M 27 Apr 2023 13:58:30.557 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:58:35.581 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:58:40.612 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:58:45.810 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:58:50.907 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:58:55.969 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:59:01.095 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:59:06.138 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:59:11.175 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:59:16.217 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:59:21.255 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:59:26.299 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:59:31.345 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:59:36.433 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:59:41.481 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:59:46.500 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:59:51.560 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 13:59:56.591 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:00:01.618 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:00:06.643 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:00:11.771 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:00:17.381 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:00:22.404 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:00:27.428 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:00:32.453 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:00:37.474 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:00:42.495 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:00:47.527 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:00:52.552 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:00:57.616 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:01:02.642 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:01:07.662 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:01:13.013 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:01:18.084 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:01:23.692 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:01:28.798 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:01:33.903 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:01:38.935 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:01:43.959 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:01:49.030 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:01:54.064 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:01:59.113 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:02:04.634 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:02:09.822 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:02:15.155 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:02:20.405 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:02:25.476 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:02:30.526 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:02:35.694 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:02:40.796 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:02:45.869 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:02:50.918 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:03:02.662 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:03:23.441 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:03:49.050 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:03:57.168 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:04:04.730 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:04:12.358 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:04:17.780 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:04:23.679 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:04:28.851 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:04:35.151 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:04:45.278 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:04:57.626 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:05:12.962 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:05:19.380 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:05:25.524 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:05:33.101 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:05:48.805 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:05:58.438 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:06:20.410 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:06:42.106 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:07:25.834 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:07:48.855 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:08:13.865 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:08:25.545 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:08:37.795 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:09:12.706 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:09:39.865 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:09:58.340 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:10:09.892 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:10:21.492 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:10:35.452 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:10:47.274 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:10:57.307 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:11:14.546 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:11:41.559 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:12:15.898 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:12:36.555 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:13:04.043 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:13:18.872 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:13:52.226 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:14:36.457 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:15:05.810 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:15:22.790 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:15:55.340 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:17:25.833 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:18:31.047 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:18:47.392 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:19:01.758 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:19:29.087 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:19:55.124 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:20:28.984 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:20:53.320 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:21:31.039 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:22:06.070 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:22:28.171 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:22:43.868 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:23:06.078 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:23:15.537 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:23:22.646 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:23:27.794 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:23:32.980 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:23:38.335 - DB 0: 1 keys (0 volatile) in 4 slots HT.
+105243:M 27 Apr 2023 14:23:44.520 - DB 0: 1 keys (0 volatile) in 4 slots HT.
