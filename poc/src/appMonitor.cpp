@@ -26,6 +26,8 @@ AppMonitor::AppMonitor () {
 
     // run dmhander(fd) and init redis client
 
+    printf("after new dmhandler\n");
+
     this->dm_handler_thread = dm_handler->ActivateDM_Handler();
 
     LOG(DEBUG) << " DmHandler start";

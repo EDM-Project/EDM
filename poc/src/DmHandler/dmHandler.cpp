@@ -10,8 +10,9 @@ DmHandler::DmHandler(AppMonitor* client, int high_threshold, int low_threshold,p
     this->high_threshold = high_threshold;
     this->low_threshold = low_threshold;
     this->pid = pid;
-
+    printf("in dmHandler\n");
     this->uffd_son = injectUffdCreate(pid);
+    printf("after injectUffdCreate\n");
     this->uffd = duplicateFileDescriptor(pid, uffd_son);
     LOG(INFO) << "[DmHandler] - Userfaultfd injected to process. Usercode fd: " << this->uffd_son << "Polling duplicated fd:" << this->uffd; 
     this->client = client;

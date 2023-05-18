@@ -1,4 +1,4 @@
-redis_uri = tcp://127.0.0.1:6380
-binary_path = /home/student/Desktop/EDM/EDM-Project/poc/Usercode/evictionTest
+redis_uri = tcp://127.0.0.1:5000
+binary_path = /home/guy/EDM/poc/Usercode/evictionTestApp
 low_threshold = 2
 high_threshold = 4

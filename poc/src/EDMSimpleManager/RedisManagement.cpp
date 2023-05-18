@@ -2,6 +2,9 @@
 /* we assume that Redis is installed properly at the instance where
 we run this file */
 
+/*command for compiling the 'regular' code: 
+g++ -std=c++17 utils/*.cpp utils/ptrace_do/libptrace_do.c utils/ptrace_do/parse_maps.c DmHandler/* appMonitor.cpp LSPT/*.cpp mapTracker.cpp monitoredAreas.cpp vmaMetadata.h redisClient.cpp -o app -lredis++ -lhiredis -pthread
+*/
 
 /* initialize a Redis server with a specified port number and host IP address
 This function currently does not take care of security measures.

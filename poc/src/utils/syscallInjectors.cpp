@@ -3,8 +3,11 @@
 
 
 unsigned long injectUffdCreate(pid_t pid) {
+        printf("in function\n");
         struct ptrace_do* target = ptrace_do_init(pid);
+        printf("after ptrace_do_init\n");
 		long uffd = ptrace_do_syscall(target, __NR_userfaultfd,  O_NONBLOCK, 0, 0, 0, 0, 0);
+        printf("after ptrace_do_syscall\n");
 
         LOG(DEBUG) << "injectUffdCreate: uffd in son process is: " << uffd;
         struct uffdio_api uffdio_api;
